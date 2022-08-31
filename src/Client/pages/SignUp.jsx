@@ -4,13 +4,13 @@ import TextField from "../../components/Textfield";
 
 export default function SignUp() {
   return (
-    <div className="flex flex-row flex-wrap-reverse  gap-y-16  h-screen">
-      <div className="flex flex-col mt-14 mx-auto">
-        <h1 className="mb-2 pb-3 font-bold text-3xl text-TextTertiary">
+    <div className="flex h-screen flex-row  flex-wrap-reverse  items-center gap-y-16">
+      <div className="mx-auto mt-14 flex flex-col">
+        <h1 className="mb-2 pb-3 text-3xl font-bold text-TextTertiary">
           Sign Up
         </h1>
 
-        <p className="flex gap-x-3 text-sm mb-4 text-TextTertiary">
+        <p className="mb-4 flex gap-x-3 text-sm text-TextTertiary">
           Already A Member?
           <a
             onClick={() => navigate("/Login")}
@@ -19,7 +19,7 @@ export default function SignUp() {
             Login
           </a>
         </p>
-        <div className="flex flex-col gap-y-3 w-auto ">
+        <div className="flex w-auto flex-col gap-y-3 ">
           <TextField type="text" placeholder="Email" />
 
           <TextField type="Password" placeholder="Password" />
@@ -41,12 +41,12 @@ export default function SignUp() {
             </div>
           </div>
 
-          <div className="text-sm mt-7">
+          <div className="mt-7 text-sm">
             <Button text="Sign Up" />
           </div>
         </div>
       </div>
-      <div className="justify-center items-center w-6/12  bg-BtnPrimary-end hidden lg:flex">
+      <div className="hidden h-screen w-6/12  items-center justify-center bg-BtnPrimary-end lg:flex">
         <DesignSignUp />
       </div>
     </div>
