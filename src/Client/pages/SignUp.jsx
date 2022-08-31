@@ -20,11 +20,11 @@ export default function SignUp() {
           </a>
         </p>
         <div className="flex w-auto flex-col gap-y-3 ">
-          <TextField type="text" placeholder="Email" />
+          <TextField type="email" placeholder="Email" />
 
-          <TextField type="Password" placeholder="Password" />
+          <TextField type="password" placeholder="Password" />
 
-          <TextField type="Password" placeholder="Confirm Password" />
+          <TextField type="password" placeholder="Confirm Password" />
 
           <TextField type="text" placeholder="Full Name" />
 
@@ -33,10 +33,10 @@ export default function SignUp() {
           <div className="flex flex-wrap gap-x-16  gap-y-3">
             <label class="text-sm "> Sign up as:</label>
             <div className="flex flex-row gap-x-4 gap-y-3">
-              <input type="radio" />
+              <input type="radio" name="radio"/>
               <label class="text-sm"> Client</label>
 
-              <input type="radio" />
+              <input type="radio" name="radio"/>
               <label class="text-sm"> Agent</label>
             </div>
           </div>
