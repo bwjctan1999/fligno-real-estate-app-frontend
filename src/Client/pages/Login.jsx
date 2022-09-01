@@ -4,8 +4,8 @@ import TextField from "../../components/Textfield";
 
 export default function Login() {
   return (
-    <div className="flex h-screen flex-row  flex-wrap-reverse  gap-y-16">
-      <div className="mx-auto mt-40 flex flex-col">
+    <div className="flex h-screen flex-row flex-wrap-reverse justify-center ">
+      <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-2 pb-3 text-3xl font-bold text-TextTertiary">
           Log In
         </h1>
@@ -41,7 +41,7 @@ export default function Login() {
       </div>
       <div className="hidden w-6/12 items-center  justify-center lg:flex">
         <DesignLogin />
-      </div>F
+      </div>
     </div>
   );
 }
