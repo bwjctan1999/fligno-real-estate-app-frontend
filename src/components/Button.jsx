@@ -1,16 +1,19 @@
 export default function Button({
-  text = "please change text parameter",
+  text,
   fontsize = "text-base",
   padding = "p-3",
   bgcolor = "bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end",
   textcolor = "text-TextOnDark",
+  icon,
+  custom,
   onClick,
 }) {
   return (
     <button
-      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} p-3 rk rounded-lg bg-BGPrimary w-full max-w-md text-b font-bold`}
+      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} ${custom} flex w-full items-center justify-center gap-3 rounded-lg bg-BGPrimary p-3 font-bold`}
       onClick={onClick}
     >
+      {icon}
       {text}
     </button>
   );
