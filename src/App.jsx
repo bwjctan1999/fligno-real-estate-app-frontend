@@ -1,6 +1,6 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import LandingPage from "./Client/pages/LandingPage";
-import PropertyList from "./Client/pages/Subscription/PropertyList";
+import PropertyList from "./Client/pages/PropertyList";
 import SignUp from "./Client/pages/SignUp";
 import Subscription from "./Client/pages/Subscription";
 
