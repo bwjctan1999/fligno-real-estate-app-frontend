@@ -1,8 +1,8 @@
 export default function DesignSignUp() {
   return (
     <svg
-      width="572"
-      height="422"
+      height="450"
+      width="450"
       viewBox="0 0 572 422"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
