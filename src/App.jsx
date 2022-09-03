@@ -1,4 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import ClientDashboard from "./Client/pages/ClientDashboard";
 import LandingPage from "./Client/pages/LandingPage";
 import Login from "./Client/pages/Login";
 import PropertyList from "./Client/pages/PropertyList";
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<ClientDashboard />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/properties" element={<PropertyList />} />
           <Route path="/about" element={<LandingPage />} />
