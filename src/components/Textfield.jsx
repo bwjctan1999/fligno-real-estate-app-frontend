@@ -1,5 +1,6 @@
 export default function Textfield({
   type = "text",
+  icon,
   padding = "p-3",
   bgcolor = "bg-BGPrimary",
   textcolor = "text-TextPrimary",
@@ -7,11 +8,18 @@ export default function Textfield({
   placeholder,
 }) {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      className={`${padding} ${bgcolor} ${padding} ${textcolor} bg-white first-line:text-sm text bg-white w-full rounded-lg shadow-md text-black max-w-md focus:outline-BtnPrimary-start `}
-      onClick={onClick}
-    />
+    <div
+      className={` ${bgcolor} ${textcolor} ${
+        icon ? "pl-3" : null
+      } flex items-center rounded-lg shadow-md outline-1 outline-BtnPrimary-start focus-within:outline`}
+    >
+      {icon}
+      <input
+        type={type}
+        placeholder={placeholder}
+        className={`${padding} h-full w-full rounded-lg outline-none`}
+        onClick={onClick}
+      />
+    </div>
   );
 }
