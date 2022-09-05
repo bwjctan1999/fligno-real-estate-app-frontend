@@ -6,54 +6,51 @@ import TextArea from "../../components/TextArea";
 export default function AddProperty() {
   return (
     <div className="h-screen">
-      <h1 className="text-TextTertiary font-black text-2xl">Add Property</h1>
-
-      <div className="flex h-full items-center">
-        <div className="flex">
-          <div className="w-4/5 flex flex-col justify-evenly">
-            <div className="flex flex-row gap-x-2 w-full  ">
-              <div className="w-2/4">
-                <span className=" font-black text-TextTertiary ">
-                  Property Title
-                </span>
-                <Textfield placeholder="Title" />
-              </div>
-
-              <div className="w-1/4">
-                <span className=" font-black text-TextTertiary ">Price</span>
-                <Textfield placeholder="Price" />
-              </div>
-
-              <div className="w-1/4">
-                <span className=" font-black text-TextTertiary ">
-                  Property Type
-                </span>
-                <DropDown />
-              </div>
+      <h1 className="text-2xl font-black text-TextTertiary">Add Property</h1>
+      <div className="flex h-full w-full">
+        <div className="flex w-1/2 flex-col p-20">
+          <div className="flex w-full flex-row gap-x-2">
+            <div className="w-2/4">
+              <span className=" font-black text-TextTertiary ">
+                Property Title
+              </span>
+              <Textfield placeholder="Title" />
             </div>
 
-            <div className="">
-              <label>
-                <span className=" font-black text-TextTertiary">
-                  Description
-                </span>
-                <TextArea />
+            <div className="w-1/4">
+              <label className="font-black text-TextTertiary" for="price">
+                Price
               </label>
+              <Textfield id="price " placeholder="Price" />
             </div>
 
-            <div className="flex flex-row gap-x-2 w-full  ">
-              <div className="w-2/3">
-                <span className=" font-black text-TextTertiary ">Location</span>
+            <div className="w-1/4">
+              <label className="font-black text-TextTertiary" for="ptype">
+                Property Type
+              </label>
+              <DropDown id="ptype" />
+            </div>
+          </div>
+
+          <div className="">
+            <label className=" font-black text-TextTertiary" for="desc">
+              Description
+            </label>
+            <TextArea id="desc" />
+          </div>
+
+          <div className="flex flex-col gap-y-2">
+            <p className="font-black text-TextTertiary">Location</p>
+            <div className="flex gap-x-2">
+              <div className="w-3/5">
                 <Textfield placeholder="Address 1" />
               </div>
               <div className="w-2/5">
-                <span className=" font-black text-BGPrimary ">City</span>
                 <Textfield placeholder="City" />
               </div>
             </div>
-
-            <div className="flex flex-row gap-x-2 w-full">
-              <div className="w-2/3">
+            <div className="flex gap-x-2">
+              <div className="w-3/5">
                 <Textfield placeholder="Address 2" />
               </div>
               <div className="w-2/5">
@@ -63,58 +60,25 @@ export default function AddProperty() {
           </div>
         </div>
 
-        <div className="flex items-center">
-          <div className="w-4/5 flex flex-col justify-evenly">
-            <div className="flex flex-row gap-x-2 w-full  ">
-              <div className="w-2/4">
-                <span className=" font-black text-TextTertiary ">
-                  Property Title
-                </span>
-                <Textfield placeholder="Title" />
+        <div className="flex w-1/2 flex-col p-20">
+          <div className="flex flex-col">
+            <p className="font-black text-TextTertiary">Location</p>
+            <div className="flex w-full flex-row gap-x-2">
+              <div className="w-2/6">
+                <Textfield placeholder="Area (sqft)" />
               </div>
 
-              <div className="w-1/4">
-                <span className=" font-black text-TextTertiary ">Price</span>
-                <Textfield placeholder="Price" />
+              <div className="w-2/6">
+                <Textfield placeholder="No. Bedroom" />
               </div>
 
-              <div className="w-1/4">
-                <span className=" font-black text-TextTertiary ">
-                  Property Type
-                </span>
-                <DropDown />
-              </div>
-            </div>
-
-            <div className="">
-              <label>
-                <span className=" font-black text-TextTertiary">
-                  Description
-                </span>
-                <TextArea />
-              </label>
-            </div>
-
-            <div className="flex flex-row gap-x-2 w-full  ">
-              <div className="w-2/3">
-                <span className=" font-black text-TextTertiary ">Location</span>
-                <Textfield placeholder="Address 1" />
-              </div>
-              <div className="w-2/5">
-                <span className=" font-black text-BGPrimary ">City</span>
-                <Textfield placeholder="City" />
-              </div>
-            </div>
-
-            <div className="flex flex-row gap-x-2 w-full">
-              <div className="w-2/3">
-                <Textfield placeholder="Address 2" />
-              </div>
-              <div className="w-2/5">
-                <Textfield placeholder="Zip Code" />
+              <div className="w-2/6">
+                <Textfield placeholder="No. Bathroom" />
               </div>
             </div>
           </div>
+
+          
         </div>
       </div>
     </div>
