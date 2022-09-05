@@ -23,10 +23,9 @@ function App() {
           <Route path="/waiting-payment" element={<PaymentMethod/>}/>
           <Route path="/properties" element={<PropertyList />} />
           <Route path="/about" element={<LandingPage />} />
-          <Route path="/property" element={<LandingPage />} />
-          <Route path="/agents" element={<LandingPage />} />
+          <Route path="/property" element={<PropertyDetails/>} />
+          <Route path="/clients" element={<LandingPage />} />
           <Route path="/add-property" element={<AddProperty/>}/>
-          <Route path="/property-details" element={<PropertyDetails/>}/>
         </Routes>
       </BrowserRouter>
     </div>
