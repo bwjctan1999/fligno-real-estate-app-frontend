@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import AddProperty from "./Client/pages/AddProperty";
 import ClientDashboard from "./Client/pages/ClientDashboard";
 import LandingPage from "./Client/pages/LandingPage";
+import PropertyDetails from "./Client/pages/PropertyDetails";
 import Login from "./Client/pages/Login";
 import PaymentMethod from "./Client/pages/PaymentMethod";
 import PropertyList from "./Client/pages/PropertyList";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/property" element={<LandingPage />} />
           <Route path="/agents" element={<LandingPage />} />
           <Route path="/add-property" element={<AddProperty/>}/>
+          <Route path="/property-details" element={<PropertyDetails/>}/>
         </Routes>
       </BrowserRouter>
     </div>
