@@ -1,8 +1,10 @@
+import AgentNavbar from "../components/AgentNavbar";
+
+
 export default function LandingPage() {
     return(
         <div>
-            <div></div>
+       <AgentNavbar/>
         </div>
     );
 }
-
