@@ -10,16 +10,16 @@ import Button from "../../components/Button";
 
 export default function PropertyDetails() {
   return (
-    <div className="flex flex-wrap gap-y-8 justify-center item-center my-10">
+    <div className="item-center my-10 flex flex-wrap justify-center gap-y-8">
       <div className="w-11/12">
         <div className="flex ">
           <div>
             <h1 className="text-2xl font-bold ">Mesaverte Residence</h1>
-            <span className="underline underline-offset-1 text-sm">
+            <span className="text-sm underline underline-offset-1">
               2265 Paul Wayne Haggerty Road, New Orleans
             </span>
           </div>
-          <div className="flex gap-3 mt-4 ml-auto">
+          <div className="mt-4 ml-auto flex gap-3">
             <h1 className="font-bold"> Price: </h1>
             <span className="text-xl font-bold">₱100,000,000</span>
           </div>
@@ -27,8 +27,8 @@ export default function PropertyDetails() {
       </div>
 
       <div class="container mx-auto">
-        <div class="grid-cols-4 space-y-2 bg-yellow-200 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-2">
-          <div class="w-full col-span-2 row-span-2 rounded">
+        <div class="bg-yellow-200 grid-cols-4 space-y-2 lg:grid lg:grid-rows-2 lg:gap-3 lg:space-y-0">
+          <div class="col-span-2 row-span-2 w-full rounded">
             <img src={PDimg1} alt="image" />
           </div>
           <div class="w-full rounded">
@@ -47,7 +47,7 @@ export default function PropertyDetails() {
         </div>
       </div>
 
-      <div className="flex flex-wrap w-11/12">
+      <div className="flex w-11/12 flex-wrap">
         <div className="flex flex-wrap gap-3 ">
           <h1 className="text-base font-bold">Property Description</h1>
           <p className="text-justify">
@@ -66,42 +66,42 @@ export default function PropertyDetails() {
           </p>
         </div>
 
-        <div className="w-full mt-16">
+        <div className="mt-16 w-full">
           <h1 className="w-text-base font-bold">Property Info</h1>
         </div>
 
-        <div className="flex gap-y-10 flex-col mt-5 w-full justify-between md:flex-row ">
-          <div className="flex flex-wrap w-11/12">
-            <div className="flex flex-wrap gap-3 w-1/3">
+        <div className="mt-5 flex w-full flex-col justify-between gap-y-10 md:flex-row ">
+          <div className="flex w-11/12 flex-wrap">
+            <div className="flex w-1/3 flex-wrap gap-3">
               <IconArea />
-              <span className="text-TextSecondary text-base font-bold">
+              <span className="text-base font-bold text-TextSecondary">
                 1230 sq.m
               </span>
-              <inline className="text-TextSecondary text-sm">
+              <inline className="text-sm text-TextSecondary">
                 Area (sqft)
               </inline>
             </div>
 
-            <div className="flex flex-wrap gap-3 S w-1/4">
+            <div className="S flex w-1/4 flex-wrap gap-3">
               <IconBed />
-              <span className="text-TextSecondary text-base font-bold">5</span>
-              <inline className="text-TextSecondary text-sm">
+              <span className="text-base font-bold text-TextSecondary">5</span>
+              <inline className="text-sm text-TextSecondary">
                 No. Bedroom
               </inline>
             </div>
 
-            <div className="flex flex-wrap gap-3  w-1/4">
+            <div className="flex w-1/4 flex-wrap  gap-3">
               <IconBathroom />
-              <span className="text-TextSecondary text-base font-bold">
+              <span className="text-base font-bold text-TextSecondary">
                 5
               </span>{" "}
               <inline className="text-sm text-TextSecondary">
                 No. Bathroom
               </inline>
             </div>
-          </div>    
+          </div>
 
-          <div className=" w-5/12 fkex justify-center">
+          <div className=" fkex w-5/12 justify-center">
             <Button text="Contact Us" />
           </div>
         </div>

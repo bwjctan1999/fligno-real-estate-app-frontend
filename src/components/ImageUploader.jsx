@@ -24,17 +24,17 @@ export default function ImageUploader() {
   return (
     <div
       {...getRootProps()}
-      className="border-dashed border-2 border-TextSecondary rounded-lg relative h-80 lg:h-full "
+      className="relative h-80 rounded-lg border-2 border-dashed border-TextSecondary lg:h-full "
     >
       <input {...getInputProps()} />
       {isDragActive ? (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex h-full items-center justify-center">
           <p>Drop the files here ...</p>
         </div>
       ) : (
-        <div className="h-full md:absolute top-0 bottom-0 left-0 right-0 overflow-auto">
-          <div className="text-center w-full h-full flex flex-col justify-center items-center p-4">
-            <div className="flex flex-col items-center mb-4">
+        <div className="top-0 bottom-0 left-0 right-0 h-full overflow-auto md:absolute">
+          <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
+            <div className="mb-4 flex flex-col items-center">
               <IconAddImage />
               <p>Drag and Drop Images here</p>
               <p> or click to select files</p>

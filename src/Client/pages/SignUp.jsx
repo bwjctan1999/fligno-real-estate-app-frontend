@@ -33,10 +33,10 @@ export default function SignUp() {
           <div className="flex flex-wrap gap-x-16  gap-y-3">
             <label class="text-sm "> Sign up as:</label>
             <div className="flex flex-row gap-x-4 gap-y-3">
-              <input type="radio" name="radio"/>
+              <input type="radio" name="radio" />
               <label class="text-sm"> Client</label>
 
-              <input type="radio" name="radio"/>
+              <input type="radio" name="radio" />
               <label class="text-sm"> Agent</label>
             </div>
           </div>

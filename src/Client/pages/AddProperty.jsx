@@ -6,14 +6,16 @@ import Button from "../../components/Button";
 
 export default function AddProperty() {
   return (
-    <div className="h-screen p-4 lg:p-20 bg-BGSecondary">
-      <h1 className="text-4xl font-bold text-TextTertiary mb-10">Add Property</h1>
-      <div className="flex flex-col w-full gap-5 lg:gap-20 lg:flex-row">
+    <div className="h-screen bg-BGSecondary p-4 lg:p-20">
+      <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
+        Add Property
+      </h1>
+      <div className="flex w-full flex-col gap-5 lg:flex-row lg:gap-20">
         <div className="flex flex-col gap-5 lg:w-1/2 ">
           <div className="flex w-full flex-col gap-x-2 gap-y-5 lg:flex-row lg:gap-y-0">
             <div className="w-full lg:w-2/4">
               <span className=" font-black text-TextTertiary ">
-                Property Title 
+                Property Title
               </span>
               <Textfield placeholder="Title" />
             </div>
@@ -22,7 +24,7 @@ export default function AddProperty() {
               <label className="font-black text-TextTertiary" for="price">
                 Price
               </label>
-              <Textfield id="price " placeholder="Price" type="number"/>
+              <Textfield id="price " placeholder="Price" type="number" />
             </div>
 
             <div className="w-full lg:w-1/4">
@@ -80,17 +82,32 @@ export default function AddProperty() {
           </div>
 
           <ImageUploader />
-          
         </div>
       </div>
-      <div className=" w-full ml-auto lg:pl-10 pt-5 flex items-center justify-between lg:w-1/2">
+      <div className=" ml-auto flex w-full items-center justify-between pt-5 lg:w-1/2 lg:pl-10">
         <div className="my-auto flex gap-4">
-          <label><input type="radio" value="Male" name="propertyType" className="scale-150"/> Reservation</label>
-          <label><input type="radio" value="Female" name="propertyType" className="scale-150" /> Rent</label>
+          <label>
+            <input
+              type="radio"
+              value="Male"
+              name="propertyType"
+              className="scale-150"
+            />{" "}
+            Reservation
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Female"
+              name="propertyType"
+              className="scale-150"
+            />{" "}
+            Rent
+          </label>
         </div>
         <div className="w-1/2 lg:w-3/6">
-            <Button text="Save"/>
-          </div>
+          <Button text="Save" />
+        </div>
       </div>
     </div>
   );

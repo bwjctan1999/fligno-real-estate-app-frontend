@@ -1,20 +1,19 @@
 export default function PaymentMethod() {
-    return(
-
-        
-        <div className="flex flex-wrap justify-center items-center space-x-2 bg-BGPrimary">
-            <h1 className="w-full text-center text-5xl text-TextTertiary font-bold pb-4 py-32">
-                 Awaiting your payment to the address below </h1>  
-                 <a className="w-full text-center pb-8 p-8 py-4 text-BtnPrimary-end ">35bSzXvRKLpHsHMrzb82f617cV4Srnt7hS</a>
-            <div>
-            
-            <svg
-          className=" mr-2 inline animate-spin fill-BtnPrimary-start w-40 h-30 border-4 rounded-full text-blue-600"
+  return (
+    <div className="flex flex-wrap items-center justify-center space-x-2 bg-BGPrimary">
+      <h1 className="w-full py-32 pb-4 text-center text-5xl font-bold text-TextTertiary">
+        Awaiting your payment to the address below{" "}
+      </h1>
+      <a className="w-full p-8 py-4 pb-8 text-center text-BtnPrimary-end ">
+        35bSzXvRKLpHsHMrzb82f617cV4Srnt7hS
+      </a>
+      <div>
+        <svg
+          className=" h-30 text-blue-600 mr-2 inline w-40 animate-spin rounded-full border-4 fill-BtnPrimary-start"
           viewBox="0 0 100 101"
           fill="white"
           xmlns="http://www.w3.org/2000/svg"
         >
-
           <path
             d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
             fill="currentColor"
@@ -25,12 +24,7 @@ export default function PaymentMethod() {
           />
         </svg>
         <span class="sr-only">Loading...</span>
-        </div>
-
-
-
-        </div>
-       
-        
-    );
+      </div>
+    </div>
+  );
 }
