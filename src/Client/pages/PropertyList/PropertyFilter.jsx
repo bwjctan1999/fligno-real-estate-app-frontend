@@ -47,9 +47,18 @@ export default function PropertyFilter() {
             custom="w-12 block md:hidden mb-4 block ml-auto"
             onClick={() => setShowFilter(!showFilter)}
           />
-          <div className="bg rt grid grid-cols-1 gap-5 md:grid-cols-5  ">
+          <div className="bg rt grid grid-cols-1 gap-5 md:grid-cols-5">
             <Textfield placeholder="Location" icon={<IconLocation />} />
-            <Textfield placeholder="Property Type" icon={<IconProperties />} />
+            <Textfield
+              placeholder="Property Type"
+              icon={
+                <IconProperties
+                  width="24"
+                  height="24"
+                  fill="fill-TextSecondary"
+                />
+              }
+            />
             <Textfield placeholder="Price Range" icon={<IconPrice />} />
             <Textfield placeholder="Area" icon={<IconArea />} />
             <Button text="Search" />
