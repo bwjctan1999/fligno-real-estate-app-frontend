@@ -9,6 +9,7 @@ import PaymentMethod from "./Client/pages/PaymentMethod";
 import PropertyList from "./Client/pages/PropertyList";
 import SignUp from "./Client/pages/SignUp";
 import Subscription from "./Client/pages/Subscription";
+import EditProfile from "./Client/pages/EditProfile";
 import Clients from "./Client/pages/Clients";
 import AdminDashboard from "./Admin/pages/AdminDashboard";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/clients" element={<Clients />} />
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />}/>
+          <Route path="/edit-profile" element={<EditProfile/>}/>
         </Routes>
       </BrowserRouter>
     </div>
