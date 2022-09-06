@@ -1,7 +1,7 @@
 export default function DesignLogin() {
   return (
     <svg
-      width="690"
+      width="850"
       height="426"
       viewBox="0 0 690 426"
       fill="none"
