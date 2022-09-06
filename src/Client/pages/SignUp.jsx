@@ -19,7 +19,7 @@ export default function SignUp() {
             Login
           </a>
         </p>
-        <div className="flex w-auto flex-col gap-y-3 ">
+        <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
           <TextField type="email" placeholder="Email" />
 
           <TextField type="password" placeholder="Password" />
