@@ -10,9 +10,21 @@ export default function ClientDashboard() {
       </div>
 
       <div className=" grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <DashboardCard title="Properties" num="9" icon={<IconProperties />} />
-        <DashboardCard title="Rent" num="9" icon={<IconProperties />} />
-        <DashboardCard title="Reserved" num="9" icon={<IconProperties />} />
+        <DashboardCard
+          title="Properties"
+          num="9"
+          icon={<IconProperties fill="fill-TextTertiary" />}
+        />
+        <DashboardCard
+          title="Rent"
+          num="9"
+          icon={<IconProperties fill="fill-TextTertiary" />}
+        />
+        <DashboardCard
+          title="Reserved"
+          num="9"
+          icon={<IconProperties fill="fill-TextTertiary" />}
+        />
         <DashboardCard title="Reserved" num="9" icon={<IconUsersList />} />
       </div>
     </div>
