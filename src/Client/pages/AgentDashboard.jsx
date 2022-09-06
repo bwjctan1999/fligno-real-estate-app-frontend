@@ -1,8 +1,8 @@
-import IconProperties from "../../../assets/icons/IconProperties";
-import IconUsersList from "../../../assets/icons/IconUsersList";
-import DashboardCard from "./DashboardCard";
+import IconProperties from "../../assets/icons/IconProperties";
+import IconUsersList from "../../assets/icons/IconUsersList";
+import DashboardCard from "../../components/DashboardCard"
 
-export default function ClientDashboard() {
+export default function AgentDashboard() {
   return (
     <div className="w-screen bg-BGSecondary p-2 md:h-screen md:p-20">
       <div className="pb-7 text-4xl font-bold text-TextSecondary">
