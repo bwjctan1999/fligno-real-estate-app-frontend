@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import LandingPage from "./Client/pages/LandingPage";
+import PropertyDetails from "./Client/pages/PropertyDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/about" element={<LandingPage/>}/>
           <Route path="/property" element={<LandingPage/>}/>
           <Route path="/agents" element={<LandingPage/>}/>
+          <Route path="/property-details" element={<PropertyDetails/>}/>
         </Routes>
       </BrowserRouter>
     </div>
