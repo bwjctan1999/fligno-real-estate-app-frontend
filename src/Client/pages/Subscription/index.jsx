@@ -25,7 +25,10 @@ export default function Subscription() {
           desc="Unlimited postings"
         />
       </div>
-      <Button text="Next" />
+      <Button
+        text="Next"
+        custom="lg:w-80"
+      />
     </div>
   );
 }

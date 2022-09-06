@@ -25,8 +25,8 @@ module.exports = {
         end: '#F1F1F1',
       },
       BtnQuanary: {
-        start: '#1BD1C3',
-        end: '#32D971',
+        start: '#54C058',
+        end: '#4CAF50',
       },
       LinePrimary: '#F3F3F3',
       LineSecondary: '#D9D9D9',

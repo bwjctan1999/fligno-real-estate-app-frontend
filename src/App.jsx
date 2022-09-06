@@ -9,6 +9,7 @@ import PaymentMethod from "./Client/pages/PaymentMethod";
 import PropertyList from "./Client/pages/PropertyList";
 import SignUp from "./Client/pages/SignUp";
 import Subscription from "./Client/pages/Subscription";
+import Clients from "./Client/pages/Clients";
 import AdminDashboard from "./Admin/pages/AdminDashboard";
 
 function App() {
@@ -21,12 +22,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<AgentDashboard />} />
           <Route path="/subscription" element={<Subscription />} />
-          <Route path="/waiting-payment" element={<PaymentMethod/>}/>
+          <Route path="/waiting-payment" element={<PaymentMethod />} />
           <Route path="/properties" element={<PropertyList />} />
           <Route path="/about" element={<LandingPage />} />
-          <Route path="/property" element={<PropertyDetails/>} />
-          <Route path="/clients" element={<LandingPage />} />
-          <Route path="/add-property" element={<AddProperty/>}/>
+          <Route path="/property" element={<PropertyDetails />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/add-property" element={<AddProperty />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />}/>
         </Routes>
       </BrowserRouter>
