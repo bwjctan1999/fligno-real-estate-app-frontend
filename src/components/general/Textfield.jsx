@@ -7,6 +7,7 @@ export default function Textfield({
   onClick,
   placeholder,
   onChange,
+  required,
 }) {
   return (
     <div
@@ -21,6 +22,7 @@ export default function Textfield({
         className={`${padding} h-full w-full rounded-lg outline-none`}
         onClick={onClick}
         onChange={onChange}
+        required={required}
       />
     </div>
   );
