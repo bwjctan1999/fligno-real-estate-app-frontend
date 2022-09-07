@@ -1,8 +1,12 @@
+import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="flex h-screen flex-row flex-wrap-reverse justify-center ">
       <div className="mx-auto flex flex-col justify-center">
@@ -20,9 +24,17 @@ export default function Login() {
           </a>
         </p>
         <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
-          <TextField type="text" placeholder="Email" />
+          <TextField
+            type="text"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          <TextField type="Password" placeholder="Password" />
+          <TextField
+            type="Password"
+            placeholder="Password"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
           <div className="flex flex-wrap gap-x-4  gap-y-3">
             <input type="checkbox" />
