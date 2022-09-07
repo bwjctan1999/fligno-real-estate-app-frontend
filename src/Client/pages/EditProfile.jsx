@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 
 export default function EditProfile() {
   return (
-    <div className="h-screen bg-BGSecondary p-4 lg:p-20">
+    <div className="min-h-screen bg-BGSecondary p-4 lg:p-20">
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Add Property
       </h1>
@@ -25,8 +25,7 @@ export default function EditProfile() {
           </div>
         </div>
       </div>
-
-      <Button text="Save" custom="float-right w-full lg:w-72 m-10" />
+      <Button text="Save" custom="float-right w-full lg:w-72 mt-10 mx-10 " />
     </div>
   );
 }
