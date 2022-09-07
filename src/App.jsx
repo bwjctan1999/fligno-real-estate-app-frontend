@@ -9,6 +9,7 @@ import PaymentMethod from "./Client/pages/PaymentMethod";
 import PropertyList from "./Client/pages/PropertyList";
 import SignUp from "./Client/pages/SignUp";
 import Subscription from "./Client/pages/Subscription";
+import EditProfile from "./Client/pages/EditProfile";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/property" element={<PropertyDetails/>} />
           <Route path="/clients" element={<LandingPage />} />
           <Route path="/add-property" element={<AddProperty/>}/>
+          <Route path="/edit-profile" element={<EditProfile/>}/>
         </Routes>
       </BrowserRouter>
     </div>
