@@ -12,15 +12,13 @@ export default function SignUp() {
   const [user_type, setAsType] = useState("Client");
 
   const PostData = () => {
-    axios.post('http://localhost:8000/api/register', {
-      email, password, full_name, p_number, user_type
-    })
-    console.log(email);
-    console.log(password);
-    console.log(confirmPassword);
-    console.log(fullName);
-    console.log(num);
-    console.log(type);
+    axios.post("http://localhost:8000/api/register", {
+      email,
+      password,
+      full_name,
+      p_number,
+      user_type,
+    });
   };
 
   return (
