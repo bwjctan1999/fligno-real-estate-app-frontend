@@ -2,16 +2,19 @@ import DesignSignUp from "../../assets/svgs/DesignSignUp";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 import { useState } from "react";
+import axios from "axios";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [num, setNum] = useState("");
-  const [type, setAsType] = useState("Client");
+  const [full_name, setFullName] = useState("");
+  const [p_number, setNum] = useState("");
+  const [user_type, setAsType] = useState("Client");
 
   const PostData = () => {
+    axios.post('http://localhost:8000/api/register', {
+      email, password, full_name, p_number, user_type
+    })
     console.log(email);
     console.log(password);
     console.log(confirmPassword);
