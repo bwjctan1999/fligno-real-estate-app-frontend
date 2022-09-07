@@ -2,10 +2,24 @@ import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+import axios from 'axios'
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(true);
+
+  const handleLogin = () => {
+    const configuration = {
+      method: "post",
+      url: "",
+      data: {
+        email,
+        password,
+      }
+    };  
+    axios(configuration)
+  }
 
   return (
     <div className="flex h-screen flex-row flex-wrap-reverse justify-center ">
@@ -47,7 +61,7 @@ export default function Login() {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" />
+            <Button text="Log In" onClick={}/>
           </div>
         </div>
       </div>

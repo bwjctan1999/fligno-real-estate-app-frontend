@@ -6,6 +6,7 @@ export default function Textfield({
   textcolor = "text-TextPrimary",
   onClick,
   placeholder,
+  onChange,
 }) {
   return (
     <div
@@ -19,6 +20,7 @@ export default function Textfield({
         placeholder={placeholder}
         className={`${padding} h-full w-full rounded-lg outline-none`}
         onClick={onClick}
+        onChange={onChange}
       />
     </div>
   );
