@@ -20,7 +20,7 @@ export default function AddPropertyDetails() {
         </div>
       </div>
 
-      <div className="w-11/12">
+      <div className="w-full">
         <div className="flex ">
           <div>
             <h1 className="text-2xl font-bold ">Mesaverte Residence</h1>
