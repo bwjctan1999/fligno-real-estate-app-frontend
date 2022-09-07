@@ -1,6 +1,6 @@
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
-import DashboardCard from "../../components/DashboardCard";
+import DashboardCard from "../../components/general/DashboardCard";
 
 export default function AdminDashboard() {
   return (
@@ -10,9 +10,9 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-            <DashboardCard title="Properties" num="19" icon={<IconProperties />} />
-            <DashboardCard title="Users" num="5" icon={<IconUsersList />} />
+        <DashboardCard title="Properties" num="19" icon={<IconProperties />} />
+        <DashboardCard title="Users" num="5" icon={<IconUsersList />} />
       </div>
-      </div>
+    </div>
   );
 }

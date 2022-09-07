@@ -1,8 +1,8 @@
-import Textfield from "../../components/Textfield";
-import DropDown from "../../components/DropDown";
-import TextArea from "../../components/TextArea";
-import ImageUploader from "../../components/ImageUploader";
-import Button from "../../components/Button";
+import Textfield from "../../components/general/Textfield";
+import DropDown from "../../components/general/DropDown";
+import TextArea from "../../components/general/TextArea";
+import ImageUploader from "../../components/general/ImageUploader";
+import Button from "../../components/general/Button";
 
 export default function AddProperty() {
   return (

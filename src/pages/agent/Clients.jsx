@@ -1,4 +1,4 @@
-import TableMaker from "../../components/TableMaker";
+import TableMaker from "../../components/general/TableMaker";
 
 export default function Clients() {
   return (

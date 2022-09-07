@@ -2,11 +2,7 @@ import IconArea from "../../assets/icons/IconArea";
 import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
 import PDimg1 from "../../assets/imgs/PDimg1.png";
-import PDimg2 from "../../assets/imgs/PDimg2.png";
-import PDimg3 from "../../assets/imgs/PDimg3.png";
-import PDimg4 from "../../assets/imgs/PDimg4.png";
-import PDimg5 from "../../assets/imgs/PDimg5.png";
-import Button from "../../components/Button";
+import Button from "../../components/general/Button";
 
 export default function PropertyDetails() {
   return (

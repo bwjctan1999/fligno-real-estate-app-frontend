@@ -4,8 +4,8 @@ import IconFilter from "../../../assets/icons/IconFilter";
 import IconLocation from "../../../assets/icons/IconLocation";
 import IconPrice from "../../../assets/icons/IconPrice";
 import IconProperties from "../../../assets/icons/IconProperties";
-import Button from "../../../components/Button";
-import Textfield from "../../../components/Textfield";
+import Button from "../../../components/general/Button";
+import Textfield from "../../../components/general/Textfield";
 
 export default function PropertyFilter() {
   const [showFilter, setShowFilter] = useState(false);

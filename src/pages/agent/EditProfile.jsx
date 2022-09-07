@@ -1,6 +1,6 @@
-import ImageUploader from "../../components/ImageUploader";
-import Textfield from "../../components/Textfield";
-import Button from "../../components/Button";
+import ImageUploader from "../../components/general/ImageUploader";
+import Textfield from "../../components/general/Textfield";
+import Button from "../../components/general/Button";
 
 export default function EditProfile() {
   return (

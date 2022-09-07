@@ -1,4 +1,4 @@
-import Button from "../../../components/Button";
+import Button from "../../../components/general/Button";
 import { useState } from "react";
 import SubscriptionCard from "./SubscriptionCard";
 
@@ -25,10 +25,7 @@ export default function Subscription() {
           desc="Unlimited postings"
         />
       </div>
-      <Button
-        text="Next"
-        custom="lg:w-80"
-      />
+      <Button text="Next" custom="lg:w-80" />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
-import DashboardCard from "../../components/DashboardCard"
+import DashboardCard from "../../components/general/DashboardCard";
 
 export default function AgentDashboard() {
   return (

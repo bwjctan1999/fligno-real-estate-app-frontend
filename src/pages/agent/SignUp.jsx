@@ -1,6 +1,6 @@
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
-import Button from "../../components/Button";
-import TextField from "../../components/Textfield";
+import Button from "../../components/general/Button";
+import TextField from "../../components/general/Textfield";
 
 export default function SignUp() {
   return (

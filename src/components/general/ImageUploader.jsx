@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import IconAddImage from "../assets/icons/IconAddImage";
+import IconAddImage from "../../assets/icons/IconAddImage";
 
 export default function ImageUploader() {
   const [images, setImages] = useState([]);

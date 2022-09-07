@@ -1,17 +1,18 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-import AddProperty from "./Client/pages/AddProperty";
-import AgentDashboard from "./Client/pages/AgentDashboard";
-import LandingPage from "./Client/pages/LandingPage";
-import PropertyDetails from "./Client/pages/PropertyDetails";
-import Login from "./Client/pages/Login";
-import PaymentMethod from "./Client/pages/PaymentMethod";
-import PropertyList from "./Client/pages/PropertyList";
-import SignUp from "./Client/pages/SignUp";
-import Subscription from "./Client/pages/Subscription";
-import EditProfile from "./Client/pages/EditProfile";
-import Clients from "./Client/pages/Clients";
-import AdminDashboard from "./Admin/pages/AdminDashboard";
+import AddProperty from "./pages/agent/AddProperty";
+import AgentDashboard from "./pages/agent/AgentDashboard";
+import LandingPage from "./pages/agent/LandingPage";
+import PropertyDetails from "./pages/agent/PropertyDetails";
+import Login from "./pages/agent/Login";
+import PaymentMethod from "./pages/agent/PaymentMethod";
+import PropertyList from "./pages/agent/PropertyList";
+import SignUp from "./pages/agent/SignUp";
+import Subscription from "./pages/agent/Subscription";
+import EditProfile from "./pages/agent/EditProfile";
+import Clients from "./pages/agent/Clients";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import routes from "./routes";
 
 function App() {
   return (
@@ -29,8 +30,8 @@ function App() {
           <Route path="/property" element={<PropertyDetails />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/add-property" element={<AddProperty />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />}/>
-          <Route path="/edit-profile" element={<EditProfile/>}/>
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
     </div>
