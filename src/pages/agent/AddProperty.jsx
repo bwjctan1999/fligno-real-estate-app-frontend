@@ -3,8 +3,49 @@ import DropDown from "../../components/general/DropDown";
 import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
+import { useState } from "react";
+import axios from "axios";
 
 export default function AddProperty() {
+  const [p_title, setPTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [p_type, setPType] = useState("");
+  const [p_info, setPInfo] = useState("");
+  const [loc_a, setLocA] = useState("");
+  const [loc_b, setLocB] = useState("");
+  const [city, setCity] = useState("");
+  const [z_code, setZCode] = useState("");
+  const [area, setArea] = useState("");
+  const [bedroom, setBedRoom] = useState("");
+  const [bathroom, setBathroom] = useState("");
+
+  const postProperty = () => {
+    const configuration = {
+      method: "post",
+      url: "http://localhost:8000/api/add_property",
+      data: {
+        p_title,
+        price,
+        p_type,
+        p_info,
+        loc_a,
+        lob_b,
+        city,
+        z_code,
+        area,
+        bedroom,
+        bathroom,
+      },
+    };
+    axios(configuration)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="h-screen bg-BGSecondary p-4 lg:p-20">
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
@@ -17,14 +58,22 @@ export default function AddProperty() {
               <span className=" font-black text-TextTertiary ">
                 Property Title
               </span>
-              <Textfield placeholder="Title" />
+              <Textfield
+                placeholder="Title"
+                onChange={(e) => setPTitle(e.target.value)}
+              />
             </div>
 
             <div className="w-full lg:w-1/4">
               <label className="font-black text-TextTertiary" for="price">
                 Price
               </label>
-              <Textfield id="price " placeholder="Price" type="number" />
+              <Textfield
+                id="price "
+                placeholder="Price"
+                type="number"
+                onChange={(e) => setPrice(e.target.value)}
+              />
             </div>
 
             <div className="w-full lg:w-1/4">
@@ -46,18 +95,30 @@ export default function AddProperty() {
             <p className="font-black text-TextTertiary">Location</p>
             <div className="flex gap-x-2">
               <div className="w-3/5">
-                <Textfield placeholder="Address 1" />
+                <Textfield
+                  placeholder="Address 1"
+                  onChange={(e) => setLocA(e.target.value)}
+                />
               </div>
               <div className="w-2/5">
-                <Textfield placeholder="City" />
+                <Textfield
+                  placeholder="City"
+                  onChange={(e) => setCity(e.target.value)}
+                />
               </div>
             </div>
             <div className="flex gap-x-2">
               <div className="w-3/5">
-                <Textfield placeholder="Address 2" />
+                <Textfield
+                  placeholder="Address 2"
+                  onChange={(e) => setLocB(e.target.value)}
+                />
               </div>
               <div className="w-2/5">
-                <Textfield placeholder="Zip Code" />
+                <Textfield
+                  placeholder="Zip Code"
+                  onChange={(e) => setZCode(e.target.value)}
+                />
               </div>
             </div>
           </div>
@@ -68,15 +129,24 @@ export default function AddProperty() {
             <p className="font-black text-TextTertiary">Location</p>
             <div className="flex w-full flex-row gap-x-2">
               <div className="w-2/6">
-                <Textfield placeholder="Area (sqft)" />
+                <Textfield
+                  placeholder="Area (sqft)"
+                  onChange={(e) => setArea(e.target.value)}
+                />
               </div>
 
               <div className="w-2/6">
-                <Textfield placeholder="No. Bedroom" />
+                <Textfield
+                  placeholder="No. Bedroom"
+                  onChange={(e) => setBedRoom(e.target.value)}
+                />
               </div>
 
               <div className="w-2/6">
-                <Textfield placeholder="No. Bathroom" />
+                <Textfield
+                  placeholder="No. Bathroom"
+                  onChange={(e) => setBathroom(e.target.value)}
+                />
               </div>
             </div>
           </div>
@@ -92,7 +162,7 @@ export default function AddProperty() {
               value="Male"
               name="propertyType"
               className="scale-150"
-            />{" "}
+            />
             Reservation
           </label>
           <label>
@@ -101,12 +171,12 @@ export default function AddProperty() {
               value="Female"
               name="propertyType"
               className="scale-150"
-            />{" "}
+            />
             Rent
           </label>
         </div>
         <div className="w-1/2 lg:w-3/6">
-          <Button text="Save" />
+          <Button text="Save" onClick={postProperty} />
         </div>
       </div>
     </div>
