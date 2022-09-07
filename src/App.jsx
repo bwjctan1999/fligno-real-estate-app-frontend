@@ -13,6 +13,7 @@ import EditProfile from "./pages/agent/EditProfile";
 import Clients from "./pages/agent/Clients";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import routes from "./routes";
+import AdminPropertyList from "./pages/admin/AdminPropertyList";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/admin-property-list" element={<AdminPropertyList />} />
         </Routes>
       </BrowserRouter>
     </div>
