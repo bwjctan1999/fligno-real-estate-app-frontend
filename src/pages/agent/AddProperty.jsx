@@ -29,7 +29,7 @@ export default function AddProperty() {
         p_type,
         p_info,
         loc_a,
-        lob_b,
+        loc_b,
         city,
         z_code,
         area,

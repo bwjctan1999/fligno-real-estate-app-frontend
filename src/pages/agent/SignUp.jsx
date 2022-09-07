@@ -7,6 +7,7 @@ import axios from "axios";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
   const [full_name, setFullName] = useState("");
   const [p_number, setNum] = useState("");
   const [user_type, setAsType] = useState("Client");
