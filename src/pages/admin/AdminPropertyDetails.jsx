@@ -2,6 +2,10 @@ import IconArea from "../../assets/icons/IconArea";
 import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
 import PDimg1 from "../../assets/imgs/PDimg1.png";
+import PDimg2 from "../../assets/imgs/PDimg2.png";
+import PDimg3 from "../../assets/imgs/PDimg3.png";
+import PDimg4 from "../../assets/imgs/PDimg4.png";
+import PDimg5 from "../../assets/imgs/PDimg5.png";
 import Button from "../../components/general/Button";
 import IconEdit from "../../assets/icons/IconEdit";
 
@@ -39,28 +43,28 @@ export default function AddPropertyDetails() {
         <img
           src={PDimg1}
           alt="image"
-          className="aspect-video w-full object-cover"
+          className="aspect-video w-full rounded-lg object-cover"
         />
         <div className="mt-4 grid grid-cols-4 gap-4">
           <img
-            src={PDimg1}
+            src={PDimg2}
             alt="image"
-            className="aspect-video w-full object-cover"
+            className="aspect-video w-full rounded-lg object-cover"
           />
           <img
-            src={PDimg1}
+            src={PDimg3}
             alt="image"
-            className="w-ful l aspect-video object-cover"
+            className="aspect-video w-full rounded-lg object-cover"
           />
           <img
-            src={PDimg1}
+            src={PDimg4}
             alt="image"
-            className="aspect-video w-full object-cover"
+            className="aspect-video w-full rounded-lg object-cover"
           />
           <img
-            src={PDimg1}
+            src={PDimg5}
             alt="image"
-            className="aspect-video w-full object-cover"
+            className="aspect-video w-full rounded-lg object-cover"
           />
         </div>
       </div>
