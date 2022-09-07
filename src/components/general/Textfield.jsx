@@ -12,7 +12,7 @@ export default function Textfield({
     <div
       className={` ${bgcolor} ${textcolor} ${
         icon ? "pl-3" : null
-      } flex items-center rounded-lg shadow-md outline-1 outline-BtnPrimary-start focus-within:outline`}
+      } flex items-center rounded-lg shadow-md outline-2 outline-BtnPrimary-start focus-within:outline`}
     >
       {icon}
       <input
