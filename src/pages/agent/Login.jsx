@@ -12,13 +12,15 @@ export default function Login() {
   const handleLogin = () => {
     const configuration = {
       method: "post",
-      url: "",
+      url: "http://localhost:8000/api/login",
       data: {
         email,
         password,
       }
     };  
     axios(configuration)
+    .then((result) => {console.log(result);})
+    .catch((error) => {console.log(error);})
   }
 
   return (
@@ -47,7 +49,7 @@ export default function Login() {
           <TextField
             type="Password"
             placeholder="Password"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <div className="flex flex-wrap gap-x-4  gap-y-3">
@@ -61,7 +63,7 @@ export default function Login() {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" onClick={}/>
+            <Button text="Log In" onClick={handleLogin}/>
           </div>
         </div>
       </div>
