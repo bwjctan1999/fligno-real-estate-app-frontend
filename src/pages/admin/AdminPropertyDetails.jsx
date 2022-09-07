@@ -7,18 +7,16 @@ import IconEdit from "../../assets/icons/IconEdit";
 
 export default function AddPropertyDetails() {
   return (
-    <div className="item-center my-10 flex flex-wrap justify-center gap-y-8">
-      <div className="ml-auto flex  w-full">
-        <div className="ml-auto flex w-3/5 justify-end">
-          <div className=" flex w-5/12 justify-center">
-            <Button text="Edit" />
-          </div>
-          <div className=" flex w-5/12 justify-center">
-            <Button text="Remove" />
-          </div>
-          <div className=" flex w-5/12 justify-center">
-            <Button text="Unpublish" />
-          </div>
+    <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52">
+      <div className="ml-auto flex w-3/5 justify-end gap-4">
+        <div className=" flex w-5/12 justify-center">
+          <Button text="Edit" />
+        </div>
+        <div className=" flex w-5/12 justify-center">
+          <Button text="Remove" />
+        </div>
+        <div className=" flex w-5/12 justify-center">
+          <Button text="Unpublish" />
         </div>
       </div>
 
@@ -37,28 +35,37 @@ export default function AddPropertyDetails() {
         </div>
       </div>
 
-      <div class="container mx-auto">
-        <div class="bg-yellow-200 grid-cols-4 space-y-2 lg:grid lg:grid-rows-2 lg:gap-3 lg:space-y-0">
-          <div class="col-span-2 row-span-2 w-full rounded">
-            <img src={PDimg1} alt="image" />
-          </div>
-          <div class="w-full rounded">
-            <img src={PDimg1} alt="image" />
-          </div>
-
-          <div class="w-full rounded">
-            <img src={PDimg1} alt="image" />
-          </div>
-          <div class="w-full rounded">
-            <img src={PDimg1} alt="image" />
-          </div>
-          <div class="w-full rounded">
-            <img src={PDimg1} alt="image" />
-          </div>
+      <div class="container">
+        <img
+          src={PDimg1}
+          alt="image"
+          className="aspect-video w-full object-cover"
+        />
+        <div className="mt-4 grid grid-cols-4 gap-4">
+          <img
+            src={PDimg1}
+            alt="image"
+            className="aspect-video w-full object-cover"
+          />
+          <img
+            src={PDimg1}
+            alt="image"
+            className="w-ful l aspect-video object-cover"
+          />
+          <img
+            src={PDimg1}
+            alt="image"
+            className="aspect-video w-full object-cover"
+          />
+          <img
+            src={PDimg1}
+            alt="image"
+            className="aspect-video w-full object-cover"
+          />
         </div>
       </div>
 
-      <div className="flex w-11/12 flex-wrap">
+      <div className="flex flex-wrap">
         <div className="flex flex-wrap gap-3 ">
           <h1 className="text-base font-bold">Property Description</h1>
           <p className="text-justify">
