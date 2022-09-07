@@ -1,8 +1,25 @@
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+import { useState } from "react";
 
 export default function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [num, setNum] = useState("");
+  const [type, setAsType] = useState("Client");
+
+  const PostData = () => {
+    console.log(email);
+    console.log(password);
+    console.log(confirmPassword);
+    console.log(fullName);
+    console.log(num);
+    console.log(type);
+  };
+
   return (
     <div className="flex h-screen flex-row  flex-wrap-reverse  items-center gap-y-16">
       <div className="mx-auto mt-14 flex flex-col">
@@ -20,15 +37,35 @@ export default function SignUp() {
           </a>
         </p>
         <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
-          <TextField type="email" placeholder="Email" />
+          <TextField
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          <TextField type="password" placeholder="Password" />
+          <TextField
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          <TextField type="password" placeholder="Confirm Password" />
+          <TextField
+            type="password"
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
 
-          <TextField type="text" placeholder="Full Name" />
+          <TextField
+            type="text"
+            placeholder="Full Name"
+            onChange={(e) => setFullName(e.target.value)}
+          />
 
-          <TextField type="text" placeholder="Mobile Number" />
+          <TextField
+            type="text"
+            placeholder="Mobile Number"
+            onChange={(e) => setNum(e.target.value)}
+          />
 
           <div className="flex flex-wrap gap-x-16  gap-y-3">
             <label class="text-sm "> Sign up as:</label>
@@ -42,7 +79,7 @@ export default function SignUp() {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Sign Up" />
+            <Button text="Sign Up" onClick={PostData} />
           </div>
         </div>
       </div>
