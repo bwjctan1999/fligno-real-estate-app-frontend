@@ -1,10 +1,14 @@
-export default function DropDown({}) {
+export default function DropDown({ value, onChange, options = [] }) {
   return (
-    <div className="relative w-full lg:max-w-sm  ">
-      <select className="bg-white text  bg-white w-full max-w-md rounded-lg p-3.5 text-sm text-TextPrimary shadow-md focus:outline-BtnPrimary-start">
-        <option>Select</option>
-        <option>For Rent</option>
-        <option>For Sale</option>
+    <div className="relative w-full ">
+      <select
+        value={value}
+        onChange={onChange}
+        className="bg-white text bg-white w-full rounded-lg p-3.5 text-sm text-TextPrimary shadow-md focus:outline-BtnPrimary-start"
+      >
+        {options.map((option) => (
+          <option>option</option>
+        ))}
       </select>
     </div>
   );
