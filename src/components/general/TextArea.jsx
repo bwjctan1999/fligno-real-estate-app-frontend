@@ -1,6 +1,6 @@
-export default function TextArea({}) {
+export default function TextArea({ value, onChange }) {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" value={value} onChange={onChange}>
       <label className="text-gray-900 mb-2 block text-sm font-medium dark:text-TextPrimary"></label>
       <textarea
         rows="6"
