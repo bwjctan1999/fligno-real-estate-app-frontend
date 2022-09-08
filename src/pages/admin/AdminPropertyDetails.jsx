@@ -36,14 +36,14 @@ export default function AddPropertyDetails() {
       <div className="w-full">
         <div className="flex ">
           <div>
-            <h1 className="text-2xl font-bold ">Mesaverte Residence</h1>
-            <span className="text-sm underline underline-offset-1">
+            <h1 className="text-4xl font-bold ">Mesaverte Residence</h1>
+            <span className="text-xl font-medium underline underline-offset-1">
               2265 Paul Wayne Haggerty Road, New Orleans
             </span>
           </div>
-          <div className="mt-4 ml-auto flex gap-3">
-            <h1 className="font-bold"> Price: </h1>
-            <span className="text-xl font-bold">₱100,000,000</span>
+          <div className="mt-4 ml-auto flex gap-3 text-2xl font-bold">
+            <h1> Price: </h1>
+            <span className="">₱100,000,000</span>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function AddPropertyDetails() {
 
       <div className="flex flex-wrap">
         <div className="flex flex-wrap gap-3 ">
-          <h1 className="text-base font-bold">Property Description</h1>
+          <h1 className="text-xl font-bold">Property Description</h1>
           <p className="text-justify">
             Huge number of propreties availabe here for buy, sell and Rent. Also
             you find here co-living property, lots opportunity you have to
@@ -98,37 +98,29 @@ export default function AddPropertyDetails() {
         </div>
 
         <div className="mt-16 w-full">
-          <h1 className="w-text-base font-bold">Property Info</h1>
+          <h1 className="w-text-xl font-bold">Property Info</h1>
         </div>
 
-        <div className="mt-5 flex w-full flex-col justify-between gap-y-10 md:flex-row ">
-          <div className="flex w-11/12 flex-wrap">
-            <div className="flex w-1/3 flex-wrap gap-3">
+        <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row ">
+          <div className="grid w-11/12 grid-cols-3 gap-3">
+            <div className="flex flex-wrap gap-3">
               <IconArea />
-              <span className="text-base font-bold text-TextSecondary">
+              <span className="justify-center text-base font-bold text-TextSecondary">
                 1230 sq.m
               </span>
-              <inline className="text-sm text-TextSecondary">
-                Area (sqft)
-              </inline>
+              <inline className=" text-TextSecondary">Area (sqft)</inline>
             </div>
 
-            <div className="S flex w-1/4 flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <IconBed />
               <span className="text-base font-bold text-TextSecondary">5</span>
-              <inline className="text-sm text-TextSecondary">
-                No. Bedroom
-              </inline>
+              <inline className=" text-TextSecondary">No. Bedroom</inline>
             </div>
 
-            <div className="flex w-1/4 flex-wrap  gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <IconBathroom />
-              <span className="text-base font-bold text-TextSecondary">
-                5
-              </span>{" "}
-              <inline className="text-sm text-TextSecondary">
-                No. Bathroom
-              </inline>
+              <span className="text-base font-bold text-TextSecondary">5</span>
+              <inline className="text-TextSecondary">No. Bathroom</inline>
             </div>
           </div>
 
