@@ -7,14 +7,17 @@ export default function Button({
   icon,
   custom,
   onClick,
+  responsive,
 }) {
   return (
     <button
-      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} ${custom} flex w-full items-center justify-center gap-3 rounded-lg bg-BGPrimary p-3 font-bold`}
+      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} ${custom} flex w-full items-center justify-center gap-2 rounded-lg bg-BGPrimary font-bold`}
       onClick={onClick}
     >
       {icon}
-      {text}
+      <span className={responsive === "true" ? "hidden lg:block" : ""}>
+        {text}
+      </span>
     </button>
   );
 }
