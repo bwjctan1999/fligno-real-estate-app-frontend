@@ -30,7 +30,7 @@ export default function SignUp() {
         console.log(response);
       })
       .catch((error) => {
-        console.log(esponse);
+        console.log(error);
       });
   };
 
