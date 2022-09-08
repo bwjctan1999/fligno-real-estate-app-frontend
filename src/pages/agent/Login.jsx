@@ -1,8 +1,28 @@
+import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+import axios from 'axios'
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(true);
+
+  const handleLogin = () => {
+    const configuration = {
+      method: "post",
+      url: "http://localhost:8000/api/login",
+      data: {
+        email,
+        password,
+      }
+    };  
+    axios(configuration)
+    .then((result) => {console.log(result);})
+    .catch((error) => {console.log(error);})
+  }
+
   return (
     <div className="flex h-screen flex-row flex-wrap-reverse justify-center ">
       <div className="mx-auto flex flex-col justify-center">
@@ -20,9 +40,17 @@ export default function Login() {
           </a>
         </p>
         <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
-          <TextField type="text" placeholder="Email" />
+          <TextField
+            type="text"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          <TextField type="Password" placeholder="Password" />
+          <TextField
+            type="Password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <div className="flex flex-wrap gap-x-4  gap-y-3">
             <input type="checkbox" />
@@ -35,7 +63,7 @@ export default function Login() {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" />
+            <Button text="Log In" onClick={handleLogin}/>
           </div>
         </div>
       </div>

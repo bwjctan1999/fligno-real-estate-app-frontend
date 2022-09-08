@@ -8,6 +8,7 @@ export default function Button({
   custom,
   onClick,
   responsive,
+  type,
 }) {
   return (
     <button

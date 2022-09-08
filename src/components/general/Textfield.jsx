@@ -6,12 +6,14 @@ export default function Textfield({
   textcolor = "text-TextPrimary",
   onClick,
   placeholder,
+  onChange,
+  required,
 }) {
   return (
     <div
       className={` ${bgcolor} ${textcolor} ${
         icon ? "pl-3" : null
-      } flex items-center rounded-lg shadow-md outline-1 outline-BtnPrimary-start focus-within:outline`}
+      } flex items-center rounded-lg shadow-md outline-2 outline-BtnPrimary-start focus-within:outline`}
     >
       {icon}
       <input
@@ -19,6 +21,8 @@ export default function Textfield({
         placeholder={placeholder}
         className={`${padding} h-full w-full rounded-lg outline-none`}
         onClick={onClick}
+        onChange={onChange}
+        required={required}
       />
     </div>
   );

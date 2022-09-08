@@ -31,7 +31,7 @@ export default function AddProperty() {
               <label className="font-black text-TextTertiary" for="ptype">
                 Property Type
               </label>
-              <DropDown id="ptype" />
+              <DropDown id="ptype" options={["For Rent", "For Sale"]} />
             </div>
           </div>
 
@@ -39,7 +39,7 @@ export default function AddProperty() {
             <label className=" font-black text-TextTertiary" for="desc">
               Description
             </label>
-            <TextArea id="desc" />
+            <TextArea id="desc" placeholder="Description"/>
           </div>
 
           <div className="flex flex-col gap-y-2">
