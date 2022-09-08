@@ -6,7 +6,7 @@ import Button from "../../components/general/Button";
 
 export default function AddProperty() {
   return (
-    <div className="h-screen bg-BGSecondary p-4 lg:p-20">
+    <div className="min-h-screen bg-BGSecondary p-4 lg:p-20">
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Add Property
       </h1>
