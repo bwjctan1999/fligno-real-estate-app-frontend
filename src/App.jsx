@@ -1,5 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-
+import AdminPropertyDetails from "../src/pages/admin/AdminPropertyDetails";
 import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
 import LandingPage from "./pages/agent/LandingPage";
@@ -32,6 +32,7 @@ function App() {
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/admin-property" element={<AdminPropertyDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
