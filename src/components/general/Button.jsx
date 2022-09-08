@@ -7,6 +7,7 @@ export default function Button({
   icon,
   custom,
   onClick,
+  type,
 }) {
   return (
     <button
