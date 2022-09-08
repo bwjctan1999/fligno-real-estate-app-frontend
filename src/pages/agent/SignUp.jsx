@@ -5,7 +5,6 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formValues, setFormValues] = useState({
     email: "",
@@ -105,7 +104,7 @@ export default function SignUp() {
               required="true"
             />
 
-            <div className="flex flex-wrap gap-x-16  gap-y-3">
+            <div className="flex flex-wrap gap-x-16 gap-y-3">
               <label> Sign up as:</label>
               <div className="flex flex-row gap-x-4 gap-y-3">
                 <input
@@ -133,7 +132,7 @@ export default function SignUp() {
           </div>
         </form>
       </div>
-      <div className="hidden h-screen w-6/12  items-center justify-center bg-BtnPrimary-end lg:flex">
+      <div className="hidden h-screen w-6/12 items-center justify-center bg-BtnPrimary-end lg:flex">
         <DesignSignUp />
       </div>
     </div>
