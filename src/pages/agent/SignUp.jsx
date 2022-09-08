@@ -99,7 +99,7 @@ export default function SignUp() {
             />
 
             <TextField
-              type="text"
+              type="number"
               placeholder="Mobile Number"
               onChange={(e) => setValue(e, "p_number")}
               required="true"
