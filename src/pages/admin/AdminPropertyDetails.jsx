@@ -8,19 +8,21 @@ import PDimg4 from "../../assets/imgs/PDimg4.png";
 import PDimg5 from "../../assets/imgs/PDimg5.png";
 import Button from "../../components/general/Button";
 import IconEdit from "../../assets/icons/IconEdit";
+import IconRemove from "../../assets/icons/IconRemove";
 
 export default function AddPropertyDetails() {
   return (
-    <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52">
+    <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
       <div className="ml-auto flex w-3/5 justify-end gap-4">
         <div className=" flex w-5/12 justify-center">
-          <Button text="Edit" />
+          <Button icon={<IconEdit width="24" height="24" fill="fill-BtnPrimary-start"/>} text="Edit" bgcolor="none" textcolor="text-BtnPrimary-end" custom="border-2 border-BtnPrimary-end "
+         />
         </div>
         <div className=" flex w-5/12 justify-center">
-          <Button text="Remove" />
+          <Button text="Remove" bgcolor="bg-BtnTertiary-end" icon={<IconRemove width="24" height="24"/>}/>
         </div>
         <div className=" flex w-5/12 justify-center">
-          <Button text="Unpublish" />
+          <Button text="Unpublish" bgcolor="bg-BtnSecondary" />
         </div>
       </div>
 
