@@ -1,12 +1,14 @@
+import AgentNavbar from "../../components/agent/AgentNavbar";
 import ImageUploader from "../../components/general/ImageUploader";
 import Textfield from "../../components/general/Textfield";
 import Button from "../../components/general/Button";
 
 export default function EditProfile() {
   return (
-    <div className="min-h-screen bg-BGSecondary p-4 lg:p-20">
+    <div className="flex h-auto min-h-screen w-full flex-col gap-10 bg-BGSecondary p-4 lg:p-20">
+      <AgentNavbar />
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
-        Add Property
+        Edit Property
       </h1>
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:gap-20">
         <div className="flex flex-col gap-5 lg:w-1/2">
@@ -25,7 +27,7 @@ export default function EditProfile() {
           </div>
         </div>
       </div>
-      <Button text="Save" custom="float-right w-full lg:w-72 mt-10 mx-10 " />
+      <Button text="Save" custom="w-full lg:w-72 lg:mx-10 self-end" />
     </div>
   );
 }
