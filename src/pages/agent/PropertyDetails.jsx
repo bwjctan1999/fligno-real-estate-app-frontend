@@ -4,9 +4,11 @@ import IconBathroom from "../../assets/icons/IconBathroom";
 import PDimg1 from "../../assets/imgs/PDimg1.png";
 import Button from "../../components/general/Button";
 import Footer from "../../components/client/Footer";
+import AgentNavbar from "../../components/agent/AgentNavbar";
 export default function PropertyDetails() {
   return (
-    <div className="item-center mt-10 flex flex-wrap justify-center gap-y-8">
+    <div className="item-center mt-28 flex flex-wrap justify-center gap-y-8">
+      <AgentNavbar />
       <div className="w-11/12">
         <div className="flex ">
           <div>
@@ -101,9 +103,8 @@ export default function PropertyDetails() {
             <Button text="Contact Us" />
           </div>
         </div>
-  
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
