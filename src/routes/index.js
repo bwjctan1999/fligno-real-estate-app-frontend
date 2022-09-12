@@ -1,4 +1,4 @@
-import LandingPage from "../pages/agent/LandingPage";
+import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/agent/Login";
 import SignUp from "../pages/agent/SignUp";
 import AgentDashboard from "../pages/agent/AgentDashboard";
