@@ -10,7 +10,7 @@ import Button from "../../components/general/Button";
 import IconEdit from "../../assets/icons/IconEdit";
 import IconRemove from "../../assets/icons/IconRemove";
 
-export default function AdminPropertyDetails() {
+export default function AgentPropertyDetails() {
   return (
     <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
       <div className="ml-auto grid w-full grid-cols-3 gap-2 lg:w-3/5">
@@ -30,7 +30,7 @@ export default function AdminPropertyDetails() {
           responsive="true"
           icon={<IconRemove />}
         />
-        <Button text="Unpublish" bgcolor="bg-BtnSecondary" />
+        <Button text="Publish" bgcolor="bg-BtnPrimary-end" />
       </div>
 
       <div className="w-full">
