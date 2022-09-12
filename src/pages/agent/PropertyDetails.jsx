@@ -3,10 +3,10 @@ import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
 import PDimg1 from "../../assets/imgs/PDimg1.png";
 import Button from "../../components/general/Button";
-
+import Footer from "../../components/client/Footer";
 export default function PropertyDetails() {
   return (
-    <div className="item-center my-10 flex flex-wrap justify-center gap-y-8">
+    <div className="item-center mt-10 flex flex-wrap justify-center gap-y-8">
       <div className="w-11/12">
         <div className="flex ">
           <div>
@@ -97,11 +97,13 @@ export default function PropertyDetails() {
             </div>
           </div>
 
-          <div className=" fkex w-5/12 justify-center">
+          <div className=" flex w-5/12 justify-center">
             <Button text="Contact Us" />
           </div>
         </div>
+  
       </div>
+      <Footer/>
     </div>
   );
 }
