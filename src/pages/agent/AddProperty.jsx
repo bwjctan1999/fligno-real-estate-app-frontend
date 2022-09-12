@@ -3,10 +3,12 @@ import DropDown from "../../components/general/DropDown";
 import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
+import AgentNavbar from "../../components/agent/AgentNavbar";
 
 export default function AddProperty() {
   return (
-    <div className="min-h-screen bg-BGSecondary p-4 lg:p-20">
+    <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
+      <AgentNavbar />
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Add Property
       </h1>
@@ -39,7 +41,7 @@ export default function AddProperty() {
             <label className=" font-black text-TextTertiary" for="desc">
               Description
             </label>
-            <TextArea id="desc" placeholder="Description"/>
+            <TextArea id="desc" placeholder="Description" />
           </div>
 
           <div className="flex flex-col gap-y-2">

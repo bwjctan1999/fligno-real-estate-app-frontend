@@ -1,10 +1,12 @@
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
 import DashboardCard from "../../components/general/DashboardCard";
+import AgentNavbar from "../../components/agent/AgentNavbar";
 
 export default function AgentDashboard() {
   return (
-    <div className="w-screen bg-BGSecondary p-2 md:h-screen md:p-20">
+    <div className="w-screen bg-BGSecondary p-2 pt-16 md:h-screen md:px-20 md:pt-28">
+      <AgentNavbar />
       <div className="pb-7 text-4xl font-bold text-TextSecondary">
         Dashboard
       </div>

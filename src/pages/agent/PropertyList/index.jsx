@@ -1,3 +1,4 @@
+import AgentNavbar from "../../../components/agent/AgentNavbar";
 import PropertyCard from "./PropertyCard";
 import PropertyFilter from "./PropertyFilter";
 
@@ -16,7 +17,8 @@ export default function PropertyList() {
   };
 
   return (
-    <div className="flex flex-col gap-8 bg-BGSecondary px-4 lg:px-20">
+    <div className="flex flex-col gap-8 bg-BGSecondary px-4 pt-20 lg:px-20">
+      <AgentNavbar />
       <div className="text-4xl font-bold text-TextTertiary">Properties</div>
       <PropertyFilter />
       <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
