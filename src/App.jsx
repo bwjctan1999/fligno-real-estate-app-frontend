@@ -14,6 +14,7 @@ import Clients from "./pages/agent/Clients";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import routes from "./routes";
 import AboutPage from "./pages/client/AboutPage";
+import AgentsPage from "./pages/client/AgentsPage";
 
 function App() {
   return (
@@ -27,14 +28,14 @@ function App() {
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/waiting-payment" element={<PaymentMethod />} />
           <Route path="/properties" element={<PropertyList />} />
-          <Route path="/about" element={<AboutPage/>} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/property" element={<PropertyDetails />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/admin-property" element={<AdminPropertyDetails />} />
-       
+          <Route path="/agents" element={<AgentsPage />} />
         </Routes>
       </BrowserRouter>
     </div>
