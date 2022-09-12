@@ -1,12 +1,6 @@
 export default function DesignAboutPage() {
   return (
-    <svg
-      width="572"
-      height="437"
-      viewBox="0 0 572 437"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 572 437" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_232_4385)">
         <path
           d="M81.7065 258.039C101.724 258.039 117.952 241.788 117.952 221.743C117.952 201.698 101.724 185.448 81.7065 185.448C61.6886 185.448 45.4609 201.698 45.4609 221.743C45.4609 241.788 61.6886 258.039 81.7065 258.039Z"
