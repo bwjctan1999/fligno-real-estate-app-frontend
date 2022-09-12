@@ -5,35 +5,32 @@ import RentProperty from "../../assets/imgs/RentProperty.png";
 export default function AboutPage() {
   return (
     <div className="w-full">
-    <div className="flex flex-col justify-center">
-      <div className="flex h-1/4 w-full items-center justify-center gap-20 bg-BGSecondary  md:flex ">
-        <div className="flex flex-col lg:w-2/4 ">
-          <h1 className="mb-5 flex text-4xl font-bold text-TextTertiary">
-            About Real Estate
+      <div className="flex flex-col justify-center">
+        <div className="flex h-1/4 w-full items-center justify-center gap-20 bg-BGSecondary  md:flex ">
+          <div className="flex flex-col lg:w-2/4 ">
+            <h1 className="mb-5 flex text-4xl font-bold text-TextTertiary">
+              About Real Estate
+            </h1>
+            <p className="text-justify leading-9">
+              In search of a home to purchase or rent? You're covered by us!
+              Your one-stop shop for all rental homes and real estate listings.
+            </p>
+          </div>
+          <div className="hidden md:h-1/3 md:w-1/3  lg:flex">
+            <DesignAboutPage />
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center py-20 md:flex">
+          <p>Our Services</p>
+          <h1 className="mb-8 flex text-4xl font-bold text-TextTertiary">
+            Services That We Provide{" "}
           </h1>
-          <p className="text-justify leading-9">
-            In search of a home to purchase or rent? You're covered by us! Your
-            one-stop shop for all rental homes and real estate listings.
-          </p>
         </div>
-        <div className="hidden md:h-1/3 md:w-1/3  lg:flex">
-          <DesignAboutPage />
-        </div>
-      </div>
 
-
-
-      <div className="flex flex-col md:flex items-center py-20">
-        <p>Our Services</p>
-        <h1 className="mb-8 flex text-4xl font-bold text-TextTertiary">
-          Services That We Provide{" "}
-        </h1>
-        </div>
-      
-        <div className="flex justify-center gap-y-10 lg:flex-row items-center flex-wrap md:flex-wrap sm:flex-wrap">
-
+        <div className="flex flex-wrap items-center justify-center gap-y-10 sm:flex-wrap md:flex-wrap lg:flex-row">
           <div className="flex w-1/2 flex-col items-center">
-            <div className="h-5/6 mb-10">
+            <div className="mb-10 h-5/6">
               <img src={BuyProperty} />
             </div>
             <h1 className="text-xl font-bold text-TextTertiary">
@@ -45,7 +42,7 @@ export default function AboutPage() {
           </div>
 
           <div className="flex w-1/2 flex-col items-center">
-            <div className="h-5/6 mb-10">
+            <div className="mb-10 h-5/6">
               <img src={RentProperty} />
             </div>
             <h1 className="text-xl font-bold text-TextTertiary">
@@ -56,11 +53,8 @@ export default function AboutPage() {
               for rent.
             </p>
           </div>
-          
         </div>
-
-      
-    </div>
+      </div>
     </div>
   );
 }
