@@ -2,7 +2,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import AdminPropertyDetails from "../src/pages/admin/AdminPropertyDetails";
 import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
-import LandingPage from "./pages/agent/LandingPage";
+import LandingPage from "./pages/client/LandingPage";
 import PropertyDetails from "./pages/agent/PropertyDetails";
 import Login from "./pages/agent/Login";
 import PaymentMethod from "./pages/agent/PaymentMethod";
