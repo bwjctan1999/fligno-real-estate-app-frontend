@@ -11,7 +11,6 @@ import { useEffect } from "react";
 
 export default function AgentNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const [burgerOn, setBurgerOn] = useState(false);
 
   useEffect(() => {
     function handleResize() {
