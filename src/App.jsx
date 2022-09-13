@@ -1,7 +1,7 @@
-import AdminPropertyDetails from "../src/pages/admin/AdminPropertyDetails";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
-import LandingPage from "./pages/client/LandingPage";
 import PropertyDetails from "./pages/agent/PropertyDetails";
 import Login from "./pages/agent/Login";
 import PaymentMethod from "./pages/agent/PaymentMethod";
@@ -11,15 +11,18 @@ import SignUp from "./pages/agent/SignUp";
 import Subscription from "./pages/agent/Subscription";
 import EditProperty from "./pages/agent/EditProperty";
 import Clients from "./pages/agent/Clients";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AboutPage from "./pages/client/AboutPage";
-import ClientLayout from "./pages/client/ClientLayout";
-import AdminRoles from "./pages/admin/AdminRoles";
-import AdminEditRole from "./pages/admin/AdminEditRole";
 
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import routes from "./routes";
 import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminPropertyDetails from "../src/pages/admin/AdminPropertyDetails";
+import AdminEditRole from "./pages/admin/AdminEditRole";
+import AdminRoles from "./pages/admin/AdminRoles";
+
+import ClientLayout from "./pages/client/ClientLayout";
+import AboutPage from "./pages/client/AboutPage";
+import LandingPage from "./pages/client/LandingPage";
+
+import routes from "./routes";
 
 function App() {
   return (
