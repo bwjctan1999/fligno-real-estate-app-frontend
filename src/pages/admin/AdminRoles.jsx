@@ -53,7 +53,7 @@ export default function AdminRoles() {
                 <Th className="float-right">Actions</Th>
               </Tr>
             </Thead>
-            <Tbody>{[...Array(100)].map((x, i) => addTableData())}</Tbody>
+            <Tbody>{[...Array(5)].map((x, i) => addTableData())}</Tbody>
           </Table>
         </div>
       </div>
