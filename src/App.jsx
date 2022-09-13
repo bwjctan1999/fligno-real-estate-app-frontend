@@ -14,6 +14,7 @@ import Clients from "./pages/agent/Clients";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import routes from "./routes";
 import AboutPage from "./pages/client/AboutPage";
+import AgentPropertyDetails from "./pages/agent/AgentPropertyDetails";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/admin-property" element={<AdminPropertyDetails />} />
+          <Route path="/agent-property" element={<AgentPropertyDetails />} />
+          
+    
        
         </Routes>
       </BrowserRouter>
