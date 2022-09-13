@@ -1,13 +1,11 @@
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
-import AdminNavbar from "../../components/admin/AdminNavbar";
 import DashboardCard from "../../components/general/DashboardCard";
 import PopUpReason from "../../components/general/PopUpReason";
 
 export default function AdminDashboard() {
   return (
     <div className="w-screen bg-BGSecondary p-4 pt-16 md:h-screen md:p-24">
-      <AdminNavbar />
       <div className="pb-7 text-4xl font-bold text-TextSecondary">
         Dashboard
       </div>
