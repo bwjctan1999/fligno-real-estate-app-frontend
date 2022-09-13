@@ -49,6 +49,7 @@ function App() {
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
+            <Route path="roles" element={<AdminRoles />} />
             <Route path="edit-role" element={<AdminEditRole />} />
             <Route path="property" element={<AdminPropertyDetails />} />
           </Route>
