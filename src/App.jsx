@@ -13,6 +13,7 @@ import Clients from "./pages/agent/Clients";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AboutPage from "./pages/client/AboutPage";
 import AdminRoles from "./pages/admin/AdminRoles";
+import AdminEditRole from "./pages/admin/AdminEditRole";
 
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import routes from "./routes";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/admin-property" element={<AdminPropertyDetails />} />
           <Route path="/roles" element={<AdminRoles />} />
+          <Route path="/edit-role" element={<AdminEditRole />} />
         </Routes>
       </BrowserRouter>
     </div>
