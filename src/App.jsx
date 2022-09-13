@@ -13,6 +13,7 @@ import EditProperty from "./pages/agent/EditProperty";
 import Clients from "./pages/agent/Clients";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AboutPage from "./pages/client/AboutPage";
+import ClientLayout from "./pages/client/ClientLayout";
 import AdminRoles from "./pages/admin/AdminRoles";
 import AdminEditRole from "./pages/admin/AdminEditRole";
 
@@ -25,14 +26,16 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/subscription" element={<Subscription />} />
-          <Route path="/waiting-payment" element={<PaymentMethod />} />
-          <Route path="/properties" element={<PropertyList />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/property" element={<PropertyDetails />} />
+          <Route path="/" element={<ClientLayout />}>
+            <Route index element={<LandingPage />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/subscription" element={<Subscription />} />
+            <Route path="/waiting-payment" element={<PaymentMethod />} />
+            <Route path="/properties" element={<PropertyList />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/property" element={<PropertyDetails />} />
+          </Route>
 
           <Route path="/agent" element={<AgentLayout />}>
             <Route index element={<AgentDashboard />} />
