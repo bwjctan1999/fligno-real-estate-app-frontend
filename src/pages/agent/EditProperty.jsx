@@ -1,12 +1,10 @@
-import AgentNavbar from "../../components/agent/AgentNavbar";
 import ImageUploader from "../../components/general/ImageUploader";
 import Textfield from "../../components/general/Textfield";
 import Button from "../../components/general/Button";
 
-export default function EditProfile() {
+export default function EditProperty() {
   return (
     <div className="flex h-auto min-h-screen w-full flex-col gap-10 bg-BGSecondary p-4 lg:p-20">
-      <AgentNavbar />
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Edit Property
       </h1>
