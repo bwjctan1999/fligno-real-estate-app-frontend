@@ -39,8 +39,10 @@ export default function AdminRoles() {
   );
 
   return (
-    <div className="min-h-screen bg-BGSecondary pt-16 lg:px-60 lg:pt-32">
+    <div className="flex min-h-screen flex-col gap-4 bg-BGSecondary pt-16 md:px-20 lg:px-60 lg:pt-32">
       <AdminNavbar />
+
+      <Button text="Add Role" fontsize="text-sm" custom="md:w-1/5 ml-auto" />
       <div>
         <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
           <Table>
