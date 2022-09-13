@@ -15,6 +15,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import routes from "./routes";
 import AboutPage from "./pages/client/AboutPage";
 import AgentPropertyDetails from "./pages/agent/AgentPropertyDetails";
+import FourZeroFour from "./pages/general/FourZeroFour";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/admin-property" element={<AdminPropertyDetails />} />
           <Route path="/agent-property" element={<AgentPropertyDetails />} />
-          
+          <Route path="/error" element={<FourZeroFour />} />
     
        
         </Routes>
