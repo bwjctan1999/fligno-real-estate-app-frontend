@@ -6,7 +6,7 @@ import PropertyDetails from "./pages/agent/PropertyDetails";
 import Login from "./pages/agent/Login";
 import PaymentMethod from "./pages/agent/PaymentMethod";
 import PropertyList from "./pages/agent/PropertyList";
-import AgentParent from "./pages/agent/AgentParent";
+import AgentLayout from "./pages/agent/AgentLayout";
 import SignUp from "./pages/agent/SignUp";
 import Subscription from "./pages/agent/Subscription";
 import EditProperty from "./pages/agent/EditProperty";
@@ -18,7 +18,7 @@ import AdminEditRole from "./pages/admin/AdminEditRole";
 
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import routes from "./routes";
-import AdminParent from "./pages/admin/AdminParent";
+import AdminLayout from "./pages/admin/AdminLayout";
 
 function App() {
   return (
@@ -34,15 +34,15 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/property" element={<PropertyDetails />} />
 
-          <Route path="/agent" element={<AgentParent />}>
-            <Route path="dashboard" element={<AgentDashboard />} />
+          <Route path="/agent" element={<AgentLayout />}>
+            <Route index element={<AgentDashboard />} />
             <Route path="clients" element={<Clients />} />
             <Route path="add-property" element={<AddProperty />} />
             <Route path="edit-property" element={<EditProperty />} />
           </Route>
 
-          <Route path="/admin" element={<AdminParent />}>
-            <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
             <Route path="edit-role" element={<AdminEditRole />} />
             <Route path="property" element={<AdminPropertyDetails />} />
           </Route>
