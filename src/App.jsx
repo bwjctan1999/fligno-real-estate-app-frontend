@@ -26,7 +26,7 @@ import routes from "./routes";
 import { useState } from "react";
 
 function App() {
-  [user, setUser] = useState(null);
+  [user, setUser] = useState({ user: null, userType: null });
 
   return (
     <div>
