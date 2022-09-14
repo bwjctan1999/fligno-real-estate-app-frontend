@@ -1,4 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { useState } from "react";
 
 import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
@@ -23,7 +24,6 @@ import AboutPage from "./pages/client/AboutPage";
 import LandingPage from "./pages/client/LandingPage";
 
 import routes from "./routes";
-import { useState } from "react";
 
 function App() {
   [user, setUser] = useState({ user: null, userType: null });
