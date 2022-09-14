@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 import IconArea from "../../assets/icons/IconArea";
 import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
@@ -5,7 +7,10 @@ import PDimg1 from "../../assets/imgs/PDimg1.png";
 import Button from "../../components/general/Button";
 import Footer from "../../components/client/Footer";
 import AgentNavbar from "../../components/agent/AgentNavbar";
+
 export default function PropertyDetails() {
+  const {propertyId} = useParams()
+
   return (
     <div className="item-center mt-28 flex flex-wrap justify-center gap-y-8">
       <AgentNavbar />

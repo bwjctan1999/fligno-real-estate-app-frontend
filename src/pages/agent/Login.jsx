@@ -4,7 +4,7 @@ import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 import axios from 'axios'
 
-export default function Login() {
+export default function Login( { setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(true);

@@ -9,7 +9,7 @@ import PropertyDetails from "../pages/agent/PropertyDetails";
 import Clients from "../pages/agent/Clients";
 import AddProperty from "../pages/agent/AddProperty";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
-import EditProfile from "../pages/agent/EditProfile";
+import EditProperty from "../pages/agent/EditProperty";
 
 const routes = [
   {
@@ -61,8 +61,8 @@ const routes = [
     element: AdminDashboard,
   },
   {
-    path: "/edit-profile",
-    element: EditProfile,
+    path: "/edit-property",
+    element: EditProperty,
   },
 ];
 

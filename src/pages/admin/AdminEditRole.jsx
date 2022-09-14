@@ -1,15 +1,15 @@
+import { useParams } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-import AdminNavbar from "../../components/admin/AdminNavbar";
 import ToggleButton from "../../components/general/ToggleButton";
 import Textfield from "../../components/general/Textfield";
 
 export default function AdminEditRole() {
+  const { roleId } = useParams();
+
   return (
     <div className="flex min-h-screen flex-col gap-8 bg-BGSecondary pt-16 lg:px-60 lg:pt-32">
-      <AdminNavbar />
-
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="w-full px-4 lg:px-0">
           <h1 className="mb-1 text-lg font-bold">Role Name</h1>
