@@ -14,6 +14,12 @@ import IconMenu from "../../assets/icons/IconMenu";
 export default function AgentNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
+  const [iconActives, setIconActives] = useState({
+    "/agent": false,
+    "/agent/clients": false,
+    "/agent/properties": false,
+    "/agent/add-property": false,
+  });
 
   useEffect(() => {
     function handleResize() {
@@ -25,16 +31,38 @@ export default function AgentNavbar({}) {
 
   useEffect(() => {
     function handleLoad() {
+      setIconActives((prevState) => ({
+        ...prevState,
+        [window.location.pathname]: true,
+      }));
+
       window.innerWidth > 768 ? setOpenNavbar(true) : setOpenNavbar(false);
     }
 
     window.addEventListener("load", handleLoad);
   });
 
+  useEffect(() => {
+    setIconActives(() => {
+      const newState = {
+        "/agent": false,
+        "/agent/clients": false,
+        "/agent/properties": false,
+        "/agent/add-property": false,
+      };
+
+      newState[active] = true;
+
+      return newState;
+    });
+  });
+
   const changeSelectedText = (state, selected) => {
     const style = "flex h-full items-center gap-2 ";
 
-    if (state === selected) return style + "text-BtnPrimary-end";
+    if (state === selected) {
+      return style + "text-BtnPrimary-end";
+    }
     return style + "text-TextTertiary";
   };
 
@@ -68,7 +96,7 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent")}
               className={changeSelectedText(active, "/agent")}
             >
-              <IconDashboard />
+              <IconDashboard active={iconActives["/agent"]} />
               Dashboard
             </Link>
 
@@ -77,7 +105,12 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent/clients")}
               className={changeSelectedText(active, "/agent/clients")}
             >
-              <IconUsersList width="26" height="26" fill="fill-TextTertiary" />
+              <IconUsersList
+                active={iconActives["/agent/clients"]}
+                width="26"
+                height="26"
+                fill="fill-TextTertiary"
+              />
               Clients
             </Link>
 
@@ -86,7 +119,12 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent/properties")}
               className={changeSelectedText(active, "/agent/properties")}
             >
-              <IconProperties width="26" height="26" fill="fill-TextTertiary" />
+              <IconProperties
+                active={iconActives["/agent/properties"]}
+                width="26"
+                height="26"
+                fill="fill-TextTertiary"
+              />
               Properties
             </Link>
 
@@ -95,7 +133,7 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent/add-property")}
               className={changeSelectedText(active, "/agent/add-property")}
             >
-              <IconAdd />
+              <IconAdd active={iconActives["/agent/add-property"]} />
               Add Property
             </Link>
           </nav>
