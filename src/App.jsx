@@ -38,7 +38,7 @@ function App() {
             <Route path="login" element={<Login setUser={setUser} />} />
             <Route path="subscription" element={<Subscription />} />
             <Route path="waiting-payment" element={<PaymentMethod />} />
-            <Route path="properties" element={<PropertyList />} />
+
             <Route path="about" element={<AboutPage />} />
 
             <Route path="property" element={<PropertyDetails />} />
@@ -50,6 +50,7 @@ function App() {
             <Route path="clients" element={<Clients />} />
             <Route path="add-property" element={<AddProperty />} />
 
+            <Route path="properties" element={<PropertyList />} />
             <Route path="edit-property" element={<EditProperty />} />
             <Route
               path="edit-property/:propertyId"
