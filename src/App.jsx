@@ -31,27 +31,37 @@ function App() {
         <Routes>
           <Route path="/" element={<ClientLayout />}>
             <Route index element={<LandingPage />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/subscription" element={<Subscription />} />
-            <Route path="/waiting-payment" element={<PaymentMethod />} />
-            <Route path="/properties" element={<PropertyList />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/property" element={<PropertyDetails />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route path="subscription" element={<Subscription />} />
+            <Route path="waiting-payment" element={<PaymentMethod />} />
+            <Route path="properties" element={<PropertyList />} />
+            <Route path="about" element={<AboutPage />} />
+
+            <Route path="property" element={<PropertyDetails />} />
+            <Route path="property/:propertyId" element={<PropertyDetails />} />
           </Route>
 
           <Route path="/agent" element={<AgentLayout />}>
             <Route index element={<AgentDashboard />} />
             <Route path="clients" element={<Clients />} />
             <Route path="add-property" element={<AddProperty />} />
+
             <Route path="edit-property" element={<EditProperty />} />
+            <Route path="edit-property/:propertyId" element={<EditProperty />}
+            />
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="roles" element={<AdminRoles />} />
+
             <Route path="edit-role" element={<AdminEditRole />} />
+            <Route path="edit-role/:roleId" element={<AdminEditRole />} />
+
             <Route path="property" element={<AdminPropertyDetails />} />
+            <Route path="property/:propertyId" element={<AdminPropertyDetails />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
