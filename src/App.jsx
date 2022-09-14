@@ -26,7 +26,7 @@ import LandingPage from "./pages/client/LandingPage";
 import routes from "./routes";
 
 function App() {
-  [user, setUser] = useState({ user: null, userType: null });
+  const [user, setUser] = useState({ user: null, userType: null });
 
   return (
     <div>
