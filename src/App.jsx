@@ -23,8 +23,11 @@ import AboutPage from "./pages/client/AboutPage";
 import LandingPage from "./pages/client/LandingPage";
 
 import routes from "./routes";
+import { useState } from "react";
 
 function App() {
+  [user, setUser] = useState(null);
+
   return (
     <div>
       <BrowserRouter>
@@ -48,7 +51,9 @@ function App() {
             <Route path="add-property" element={<AddProperty />} />
 
             <Route path="edit-property" element={<EditProperty />} />
-            <Route path="edit-property/:propertyId" element={<EditProperty />}
+            <Route
+              path="edit-property/:propertyId"
+              element={<EditProperty />}
             />
           </Route>
 
@@ -60,7 +65,9 @@ function App() {
             <Route path="edit-role/:roleId" element={<AdminEditRole />} />
 
             <Route path="property" element={<AdminPropertyDetails />} />
-            <Route path="property/:propertyId" element={<AdminPropertyDetails />}
+            <Route
+              path="property/:propertyId"
+              element={<AdminPropertyDetails />}
             />
           </Route>
         </Routes>
