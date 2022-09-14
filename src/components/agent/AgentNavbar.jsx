@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import IconLogo from "../../assets/icons/IconLogo";
 import IconDashboard from "../../assets/icons/IconDashboard";
 import IconUsersList from "../../assets/icons/IconUsersList";
@@ -5,25 +9,34 @@ import IconProperties from "../../assets/icons/IconProperties";
 import IconAdd from "../../assets/icons/IconAdd";
 import IconNotification from "../../assets/icons/IconNotification";
 import DesignProfile from "../../assets/svgs/DesignProfile.svg";
-import { useState } from "react";
 import IconMenu from "../../assets/icons/IconMenu";
-import { useEffect } from "react";
 
 export default function AgentNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const [active, setActive] = useState(window.location.pathname);
 
   useEffect(() => {
     function handleResize() {
       window.innerWidth > 768 ? setOpenNavbar(true) : null;
     }
 
+    window.addEventListener("resize", handleResize);
+  });
+
+  useEffect(() => {
     function handleLoad() {
       window.innerWidth > 768 ? setOpenNavbar(true) : setOpenNavbar(false);
     }
 
     window.addEventListener("load", handleLoad);
-    window.addEventListener("resize", handleResize);
   });
+
+  const changeSelectedText = (state, selected) => {
+    const style = "flex h-full items-center gap-2 ";
+
+    if (state === selected) return style + "text-BtnPrimary-end";
+    return style + "text-TextTertiary";
+  };
 
   return (
     <div>
@@ -35,7 +48,7 @@ export default function AgentNavbar({}) {
       </button>
       <nav
         className={`${
-          openNavbar === true ? "" : "-translate-x-full"
+          openNavbar === true ? "" : "-translate-x-full lg:-translate-x-0"
         } fixed top-0 left-0 z-10 h-full w-3/4 items-center bg-BGPrimary p-4 shadow-lg duration-300 ease-out lg:h-auto lg:w-full lg:flex-row`}
       >
         <div className="flex h-full w-full flex-col justify-between lg:flex-row">
@@ -48,24 +61,45 @@ export default function AgentNavbar({}) {
               Turnkey
             </label>
           </div>
-          <ul className="flex flex-col gap-10 text-xl font-black text-TextTertiary lg:flex-row lg:items-center">
-            <li className="flex h-full items-center gap-2">
+
+          <nav className="flex flex-col gap-10 text-xl font-black lg:flex-row lg:items-center">
+            <Link
+              to="/agent"
+              onClick={() => setActive("/agent")}
+              className={changeSelectedText(active, "/agent")}
+            >
               <IconDashboard />
-              <a> Dashboard</a>
-            </li>
-            <li className="flex h-full items-center gap-2">
+              Dashboard
+            </Link>
+
+            <Link
+              to="clients"
+              onClick={() => setActive("/agent/clients")}
+              className={changeSelectedText(active, "/agent/clients")}
+            >
               <IconUsersList width="26" height="26" fill="fill-TextTertiary" />
-              <a> Clients</a>
-            </li>
-            <li className="flex h-full items-center gap-2 fill-TextTertiary">
+              Clients
+            </Link>
+
+            <Link
+              to="properties"
+              onClick={() => setActive("/agent/properties")}
+              className={changeSelectedText(active, "/agent/properties")}
+            >
               <IconProperties width="26" height="26" fill="fill-TextTertiary" />
-              <a> Properties</a>
-            </li>
-            <li className="flex h-full items-center gap-2">
+              Properties
+            </Link>
+
+            <Link
+              to="add-property"
+              onClick={() => setActive("/agent/add-property")}
+              className={changeSelectedText(active, "/agent/add-property")}
+            >
               <IconAdd />
-              <a> Add Property</a>
-            </li>
-          </ul>
+              Add Property
+            </Link>
+          </nav>
+
           <div className="flex items-center gap-4">
             <IconNotification />
             <img src={DesignProfile} className="h-8 w-8" />
