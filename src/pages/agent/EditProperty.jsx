@@ -1,8 +1,12 @@
+import { useParams } from "react-router-dom";
+
 import ImageUploader from "../../components/general/ImageUploader";
 import Textfield from "../../components/general/Textfield";
 import Button from "../../components/general/Button";
 
 export default function EditProperty() {
+  const { propertyId } = useParams();
+
   return (
     <div className="flex h-auto min-h-screen w-full flex-col gap-10 bg-BGSecondary p-4 lg:p-20">
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">

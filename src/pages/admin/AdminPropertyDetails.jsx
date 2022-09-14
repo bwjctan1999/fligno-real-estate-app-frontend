@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 import IconArea from "../../assets/icons/IconArea";
 import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
@@ -11,6 +13,8 @@ import IconEdit from "../../assets/icons/IconEdit";
 import IconRemove from "../../assets/icons/IconRemove";
 
 export default function AdminPropertyDetails() {
+  const { propertyId } = useParams();
+
   return (
     <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
       <div className="ml-auto grid w-full grid-cols-3 gap-2 lg:w-3/5">
@@ -36,7 +40,9 @@ export default function AdminPropertyDetails() {
       <div className="w-full">
         <div className="flex ">
           <div>
-            <h1 className="text-4xl font-bold ">Mesaverte Residence</h1>
+            <h1 className="text-4xl font-bold ">
+              Mesaverte Residence {propertyId}
+            </h1>
             <span className="text-xl font-medium underline underline-offset-1">
               2265 Paul Wayne Haggerty Road, New Orleans
             </span>
