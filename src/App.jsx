@@ -35,7 +35,7 @@ function App() {
           <Route path="/" element={<ClientLayout />}>
             <Route index element={<LandingPage />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<Login setUser={setUser} />} />
             <Route path="subscription" element={<Subscription />} />
             <Route path="waiting-payment" element={<PaymentMethod />} />
             <Route path="properties" element={<PropertyList />} />
