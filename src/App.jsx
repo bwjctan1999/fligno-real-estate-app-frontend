@@ -3,26 +3,26 @@ import { useState } from "react";
 
 import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
-import Login from "./pages/agent/Login";
-import PaymentMethod from "./pages/agent/PaymentMethod";
 import AgentProperties from "./pages/agent/AgentProperties";
 import AgentPropertyDetails from "./pages/agent/AgentPropertyDetails";
 import AgentLayout from "./pages/agent/AgentLayout";
-import SignUp from "./pages/agent/SignUp";
-import Subscription from "./pages/agent/Subscription";
 import EditProperty from "./pages/agent/EditProperty";
 import Clients from "./pages/agent/Clients";
 
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminPropertyDetails from "../src/pages/admin/AdminPropertyDetails";
+import AdminPropertyDetails from "./pages/admin/AdminPropertyDetails";
 import AdminEditRole from "./pages/admin/AdminEditRole";
 import AdminRoles from "./pages/admin/AdminRoles";
 
+import Login from "./pages/client/Login";
 import ClientLayout from "./pages/client/ClientLayout";
 import AboutPage from "./pages/client/AboutPage";
 import LandingPage from "./pages/client/LandingPage";
-import PropertyDetails from "./pages/agent/PropertyDetails";
+import PropertyDetails from "./pages/client/PropertyDetails";
+import Subscription from "./pages/client/Subscription";
+import SignUp from "./pages/client/SignUp";
+import PaymentMethod from "./pages/client/PaymentMethod";
 
 import routes from "./routes";
 
