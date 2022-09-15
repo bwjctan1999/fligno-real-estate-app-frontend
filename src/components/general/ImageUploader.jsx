@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import IconAddImage from "../../assets/icons/IconAddImage";
 
-export default function ImageUploader() {
+export default function ImageUploader({ imageStorage }) {
   const [images, setImages] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -15,7 +15,22 @@ export default function ImageUploader() {
         const file = reader.result;
         setImages((imgs) => [...imgs, file]);
       };
+
       reader.readAsDataURL(file);
+
+      const binaryReader = new FileReader();
+
+      binaryReader.onabort = () => console.log("file reading was aborted");
+      binaryReader.onerror = () => console.log("file reading has failed");
+      binaryReader.onload = () => {
+        const file = reader.result;
+        imageStorage((oldValues) => ({
+          ...oldValues,
+          p_img: file,
+        }));
+      };
+
+      binaryReader.readAsArrayBuffer(file);
     });
   }, []);
 
