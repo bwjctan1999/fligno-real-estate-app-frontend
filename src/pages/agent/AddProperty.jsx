@@ -20,7 +20,7 @@ export default function AddProperty() {
     area: null,
     z_code: null,
     city: null,
-    p_img: null,
+    // p_img: null,
   });
 
   const setValue = (e, name) => {
@@ -32,7 +32,7 @@ export default function AddProperty() {
 
   const saveFormData = async () => {
     await axios
-      .post("", propertyData)
+      .post("http://localhost:8000/api/property", formValues)
       .then((response) => {
         console.log(response);
       })
