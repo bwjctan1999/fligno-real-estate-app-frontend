@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import { useEffect, useState } from "react";
 import IconArea from "../../../assets/icons/IconArea";
 import IconFilter from "../../../assets/icons/IconFilter";
@@ -22,8 +23,11 @@ export default function PropertyFilter() {
     }
 
     window.addEventListener("load", handleLoad);
+    window.addEventListener("", handleLoad);
     window.addEventListener("resize", handleResize);
   });
+
+  useLayoutEffect(() => (window.innerWidth > 680 ? setShowFilter(true) : null));
 
   return (
     <div>
