@@ -12,7 +12,7 @@ import IconRemove from "../../assets/icons/IconRemove";
 
 export default function AgentPropertyDetails() {
   return (
-    <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
+    <div className="item-center my-24 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
       <div className="ml-auto grid w-full grid-cols-3 gap-2 lg:w-3/5">
         <Button
           icon={
