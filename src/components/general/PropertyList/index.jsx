@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import PropertyCard from "./PropertyCard";
 import PropertyFilter from "./PropertyFilter";
 
 export default function PropertyList() {
+  const navigate = useNavigate();
+
   const addCard = (key) => {
     return (
       <PropertyCard
@@ -11,6 +15,7 @@ export default function PropertyList() {
         bednum={5}
         bathnum={2}
         price={1000000}
+        onClick={() => navigate("/agent/property")}
         key={key}
       />
     );
