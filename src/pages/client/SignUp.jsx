@@ -110,7 +110,7 @@ export default function SignUp() {
                 <input
                   type="radio"
                   name="radio"
-                  value="client"
+                  value="3"
                   onChange={(e) => setValue(e, "user_type")}
                   required="true"
                 />
@@ -119,7 +119,7 @@ export default function SignUp() {
                 <input
                   type="radio"
                   name="radio"
-                  value="agent"
+                  value="2"
                   onChange={(e) => setValue(e, "user_type")}
                 />
                 <label> Agent</label>
