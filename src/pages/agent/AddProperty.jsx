@@ -154,7 +154,7 @@ export default function AddProperty() {
             </div>
           </div>
 
-          <ImageUploader />
+          <ImageUploader imageStorage={setFormValues} />
         </div>
       </div>
       <div className=" ml-auto flex w-full items-center justify-between pt-5 lg:w-1/2 lg:pl-10">
