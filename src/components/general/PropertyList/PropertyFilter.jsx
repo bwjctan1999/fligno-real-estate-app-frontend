@@ -14,7 +14,6 @@ export default function PropertyFilter() {
 
   useEffect(() => {
     function handleResize() {
-      window.innerWidth > 680 ? setShowFilter(true) : null;
       setScreenWidth(window.innerWidth);
     }
 
