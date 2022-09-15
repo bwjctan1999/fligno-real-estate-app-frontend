@@ -12,7 +12,10 @@ export default function PropertyCard({
   onClick,
 }) {
   return (
-    <div className=" rounded-lg shadow-lg" onClick={onClick}>
+    <div
+      className=" rounded-lg shadow-lg hover:cursor-pointer"
+      onClick={onClick}
+    >
       <img
         className="aspect-video rounded-t-lg"
         src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?cs=srgb&dl=pexels-binyamin-mellish-186077.jpg&fm=jpg"
