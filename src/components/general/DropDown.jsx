@@ -7,7 +7,9 @@ export default function DropDown({ value, onChange, options = [] }) {
         className="bg-white text bg-white w-full rounded-lg p-3 text-base text-TextPrimary shadow-md focus:outline-BtnPrimary-start"
       >
         {options.map((option) => (
-          <option className="leading-3">{option}</option>
+          <option className="leading-3" key={option}>
+            {option}
+          </option>
         ))}
       </select>
     </div>
