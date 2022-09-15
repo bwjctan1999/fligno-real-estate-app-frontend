@@ -5,7 +5,7 @@ import AddProperty from "./pages/agent/AddProperty";
 import AgentDashboard from "./pages/agent/AgentDashboard";
 import Login from "./pages/agent/Login";
 import PaymentMethod from "./pages/agent/PaymentMethod";
-import PropertyList from "./pages/agent/PropertyList";
+import AgentProperties from "./pages/agent/AgentProperties";
 import AgentPropertyDetails from "./pages/agent/AgentPropertyDetails";
 import AgentLayout from "./pages/agent/AgentLayout";
 import SignUp from "./pages/agent/SignUp";
@@ -50,7 +50,7 @@ function App() {
             <Route index element={<AgentDashboard />} />
             <Route path="clients" element={<Clients />} />
             <Route path="add-property" element={<AddProperty />} />
-            <Route path="properties" element={<PropertyList />} />
+            <Route path="properties" element={<AgentProperties />} />
             <Route path="property" element={<AgentPropertyDetails />} />
             <Route path="edit-property" element={<EditProperty />} />
             <Route
