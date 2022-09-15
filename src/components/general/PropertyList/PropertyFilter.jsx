@@ -26,7 +26,9 @@ export default function PropertyFilter() {
     window.addEventListener("resize", handleResize);
   });
 
-  useLayoutEffect(() => (window.innerWidth > 680 ? setShowFilter(true) : null));
+  useLayoutEffect(() => {
+    window.innerWidth > 680 ? setShowFilter(true) : null;
+  });
 
   return (
     <div>
