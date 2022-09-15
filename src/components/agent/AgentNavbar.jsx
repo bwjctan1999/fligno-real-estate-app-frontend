@@ -42,7 +42,7 @@ export default function AgentNavbar({}) {
     window.addEventListener("load", handleLoad);
   });
 
-  useEffect(() => {
+  const changeSelectedIcon = (selected) => {
     setIconActives(() => {
       const newState = {
         "/agent": false,
@@ -51,11 +51,12 @@ export default function AgentNavbar({}) {
         "/agent/add-property": false,
       };
 
-      newState[active] = true;
+      newState[selected] = true;
+      console.log(newState);
 
       return newState;
     });
-  });
+  };
 
   const changeSelectedText = (state, selected) => {
     const style = "flex h-full items-center gap-2 ";
@@ -93,7 +94,10 @@ export default function AgentNavbar({}) {
           <nav className="flex flex-col gap-10 text-xl font-black lg:flex-row lg:items-center">
             <Link
               to="/agent"
-              onClick={() => setActive("/agent")}
+              onClick={() => {
+                setActive("/agent");
+                changeSelectedIcon("/agent");
+              }}
               className={changeSelectedText(active, "/agent")}
             >
               <IconDashboard active={iconActives["/agent"]} />
@@ -102,7 +106,10 @@ export default function AgentNavbar({}) {
 
             <Link
               to="clients"
-              onClick={() => setActive("/agent/clients")}
+              onClick={() => {
+                setActive("/agent/clients");
+                changeSelectedIcon("/agent/clients");
+              }}
               className={changeSelectedText(active, "/agent/clients")}
             >
               <IconUsersList
@@ -116,7 +123,10 @@ export default function AgentNavbar({}) {
 
             <Link
               to="properties"
-              onClick={() => setActive("/agent/properties")}
+              onClick={() => {
+                setActive("/agent/properties");
+                changeSelectedIcon("/agent/properties");
+              }}
               className={changeSelectedText(active, "/agent/properties")}
             >
               <IconProperties
@@ -130,7 +140,10 @@ export default function AgentNavbar({}) {
 
             <Link
               to="add-property"
-              onClick={() => setActive("/agent/add-property")}
+              onClick={() => {
+                setActive("/agent/add-property");
+                changeSelectedIcon("/agent/add-property");
+              }}
               className={changeSelectedText(active, "/agent/add-property")}
             >
               <IconAdd active={iconActives["/agent/add-property"]} />
