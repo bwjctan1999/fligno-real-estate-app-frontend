@@ -7,7 +7,7 @@ export default function IconLogo() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_232_2952)">
+      <g clipPath="url(#clip0_232_2952)">
         <rect
           width="33"
           height="33"
@@ -105,8 +105,8 @@ export default function IconLogo() {
           y2="16.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <clipPath id="clip0_232_2952">
           <rect width="33" height="33" rx="8" fill="white" />

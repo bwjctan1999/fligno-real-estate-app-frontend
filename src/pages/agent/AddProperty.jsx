@@ -60,7 +60,7 @@ export default function AddProperty() {
             </div>
 
             <div className="w-full lg:w-1/4">
-              <label className="font-black text-TextTertiary" for="price">
+              <label className="font-black text-TextTertiary" htmlFor="price">
                 Price
               </label>
               <Textfield
@@ -72,7 +72,7 @@ export default function AddProperty() {
             </div>
 
             <div className="w-full lg:w-1/4">
-              <label className="font-black text-TextTertiary" for="ptype">
+              <label className="font-black text-TextTertiary" htmlFor="ptype">
                 Property Type
               </label>
               <DropDown
@@ -84,7 +84,7 @@ export default function AddProperty() {
           </div>
 
           <div className="">
-            <label className=" font-black text-TextTertiary" for="desc">
+            <label className=" font-black text-TextTertiary" htmlFor="desc">
               Description
             </label>
             <TextArea
