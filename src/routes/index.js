@@ -1,11 +1,11 @@
 import LandingPage from "../pages/client/LandingPage";
-import Login from "../pages/agent/Login";
-import SignUp from "../pages/agent/SignUp";
+import Login from "../pages/client/Login";
+import SignUp from "../pages/client/SignUp";
 import AgentDashboard from "../pages/agent/AgentDashboard";
-import Subscription from "../pages/agent/Subscription";
-import PaymentMethod from "../pages/agent/PaymentMethod";
-import PropertyList from "../pages/agent/PropertyList";
-import PropertyDetails from "../pages/agent/PropertyDetails";
+import Subscription from "../pages/client/Subscription";
+import PaymentMethod from "../pages/client/PaymentMethod";
+import AgentProperties from "../pages/agent/AgentProperties";
+import PropertyDetails from "../pages/client/PropertyDetails";
 import Clients from "../pages/agent/Clients";
 import AddProperty from "../pages/agent/AddProperty";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: "/properties",
-    element: PropertyList,
+    element: AgentProperties,
   },
   {
     path: "/about",
