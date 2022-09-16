@@ -1,11 +1,15 @@
-export default function IconEdit({ width, height, fill }) {
+export default function IconEdit({
+  width = "25",
+  height = "25",
+  fill = "fill-TextPrimary",
+}) {
   return (
     <svg
-    width={width}
-    height={height}
-    viewBox="0 0 24 24"
-    fill="none"
-    className={fill}
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={fill}
     >
       <path
         fillRule="evenodd"
