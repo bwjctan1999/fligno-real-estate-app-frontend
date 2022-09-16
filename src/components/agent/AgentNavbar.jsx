@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import IconLogo from "../../assets/icons/IconLogo";
@@ -14,12 +13,6 @@ import IconMenu from "../../assets/icons/IconMenu";
 export default function AgentNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
-  const [iconActives, setIconActives] = useState({
-    "/agent": false,
-    "/agent/clients": false,
-    "/agent/properties": false,
-    "/agent/add-property": false,
-  });
 
   useEffect(() => {
     function handleResize() {
@@ -31,32 +24,11 @@ export default function AgentNavbar({}) {
 
   useEffect(() => {
     function handleLoad() {
-      setIconActives((prevState) => ({
-        ...prevState,
-        [window.location.pathname]: true,
-      }));
-
       window.innerWidth > 768 ? setOpenNavbar(true) : setOpenNavbar(false);
     }
 
     window.addEventListener("load", handleLoad);
   });
-
-  const changeSelectedIcon = (selected) => {
-    setIconActives(() => {
-      const newState = {
-        "/agent": false,
-        "/agent/clients": false,
-        "/agent/properties": false,
-        "/agent/add-property": false,
-      };
-
-      newState[selected] = true;
-      console.log(newState);
-
-      return newState;
-    });
-  };
 
   const changeSelectedText = (state, selected) => {
     const style = "flex h-full items-center gap-2 ";
@@ -96,11 +68,10 @@ export default function AgentNavbar({}) {
               to="/agent"
               onClick={() => {
                 setActive("/agent");
-                changeSelectedIcon("/agent");
               }}
               className={changeSelectedText(active, "/agent")}
             >
-              <IconDashboard active={iconActives["/agent"]} />
+              <IconDashboard />
               Dashboard
             </Link>
 
@@ -108,16 +79,10 @@ export default function AgentNavbar({}) {
               to="clients"
               onClick={() => {
                 setActive("/agent/clients");
-                changeSelectedIcon("/agent/clients");
               }}
               className={changeSelectedText(active, "/agent/clients")}
             >
-              <IconUsersList
-                active={iconActives["/agent/clients"]}
-                width="26"
-                height="26"
-                fill="fill-TextTertiary"
-              />
+              <IconUsersList width="26" height="26" fill="fill-TextTertiary" />
               Clients
             </Link>
 
@@ -125,16 +90,10 @@ export default function AgentNavbar({}) {
               to="properties"
               onClick={() => {
                 setActive("/agent/properties");
-                changeSelectedIcon("/agent/properties");
               }}
               className={changeSelectedText(active, "/agent/properties")}
             >
-              <IconProperties
-                active={iconActives["/agent/properties"]}
-                width="26"
-                height="26"
-                fill="fill-TextTertiary"
-              />
+              <IconProperties width="26" height="26" fill="fill-TextTertiary" />
               Properties
             </Link>
 
@@ -142,11 +101,10 @@ export default function AgentNavbar({}) {
               to="add-property"
               onClick={() => {
                 setActive("/agent/add-property");
-                changeSelectedIcon("/agent/add-property");
               }}
               className={changeSelectedText(active, "/agent/add-property")}
             >
-              <IconAdd active={iconActives["/agent/add-property"]} />
+              <IconAdd />
               Add Property
             </Link>
           </nav>
