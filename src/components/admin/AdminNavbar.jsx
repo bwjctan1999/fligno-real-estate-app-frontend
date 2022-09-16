@@ -47,7 +47,7 @@ export default function AdminNavbar({}) {
       </button>
       <nav
         className={`${
-          openNavbar === true ? "" : "-translate-x-full"
+          openNavbar === true ? "" : "-translate-x-full lg:-translate-x-0"
         } fixed top-0 left-0 z-10 h-full w-3/4 items-center bg-BGPrimary p-4 shadow-lg duration-300 ease-out lg:h-auto lg:w-full lg:flex-row`}
       >
         <div className="flex h-full w-full flex-col justify-between lg:flex-row">
