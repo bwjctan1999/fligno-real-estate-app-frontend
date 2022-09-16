@@ -1,11 +1,10 @@
-export default function IconUsersList({ width, height, fill, active = false }) {
+export default function IconUsersList({ width = "25", height = "25" }) {
   return (
     <svg
       width={width}
       height={height}
-      className={active ? "fill-BtnPrimary-end" : fill}
       viewBox="0 0 24 24"
-      fill="none"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
