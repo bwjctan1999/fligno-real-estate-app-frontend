@@ -66,9 +66,7 @@ export default function AgentNavbar({}) {
           <nav className="flex flex-col gap-10 text-xl font-black lg:flex-row lg:items-center">
             <Link
               to="/agent"
-              onClick={() => {
-                setActive("/agent");
-              }}
+              onClick={() => setActive("/agent")}
               className={changeSelectedText(active, "/agent")}
             >
               <IconDashboard />
@@ -77,9 +75,7 @@ export default function AgentNavbar({}) {
 
             <Link
               to="clients"
-              onClick={() => {
-                setActive("/agent/clients");
-              }}
+              onClick={() => setActive("/agent/clients")}
               className={changeSelectedText(active, "/agent/clients")}
             >
               <IconUsersList width="26" height="26" fill="fill-TextTertiary" />
@@ -88,9 +84,7 @@ export default function AgentNavbar({}) {
 
             <Link
               to="properties"
-              onClick={() => {
-                setActive("/agent/properties");
-              }}
+              onClick={() => setActive("/agent/properties")}
               className={changeSelectedText(active, "/agent/properties")}
             >
               <IconProperties width="26" height="26" fill="fill-TextTertiary" />
@@ -99,9 +93,7 @@ export default function AgentNavbar({}) {
 
             <Link
               to="add-property"
-              onClick={() => {
-                setActive("/agent/add-property");
-              }}
+              onClick={() => setActive("/agent/add-property")}
               className={changeSelectedText(active, "/agent/add-property")}
             >
               <IconAdd />
