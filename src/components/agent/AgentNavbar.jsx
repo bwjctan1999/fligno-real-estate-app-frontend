@@ -78,7 +78,7 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent/clients")}
               className={changeSelectedText(active, "/agent/clients")}
             >
-              <IconUsersList width="26" height="26" fill="fill-TextTertiary" />
+              <IconUsersList width="26" height="26" />
               Clients
             </Link>
 
@@ -87,7 +87,7 @@ export default function AgentNavbar({}) {
               onClick={() => setActive("/agent/properties")}
               className={changeSelectedText(active, "/agent/properties")}
             >
-              <IconProperties width="26" height="26" fill="fill-TextTertiary" />
+              <IconProperties width="26" height="26" />
               Properties
             </Link>
 
