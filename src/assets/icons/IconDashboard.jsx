@@ -1,4 +1,4 @@
-export default function IconDashboard({ active = false }) {
+export default function IconDashboard() {
   return (
     <svg
       width="24"
