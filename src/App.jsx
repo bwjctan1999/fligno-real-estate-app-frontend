@@ -11,6 +11,7 @@ import Clients from "./pages/agent/Clients";
 
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProperties from "./pages/admin/AdminProperties";
 import AdminPropertyDetails from "./pages/admin/AdminPropertyDetails";
 import AdminEditRole from "./pages/admin/AdminEditRole";
 import AdminRoles from "./pages/admin/AdminRoles";
@@ -62,6 +63,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="roles" element={<AdminRoles />} />
+            <Route path="properties" element={<AdminProperties />} />
 
             <Route path="edit-role" element={<AdminEditRole />} />
             <Route path="edit-role/:roleId" element={<AdminEditRole />} />
