@@ -7,6 +7,7 @@ import AgentProperties from "./pages/agent/AgentProperties";
 import AgentPropertyDetails from "./pages/agent/AgentPropertyDetails";
 import AgentLayout from "./pages/agent/AgentLayout";
 import EditProperty from "./pages/agent/EditProperty";
+import Properties from "./pages/client/Properties";
 import Clients from "./pages/agent/Clients";
 
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -41,6 +42,7 @@ function App() {
             <Route path="login" element={<Login setUser={setUser} />} />
             <Route path="subscription" element={<Subscription />} />
             <Route path="waiting-payment" element={<PaymentMethod />} />
+            <Route path="properties" element={<Properties />} />
 
             <Route path="about" element={<AboutPage />} />
 
