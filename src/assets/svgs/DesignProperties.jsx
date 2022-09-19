@@ -1,8 +1,6 @@
 export default function DesignProperties() {
   return (
     <svg
-      width="689"
-      height="252"
       viewBox="0 0 689 252"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
