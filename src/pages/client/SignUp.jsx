@@ -44,8 +44,8 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex h-screen flex-row flex-wrap-reverse items-center gap-y-16">
-      <div className="mx-auto flex flex-col">
+    <div className="flex h-screen flex-row flex-wrap-reverse items-center gap-y-16 bg-BGSecondary">
+      <div className="mx-auto flex flex-col ">
         <h1 className="mb-2 pb-3 text-3xl font-bold text-TextTertiary">
           Sign Up
         </h1>

@@ -2,9 +2,9 @@ import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
-import axios from 'axios'
+import axios from "axios";
 
-export default function Login( { setUser }) {
+export default function Login({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(true);
@@ -16,15 +16,19 @@ export default function Login( { setUser }) {
       data: {
         email,
         password,
-      }
-    };  
+      },
+    };
     axios(configuration)
-    .then((result) => {console.log(result);})
-    .catch((error) => {console.log(error);})
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
-    <div className="flex h-screen flex-row flex-wrap-reverse justify-center ">
+    <div className="flex h-screen flex-row flex-wrap-reverse justify-center bg-BGSecondary">
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-2 pb-3 text-3xl font-bold text-TextTertiary">
           Log In
@@ -63,7 +67,7 @@ export default function Login( { setUser }) {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" onClick={handleLogin}/>
+            <Button text="Log In" onClick={handleLogin} />
           </div>
         </div>
       </div>
