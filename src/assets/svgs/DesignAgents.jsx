@@ -1,8 +1,6 @@
 export default function DesignAgents() {
   return (
     <svg
-      width="600"
-      height="428"
       viewBox="0 0 600 428"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
