@@ -9,6 +9,7 @@ import AgentLayout from "./pages/agent/AgentLayout";
 import EditProperty from "./pages/agent/EditProperty";
 import Properties from "./pages/client/Properties";
 import Clients from "./pages/agent/Clients";
+import Agents from "./pages/client/Agents";
 
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -43,7 +44,7 @@ function App() {
             <Route path="subscription" element={<Subscription />} />
             <Route path="waiting-payment" element={<PaymentMethod />} />
             <Route path="properties" element={<Properties />} />
-
+            <Route path="agents" element={<Agents />} />
             <Route path="about" element={<AboutPage />} />
 
             <Route path="property" element={<PropertyDetails />} />
