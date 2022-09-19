@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import DesignAgents from "../../assets/svgs/DesignAgents";
 
@@ -26,9 +25,12 @@ export default function Agents() {
 
   const listAgent = (agent) => {
     return (
-      <div>
-        <img src={agent.url} />
-        <h3>{agent.title}</h3>
+      <div className="rounded-lg bg-BGSecondary shadow-lg">
+        <img src={agent.url} className="rounded-t-lg" />
+        <div>
+          <h2 className="text-2xl font-bold">{agent.title}</h2>
+          <h3>Something Estates</h3>
+        </div>
       </div>
     );
   };
@@ -47,7 +49,7 @@ export default function Agents() {
           <DesignAgents />
         </div>
       </div>
-      <div className="p-32 text-center">
+      <div className="p-40 text-center">
         <h2 className="text-2xl font-medium">Our Agents</h2>
         <h1 className="text-4xl font-bold">Meet Our Team</h1>
         <div className="grid grid-cols-3 gap-20">
