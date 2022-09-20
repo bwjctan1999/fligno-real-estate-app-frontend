@@ -38,10 +38,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="*" element={<FourZeroFour />} />
-
           <Route path="/" element={<ClientLayout />}>
             <Route index element={<LandingPage />} />
+            <Route path="*" element={<FourZeroFour />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login setUser={setUser} />} />
             <Route path="subscription" element={<Subscription />} />
