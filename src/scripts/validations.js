@@ -12,11 +12,15 @@ export function ValidEmpty(str) {
 
 export function ValidMobileNumber(num) {
   const regexExp =
-    /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)/;
+    /(\+?\d{2}?\s?\d{3}\s?\d{3}\s?\d{4})|([0]\d{3}\s?\d{3}\s?\d{4})/g;
 
   return regexExp.test(num);
 }
 
 export function ValidNumbersOnly(num) {
   return /^\d+$/.test(num);
+}
+
+export function ValidName(str) {
+  return /^[A-Za-z\s]*$/.test(str);
 }
