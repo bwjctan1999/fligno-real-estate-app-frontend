@@ -34,7 +34,7 @@ export default function AgentPropertyDetails() {
       </div>
 
       <div className="w-full">
-        <div className="flex ">
+        <div className="lg:flex md:flex ">
           <div>
             <h1 className="text-4xl font-bold ">Mesaverte Residence</h1>
             <span className="text-xl font-medium underline underline-offset-1">

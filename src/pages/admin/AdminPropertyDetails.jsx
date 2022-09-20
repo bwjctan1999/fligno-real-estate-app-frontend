@@ -16,7 +16,7 @@ export default function AdminPropertyDetails() {
   const { propertyId } = useParams();
 
   return (
-    <div className="item-center my-10 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
+    <div className="item-center my-24 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
       <div className="ml-auto grid w-full grid-cols-3 gap-2 lg:w-3/5">
         <Button
           icon={
@@ -38,7 +38,7 @@ export default function AdminPropertyDetails() {
       </div>
 
       <div className="w-full">
-        <div className="flex ">
+        <div className="lg:flex md:flex">
           <div>
             <h1 className="text-4xl font-bold ">
               Mesaverte Residence {propertyId}
