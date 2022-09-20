@@ -29,6 +29,7 @@ import SignUp from "./pages/client/SignUp";
 import PaymentMethod from "./pages/client/PaymentMethod";
 
 import routes from "./routes";
+import FourZeroFour from "./pages/general/FourZeroFour";
 
 function App() {
   const [user, setUser] = useState({ user: null, userType: null });
@@ -37,6 +38,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path="*" element={<FourZeroFour />} />
+
           <Route path="/" element={<ClientLayout />}>
             <Route index element={<LandingPage />} />
             <Route path="signup" element={<SignUp />} />
