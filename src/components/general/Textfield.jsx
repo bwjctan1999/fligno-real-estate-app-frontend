@@ -7,14 +7,8 @@ export default function Textfield({
   onClick,
   placeholder,
   onChange,
-  valid = true,
-  invalidError = "required",
+  invalidError = "",
 }) {
-  const validationBorderHandler = (validator) => {
-    if (validator === false)
-      return " border-2 border-solid border-r-BtnTertiary-end";
-  };
-
   return (
     <div>
       <div
@@ -22,7 +16,7 @@ export default function Textfield({
           ${bgcolor} 
           ${textcolor} 
           ${icon ? "pl-3" : null} 
-          ${valid ? null : "border-2 border-BtnTertiary-end"} 
+          ${invalidError === "" ? null : "border-2 border-BtnTertiary-end"} 
           flex flex-col items-center rounded-lg shadow-md outline-2 outline-BtnPrimary-start focus-within:outline`}
       >
         {icon}
@@ -34,7 +28,7 @@ export default function Textfield({
           onChange={onChange}
         />
       </div>
-      {valid ? null : (
+      {invalidError === "" ? null : (
         <p className="text-sm text-BtnTertiary-end">{invalidError}</p>
       )}
     </div>
