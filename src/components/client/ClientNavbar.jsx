@@ -99,9 +99,10 @@ export default function ClientNavbar({}) {
               text="Sign Up"
               bgcolor="bg-BGPrimary"
               textcolor="text-BtnPrimary-end"
-              custom="border-BtnPrimary-end border-solid border-2 border-box"
+              custom="border-BtnPrimary-end border-solid border-2 box-border"
+              padding="p-2"
             />
-            <Button text="Log In" />
+            <Button text="Log In" padding="p-2" />
             {/* <IconNotification />
             <img src={DesignProfile} className="h-8 w-8" /> */}
           </div>
