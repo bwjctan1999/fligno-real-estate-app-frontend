@@ -11,7 +11,7 @@ export default function SignUp() {
     password: "",
     first_name: "",
     last_name: "",
-    p_number: "",
+    phone_number: "",
     user_type: "",
   });
 
@@ -23,14 +23,14 @@ export default function SignUp() {
   };
 
   const saveFormData = async () => {
-    await axios
-      .post("http://localhost:8000/api/register", formValues)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/register",
+        formValues
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onSubmit = async (event) => {
