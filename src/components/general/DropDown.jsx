@@ -1,7 +1,7 @@
 export default function DropDown({
   value,
   onChange,
-  valid = false,
+  valid = true,
   invalidError = "required",
   options = [],
 }) {
