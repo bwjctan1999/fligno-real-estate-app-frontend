@@ -9,18 +9,17 @@ import Button from "../../components/general/Button";
 
 export default function AddProperty() {
   const [formValues, setFormValues] = useState({
-    p_title: null,
+    title: null,
     price: null,
-    p_type: null,
+    type: null,
     bedroom: null,
     bathroom: null,
-    p_info: null,
-    loc_a: null,
-    loc_b: null,
+    description: null,
+    address_1: null,
+    address_2: null,
     area: null,
-    z_code: null,
+    zip_code: null,
     city: null,
-    // p_img: null,
   });
 
   const setValue = (e, name) => {
@@ -55,7 +54,7 @@ export default function AddProperty() {
               </span>
               <Textfield
                 placeholder="Title"
-                onChange={(e) => setValue(e, "p_title")}
+                onChange={(e) => setValue(e, "title")}
               />
             </div>
 
@@ -72,13 +71,13 @@ export default function AddProperty() {
             </div>
 
             <div className="w-full lg:w-1/4">
-              <label className="font-black text-TextTertiary" htmlFor="ptype">
+              <label className="font-black text-TextTertiary" htmlFor="type">
                 Property Type
               </label>
               <DropDown
-                id="ptype"
+                id="type"
                 options={["For Rent", "For Sale"]}
-                onChange={(e) => setValue(e, "p_type")}
+                onChange={(e) => setValue(e, "type")}
               />
             </div>
           </div>
@@ -90,7 +89,7 @@ export default function AddProperty() {
             <TextArea
               id="desc"
               placeholder="Description"
-              onChange={(e) => setValue(e, "p_info")}
+              onChange={(e) => setValue(e, "description")}
             />
           </div>
 
@@ -100,7 +99,7 @@ export default function AddProperty() {
               <div className="w-3/5">
                 <Textfield
                   placeholder="Address 1"
-                  onChange={(e) => setValue(e, "loc_a")}
+                  onChange={(e) => setValue(e, "address_1")}
                 />
               </div>
               <div className="w-2/5">
@@ -114,13 +113,13 @@ export default function AddProperty() {
               <div className="w-3/5">
                 <Textfield
                   placeholder="Address 2"
-                  onChange={(e) => setValue(e, "loc_b")}
+                  onChange={(e) => setValue(e, "address_2")}
                 />
               </div>
               <div className="w-2/5">
                 <Textfield
                   placeholder="Zip Code"
-                  onChange={(e) => setValue(e, "z_code")}
+                  onChange={(e) => setValue(e, "zip_code")}
                 />
               </div>
             </div>
