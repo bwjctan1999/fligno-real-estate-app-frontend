@@ -1,7 +1,14 @@
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+
 import { useState } from "react";
+import {
+  ValidEmail,
+  ValidEmpty,
+  ValidName,
+  ValidMobileNumber,
+} from "../../scripts/Validations";
 import axios from "axios";
 
 export default function SignUp() {
@@ -14,6 +21,69 @@ export default function SignUp() {
     phone_number: "",
     user_type: "",
   });
+
+  const [validations, setValidations] = useState({
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    confirm_password: "",
+    phone_number: "",
+    user_type: "",
+  });
+
+  const Validation = () => {
+    const tempValidations = {
+      email: "",
+      password: "",
+      first_name: "",
+      last_name: "",
+      confirm_password: "",
+      phone_number: "",
+      user_type: "",
+    };
+
+    if (!ValidEmail(formValues.email)) {
+      tempValidations.email = "Invalid Email";
+    }
+    if (!ValidName(formValues.first_name)) {
+      tempValidations.first_name = "Letters only";
+    }
+    if (!ValidName(formValues.last_name)) {
+      tempValidations.last_name = "Letters only";
+    }
+    if (!ValidMobileNumber(formValues.phone_number)) {
+      tempValidations.phone_number = "Invalid Number";
+    }
+
+    if (confirmPassword !== formValues.password) {
+      tempValidations.confirm_password = "Confirm password does not match";
+    }
+
+    if (!ValidEmpty(formValues.email)) {
+      tempValidations.email = "Required";
+    }
+    if (!ValidEmpty(formValues.password)) {
+      tempValidations.password = "Required";
+    }
+    if (!ValidEmpty(confirmPassword)) {
+      tempValidations.confirm_password = "Required";
+    }
+    if (!ValidEmpty(formValues.first_name)) {
+      tempValidations.first_name = "Required";
+    }
+    if (!ValidEmpty(formValues.last_name)) {
+      tempValidations.last_name = "Required";
+    }
+    if (!ValidEmpty(formValues.phone_number)) {
+      tempValidations.phone_number = "Required";
+    }
+    if (formValues.user_type === "") {
+      tempValidations.user_type = "Required";
+    }
+
+    setValidations(tempValidations);
+  };
 
   const setValue = (e, name) => {
     setFormValues((oldValues) => ({
@@ -30,22 +100,13 @@ export default function SignUp() {
       );
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await saveFormData();
-      alert("Check your email for confirmation");
-    } catch (e) {
       alert(`Sign Up Failed! ${e.message}`);
     }
   };
 
   return (
     <div className="flex h-screen flex-row flex-wrap-reverse items-center gap-y-16 bg-BGSecondary">
-      <div className="mx-auto flex flex-col ">
+      <div className="mx-auto flex w-full flex-col px-4 lg:w-1/4">
         <h1 className="mb-2 pb-3 text-3xl font-bold text-TextTertiary">
           Sign Up
         </h1>
@@ -60,79 +121,79 @@ export default function SignUp() {
           </a>
         </p>
 
-        <form onSubmit={onSubmit}>
-          <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
-            <TextField
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setValue(e, "email")}
-              required="true"
-            />
+        <div className="flex w-full flex-col gap-y-3  ">
+          <TextField
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setValue(e, "email")}
+            invalidError={validations.email}
+          />
 
-            <TextField
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setValue(e, "password")}
-              required="true"
-            />
+          <TextField
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setValue(e, "password")}
+            invalidError={validations.password}
+          />
 
-            <TextField
-              type="password"
-              placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required="true"
-            />
+          <TextField
+            type="password"
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            invalidError={validations.confirm_password}
+          />
 
-            <TextField
-              type="text"
-              placeholder="First Name"
-              onChange={(e) => setValue(e, "first_name")}
-              required="true"
-            />
+          <TextField
+            type="text"
+            placeholder="First Name"
+            onChange={(e) => setValue(e, "first_name")}
+            invalidError={validations.first_name}
+          />
 
-            <TextField
-              type="text"
-              placeholder="Last Name"
-              onChange={(e) => setValue(e, "last_name")}
-              required="true"
-            />
+          <TextField
+            type="text"
+            placeholder="Last Name"
+            onChange={(e) => setValue(e, "last_name")}
+            invalidError={validations.last_name}
+          />
 
-            <TextField
-              type="number"
-              placeholder="Mobile Number"
-              onChange={(e) => setValue(e, "p_number")}
-              required="true"
-            />
+          <TextField
+            type="number"
+            placeholder="Mobile Number"
+            onChange={(e) => setValue(e, "phone_number")}
+            invalidError={validations.phone_number}
+          />
 
-            <div className="flex flex-wrap gap-x-16 gap-y-3">
-              <label> Sign up as:</label>
-              <div className="flex flex-row gap-x-4 gap-y-3">
-                <input
-                  type="radio"
-                  name="radio"
-                  value="3"
-                  onChange={(e) => setValue(e, "user_type")}
-                  required="true"
-                />
-                <label> Client</label>
+          <div className="flex flex-wrap gap-x-16 gap-y-3">
+            <label> Sign up as:</label>
+            <div className="flex flex-row gap-x-4 gap-y-3">
+              <input
+                type="radio"
+                name="radio"
+                value="3"
+                onChange={(e) => setValue(e, "user_type")}
+              />
+              <label> Client</label>
 
-                <input
-                  type="radio"
-                  name="radio"
-                  value="2"
-                  onChange={(e) => setValue(e, "user_type")}
-                />
-                <label> Agent</label>
-              </div>
+              <input
+                type="radio"
+                name="radio"
+                value="2"
+                onChange={(e) => setValue(e, "user_type")}
+              />
+              <label> Agent</label>
             </div>
-
-            <div className="mt-7 text-sm">
-              <Button type="submit" text="Sign Up" />
-            </div>
+            {validations.user_type === "" ? null : (
+              <p className="text-BtnTertiary-end ">Please Select One</p>
+            )}
           </div>
-        </form>
+
+          <div className="mt-7 text-sm">
+            <Button onClick={Validation} text="Sign Up" />
+          </div>
+        </div>
       </div>
-      <div className="hidden h-screen w-6/12 items-center justify-center bg-BtnPrimary-end lg:flex">
+      <div className="hidden h-screen w-1/2 items-center justify-center bg-BtnPrimary-end lg:flex">
         <DesignSignUp />
       </div>
     </div>
