@@ -18,9 +18,9 @@ export default function Login({ setUser }) {
         email: email,
         password: password,
       });
-      localStorage.setItem("user_identifier", response.data.data);
+      localStorage.setItem("user_role", response.data.data.user_role);
+      localStorage.setItem("token", response.data.data.Token);
 
-      console.log(response.data.data.user_role);
       switch (response.data.data.user_role) {
         case 2:
           navigate("/agent");
