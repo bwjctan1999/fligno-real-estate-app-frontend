@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
 
@@ -82,7 +82,12 @@ export default function RouteList() {
     //Agent Routes
     {
       path: "/agent",
-      element: <AgentLayout />,
+      element:
+        localStorage.getItem("user_role") != 2 ? (
+          <Navigate to="/" />
+        ) : (
+          <AgentLayout />
+        ),
       children: [
         {
           index: true,
@@ -114,7 +119,12 @@ export default function RouteList() {
     //Admin Routes
     {
       path: "/admin",
-      element: <AdminLayout />,
+      element:
+        localStorage.getItem("user_role") != 1 ? (
+          <Navigate to="/" />
+        ) : (
+          <AdminLayout />
+        ),
       children: [
         {
           index: true,
