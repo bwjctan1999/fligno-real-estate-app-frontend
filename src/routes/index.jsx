@@ -1,23 +1,18 @@
+import { useRoutes } from "react-router-dom";
+
+import FourZeroFour from "../pages/general/FourZeroFour";
+
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
 import Subscription from "../pages/client/Subscription";
 import PaymentMethod from "../pages/client/PaymentMethod";
 import PropertyDetails from "../pages/client/PropertyDetails";
-
-import { useRoutes } from "react-router-dom";
 import ClientLayout from "../pages/client/ClientLayout";
-import FourZeroFour from "../pages/general/FourZeroFour";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
-import AdminLayout from "../pages/admin/AdminLayout";
-import AdminDashboard from "../pages/admin/AdminDashboard";
-import AdminRoles from "../pages/admin/AdminRoles";
-import AdminProperties from "../pages/admin/AdminProperties";
-import AdminUsersList from "../pages/admin/AdminUsersList";
-import AdminEditRole from "../pages/admin/AdminEditRole";
-import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
+
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
 import Clients from "../pages/agent/Clients";
@@ -25,6 +20,14 @@ import AddProperty from "../pages/agent/AddProperty";
 import AgentProperties from "../pages/agent/AgentProperties";
 import AgentPropertyDetails from "../pages/agent/AgentPropertyDetails";
 import EditProperty from "../pages/agent/EditProperty";
+
+import AdminLayout from "../pages/admin/AdminLayout";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import AdminRoles from "../pages/admin/AdminRoles";
+import AdminProperties from "../pages/admin/AdminProperties";
+import AdminUsersList from "../pages/admin/AdminUsersList";
+import AdminEditRole from "../pages/admin/AdminEditRole";
+import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
 
 export default function RouteList() {
   let routes = useRoutes([
@@ -78,6 +81,46 @@ export default function RouteList() {
       ],
     },
 
+    //Agent Routes
+    {
+      path: "/agent",
+      element: <AgentLayout />,
+      children: [
+        {
+          index: true,
+          element: <AgentDashboard />,
+        },
+        {
+          path: "clients",
+          element: <Clients />,
+        },
+        {
+          path: "add-property",
+          element: <AddProperty />,
+        },
+        {
+          path: "properties",
+          element: <AgentProperties />,
+          children: [
+            {
+              path: ":propertyid",
+              element: <AgentPropertyDetails />,
+            },
+          ],
+        },
+        {
+          path: "edit-property",
+          element: <EditProperty />,
+          children: [
+            {
+              path: ":propertyid",
+              element: <EditProperty />,
+            },
+          ],
+        },
+      ],
+    },
+
     //Admin Routes
     {
       path: "/admin",
@@ -121,47 +164,7 @@ export default function RouteList() {
         },
       ],
     },
-
-    //Agent Routes
-    {
-      path: "/agent",
-      element: <AgentLayout />,
-      children: [
-        {
-          index: true,
-          element: <AgentDashboard />,
-        },
-        {
-          path: "clients",
-          element: <Clients />,
-        },
-        {
-          path: "add-property",
-          element: <AddProperty />,
-        },
-        {
-          path: "properties",
-          element: <AgentProperties />,
-          children: [
-            {
-              path: ":propertyid",
-              element: <AgentPropertyDetails />,
-            },
-          ],
-        },
-        {
-          path: "edit-property",
-          element: <EditProperty />,
-          children: [
-            {
-              path: ":propertyid",
-              element: <EditProperty />,
-            },
-          ],
-        },
-      ],
-    },
   ]);
-  
+
   return routes;
 }
