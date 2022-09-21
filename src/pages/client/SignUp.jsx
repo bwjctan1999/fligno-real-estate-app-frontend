@@ -102,7 +102,6 @@ export default function SignUp() {
         "http://localhost:8000/api/register",
         formValues
       );
-      response();
       console.log(response);
     } catch (error) {
       console.log(error);
