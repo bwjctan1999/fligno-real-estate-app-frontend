@@ -83,6 +83,10 @@ export default function SignUp() {
     }
 
     setValidations(tempValidations);
+
+    const pass = Object.values(tempValidations).every((value) => value === "");
+
+    if (pass) saveFormData();
   };
 
   const setValue = (e, name) => {
@@ -98,9 +102,11 @@ export default function SignUp() {
         "http://localhost:8000/api/register",
         formValues
       );
+      response();
+      console.log(response);
     } catch (error) {
       console.log(error);
-      alert(`Sign Up Failed! ${e.message}`);
+      alert(`Sign Up Failed! ${error.message}`);
     }
   };
 
