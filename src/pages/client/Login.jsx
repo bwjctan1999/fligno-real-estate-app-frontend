@@ -13,6 +13,7 @@ export default function Login({ setUser }) {
 
   const checkValidity = () => {
     if (!checkIfEmail(email)) {
+<<<<<<< HEAD
       setValidations ({...validations, email: false})
     }
     else {
@@ -25,6 +26,10 @@ export default function Login({ setUser }) {
       setValidations ({...validations, password: true})
     }
 
+=======
+      setValidations ({email: false, password:false})
+    }
+>>>>>>> 0f11496a947617e157f1eb5dfdbaa9a794be9626
   }
 
   function checkIfEmail(str) {
@@ -74,8 +79,12 @@ export default function Login({ setUser }) {
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
+<<<<<<< HEAD
             valid={validations.email}
             invalidError="Invalid Email"
+=======
+            
+>>>>>>> 0f11496a947617e157f1eb5dfdbaa9a794be9626
           />
 
           <TextField
