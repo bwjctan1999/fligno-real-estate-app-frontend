@@ -1,3 +1,4 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
@@ -12,6 +13,8 @@ import {
 import axios from "axios";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formValues, setFormValues] = useState({
     email: "",
@@ -102,7 +105,12 @@ export default function SignUp() {
         "http://localhost:8000/api/register",
         formValues
       );
-      console.log(response);
+
+      switch (response.status) {
+        case 200:
+          navigate("/login");
+          break;
+      }
     } catch (error) {
       console.log(error);
       alert(`Sign Up Failed! ${error.message}`);
