@@ -13,8 +13,18 @@ export default function Login({ setUser }) {
 
   const checkValidity = () => {
     if (!checkIfEmail(email)) {
-      setValidations ({email: false, password:false})
+      setValidations ({...validations, email: false})
     }
+    else {
+      setValidations ({...validations, email: true})
+    }
+    if (password=="") {
+      setValidations ({...validations, password: false})
+    }
+    else {
+      setValidations ({...validations, password: true})
+    }
+
   }
 
   function checkIfEmail(str) {
@@ -64,13 +74,15 @@ export default function Login({ setUser }) {
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            
+            valid={validations.email}
+            invalidError="Invalid Email"
           />
 
           <TextField
             type="Password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
+            valid={validations.password}
           />
 
           <div className="flex flex-wrap gap-x-4  gap-y-3">
@@ -84,7 +96,7 @@ export default function Login({ setUser }) {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" onClick={handleLogin} />
+            <Button text="Log In" onClick={checkValidity} />
           </div>
         </div>
       </div>
