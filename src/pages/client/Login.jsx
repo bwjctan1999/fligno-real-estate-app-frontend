@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
@@ -9,22 +10,30 @@ export default function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(true);
 
-  const handleLogin = () => {
-    const configuration = {
-      method: "post",
-      url: "http://localhost:8000/api/login",
-      data: {
-        email,
-        password,
-      },
-    };
-    axios(configuration)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/login", {
+        email: email,
+        password: password,
       });
+      localStorage.setItem("user_identifier", response.data.data);
+
+      console.log(response.data.data.user_role);
+      switch (response.data.data.user_role) {
+        case 2:
+          navigate("/agent");
+          break;
+        case 3:
+          navigate("/");
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
