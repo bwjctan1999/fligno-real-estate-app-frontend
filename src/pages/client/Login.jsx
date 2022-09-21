@@ -9,6 +9,22 @@ export default function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(true);
 
+  const [validations, setValidations] = useState({email: true, password:true});
+
+  const checkValidity = () => {
+    if (!checkIfEmail(email)) {
+      setValidations ({email: false, password:false})
+    }
+  }
+
+  function checkIfEmail(str) {
+    // Regular expression to check if string is email
+    const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+  
+    return regexExp.test(str);
+  }
+  
+
   const handleLogin = () => {
     const configuration = {
       method: "post",
@@ -48,6 +64,7 @@ export default function Login({ setUser }) {
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
+            
           />
 
           <TextField
