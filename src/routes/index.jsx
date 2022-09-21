@@ -71,12 +71,10 @@ export default function RouteList() {
         {
           path: "properties",
           element: <Properties />,
-          children: [
-            {
-              path: ":id",
-              element: <PropertyDetails />,
-            },
-          ],
+        },
+        {
+          path: "properties/:propertyid",
+          element: <PropertyDetails />,
         },
       ],
     },
@@ -101,22 +99,14 @@ export default function RouteList() {
         {
           path: "properties",
           element: <AgentProperties />,
-          children: [
-            {
-              path: ":propertyid",
-              element: <AgentPropertyDetails />,
-            },
-          ],
         },
         {
-          path: "edit-property",
+          path: "properties/:propertyid",
+          element: <AgentPropertyDetails />,
+        },
+        {
+          path: "edit-property/:propertyid",
           element: <EditProperty />,
-          children: [
-            {
-              path: ":propertyid",
-              element: <EditProperty />,
-            },
-          ],
         },
       ],
     },
@@ -143,24 +133,12 @@ export default function RouteList() {
           element: <AdminUsersList />,
         },
         {
-          path: "edit-role",
+          path: "edit-role/:userid",
           element: <AdminEditRole />,
-          children: [
-            {
-              path: ":roleid",
-              element: <AdminEditRole />,
-            },
-          ],
         },
         {
-          path: "property",
+          path: "property/:propertyid",
           element: <AdminPropertyDetails />,
-          children: [
-            {
-              path: ":propertyid",
-              element: <AdminPropertyDetails />,
-            },
-          ],
         },
       ],
     },
