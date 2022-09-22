@@ -119,11 +119,11 @@ export default function AddProperty() {
 
             <div className="w-full lg:w-1/4">
               <label className="font-black text-TextTertiary" htmlFor="price">
-                Price
+                Price 
               </label>
               <Textfield
                 id="price "
-                placeholder="Price"
+                placeholder="₱"
                 type="number"
                 onChange={(e) => setValue(e, "price")}
                 invalidError={validations.price}
