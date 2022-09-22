@@ -6,7 +6,7 @@ export default function AgentProperties() {
       <div className="mb-10 text-4xl font-bold text-TextTertiary">
         Properties
       </div>
-      <PropertyList />
+      <PropertyList url="http://localhost:8000/api/property" />
     </div>
   );
 }
