@@ -3,6 +3,7 @@ export default function DropDown({
   onChange,
   invalidError = "",
   options = [],
+  values = [],
 }) {
   return (
     <div>
@@ -14,8 +15,8 @@ export default function DropDown({
           ${invalidError != "" ? "border-2 border-BtnTertiary-end" : null} 
           bg-white text bg-white w-full rounded-lg p-3 text-base text-TextPrimary shadow-md focus:outline-BtnPrimary-start`}
         >
-          {options.map((option) => (
-            <option className="leading-3" key={option}>
+          {options.map((option, index) => (
+            <option className="leading-3" key={option} value={values[index]}>
               {option}
             </option>
           ))}
