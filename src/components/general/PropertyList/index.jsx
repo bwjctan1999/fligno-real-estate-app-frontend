@@ -1,22 +1,58 @@
+import axios from "axios";
+import { useState } from "react";
+import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PropertyCard from "./PropertyCard";
 import PropertyFilter from "./PropertyFilter";
 
-export default function PropertyList() {
+export default function PropertyList({ url }) {
+  const [properties, setProperties] = useState([]);
   const navigate = useNavigate();
 
-  const addCard = (key) => {
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    console.log("as")
+    try {
+      const response = await axios.get(url);
+      setProperties(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addProperty = ({
+    id,
+    user_id,
+    title,
+    price,
+    type,
+    address_1,
+    address_2,
+    area,
+    bathroom,
+    bedroom,
+    city,
+    description,
+    zip_code,
+    img,
+  }) => {
     return (
       <PropertyCard
-        title="Elite Garden Residence"
-        location="18B Central Street, San Francisco"
-        area={1230}
-        bednum={5}
-        bathnum={2}
-        price={1000000}
-        onClick={() => navigate("/agent/property")}
-        key={key}
+        title={title}
+        location={address_1}
+        area={area}
+        bednum={bedroom}
+        bathnum={bathroom}
+        price={price}
+        onClick={() => navigate(`/agent/property/${user_id}`)}
+        key={id}
+        img={img}
       />
     );
   };
@@ -25,7 +61,7 @@ export default function PropertyList() {
     <div className="flex flex-col gap-3">
       <PropertyFilter />
       <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
-        {[...Array(25)].map((x, i) => addCard(i))}
+        {properties.map((property, i) => addProperty(property))}
       </div>
     </div>
   );
