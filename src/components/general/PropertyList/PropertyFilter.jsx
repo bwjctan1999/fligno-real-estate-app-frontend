@@ -56,13 +56,7 @@ export default function PropertyFilter() {
             <Textfield placeholder="Location" icon={<IconLocation />} />
             <Textfield
               placeholder="Property Type"
-              icon={
-                <IconProperties
-                  width="24"
-                  height="24"
-                  fill="fill-TextSecondary"
-                />
-              }
+              icon={<IconProperties width="24" height="24" />}
             />
             <Textfield placeholder="Price Range" icon={<IconPrice />} />
             <Textfield placeholder="Area" icon={<IconArea />} />
