@@ -73,8 +73,10 @@ export default function AddProperty() {
     if (!ValidEmpty(formValues.zip_code)) tempValidations.city = "Required";
     if (!ValidEmpty(formValues.zip_code)) tempValidations.zip_code = "Required";
 
-    console.log(tempValidations);
     setValidations(tempValidations);
+
+    const pass = Object.values(tempValidations).every((value) => value === "");
+    if (pass) saveFormData();
   };
 
   const setValue = (e, name) => {
@@ -85,14 +87,15 @@ export default function AddProperty() {
   };
 
   const saveFormData = async () => {
-    await axios
-      .post("http://localhost:8000/api/property", formValues)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/property",
+        formValues
+      );
+    } catch (error) {
+      console.log(error);
+      alert(`Add Property Failed! ${error.message}`);
+    }
   };
 
   return (
@@ -134,6 +137,7 @@ export default function AddProperty() {
               <DropDown
                 id="type"
                 options={["For Rent", "For Sale"]}
+                values={[1, 2]}
                 onChange={(e) => setValue(e, "type")}
                 invalidError={validations.type}
               />
@@ -226,7 +230,7 @@ export default function AddProperty() {
           <ImageUploader imageStorage={setFormValues} />
         </div>
       </div>
-      <div className=" ml-auto flex w-full items-center justify-between pt-5 lg:w-1/2 lg:pl-10">
+      <div className=" ml-auto flex w-full justify-end pt-5 lg:w-1/2 lg:pl-10">
         <div className="w-1/2 lg:w-3/6">
           <Button text="Save" onClick={Validation} />
         </div>
