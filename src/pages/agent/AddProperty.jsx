@@ -7,20 +7,75 @@ import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
 
+import {
+  ValidEmail,
+  ValidEmpty,
+  ValidName,
+  ValidMobileNumber,
+} from "../../scripts/Validations";
+
 export default function AddProperty() {
   const [formValues, setFormValues] = useState({
-    title: null,
-    price: null,
-    type: null,
-    bedroom: null,
-    bathroom: null,
-    description: null,
-    address_1: null,
-    address_2: null,
-    area: null,
-    zip_code: null,
-    city: null,
+    title: "",
+    price: "",
+    type: "",
+    bedroom: "",
+    bathroom: "",
+    description: "",
+    address_1: "",
+    address_2: "",
+    area: "",
+    zip_code: "",
+    city: "",
   });
+
+  const [validations, setValidations] = useState({
+    title: "",
+    price: "",
+    type: "",
+    bedroom: "",
+    bathroom: "",
+    description: "",
+    address_1: "",
+    address_2: "",
+    area: "",
+    zip_code: "",
+    city: "",
+  });
+
+  const Validation = () => {
+    let tempValidations = {
+      title: "",
+      price: "",
+      type: "",
+      bedroom: "",
+      bathroom: "",
+      description: "",
+      address_1: "",
+      address_2: "",
+      area: "",
+      zip_code: "",
+      city: "",
+    };
+
+    if (!ValidEmpty(formValues.title)) tempValidations.title = "Required";
+    if (!ValidEmpty(formValues.price)) tempValidations.price = "Required";
+    if (!ValidEmpty(formValues.type)) tempValidations.type = "Required";
+    if (!ValidEmpty(formValues.bedroom)) tempValidations.bedroom = "Required";
+    if (!ValidEmpty(formValues.bathroom)) tempValidations.bathroom = "Required";
+    if (!ValidEmpty(formValues.description))
+      tempValidations.description = "Required";
+    if (!ValidEmpty(formValues.address_1))
+      tempValidations.address_1 = "Required";
+    if (!ValidEmpty(formValues.address_2))
+      tempValidations.address_2 = "Required";
+    if (!ValidEmpty(formValues.area)) tempValidations.area = "Required";
+    if (!ValidEmpty(formValues.zip_code)) tempValidations.city = "Required";
+    if (!ValidEmpty(formValues.zip_code)) tempValidations.zip_code = "Required";
+
+    console.log(tempValidations);
+    setValidations(tempValidations);
+  };
 
   const setValue = (e, name) => {
     setFormValues((oldValues) => ({
@@ -55,6 +110,7 @@ export default function AddProperty() {
               <Textfield
                 placeholder="Title"
                 onChange={(e) => setValue(e, "title")}
+                invalidError={validations.title}
               />
             </div>
 
@@ -67,6 +123,7 @@ export default function AddProperty() {
                 placeholder="Price"
                 type="number"
                 onChange={(e) => setValue(e, "price")}
+                invalidError={validations.price}
               />
             </div>
 
@@ -78,6 +135,7 @@ export default function AddProperty() {
                 id="type"
                 options={["For Rent", "For Sale"]}
                 onChange={(e) => setValue(e, "type")}
+                invalidError={validations.type}
               />
             </div>
           </div>
@@ -90,6 +148,7 @@ export default function AddProperty() {
               id="desc"
               placeholder="Description"
               onChange={(e) => setValue(e, "description")}
+              invalidError={validations.description}
             />
           </div>
 
@@ -100,12 +159,14 @@ export default function AddProperty() {
                 <Textfield
                   placeholder="Address 1"
                   onChange={(e) => setValue(e, "address_1")}
+                  invalidError={validations.address_1}
                 />
               </div>
               <div className="w-2/5">
                 <Textfield
                   placeholder="City"
                   onChange={(e) => setValue(e, "city")}
+                  invalidError={validations.city}
                 />
               </div>
             </div>
@@ -114,12 +175,15 @@ export default function AddProperty() {
                 <Textfield
                   placeholder="Address 2"
                   onChange={(e) => setValue(e, "address_2")}
+                  invalidError={validations.address_2}
                 />
               </div>
               <div className="w-2/5">
                 <Textfield
+                  type="number"
                   placeholder="Zip Code"
                   onChange={(e) => setValue(e, "zip_code")}
+                  invalidError={validations.zip_code}
                 />
               </div>
             </div>
@@ -132,22 +196,28 @@ export default function AddProperty() {
             <div className="flex w-full flex-row gap-x-2">
               <div className="w-2/6">
                 <Textfield
+                  type="number"
                   placeholder="Area (sqft)"
                   onChange={(e) => setValue(e, "area")}
+                  invalidError={validations.area}
                 />
               </div>
 
               <div className="w-2/6">
                 <Textfield
+                  type="number"
                   placeholder="No. Bedroom"
                   onChange={(e) => setValue(e, "bedroom")}
+                  invalidError={validations.bedroom}
                 />
               </div>
 
               <div className="w-2/6">
                 <Textfield
+                  type="number"
                   placeholder="No. Bathroom"
                   onChange={(e) => setValue(e, "bathroom")}
+                  invalidError={validations.bathroom}
                 />
               </div>
             </div>
@@ -158,7 +228,7 @@ export default function AddProperty() {
       </div>
       <div className=" ml-auto flex w-full items-center justify-between pt-5 lg:w-1/2 lg:pl-10">
         <div className="w-1/2 lg:w-3/6">
-          <Button text="Save" onClick={saveFormData} />
+          <Button text="Save" onClick={Validation} />
         </div>
       </div>
     </div>

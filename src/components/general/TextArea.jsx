@@ -2,8 +2,7 @@ export default function TextArea({
   value,
   onChange,
   placeholder = "",
-  valid = true,
-  invalidError = "required",
+  invalidError = "",
   id,
 }) {
   return (
@@ -14,13 +13,13 @@ export default function TextArea({
         onChange={onChange}
         rows="6"
         className={`
-          ${valid ? null : "border-2 border-BtnTertiary-end"} 
+          ${invalidError != "" ? "border-2 border-BtnTertiary-end" : null} 
           text-gray-900 bg-gray-50 block w-full rounded-lg p-2.5 text-sm shadow-md focus:outline-BtnPrimary-start`}
         placeholder={placeholder}
       ></textarea>
-      {valid ? null : (
+      {invalidError != "" ? (
         <p className="text-sm text-BtnTertiary-end">{invalidError}</p>
-      )}
+      ) : null}
     </div>
   );
 }
