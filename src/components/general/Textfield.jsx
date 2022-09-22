@@ -17,7 +17,7 @@ export default function Textfield({
           ${textcolor} 
           ${icon ? "pl-3" : null} 
           ${invalidError === "" ? null : "border-2 border-BtnTertiary-end"} 
-          flex flex-col items-center rounded-lg shadow-md outline-2 outline-BtnPrimary-start focus-within:outline`}
+          flex  items-center rounded-lg shadow-md outline-2 outline-BtnPrimary-start focus-within:outline`}
       >
         {icon}
         <input
