@@ -1,0 +1,9 @@
+
+
+export default function EmailVerification() {
+    return (
+        <div className="mb-10 mt-32"> FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA FORDA</div>
+
+ );
+}
+    
