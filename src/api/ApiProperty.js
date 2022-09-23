@@ -18,11 +18,15 @@ export async function GetProperty(id) {
 }
 
 export async function PostProperty(data) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
   try {
-    const response = await property.post(bas, data);
-    console.log(response);
-  } catch (error) {
-    console.log(error);
+    resolved.response = await axios.post(`${base_url}`, data);
+  } catch (e) {
+    resolved.error = e;
   }
 }
 
