@@ -1,21 +1,25 @@
 import axios from "axios";
 
-const property = axios.create({
-  baseURL: "http://localhost:8000/api/property",
-});
+const base_url = "http://127.0.0.1:8000/api/property";
 
-export async function getProperty(url) {
+export async function getProperty(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
   try {
-    const response = await property.get();
-    console.log(response);
-  } catch (error) {
-    console.log(error);
+    resolved.response = await axios.get(`${base_url}/${id}`);
+  } catch (e) {
+    resolved.error = e;
   }
+
+  return resolved;
 }
 
 export async function postProperty(data) {
   try {
-    const response = await property.post("", data);
+    const response = await property.post(bas, data);
     console.log(response);
   } catch (error) {
     console.log(error);
