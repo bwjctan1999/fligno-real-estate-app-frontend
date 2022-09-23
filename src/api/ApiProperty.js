@@ -2,7 +2,7 @@ import axios from "axios";
 
 const base_url = "http://127.0.0.1:8000/api/property";
 
-export async function getProperty(id) {
+export async function GetProperty(id) {
   const resolved = {
     response: null,
     error: null,
@@ -17,7 +17,7 @@ export async function getProperty(id) {
   return resolved;
 }
 
-export async function postProperty(data) {
+export async function PostProperty(data) {
   try {
     const response = await property.post(bas, data);
     console.log(response);
@@ -26,14 +26,27 @@ export async function postProperty(data) {
   }
 }
 
-export async function deleteProperty(id) {
+export async function DeleteProperty(id) {
   const resolved = {
     response: null,
     error: null,
   };
 
   try {
-    resolved.response = await property.delete(`${id}`);
+    resolved.response = await axios.delete(`${id}`);
+  } catch (e) {
+    resolved.error = e;
+  }
+}
+
+export async function EditProperty(id, data) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.put(`${base_url}/${id}`, data);
   } catch (e) {
     resolved.error = e;
   }
