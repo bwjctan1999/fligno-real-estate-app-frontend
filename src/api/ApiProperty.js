@@ -27,10 +27,14 @@ export async function postProperty(data) {
 }
 
 export async function deleteProperty(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
   try {
-    const response = await property.delete(`${id}`);
-    console.log(response);
-  } catch (error) {
-    console.log(response);
+    resolved.response = await property.delete(`${id}`);
+  } catch (e) {
+    resolved.error = e;
   }
 }
