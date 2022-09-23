@@ -1,7 +1,6 @@
 import IconArea from "../../assets/icons/IconArea";
 import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
-import PDimg1 from "../../assets/imgs/PDimg1.png";
 import PDimg2 from "../../assets/imgs/PDimg2.png";
 import PDimg3 from "../../assets/imgs/PDimg3.png";
 import PDimg4 from "../../assets/imgs/PDimg4.png";
@@ -10,10 +9,9 @@ import Button from "../../components/general/Button";
 import IconEdit from "../../assets/icons/IconEdit";
 import IconRemove from "../../assets/icons/IconRemove";
 
-import { getProperty } from "../../api/property";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getProperty } from "../../api/ApiProperty";
 
 export default function AgentPropertyDetails() {
   const [formValues, setFormValues] = useState({
@@ -36,21 +34,19 @@ export default function AgentPropertyDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getProperty();
+    fillProperty();
   }, []);
 
-  const getProperty = async () => {
-    try {
-      const url = window.location.href.split("/");
-      const id = url[url.length - 1];
+  const fillProperty = async () => {
+    const url = window.location.href.split("/");
+    const id = url[url.length - 1];
 
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/property/${id}`
-      );
+    const property = await getProperty(`${id}`);
 
-      setFormValues(response.data.data);
-    } catch (error) {
-      navigate("/404");
+    if (!property.error) {
+      setFormValues(property.response.data.data);
+    } else {
+      console.log(property.error);
     }
   };
 
