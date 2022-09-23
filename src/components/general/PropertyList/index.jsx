@@ -16,7 +16,6 @@ export default function PropertyList({ url }) {
   }, []);
 
   const getData = async () => {
-    console.log("as")
     try {
       const response = await axios.get(url);
       setProperties(response.data.data);
