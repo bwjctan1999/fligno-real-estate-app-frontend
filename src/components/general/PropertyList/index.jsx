@@ -1,6 +1,5 @@
-import axios from "axios";
+import { getProperty } from "../../../api/ApiProperty";
 import { useState } from "react";
-import { useLayoutEffect } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,12 +15,12 @@ export default function PropertyList({ url }) {
   }, []);
 
   const getData = async () => {
-    try {
-      const response = await axios.get(url);
-      setProperties(response.data.data);
-      console.log(response.data.data);
-    } catch (error) {
-      console.log(error);
+    const property = await getProperty("");
+
+    if (!property.error) {
+      setProperties(property.response.data.data);
+    } else {
+      console.log(property.error);
     }
   };
 
