@@ -3,11 +3,15 @@ import { PostEmail } from "../../api/ApiEmail";
 export default function EmailVerification() {
   const verifyAccount = () => {
     const url = window.location.href;
-    const id = url[url.length - 1];
+    const token = url.slice(35);
 
-    console.log(url);
+    const api_request = PostEmail(token);
 
-    //const api_request = PostEmail(localStorage.token);
+    if (!api_request.error) {
+      setFormValues(api_request.response.data.data);
+    } else {
+      console.log(api_request.error);
+    }
   };
 
   return (
