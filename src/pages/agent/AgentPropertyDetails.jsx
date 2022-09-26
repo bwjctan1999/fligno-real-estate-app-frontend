@@ -10,7 +10,6 @@ import IconEdit from "../../assets/icons/IconEdit";
 import IconRemove from "../../assets/icons/IconRemove";
 
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { GetProperty } from "../../api/ApiProperty";
 
 export default function AgentPropertyDetails() {
@@ -30,8 +29,6 @@ export default function AgentPropertyDetails() {
     zip_code: "",
     img: "",
   });
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     fillProperty();
