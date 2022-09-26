@@ -4,7 +4,7 @@ export default function EmailVerification() {
   const verifyAccount = () => {
     const url = window.location.href;
     const token = url.slice(35);
-
+    console.log(token)
     const api_request = PostEmail(token);
 
     if (!api_request.error) {
