@@ -43,7 +43,7 @@ export async function DeleteProperty(id) {
   }
 }
 
-export async function EditProperty(id, data) {
+export async function UpdateProperty(id, data) {
   const resolved = {
     response: null,
     error: null,
@@ -54,4 +54,6 @@ export async function EditProperty(id, data) {
   } catch (e) {
     resolved.error = e;
   }
+
+  return resolved;
 }
