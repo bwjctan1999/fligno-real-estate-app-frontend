@@ -9,8 +9,7 @@ export async function PostEmail(data) {
   };
 
   try {
-    const test = await axios.post(`${base_url}`, data);
-    console.log(test);
+    resolved.response = await axios.post(`${base_url}`, data);
   } catch (e) {
     resolved.error = e;
   }
