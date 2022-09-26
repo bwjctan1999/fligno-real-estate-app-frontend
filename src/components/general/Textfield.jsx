@@ -8,6 +8,7 @@ export default function Textfield({
   placeholder,
   onChange,
   invalidError = "",
+  value,
 }) {
   return (
     <div>
@@ -26,6 +27,7 @@ export default function Textfield({
           className={`${padding} h-full w-full rounded-lg outline-none`}
           onClick={onClick}
           onChange={onChange}
+          value={value}
         />
       </div>
       {invalidError === "" ? null : (

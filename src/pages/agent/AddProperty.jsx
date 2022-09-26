@@ -7,12 +7,7 @@ import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
 
-import {
-  ValidEmail,
-  ValidEmpty,
-  ValidName,
-  ValidMobileNumber,
-} from "../../scripts/Validations";
+import { ValidEmpty } from "../../scripts/Validations";
 
 export default function AddProperty() {
   const [formValues, setFormValues] = useState({
@@ -119,7 +114,7 @@ export default function AddProperty() {
 
             <div className="w-full lg:w-1/4">
               <label className="font-black text-TextTertiary" htmlFor="price">
-                Price 
+                Price
               </label>
               <Textfield
                 id="price "

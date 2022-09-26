@@ -1,5 +1,5 @@
 export default function DropDown({
-  value,
+  value = "",
   onChange,
   invalidError = "",
   options = [],

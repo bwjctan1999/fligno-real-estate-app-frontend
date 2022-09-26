@@ -10,8 +10,7 @@ import IconEdit from "../../assets/icons/IconEdit";
 import IconRemove from "../../assets/icons/IconRemove";
 
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getProperty } from "../../api/ApiProperty";
+import { GetProperty } from "../../api/ApiProperty";
 
 export default function AgentPropertyDetails() {
   const [formValues, setFormValues] = useState({
@@ -31,8 +30,6 @@ export default function AgentPropertyDetails() {
     img: "",
   });
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     fillProperty();
   }, []);
@@ -41,7 +38,7 @@ export default function AgentPropertyDetails() {
     const url = window.location.href.split("/");
     const id = url[url.length - 1];
 
-    const property = await getProperty(`${id}`);
+    const property = await GetProperty(`${id}`);
 
     if (!property.error) {
       setFormValues(property.response.data.data);

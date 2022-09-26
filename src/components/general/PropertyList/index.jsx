@@ -1,4 +1,4 @@
-import { getProperty } from "../../../api/ApiProperty";
+import { GetProperty } from "../../../api/ApiProperty";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ export default function PropertyList({ url }) {
   }, []);
 
   const getData = async () => {
-    const property = await getProperty("");
+    const property = await GetProperty("");
 
     if (!property.error) {
       setProperties(property.response.data.data);
