@@ -1,5 +1,3 @@
-
-
 export default function EmailVerification() {
     return (
         <div className="flex items-center justify-center mt-28 mb-2 p-5 bg-blue-100 min-w-screen">

@@ -70,7 +70,7 @@ export default function RouteList() {
           element: <AboutPage />,
         },
         {
-          path: "email-verification",
+          path: "verify",
           element: <EmailVerification />,
         },
         {
