@@ -4,7 +4,7 @@ export default function EmailVerification() {
     return (
         <div className="flex items-center justify-center mt-28 mb-2 p-5 bg-blue-100 min-w-screen">
             <div className="max-w-xl p-8 text-center text-gray-800 bg-white lg:max-w-3xl lg:p-12">
-                <h3 className="text-4xl font-medium">Thank you for signing up at Turnkey!</h3>
+                <h3 className="text-4xl font-medium">You're almost there!</h3>
                 <div className="flex justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 m-3" fill="blue"
                         viewBox="0 0 24 24" stroke="white">
@@ -13,7 +13,7 @@ export default function EmailVerification() {
                     </svg>
                 </div>
 
-                <p className="text-lg">We're happy you're here. Let's get your email address verified:</p>
+                <p className="text-base">Click the button below to verify your email address and finish setting up your account.</p>
                 <div className="mt-4">
                     <button className="px-4 py-2 m-3 bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end text-TextOnDark font-bold bg-BtnPrimary-start rounded">Click to Verify Email</button>  
                 </div>
