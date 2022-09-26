@@ -12,6 +12,7 @@ import ClientLayout from "../pages/client/ClientLayout";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
+import VerifyEmail from "../pages/client/VerifyEmail";
 
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
@@ -75,6 +76,10 @@ export default function RouteList() {
         {
           path: "properties/:propertyid",
           element: <PropertyDetails />,
+        },
+        {
+          path: "verify",
+          element: <VerifyEmail />,
         },
       ],
     },
