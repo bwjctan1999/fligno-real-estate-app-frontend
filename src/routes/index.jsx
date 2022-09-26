@@ -2,6 +2,7 @@ import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
 
+import EmailVerification from "../pages/client/EmailVerification";
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
@@ -67,6 +68,10 @@ export default function RouteList() {
         {
           path: "about",
           element: <AboutPage />,
+        },
+        {
+          path: "email-verification",
+          element: <EmailVerification />,
         },
         {
           path: "properties",
