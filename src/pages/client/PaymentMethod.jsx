@@ -1,6 +1,9 @@
 import IconArrowDown from "../../assets/icons/IconArrowDown";
+import { useLocation } from "react-router-dom";
 
 export default function PaymentMethod() {
+  const location = useLocation();
+
   return (
     <div className="min-h-scree flex flex-col-reverse justify-center bg-BGPrimary lg:flex-row">
       <div className="flex justify-center p-4 pt-16">
