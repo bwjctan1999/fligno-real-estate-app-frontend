@@ -8,7 +8,7 @@ export default function EmailVerification() {
     const api_request = PostEmail(token);
 
     if (!api_request.error) {
-      console.log(response);
+      console.log(api_request.response);
     } else {
       console.log(api_request.error);
     }
