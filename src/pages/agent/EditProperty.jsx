@@ -177,7 +177,7 @@ export default function EditProperty() {
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <p className="font-black text-TextTertiary">Location</p>
+            <p className="font-black text-TextTertiary">Property Information</p>
             <div className="flex gap-x-2">
               <div className="w-3/5">
                 <Textfield
