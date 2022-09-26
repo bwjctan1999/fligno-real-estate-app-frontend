@@ -19,6 +19,7 @@ import Clients from "../pages/agent/Clients";
 import AddProperty from "../pages/agent/AddProperty";
 import AgentProperties from "../pages/agent/AgentProperties";
 import AgentPropertyDetails from "../pages/agent/AgentPropertyDetails";
+import UpdateAccountInfo from "../pages/agent/UpdateAccountInfo";
 import EditProperty from "../pages/agent/EditProperty";
 
 import AdminLayout from "../pages/admin/AdminLayout";
@@ -102,6 +103,10 @@ export default function RouteList() {
           element: <AddProperty />,
         },
         {
+          path: "edit-property/:propertyid",
+          element: <EditProperty />,
+        },
+        {
           path: "properties",
           element: <AgentProperties />,
         },
@@ -110,8 +115,8 @@ export default function RouteList() {
           element: <AgentPropertyDetails />,
         },
         {
-          path: "edit-property/:propertyid",
-          element: <EditProperty />,
+          path: "update-account/:propertyid",
+          element: <UpdateAccountInfo />,
         },
       ],
     },
