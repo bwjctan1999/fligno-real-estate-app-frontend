@@ -22,6 +22,7 @@ export default function AddProperty() {
     area: "",
     zip_code: "",
     city: "",
+    img: "",
   });
 
   const [validations, setValidations] = useState({
@@ -131,8 +132,8 @@ export default function AddProperty() {
               </label>
               <DropDown
                 id="type"
-                options={["For Rent", "For Sale"]}
-                values={[1, 2]}
+                options={["", "For Rent", "For Sale"]}
+                values={["", 1, 2]}
                 onChange={(e) => setValue(e, "type")}
                 invalidError={validations.type}
               />
@@ -152,7 +153,7 @@ export default function AddProperty() {
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <p className="font-black text-TextTertiary">Location</p>
+            <p className="font-black text-TextTertiary">Property Information</p>
             <div className="flex gap-x-2">
               <div className="w-3/5">
                 <Textfield
