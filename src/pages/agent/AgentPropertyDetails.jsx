@@ -48,7 +48,7 @@ export default function AgentPropertyDetails() {
   };
 
   return (
-    <div className="item-center my-24 flex flex-wrap gap-y-8 px-4 lg:px-52 ">
+    <div className="item-center my-24 flex flex-wrap gap-y-8 px-4 lg:px-20 ">
       <div className="ml-auto grid w-full grid-cols-3 gap-2 lg:w-3/5">
         <Button
           icon={
@@ -84,75 +84,77 @@ export default function AgentPropertyDetails() {
         </div>
       </div>
 
-      <div class="container">
-        <img
-          src={`${formValues.img}`}
-          alt="image"
-          className="aspect-video w-full rounded-lg object-cover"
-        />
-        <div className="mt-4 grid grid-cols-4 gap-4">
+      <div className="flex flex-wrap gap-14">
+        <div className="max-w-2xl">
           <img
-            src={PDimg2}
+            src={`${formValues.img}`}
             alt="image"
             className="aspect-video w-full rounded-lg object-cover"
           />
-          <img
-            src={PDimg3}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-          <img
-            src={PDimg4}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-          <img
-            src={PDimg5}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-wrap">
-        <div className="flex flex-wrap gap-3 ">
-          <h1 className="text-xl font-bold">Property Description</h1>
-          <p className="text-justify">{formValues.description}</p>
+          <div className="mt-4 grid grid-cols-4 gap-4">
+            <img
+              src={PDimg2}
+              alt="image"
+              className="aspect-video w-full rounded-lg object-cover"
+            />
+            <img
+              src={PDimg3}
+              alt="image"
+              className="aspect-video w-full rounded-lg object-cover"
+            />
+            <img
+              src={PDimg4}
+              alt="image"
+              className="aspect-video w-full rounded-lg object-cover"
+            />
+            <img
+              src={PDimg5}
+              alt="image"
+              className="aspect-video w-full rounded-lg object-cover"
+            />
+          </div>
         </div>
 
-        <div className="mt-16 w-full">
-          <h1 className="w-text-xl font-bold">Property Info</h1>
-        </div>
-
-        <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row ">
-          <div className="grid w-11/12 grid-cols-3 gap-3">
-            <div className="flex flex-wrap gap-3">
-              <IconArea />
-              <span className="justify-center text-base font-bold text-TextSecondary">
-                {formValues.area} sq.m
-              </span>
-              <inline className=" text-TextSecondary">Area (sqft)</inline>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              <IconBed />
-              <span className="text-base font-bold text-TextSecondary">
-                {formValues.bedroom}
-              </span>
-              <inline className=" text-TextSecondary">No. Bedroom</inline>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              <IconBathroom />
-              <span className="text-base font-bold text-TextSecondary">
-                {formValues.bathroom}
-              </span>
-              <inline className="text-TextSecondary">No. Bathroom</inline>
-            </div>
+        <div className="flex max-w-xl flex-wrap">
+          <div className="flex flex-wrap gap-3 ">
+            <h1 className="text-xl font-bold">Property Description</h1>
+            <p className="text-justify">{formValues.description}</p>
           </div>
 
-          <div className=" flex w-full justify-center lg:w-5/12">
-            <Button text="Contact Us" />
+          <div className="mt-16 w-full">
+            <h1 className="w-text-xl font-bold">Property Info</h1>
+          </div>
+
+          <div className="flex w-full flex-col items-center justify-between gap-y-10 md:flex-row ">
+            <div className="grid w-11/12 grid-cols-3 gap-3">
+              <div className="flex flex-wrap gap-3">
+                <IconArea />
+                <span className="justify-center text-base font-bold text-TextSecondary">
+                  {formValues.area} sq.m
+                </span>
+                <inline className=" text-TextSecondary">Area (sqft)</inline>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-3">
+                <IconBed />
+                <span className="text-base font-bold text-TextSecondary">
+                  {formValues.bedroom}
+                </span>
+                <inline className=" text-TextSecondary">No. Bedroom</inline>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-3">
+                <IconBathroom />
+                <span className="text-base font-bold text-TextSecondary">
+                  {formValues.bathroom}
+                </span>
+                <inline className="text-TextSecondary">No. Bathroom</inline>
+              </div>
+            </div>
+
+            <div className=" flex w-full justify-center lg:w-5/12">
+              <Button text="Contact Us" />
+            </div>
           </div>
         </div>
       </div>
