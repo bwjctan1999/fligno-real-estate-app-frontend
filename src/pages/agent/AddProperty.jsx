@@ -22,7 +22,7 @@ export default function AddProperty() {
     area: "",
     zip_code: "",
     city: "",
-    img: "",
+    img: "blank",
   });
 
   const [validations, setValidations] = useState({
@@ -52,6 +52,7 @@ export default function AddProperty() {
       area: "",
       zip_code: "",
       city: "",
+      img: "",
     };
 
     if (!ValidEmpty(formValues.title)) tempValidations.title = "Required";
@@ -88,6 +89,7 @@ export default function AddProperty() {
         "http://localhost:8000/api/property",
         formValues
       );
+      console.log(response);
     } catch (error) {
       console.log(error);
       alert(`Add Property Failed! ${error.message}`);

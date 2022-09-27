@@ -9,7 +9,7 @@ import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
 import Subscription from "../pages/client/Subscription";
 import PaymentMethod from "../pages/client/PaymentMethod";
-import PropertyDetails from "../pages/client/PropertyDetails";
+import ClientPropertyDetails from "../pages/client/ClientPropertyDetails";
 import ClientLayout from "../pages/client/ClientLayout";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
@@ -85,7 +85,7 @@ export default function RouteList() {
         },
         {
           path: "properties/:propertyid",
-          element: <PropertyDetails />,
+          element: <ClientPropertyDetails />,
         },
       ],
     },
@@ -135,7 +135,7 @@ export default function RouteList() {
     {
       path: "/admin",
       element:
-        localStorage.getItem("user_role") != 1 ? (
+        localStorage.getItem("user_role") != 2 ? (
           <Navigate to="/" />
         ) : (
           <AdminLayout />
