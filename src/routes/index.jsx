@@ -135,7 +135,7 @@ export default function RouteList() {
     {
       path: "/admin",
       element:
-        localStorage.getItem("user_role") != 1 ? (
+        localStorage.getItem("user_role") != 2 ? (
           <Navigate to="/" />
         ) : (
           <AdminLayout />
