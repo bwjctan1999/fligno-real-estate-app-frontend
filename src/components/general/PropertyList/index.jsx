@@ -48,7 +48,7 @@ export default function PropertyList({ url }) {
         bednum={bedroom}
         bathnum={bathroom}
         price={price}
-        onClick={() => navigate(`/agent/property/${user_id}`)}
+        onClick={() => navigate(`/agent/properties/${id}`)}
         key={id}
         img={img}
       />
