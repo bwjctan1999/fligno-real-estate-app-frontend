@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
@@ -6,23 +7,25 @@ import IconUser from "../../assets/icons/IconUser";
 import Button from "../../components/general/Button";
 
 export default function AdminRoles() {
-  const addTableData = () => (
+  const navigate = useNavigate();
+  const addTableData = ({ name, count }) => (
     <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
-      <Td>Admin</Td>
+      <Td>{name}</Td>
       <Td>
         <div className="flex">
-          1
+          {count}
           <IconUser />
         </div>
       </Td>
       <Td>
         <div className="flex w-full justify-end">
-          <div className="flex w-full justify-end gap-2 lg:w-52">
+          <div className="flex w-full justify-end gap-2 lg:w-60">
             <Button
-              text="Edit"
+              text="Permissions"
               fontsize="text-base"
               padding="p-1"
               custom="md:my-3"
+              onClick={() => navigate("/admin/permissions/1")}
             />
             <Button
               text="Remove"
@@ -50,7 +53,11 @@ export default function AdminRoles() {
                 <Th className="float-right">Actions</Th>
               </Tr>
             </Thead>
-            <Tbody>{[...Array(5)].map((x, i) => addTableData())}</Tbody>
+            <Tbody>
+              {addTableData({ name: "Client", count: 12837 })}
+              {addTableData({ name: "Agent", count: 142 })}
+              {addTableData({ name: "Admin", count: 1 })}
+            </Tbody>
           </Table>
         </div>
       </div>
