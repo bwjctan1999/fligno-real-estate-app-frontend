@@ -22,22 +22,12 @@ export default function ClientNavbar({}) {
     window.addEventListener("resize", handleResize);
   });
 
-  useEffect(() => {
-    function handleLoad() {
-      window.innerWidth > 768 ? setOpenNavbar(true) : setOpenNavbar(false);
-    }
-
-    window.addEventListener("load", handleLoad);
-  });
-
   const changeSelectedText = (state, selected) => {
     const style = "flex h-full items-center gap-2 ";
-
-    if (state === selected) {
-      return style + "text-BtnPrimary-end";
-    }
+    if (state === selected) return style + "text-BtnPrimary-end";
     return style + "text-TextTertiary";
   };
+  
 
   return (
     <div>
@@ -97,7 +87,15 @@ export default function ClientNavbar({}) {
             </Link>
           </nav>
 
-          <div className="stroke border- flex items-center gap-2 lg:w-1/6">
+          <div className="stroke border- flex items-center gap-2 lg:w-1/5">
+            {localStorage.getItem("user_role") == 2 ? (
+              <Button
+                bgcolor="bg-gradient-to-r from-BtnQuanary-start to-BtnQuanary-end"
+                text="Agent"
+                padding="p-2"
+                onClick={() => navigate("/agent")}
+              />
+            ) : null}
             <Button
               text="Sign Up"
               bgcolor="bg-BGPrimary"
