@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 import PropertyCard from "./PropertyCard";
-import PropertyFilter from "./PropertyFilter";
+import Button from "../Button";
+import IconAdd from "../../../assets/icons/IconAdd";
 
 export default function PropertyList({ url }) {
   const [properties, setProperties] = useState([]);
@@ -57,10 +59,10 @@ export default function PropertyList({ url }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <PropertyFilter />
       <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
         {properties.map((property, i) => addProperty(property))}
       </div>
     </div>
+   
   );
 }
