@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PropertyCard from "./PropertyCard";
-import PropertyFilter from "./PropertyFilter";
 
 export default function PropertyList({ url }) {
   const [properties, setProperties] = useState([]);
