@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import IconLogo from "../../assets/icons/IconLogo";
 import IconNotification from "../../assets/icons/IconNotification";
@@ -10,6 +11,8 @@ import Button from "../general/Button";
 export default function ClientNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleResize() {
@@ -101,8 +104,13 @@ export default function ClientNavbar({}) {
               textcolor="text-BtnPrimary-end"
               custom="border-BtnPrimary-end border-solid border-2 box-border"
               padding="p-2"
+              onClick={() => navigate("/signup")}
             />
-            <Button text="Log In" padding="p-2" />
+            <Button
+              text="Log In"
+              padding="p-2"
+              onClick={() => navigate("/login")}
+            />
             {/* <IconNotification />
             <img src={DesignProfile} className="h-8 w-8" /> */}
           </div>
