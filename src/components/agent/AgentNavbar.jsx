@@ -57,10 +57,13 @@ export default function AgentNavbar({}) {
             <button onClick={() => setOpenNavbar(false)} className="lg:hidden">
               <IconMenu width="30" height="30" />
             </button>
-            <IconLogo />
-            <label className="text-2xl font-black text-BtnPrimary-end">
+            <Link
+              to="/"
+              className="flex gap-4 text-2xl font-black text-BtnPrimary-end"
+            >
+              <IconLogo />
               Turnkey
-            </label>
+            </Link>
           </div>
 
           <nav className="flex flex-col gap-10 text-xl font-black lg:flex-row lg:items-center">
