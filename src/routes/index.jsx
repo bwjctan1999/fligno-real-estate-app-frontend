@@ -99,7 +99,7 @@ export default function RouteList() {
     {
       path: "/agent",
       element:
-        localStorage.getItem("user_role") != 2 ? (
+        localStorage.getItem("user_role") ? (
           <Navigate to="/" />
         ) : (
           <AgentLayout />
