@@ -43,7 +43,7 @@ export default function AgentNavbar({}) {
     <div>
       <button
         onClick={() => setOpenNavbar(true)}
-        className="fixed left-0 top-0 p-4 lg:hidden"
+        className="fixed left-4 top-4 rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2 text-BGPrimary lg:hidden"
       >
         <IconMenu width="30" height="30" />
       </button>
@@ -54,7 +54,10 @@ export default function AgentNavbar({}) {
       >
         <div className="flex h-full w-full flex-col justify-between lg:flex-row">
           <div className="flex gap-4">
-            <button onClick={() => setOpenNavbar(false)} className="lg:hidden">
+            <button
+              onClick={() => setOpenNavbar(false)}
+              className="px-2 lg:hidden"
+            >
               <IconMenu width="30" height="30" />
             </button>
             <Link
