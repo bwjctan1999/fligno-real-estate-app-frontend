@@ -90,15 +90,6 @@ export default function AgentNavbar({}) {
               <IconProperties width="26" height="26" />
               Properties
             </Link>
-
-            <Link
-              to="add-property"
-              onClick={() => setActive("/agent/add-property")}
-              className={changeSelectedText(active, "/agent/add-property")}
-            >
-              <IconAdd />
-              Add Property
-            </Link>
           </nav>
 
           <div className="flex items-center gap-4">
