@@ -11,8 +11,15 @@ import Button from "../general/Button";
 export default function ClientNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.getItem("token") !== null
+      ? setLoggedIn(true)
+      : setLoggedIn(false);
+  }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -27,7 +34,48 @@ export default function ClientNavbar({}) {
     if (state === selected) return style + "text-BtnPrimary-end";
     return style + "text-TextTertiary";
   };
-  
+
+  const handleLogin = (loggedIn) => {
+    if (loggedIn) {
+      return (
+        <div className="stroke border- flex items-center gap-2 lg:w-1/6 ">
+          <Button
+            bgcolor="bg-gradient-to-r from-BtnQuanary-start to-BtnQuanary-end"
+            text="Agent"
+            padding="p-2"
+            onClick={() => navigate("/agent")}
+          />
+          <Button
+            text="Log Out"
+            padding="p-2"   
+            onClick={() => {
+              localStorage.clear();
+              setLoggedIn(false);
+              navigate("/login");
+            }}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="stroke border- flex items-center gap-2 lg:w-1/5 ">
+        <Button
+          text="Sign Up"
+          bgcolor="bg-BGPrimary"
+          textcolor="text-BtnPrimary-end"
+          custom=" shadow-border shadow-BtnPrimary-end"
+          padding="p-2"
+          onClick={() => navigate("/signup")}
+        />
+        <Button
+          text="Log In"
+          padding="p-2"
+          onClick={() => navigate("/login")}
+        />
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -86,32 +134,7 @@ export default function ClientNavbar({}) {
               Agents
             </Link>
           </nav>
-
-          <div className="stroke border- flex items-center gap-2 lg:w-1/5">
-            {localStorage.getItem("user_role") == 2 ? (
-              <Button
-                bgcolor="bg-gradient-to-r from-BtnQuanary-start to-BtnQuanary-end"
-                text="Agent"
-                padding="p-2"
-                onClick={() => navigate("/agent")}
-              />
-            ) : null}
-            <Button
-              text="Sign Up"
-              bgcolor="bg-BGPrimary"
-              textcolor="text-BtnPrimary-end"
-              custom="border-BtnPrimary-end border-solid border-2 box-border"
-              padding="p-2"
-              onClick={() => navigate("/signup")}
-            />
-            <Button
-              text="Log In"
-              padding="p-2"
-              onClick={() => navigate("/login")}
-            />
-            {/* <IconNotification />
-            <img src={DesignProfile} className="h-8 w-8" /> */}
-          </div>
+          {handleLogin(loggedIn)}
         </div>
       </nav>
     </div>
