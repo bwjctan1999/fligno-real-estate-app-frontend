@@ -9,11 +9,12 @@ import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
 import Subscription from "../pages/client/Subscription";
 import PaymentMethod from "../pages/client/PaymentMethod";
-import PropertyDetails from "../pages/client/PropertyDetails";
+import ClientPropertyDetails from "../pages/client/ClientPropertyDetails";
 import ClientLayout from "../pages/client/ClientLayout";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
+import VerifyEmail from "../pages/client/VerifyEmail";
 
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
@@ -29,7 +30,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminRoles from "../pages/admin/AdminRoles";
 import AdminProperties from "../pages/admin/AdminProperties";
 import AdminUsersList from "../pages/admin/AdminUsersList";
-import AdminEditRole from "../pages/admin/AdminEditRole";
+import AdminPermissions from "../pages/admin/AdminPermissions";
 import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
 
 export default function RouteList() {
@@ -85,7 +86,11 @@ export default function RouteList() {
         },
         {
           path: "properties/:propertyid",
-          element: <PropertyDetails />,
+          element: <ClientPropertyDetails />,
+        },
+        {
+          path: "verify",
+          element: <VerifyEmail />,
         },
       ],
     },
@@ -135,7 +140,7 @@ export default function RouteList() {
     {
       path: "/admin",
       element:
-        localStorage.getItem("user_role") != 1 ? (
+        localStorage.getItem("user_role") != 2 ? (
           <Navigate to="/" />
         ) : (
           <AdminLayout />
@@ -158,8 +163,8 @@ export default function RouteList() {
           element: <AdminUsersList />,
         },
         {
-          path: "edit-role/:userid",
-          element: <AdminEditRole />,
+          path: "permissions/:userid",
+          element: <AdminPermissions />,
         },
         {
           path: "property/:propertyid",
