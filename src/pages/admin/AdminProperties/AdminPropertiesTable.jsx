@@ -18,7 +18,7 @@ export default function AdminPropertiesTable() {
     const property = await GetProperty("");
 
     if (!property.error) {
-      setProperties(property.response.data.data);
+      setProperties(property.response.data.data.data);
     } else {
       console.log(property.error);
     }

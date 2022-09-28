@@ -1,6 +1,5 @@
 import { GetProperty } from "../../../api/ApiProperty";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PropertyCard from "./PropertyCard";
@@ -14,12 +13,13 @@ export default function PropertyList({ url }) {
   }, []);
 
   const getData = async () => {
-    const property = await GetProperty("");
+    const api_request = await GetProperty("");
 
-    if (!property.error) {
-      setProperties(property.response.data.data);
+    if (!api_request.error) {
+      setProperties(api_request.response.data.data.data);
+      console.log(api_request.response.data.data.data);
     } else {
-      console.log(property.error);
+      console.log(api_request.error);
     }
   };
 
