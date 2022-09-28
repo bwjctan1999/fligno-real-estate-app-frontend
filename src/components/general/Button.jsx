@@ -16,7 +16,7 @@ export default function Button({
       onClick={onClick}
     >
       {icon}
-      <span className={responsive === "true" ? "hidden lg:block" : ""}>
+      <span className={responsive === "true" ? "hidden md:block" : ""}>
         {text}
       </span>
     </button>
