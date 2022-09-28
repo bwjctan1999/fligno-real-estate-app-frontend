@@ -1,10 +1,13 @@
 import DesignAboutPage from "../../assets/svgs/DesignAboutPage";
 import DesignBuyProperty from "../../assets/svgs/DesignBuyProperty";
 import DesignRentProperty from "../../assets/svgs/DesignRentProperty";
+import SuccessPopUp from "../../components/general/SuccessPopUp";
 
 export default function AboutPage() {
   return (
+
     <div className="w-full">
+       <SuccessPopUp/>
       <div className="flex w-full flex-col-reverse items-center justify-center gap-20 bg-BGSecondary py-20 px-4 md:px-24 lg:flex-row lg:px-32">
         <div className="flex flex-col gap-4 lg:w-1/2 ">
           <h1 className="text-Primary flex text-3xl font-bold lg:text-5xl">
