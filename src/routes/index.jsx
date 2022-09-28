@@ -98,12 +98,12 @@ export default function RouteList() {
     //Agent Routes
     {
       path: "/agent",
-      element:
-        localStorage.getItem("user_role") ? (
-          <Navigate to="/" />
-        ) : (
-          <AgentLayout />
-        ),
+      element: <AgentLayout />,
+      // localStorage.getItem("user_role") != 2 ? (
+      //   <Navigate to="/" />
+      // ) : (
+      //   <AgentLayout />
+      // ),
       children: [
         {
           index: true,
