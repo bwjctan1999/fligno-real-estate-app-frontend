@@ -9,8 +9,8 @@ export default function AdminEditRole() {
   const { roleId } = useParams();
 
   return (
-    <div className="flex min-h-screen flex-col gap-8 bg-BGSecondary pt-16 lg:px-60 lg:pt-32">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div className="flex min-h-screen flex-col gap-4 bg-BGSecondary pt-16 lg:px-60 lg:pt-32">
+      {/* <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="w-full px-4 lg:px-0">
           <h1 className="mb-1 text-lg font-bold">Role Name</h1>
           <Textfield placeholder="e.g. Admin" />
@@ -19,15 +19,15 @@ export default function AdminEditRole() {
           <h1 className="mb-1 text-lg font-bold">Description</h1>
           <Textfield placeholder="e.g. Allows members to..." />
         </div>
-      </div>
-
+      </div> */}
+      <h1 className="text-xl font-bold">Agent Permissions</h1>
       <div>
         <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
           <Table>
             <Thead>
               <Tr className="border-b-2 border-LineSecondary text-left text-lg">
-                <Th>Role</Th>
-                <Th>Members</Th>
+                <Th>Permissions</Th>
+                <Th>Description</Th>
                 <Th className="float-right">Actions</Th>
               </Tr>
             </Thead>
@@ -65,13 +65,4 @@ export default function AdminEditRole() {
       </div>
     </div>
   );
-}
-
-{
-  /* 
-
-<div className="flex w-full justify-end">
-          <div className="flex w-full justify-end gap-2 lg:w-52"></div>
-        </div>
-*/
 }

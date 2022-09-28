@@ -30,7 +30,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminRoles from "../pages/admin/AdminRoles";
 import AdminProperties from "../pages/admin/AdminProperties";
 import AdminUsersList from "../pages/admin/AdminUsersList";
-import AdminEditRole from "../pages/admin/AdminEditRole";
+import AdminPermissions from "../pages/admin/AdminPermissions";
 import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
 
 export default function RouteList() {
@@ -163,8 +163,8 @@ export default function RouteList() {
           element: <AdminUsersList />,
         },
         {
-          path: "edit-role/:userid",
-          element: <AdminEditRole />,
+          path: "permissions/:userid",
+          element: <AdminPermissions />,
         },
         {
           path: "property/:propertyid",
