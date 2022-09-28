@@ -55,7 +55,7 @@ export default function AdminUsersList() {
         </div>
       </div>
 
-      <div className="rounded-b-lg bg-BGPrimary p-4 shadow-lg">
+      <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
         <Table>
           <Thead>
             <Tr className="border-b-2 border-LineSecondary text-left text-lg">
