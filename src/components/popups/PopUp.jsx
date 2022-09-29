@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../general/Button";
 export default function PopUp({ 
     text = "please change text parameter",
     onClick,
