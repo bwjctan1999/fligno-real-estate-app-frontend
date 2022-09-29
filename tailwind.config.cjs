@@ -8,6 +8,7 @@ module.exports = {
       },
     },
     colors: {
+      transparent: "transparent",
       BGPrimary: "#FFFFFF",
       BGSecondary: "#F5F6FC",
       TextPrimary: "#000000",
