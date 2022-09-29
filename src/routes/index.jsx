@@ -32,6 +32,9 @@ import AdminProperties from "../pages/admin/AdminProperties";
 import AdminUsersList from "../pages/admin/AdminUsersList";
 import AdminEditRole from "../pages/admin/AdminEditRole";
 import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
+import AdminSubscription from "../pages/admin/AdminSubscription";
+import AdminAddSubscription from "../pages/admin/AdminAddSubscription";
+import AdminEditSubscription from "../pages/admin/AdminEditSubscription";
 
 export default function RouteList() {
   let routes = useRoutes([
@@ -140,7 +143,7 @@ export default function RouteList() {
     {
       path: "/admin",
       element:
-        localStorage.getItem("user_role") != 2 ? (
+        localStorage.getItem("user_role")  ? (
           <Navigate to="/" />
         ) : (
           <AdminLayout />
@@ -169,6 +172,18 @@ export default function RouteList() {
         {
           path: "property/:propertyid",
           element: <AdminPropertyDetails />,
+        },
+        {
+          path: "subscription",
+          element: <AdminSubscription />,
+        },
+        {
+          path: "add-subscription",
+          element: <AdminAddSubscription />,
+        },
+        {
+          path: "edit-subscription",
+          element: <AdminEditSubscription />,
         },
       ],
     },
