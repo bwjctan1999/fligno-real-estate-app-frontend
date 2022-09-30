@@ -58,8 +58,14 @@ export default function Paginator({
 
   return (
     <div className="mt-6 flex w-auto items-center justify-center rounded-full bg-BGSecondary p-2 px-6 text-TextSecondary shadow-md">
-      <a href="#client_properties">
-        <button onClick={() => changePage(getPageOnly(prev_url))}>
+      <a href={current === 1 ? null : "#client_properties"}>
+        <button
+          className={`flex items-center ${
+            current === 1 ? "text-LineSecondary" : null
+          }`}
+          disabled={current === 1 ? true : false}
+          onClick={() => changePage(getPageOnly(prev_url))}
+        >
           <IconArrowLeft />
         </button>
       </a>
@@ -96,12 +102,17 @@ export default function Paginator({
         </a>
       ) : null}
 
-      <a href="#client_properties">
-        <button onClick={() => changePage(getPageOnly(next_url))}>
+      <a href={current === last ? null : "#client_properties"}>
+        <button
+          className={`flex items-center ${
+            current === last ? "text-LineSecondary" : null
+          }`}
+          disabled={current === last ? true : false}
+          onClick={() => changePage(getPageOnly(next_url))}
+        >
           <IconArrowRight />
         </button>
       </a>
     </div>
   );
 }
-// bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end font-bold text-TextOnDark
