@@ -13,4 +13,6 @@ export async function PostEmail(data) {
   } catch (e) {
     resolved.error = e;
   }
+
+  return resolved;
 }

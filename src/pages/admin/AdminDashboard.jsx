@@ -1,7 +1,6 @@
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
 import DashboardCard from "../../components/general/DashboardCard";
-import PopUpReason from "../../components/general/PopUpReason";
 
 export default function AdminDashboard() {
   return (

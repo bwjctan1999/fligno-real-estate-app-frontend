@@ -4,7 +4,7 @@ import DashboardCard from "../../components/general/DashboardCard";
 
 export default function AgentDashboard() {
   return (
-    <div className="w-screen bg-BGSecondary p-2 pt-16 md:h-screen md:px-20 md:pt-28 ">
+    <div className="w-screen bg-BGSecondary p-4 pt-20 md:h-screen md:px-20 md:pt-28 ">
       <div className="pb-7 text-4xl font-bold">Dashboard</div>
 
       <div className=" grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">

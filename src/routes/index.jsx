@@ -2,8 +2,6 @@ import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
 
-import EmailVerification from "../pages/client/EmailVerification";
-import EmailVerified from "../pages/client/EmailVerified";
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
@@ -14,6 +12,7 @@ import ClientLayout from "../pages/client/ClientLayout";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
+import EmailVerification from "../pages/client/EmailVerification";
 import VerifyEmail from "../pages/client/VerifyEmail";
 
 
@@ -26,6 +25,7 @@ import AgentPropertyDetails from "../pages/agent/AgentPropertyDetails";
 import UpdateAccountInfo from "../pages/agent/UpdateAccountInfo";
 import EditProperty from "../pages/agent/EditProperty";
 import AgentSubscriptionPage from "../pages/agent/AgentSubscriptionPage";
+import ChangeSubscription from "../pages/agent/AgentSubscription";
 
 import AdminLayout from "../pages/admin/AdminLayout";
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -75,14 +75,6 @@ export default function RouteList() {
           element: <AboutPage />,
         },
         {
-          path: "verify",
-          element: <EmailVerification />,
-        },
-        {
-          path: "verified",
-          element: <EmailVerified />,
-        },
-        {
           path: "properties",
           element: <Properties />,
         },
@@ -93,6 +85,10 @@ export default function RouteList() {
         {
           path: "verify",
           element: <VerifyEmail />,
+        },
+        {
+          path: "verification",
+          element: <EmailVerification />,
         },
       ],
     },
@@ -138,6 +134,10 @@ export default function RouteList() {
         {
           path: "agent-subscription",
           element: <AgentSubscriptionPage />,
+        },
+        {
+          path: "change-subscription",
+          element: <ChangeSubscription />
         },
       ],
     },
