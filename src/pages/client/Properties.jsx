@@ -1,5 +1,6 @@
 import DesignProperties from "../../assets/svgs/DesignProperties";
 import PropertyList from "../../components/general/PropertyList";
+import PropertyFilter from "../../components/general/PropertyList/PropertyFilter";
 
 export default function Properties() {
   return (
@@ -15,7 +16,8 @@ export default function Properties() {
           <DesignProperties />
         </div>
       </div>
-      <div className="p-4 py-12 lg:px-32">
+      <div className="flex flex-col items-end p-4 py-12 lg:px-32">
+        <PropertyFilter />
         <PropertyList />
       </div>
     </div>
