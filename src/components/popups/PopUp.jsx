@@ -1,27 +1,27 @@
 import Button from "../general/Button";
-export default function PopUp({ 
-    text = "please change text parameter",
-    onClick,
- }) {
-  return (
+export default function PopUp({
+  text = "please change text parameter",
+  cancelFunction,
+  okayFunction,
+  state,
+  setState,
+}) {
+  return state ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
-      <div className="bg-TextSecondary bg-opacity-30 flex items-center min-h-screen px-4 py-8">
-        <div className="relative w-full max-w-sm p-8 mx-auto bg-TextOnDark rounded-md shadow-lg">
+      <div className="flex min-h-screen items-center bg-TextSecondary bg-opacity-30 px-4 py-8">
+        <div className="relative mx-auto w-full max-w-sm rounded-md bg-TextOnDark p-8 shadow-lg">
           <div className=" sm:flex">
-            <div className="text-center w-full">
-             {text}
+            <div className="w-full text-center">
+              {text}
 
-              <div className="flex items-center gap-5 mt-8 ">
-                <Button text="No" 
-                onClick={onClick}/>
-                <Button text="Yes" 
-                onClick={onClick}/>
+              <div className="mt-8 flex items-center gap-5 ">
+                <Button text="No" onClick={cancelFunction} />
+                <Button text="Yes" onClick={okayFunction} />
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }

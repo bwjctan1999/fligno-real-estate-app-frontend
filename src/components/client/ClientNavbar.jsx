@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import IconLogo from "../../assets/icons/IconLogo";
-import IconNotification from "../../assets/icons/IconNotification";
-import DesignProfile from "../../assets/svgs/DesignProfile.svg";
 import IconMenu from "../../assets/icons/IconMenu";
 import Button from "../general/Button";
+import PopUp from "../popups/PopUp";
 
 export default function ClientNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -47,12 +47,8 @@ export default function ClientNavbar({}) {
           />
           <Button
             text="Log Out"
-            padding="p-2"   
-            onClick={() => {
-              localStorage.clear();
-              setLoggedIn(false);
-              navigate("/login");
-            }}
+            padding="p-2"
+            onClick={() => setShowPopup(true)}
           />
         </div>
       );
@@ -79,6 +75,18 @@ export default function ClientNavbar({}) {
 
   return (
     <div>
+      <PopUp
+        text="Are you sure you want to log out?"
+        state={showPopup}
+        setState={setShowPopup}
+        cancelFunction={() => setShowPopup(false)}
+        okayFunction={() => {
+          localStorage.clear();
+          setLoggedIn(false);
+          navigate("/login");
+          setShowPopup(false);
+        }}
+      />
       <button
         onClick={() => setOpenNavbar(true)}
         className="fixed left-0 top-0 p-4 lg:hidden"
