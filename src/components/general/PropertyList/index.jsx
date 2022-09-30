@@ -72,11 +72,8 @@ export default function PropertyList({ url }) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div
-        className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4"
-        id="client_properties"
-      >
+    <div className="flex flex-col items-center gap-3" id="client_properties">
+      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
         {properties.map((property, i) => addProperty(property))}
       </div>
       <Paginator
