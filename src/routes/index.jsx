@@ -15,6 +15,7 @@ import AboutPage from "../pages/client/AboutPage";
 import EmailVerification from "../pages/client/EmailVerification";
 import VerifyEmail from "../pages/client/VerifyEmail";
 
+
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
 import Clients from "../pages/agent/Clients";
@@ -23,6 +24,7 @@ import AgentProperties from "../pages/agent/AgentProperties";
 import AgentPropertyDetails from "../pages/agent/AgentPropertyDetails";
 import UpdateAccountInfo from "../pages/agent/UpdateAccountInfo";
 import EditProperty from "../pages/agent/EditProperty";
+import AgentSubscriptionPage from "../pages/agent/AgentSubscriptionPage";
 import ChangeSubscription from "../pages/agent/AgentSubscription";
 
 import AdminLayout from "../pages/admin/AdminLayout";
@@ -130,8 +132,12 @@ export default function RouteList() {
           element: <UpdateAccountInfo />,
         },
         {
+          path: "agent-subscription",
+          element: <AgentSubscriptionPage />,
+        },
+        {
           path: "change-subscription",
-          element: <ChangeSubscription />,
+          element: <ChangeSubscription />
         },
       ],
     },

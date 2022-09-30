@@ -104,7 +104,7 @@ export default function AddProperty() {
       <div className="flex w-full flex-col gap-5 lg:flex-row lg:gap-20">
         <div className="flex flex-col gap-5 lg:w-1/2 ">
           <div className="flex w-full flex-col gap-x-2 gap-y-5 lg:flex-row lg:gap-y-0">
-            <div className="w-full lg:w-2/4">
+            <div className="w-full lg:w-1/2">
               <span className=" font-black text-TextTertiary ">
                 Property Title
               </span>
