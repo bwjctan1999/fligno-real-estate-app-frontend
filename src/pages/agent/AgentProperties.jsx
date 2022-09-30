@@ -8,7 +8,7 @@ export default function AgentProperties() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-BGSecondary px-4 pt-24 lg:px-24">
+    <div className="min-h-screen bg-BGSecondary px-4 pt-24 pb-12 lg:px-24">
       <div className="mb-10 text-4xl font-bold text-TextTertiary">
         Properties
       </div>
