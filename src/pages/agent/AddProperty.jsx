@@ -8,6 +8,7 @@ import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
 
 import { ValidEmpty } from "../../scripts/Validations";
+import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
 export default function AddProperty() {
   const [formValues, setFormValues] = useState({
@@ -98,6 +99,7 @@ export default function AddProperty() {
 
   return (
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
+      <PopUpProcessing />
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Add Property
       </h1>
