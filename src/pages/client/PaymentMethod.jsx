@@ -1,8 +1,42 @@
 import IconArrowDown from "../../assets/icons/IconArrowDown";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import Button from "../../components/general/Button";
+import { ethers } from "ethers";
+// 0xc2b520448aCAc4fD15ab528E5602746910867D49
+const startPayment = async ({ ether, addr }) => {
+ try { 
+    if (!window.ethereum)
+      throw new Error("install metamask");
 
+    await window.ethereum.send("eth_requestAccounts");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    ethers.utils.getAddress(addr);
+    console.log({ ether, addr });
+    console.log("tx", tx);
+    setTxs([tx]);
+   } catch (err) {
+    
+  } 
+};
 export default function PaymentMethod() {
   const location = useLocation();
+  const table = {
+    Free:0,
+    Starter: 1.70,
+    Premium: 4.20,
+  }
+  const price = table[location.state]
+
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    await startPayment({
+      ether: 0.000001,
+      addr: 0xc2b520448aCAc4fD15ab528E5602746910867D49
+    });
+  };
+
 
   return (
     <div className="min-h-scree flex flex-col-reverse justify-center bg-BGPrimary lg:flex-row">
@@ -19,11 +53,13 @@ export default function PaymentMethod() {
       </div>
       <div className="text flex h-screen flex-col items-center justify-center gap-10 p-4 text-center lg:p-20">
         <h1 className=" text-5xl font-bold text-TextTertiary">
-          Awaiting your payment to the address below
+          Payment for ₮ {price}
         </h1>
-        <a className="w-full text-BtnPrimary-end ">
-          35bSzXvRKLpHsHMrzb82f617cV4Srnt7hS
-        </a>
+        <Button
+        text="Pay Now"
+        custom="lg:w-80" 
+        onClick={handleClick}> 
+        </Button>
         <div>
           <svg
             className=" h-30 text-blue-600 mr-2 inline w-40 animate-spin rounded-full border-4 fill-BtnPrimary-start"

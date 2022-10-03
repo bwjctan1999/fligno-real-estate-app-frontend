@@ -9,8 +9,8 @@ export default function Subscription() {
 
   const table = {
     Free: 0,
-    Starter: 100,
-    Premium: 250,
+    Starter: 1.70,
+    Premium: 4.20,
   };
 
   return (
@@ -31,14 +31,14 @@ export default function Subscription() {
         <SubscriptionCard
           selected={selected}
           title="Starter"
-          price="100.00"
+          price="1.70"
           desc="50 maximum postings"
           onClick={() => setSelected("Starter")}
         />
         <SubscriptionCard
           selected={selected}
           title="Premium"
-          price="250.00"
+          price="4.20"
           desc="Unlimited postings"
           onClick={() => setSelected("Premium")}
         />
