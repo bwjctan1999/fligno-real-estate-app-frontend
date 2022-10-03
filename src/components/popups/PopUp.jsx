@@ -7,7 +7,7 @@ export default function PopUp({
   setState,
 }) {
   return state ? (
-    <div className="fixed inset-0 z-10 overflow-y-auto">
+    <div className="fixed inset-0 z-20 overflow-y-auto">
       <div className="flex min-h-screen items-center bg-TextSecondary bg-opacity-30 px-4 py-8">
         <div className="relative mx-auto w-full max-w-sm rounded-md bg-TextOnDark p-8 shadow-lg">
           <div className=" sm:flex">
