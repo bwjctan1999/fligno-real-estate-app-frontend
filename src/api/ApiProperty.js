@@ -28,6 +28,8 @@ export async function PostProperty(data) {
   } catch (e) {
     resolved.error = e;
   }
+
+  return resolved;
 }
 
 export async function DeleteProperty(id) {
