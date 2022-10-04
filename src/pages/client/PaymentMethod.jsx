@@ -4,21 +4,7 @@ import { useState } from "react";
 import Button from "../../components/general/Button";
 import { ethers } from "ethers";
 // 0xc2b520448aCAc4fD15ab528E5602746910867D49
-const startPayment = async ({ ether, addr }) => {
- try { 
-    if (!window.ethereum)
-      throw new Error("install metamask");
 
-    await window.ethereum.send("eth_requestAccounts");
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    ethers.utils.getAddress(addr);
-    console.log({ ether, addr });
-    console.log("tx", tx);
-    setTxs([tx]);
-   } catch (err) {
-    
-  } 
-};
 export default function PaymentMethod() {
   const location = useLocation();
   const table = {
@@ -28,15 +14,33 @@ export default function PaymentMethod() {
   }
   const price = table[location.state]
 
+ /*  let accounts = [];
+ async function connectWallet(){
+    accounts = await window.ethereum.request({method:"eth_requestAccounts"})
+    .catch((err)=>{
+      console.log(err.code)
+    })
+  } */ // this shit broken
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    await startPayment({
-      ether: 0.000001,
-      addr: 0xc2b520448aCAc4fD15ab528E5602746910867D49
-    });
-  };
-
+  async function sendTransaction(){
+    //connectWallet();
+    let params =  [{
+      /* from:accounts[0], */ // implement get accounts 
+      from:'0xaC6b1FD86DEb0EC4259C8D95D3248E44F9D4c4B6', //placeholder only
+      to: '0xc2b520448aCAc4fD15ab528E5602746910867D49',
+      value: Number(1000000000).toString(16), // in GWEI, find a way to accept TETHER
+      gasPrice: '0x09184e72a000',
+      gas: Number(21000).toString(16),
+    }]
+ 
+    await window.ethereum.request({method: "eth_sendTransaction", params})
+    .then((txhash)=>{
+      console.log(txhash)
+    })
+    .catch((err)=>{
+      console.log(err.code)
+    })
+  }
 
   return (
     <div className="min-h-scree flex flex-col-reverse justify-center bg-BGPrimary lg:flex-row">
@@ -56,9 +60,10 @@ export default function PaymentMethod() {
           Payment for ₮ {price}
         </h1>
         <Button
+        class="sendEthButton btn"
         text="Pay Now"
         custom="lg:w-80" 
-        onClick={handleClick}> 
+        onClick={sendTransaction}> 
         </Button>
         <div>
           <svg
