@@ -35,6 +35,10 @@ module.exports = {
       LinePrimary: "#F3F3F3",
       LineSecondary: "#D9D9D9",
       Highlight: "#7BFF4D",
+      Skeleton: {
+        start: "#c2cfd6",
+        end: "#F0F3F5",
+      },
     },
     //extend: {},
   },

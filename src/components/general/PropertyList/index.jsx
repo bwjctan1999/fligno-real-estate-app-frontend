@@ -2,8 +2,10 @@ import { GetProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import DesignSpinner from "../../../assets/svgs/DesignSpinner";
 import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
+import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
 export default function PropertyList({ url }) {
   const [properties, setProperties] = useState([]);
@@ -23,6 +25,7 @@ export default function PropertyList({ url }) {
   }, []);
 
   const getData = async (url) => {
+    setProperties([]);
     const api_request = await GetProperty(url);
 
     if (!api_request.error) {
@@ -72,19 +75,34 @@ export default function PropertyList({ url }) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3" id="client_properties">
-      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
-        {properties.map((property, i) => addProperty(property))}
-      </div>
-      <Paginator
-        changePage={getData}
-        current={paginationData.current_page}
-        last={paginationData.last_page}
-        start_url={paginationData.first_page_url}
-        last_url={paginationData.last_page_url}
-        next_url={paginationData.next_page_url}
-        prev_url={paginationData.prev_page_url}
-      />
+    <div id="client_properties">
+      {properties.length === 0 ? (
+        <div className="mt-10 grid animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {properties.map((property, i) => addProperty(property))}
+          </div>
+          <Paginator
+            changePage={getData}
+            current={paginationData.current_page}
+            last={paginationData.last_page}
+            start_url={paginationData.first_page_url}
+            last_url={paginationData.last_page_url}
+            next_url={paginationData.next_page_url}
+            prev_url={paginationData.prev_page_url}
+          />
+        </div>
+      )}{" "}
     </div>
   );
 }
