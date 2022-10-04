@@ -1,7 +1,9 @@
-export default function DesignSpinner() {
+export default function DesignSpinner({ width = "160", height }) {
   return (
     <svg
-      className=" h-30 mr-2 inline w-40 animate-spin rounded-full border-4 fill-BtnPrimary-end text-TextSecondary dark:text-TextSecondary"
+      width={width}
+      height={height}
+      className="mr-2 inline animate-spin rounded-full border-4 fill-BtnPrimary-end text-TextSecondary dark:text-TextSecondary"
       viewBox="0 0 100 101"
       fill="white"
       xmlns="http://www.w3.org/2000/svg"
