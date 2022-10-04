@@ -10,7 +10,10 @@ import Button from "../../components/general/Button";
 import { ValidEmpty } from "../../scripts/Validations";
 import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
+import { PostProperty } from "../../api/ApiProperty";
+
 export default function AddProperty() {
+  const [showPopUp, setShowPopUp] = useState(false);
   const [formValues, setFormValues] = useState({
     title: "",
     price: "",
@@ -24,6 +27,7 @@ export default function AddProperty() {
     zip_code: "",
     city: "",
     img: "blank",
+    availability: "",
   });
 
   const [validations, setValidations] = useState({
@@ -38,6 +42,7 @@ export default function AddProperty() {
     area: "",
     zip_code: "",
     city: "",
+    availability: "",
   });
 
   const Validation = () => {
@@ -54,6 +59,7 @@ export default function AddProperty() {
       zip_code: "",
       city: "",
       img: "",
+      availability: "",
     };
 
     if (!ValidEmpty(formValues.title)) tempValidations.title = "Required";
@@ -70,11 +76,13 @@ export default function AddProperty() {
     if (!ValidEmpty(formValues.area)) tempValidations.area = "Required";
     if (!ValidEmpty(formValues.zip_code)) tempValidations.city = "Required";
     if (!ValidEmpty(formValues.zip_code)) tempValidations.zip_code = "Required";
+    if (!ValidEmpty(formValues.availability))
+      tempValidations.availability = "Required";
 
     setValidations(tempValidations);
 
     const pass = Object.values(tempValidations).every((value) => value === "");
-    if (pass) saveFormData();
+    if (pass) setShowPopUp(true);
   };
 
   const setValue = (e, name) => {
@@ -85,21 +93,20 @@ export default function AddProperty() {
   };
 
   const saveFormData = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/property",
-        formValues
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-      alert(`Add Property Failed! ${error.message}`);
-    }
+    const api_request = await PostProperty(formValues);
+    if (!api_request.error) return true;
+    return false;
   };
 
   return (
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
-      <PopUpProcessing />
+      <PopUpProcessing
+        show={showPopUp}
+        text="Your Property has been added"
+        okayFunction={() => setShowPopUp(false)}
+        actionFunction={saveFormData}
+      />
+
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Add Property
       </h1>
@@ -135,9 +142,10 @@ export default function AddProperty() {
                 Property Type
               </label>
               <DropDown
+                placeholder={""}
                 id="type"
-                options={["", "For Rent", "For Sale"]}
-                values={["", 1, 2]}
+                options={["For Rent", "For Sale"]}
+                values={[1, 2]}
                 onChange={(e) => setValue(e, "type")}
                 invalidError={validations.type}
               />
@@ -157,7 +165,7 @@ export default function AddProperty() {
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <p className="font-black text-TextTertiary">Property Information</p>
+            <p className="font-black text-TextTertiary">Location</p>
             <div className="flex gap-x-2">
               <div className="w-3/5">
                 <Textfield
@@ -196,9 +204,20 @@ export default function AddProperty() {
 
         <div className="flex flex-col gap-5 lg:w-1/2">
           <div className="flex flex-col">
-            <p className="font-black text-TextTertiary">Location</p>
+            <p className="font-black text-TextTertiary">Property Information</p>
             <div className="flex w-full flex-row gap-x-2">
-              <div className="w-2/6">
+              <div className="w-3/12">
+                <DropDown
+                  id="type"
+                  placeholder={"Choose..."}
+                  options={["Available", "Unavailable"]}
+                  values={[1, 2]}
+                  onChange={(e) => setValue(e, "availability")}
+                  invalidError={validations.type}
+                />
+              </div>
+
+              <div className="w-3/12">
                 <Textfield
                   type="number"
                   placeholder="Area (sqft)"
@@ -207,7 +226,7 @@ export default function AddProperty() {
                 />
               </div>
 
-              <div className="w-2/6">
+              <div className="w-3/12">
                 <Textfield
                   type="number"
                   placeholder="No. Bedroom"
@@ -216,7 +235,7 @@ export default function AddProperty() {
                 />
               </div>
 
-              <div className="w-2/6">
+              <div className="w-3/12">
                 <Textfield
                   type="number"
                   placeholder="No. Bathroom"
