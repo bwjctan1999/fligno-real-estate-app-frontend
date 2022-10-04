@@ -4,7 +4,6 @@ export default function PopUp({
   cancelFunction,
   okayFunction,
   state,
-  setState,
 }) {
   return state ? (
     <div className="fixed inset-0 z-20 overflow-y-auto">
