@@ -4,6 +4,7 @@ import DesignRentProperty from "../../assets/svgs/DesignRentProperty";
 
 export default function AboutPage() {
   return (
+
     <div className="w-full">
       <div className="flex w-full flex-col-reverse items-center justify-center gap-20 bg-BGSecondary py-20 px-4 md:px-24 lg:flex-row lg:px-32">
         <div className="flex flex-col gap-4 lg:w-1/2 ">

@@ -1,11 +1,7 @@
 export default function DesignProperties() {
   return (
-    <svg
-      viewBox="0 0 689 252"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clip-path="url(#clip0_232_4426)">
+    <svg viewBox="0 0 689 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#clip0_232_4426)">
         <path
           d="M414.979 251.495H259.426V53.3107C259.426 27.5187 280.421 6.53516 306.226 6.53516H368.18C393.985 6.53516 414.979 27.5187 414.979 53.3107V251.495Z"
           fill="#F0F42B"
@@ -332,8 +328,8 @@ export default function DesignProperties() {
           y2="106.804"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_232_4426"
@@ -343,8 +339,8 @@ export default function DesignProperties() {
           y2="93.285"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_232_4426"
@@ -354,8 +350,8 @@ export default function DesignProperties() {
           y2="80.5632"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_232_4426"
@@ -365,8 +361,8 @@ export default function DesignProperties() {
           y2="77.3047"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_232_4426"
@@ -376,8 +372,8 @@ export default function DesignProperties() {
           y2="129.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_232_4426"
@@ -387,8 +383,8 @@ export default function DesignProperties() {
           y2="107.011"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_232_4426"
@@ -398,8 +394,8 @@ export default function DesignProperties() {
           y2="93.4913"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_232_4426"
@@ -409,8 +405,8 @@ export default function DesignProperties() {
           y2="80.7695"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_232_4426"
@@ -420,8 +416,8 @@ export default function DesignProperties() {
           y2="77.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_232_4426"
@@ -431,8 +427,8 @@ export default function DesignProperties() {
           y2="130.165"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_232_4426"
@@ -442,8 +438,8 @@ export default function DesignProperties() {
           y2="107.011"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint11_linear_232_4426"
@@ -453,8 +449,8 @@ export default function DesignProperties() {
           y2="93.4913"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_232_4426"
@@ -464,8 +460,8 @@ export default function DesignProperties() {
           y2="80.7695"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint13_linear_232_4426"
@@ -475,8 +471,8 @@ export default function DesignProperties() {
           y2="77.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_232_4426"
@@ -486,8 +482,8 @@ export default function DesignProperties() {
           y2="130.165"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <clipPath id="clip0_232_4426">
           <rect width="689" height="252" fill="white" />

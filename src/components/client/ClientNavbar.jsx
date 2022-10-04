@@ -1,15 +1,25 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import IconLogo from "../../assets/icons/IconLogo";
-import IconNotification from "../../assets/icons/IconNotification";
-import DesignProfile from "../../assets/svgs/DesignProfile.svg";
 import IconMenu from "../../assets/icons/IconMenu";
 import Button from "../general/Button";
+import PopUp from "../popups/PopUp";
 
 export default function ClientNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.getItem("token") !== null
+      ? setLoggedIn(true)
+      : setLoggedIn(false);
+  }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -19,25 +29,64 @@ export default function ClientNavbar({}) {
     window.addEventListener("resize", handleResize);
   });
 
-  useEffect(() => {
-    function handleLoad() {
-      window.innerWidth > 768 ? setOpenNavbar(true) : setOpenNavbar(false);
-    }
-
-    window.addEventListener("load", handleLoad);
-  });
-
   const changeSelectedText = (state, selected) => {
     const style = "flex h-full items-center gap-2 ";
-
-    if (state === selected) {
-      return style + "text-BtnPrimary-end";
-    }
+    if (state === selected) return style + "text-BtnPrimary-end";
     return style + "text-TextTertiary";
+  };
+
+  const handleLogin = (loggedIn) => {
+    if (loggedIn) {
+      return (
+        <div className="stroke border- flex items-center gap-2 lg:w-1/6 ">
+          <Button
+            bgcolor="bg-gradient-to-r from-BtnQuanary-start to-BtnQuanary-end"
+            text="Agent"
+            padding="p-2"
+            onClick={() => navigate("/agent")}
+          />
+          <Button
+            text="Log Out"
+            padding="p-2"
+            onClick={() => setShowPopup(true)}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="stroke border- flex items-center gap-2 lg:w-1/5 ">
+        <Button
+          text="Sign Up"
+          bgcolor="bg-BGPrimary"
+          textcolor="text-BtnPrimary-end"
+          custom=" shadow-border shadow-BtnPrimary-end"
+          padding="p-2"
+          onClick={() => navigate("/signup")}
+        />
+        <Button
+          text="Log In"
+          padding="p-2"
+          onClick={() => navigate("/login")}
+        />
+      </div>
+    );
   };
 
   return (
     <div>
+      <PopUp
+        text="Are you sure you want to log out?"
+        state={showPopup}
+        setState={setShowPopup}
+        cancelFunction={() => setShowPopup(false)}
+        okayFunction={() => {
+          localStorage.clear();
+          setLoggedIn(false);
+          navigate("/login");
+          setShowPopup(false);
+        }}
+      />
       <button
         onClick={() => setOpenNavbar(true)}
         className="fixed left-0 top-0 p-4 lg:hidden"
@@ -93,19 +142,7 @@ export default function ClientNavbar({}) {
               Agents
             </Link>
           </nav>
-
-          <div className="stroke border- flex items-center gap-2 lg:w-1/6">
-            <Button
-              text="Sign Up"
-              bgcolor="bg-BGPrimary"
-              textcolor="text-BtnPrimary-end"
-              custom="border-BtnPrimary-end border-solid border-2 box-border"
-              padding="p-2"
-            />
-            <Button text="Log In" padding="p-2" />
-            {/* <IconNotification />
-            <img src={DesignProfile} className="h-8 w-8" /> */}
-          </div>
+          {handleLogin(loggedIn)}
         </div>
       </nav>
     </div>

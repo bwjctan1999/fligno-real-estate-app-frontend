@@ -1,5 +1,6 @@
 export default function DropDown({
-  value = "",
+  placeholder,
+  value,
   onChange,
   invalidError = "",
   options = [],
@@ -7,14 +8,17 @@ export default function DropDown({
 }) {
   return (
     <div>
-      <div className="relative w-full ">
+      <div className="w-full ">
         <select
-          value={value}
+          value=""
           onChange={onChange}
           className={`
           ${invalidError != "" ? "border-2 border-BtnTertiary-end" : null} 
           bg-white text bg-white w-full rounded-lg p-3 text-base text-TextPrimary shadow-md focus:outline-BtnPrimary-start`}
         >
+          <option value="" disabled>
+            {placeholder}
+          </option>
           {options.map((option, index) => (
             <option className="leading-3" key={option} value={values[index]}>
               {option}

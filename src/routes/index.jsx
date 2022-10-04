@@ -2,17 +2,19 @@ import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
 
-import EmailVerification from "../pages/client/EmailVerification";
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
 import SignUp from "../pages/client/SignUp";
 import Subscription from "../pages/client/Subscription";
 import PaymentMethod from "../pages/client/PaymentMethod";
-import PropertyDetails from "../pages/client/PropertyDetails";
+import ClientPropertyDetails from "../pages/client/ClientPropertyDetails";
 import ClientLayout from "../pages/client/ClientLayout";
 import Properties from "../pages/client/Properties";
 import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
+import EmailVerification from "../pages/client/EmailVerification";
+import VerifyEmail from "../pages/client/VerifyEmail";
+
 
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
@@ -22,14 +24,19 @@ import AgentProperties from "../pages/agent/AgentProperties";
 import AgentPropertyDetails from "../pages/agent/AgentPropertyDetails";
 import UpdateAccountInfo from "../pages/agent/UpdateAccountInfo";
 import EditProperty from "../pages/agent/EditProperty";
+import AgentSubscriptionPage from "../pages/agent/AgentSubscriptionPage";
+import ChangeSubscription from "../pages/agent/AgentSubscription";
 
 import AdminLayout from "../pages/admin/AdminLayout";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminRoles from "../pages/admin/AdminRoles";
 import AdminProperties from "../pages/admin/AdminProperties";
 import AdminUsersList from "../pages/admin/AdminUsersList";
-import AdminEditRole from "../pages/admin/AdminEditRole";
+import AdminPermissions from "../pages/admin/AdminPermissions";
 import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
+import AdminSubscription from "../pages/admin/AdminSubscription";
+import AdminAddSubscription from "../pages/admin/AdminAddSubscription";
+import AdminEditSubscription from "../pages/admin/AdminEditSubscription";
 
 export default function RouteList() {
   let routes = useRoutes([
@@ -71,16 +78,20 @@ export default function RouteList() {
           element: <AboutPage />,
         },
         {
-          path: "email-verification",
-          element: <EmailVerification />,
-        },
-        {
           path: "properties",
           element: <Properties />,
         },
         {
           path: "properties/:propertyid",
-          element: <PropertyDetails />,
+          element: <ClientPropertyDetails />,
+        },
+        {
+          path: "verify",
+          element: <VerifyEmail />,
+        },
+        {
+          path: "verification",
+          element: <EmailVerification />,
         },
       ],
     },
@@ -88,12 +99,12 @@ export default function RouteList() {
     //Agent Routes
     {
       path: "/agent",
-      element:
-        localStorage.getItem("user_role") != 2 ? (
-          <Navigate to="/" />
-        ) : (
-          <AgentLayout />
-        ),
+      element: <AgentLayout />,
+      // localStorage.getItem("user_role") != 2 ? (
+      //   <Navigate to="/" />
+      // ) : (
+      //   <AgentLayout />
+      // ),
       children: [
         {
           index: true,
@@ -123,18 +134,26 @@ export default function RouteList() {
           path: "update-account/:propertyid",
           element: <UpdateAccountInfo />,
         },
+        {
+          path: "agent-subscription",
+          element: <AgentSubscriptionPage />,
+        },
+        {
+          path: "change-subscription",
+          element: <ChangeSubscription />
+        },
       ],
     },
 
     //Admin Routes
     {
       path: "/admin",
-      element:
-        localStorage.getItem("user_role") != 1 ? (
-          <Navigate to="/" />
-        ) : (
-          <AdminLayout />
-        ),
+      element: <AdminLayout />,
+      // localStorage.getItem("user_role") != 1 ? (
+      //   <Navigate to="/" />
+      // ) : (
+      //   <AdminLayout />
+      // ),
       children: [
         {
           index: true,
@@ -153,12 +172,24 @@ export default function RouteList() {
           element: <AdminUsersList />,
         },
         {
-          path: "edit-role/:userid",
-          element: <AdminEditRole />,
+          path: "permissions/:userid",
+          element: <AdminPermissions />,
         },
         {
           path: "property/:propertyid",
           element: <AdminPropertyDetails />,
+        },
+        {
+          path: "subscription",
+          element: <AdminSubscription />,
+        },
+        {
+          path: "add-subscription",
+          element: <AdminAddSubscription />,
+        },
+        {
+          path: "edit-subscription",
+          element: <AdminEditSubscription />,
         },
       ],
     },

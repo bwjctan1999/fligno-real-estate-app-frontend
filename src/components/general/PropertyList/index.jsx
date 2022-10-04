@@ -1,26 +1,45 @@
 import { GetProperty } from "../../../api/ApiProperty";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import DesignSpinner from "../../../assets/svgs/DesignSpinner";
 import PropertyCard from "./PropertyCard";
-import PropertyFilter from "./PropertyFilter";
+import Paginator from "../Paginator";
+import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
 export default function PropertyList({ url }) {
   const [properties, setProperties] = useState([]);
+  const [paginationData, setPaginationData] = useState({
+    current_page: 1,
+    last_page: null,
+    first_page_url: null,
+    last_page_url: null,
+    next_page_url: null,
+    prev_page_url: null,
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData();
+    getData("");
   }, []);
 
-  const getData = async () => {
-    const property = await GetProperty("");
+  const getData = async (url) => {
+    setProperties([]);
+    const api_request = await GetProperty(url);
 
-    if (!property.error) {
-      setProperties(property.response.data.data);
+    if (!api_request.error) {
+      setProperties(api_request.response.data.data.data);
+      setPaginationData({
+        current_page: api_request.response.data.data.current_page,
+        last_page: api_request.response.data.data.last_page,
+        first_page_url: api_request.response.data.data.first_page_url,
+        last_page_url: api_request.response.data.data.last_page_url,
+        next_page_url: api_request.response.data.data.next_page_url,
+        prev_page_url: api_request.response.data.data.prev_page_url,
+      });
     } else {
-      console.log(property.error);
+      console.log(api_request.error);
     }
   };
 
@@ -48,7 +67,7 @@ export default function PropertyList({ url }) {
         bednum={bedroom}
         bathnum={bathroom}
         price={price}
-        onClick={() => navigate(`/agent/property/${user_id}`)}
+        onClick={() => navigate(`/agent/properties/${id}`)}
         key={id}
         img={img}
       />
@@ -56,11 +75,34 @@ export default function PropertyList({ url }) {
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <PropertyFilter />
-      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
-        {properties.map((property, i) => addProperty(property))}
-      </div>
+    <div id="client_properties">
+      {properties.length === 0 ? (
+        <div className="mt-10 grid animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+          <PropertyCardSkeleton />
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {properties.map((property, i) => addProperty(property))}
+          </div>
+          <Paginator
+            changePage={getData}
+            current={paginationData.current_page}
+            last={paginationData.last_page}
+            start_url={paginationData.first_page_url}
+            last_url={paginationData.last_page_url}
+            next_url={paginationData.next_page_url}
+            prev_url={paginationData.prev_page_url}
+          />
+        </div>
+      )}{" "}
     </div>
   );
 }
