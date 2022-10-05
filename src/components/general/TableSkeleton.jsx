@@ -1,6 +1,6 @@
 export default function TableSkeleton() {
   return (
-    <div className="flex animate-pulse flex-col gap-6 rounded-lg bg-BGPrimary p-4 shadow-lg">
+    <div className="flex animate-pulse flex-col gap-6 rounded-lg bg-BGPrimary p-4 pt-6 shadow-lg">
       <div className="grid grid-cols-3 gap-2 lg:grid-cols-5">
         <div className="h-6 w-4/12 rounded bg-Skeleton-end dark:bg-Skeleton-start"></div>
         <div className="h-6 w-4/12 rounded bg-Skeleton-end dark:bg-Skeleton-start"></div>
