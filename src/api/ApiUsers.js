@@ -16,3 +16,37 @@ export async function GetUser(id) {
 
   return resolved;
 }
+
+export async function GetAgents() {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.get(
+      "http://127.0.0.1:8000/api/users-role/agent"
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
+
+export async function GetClients() {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.get(
+      "http://127.0.0.1:8000/api/users-role/client"
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
