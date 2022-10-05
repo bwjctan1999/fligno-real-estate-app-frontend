@@ -1,7 +1,7 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-import { GetUser } from "../../api/ApiUsers";
+import { GetUser, GetAgents, GetClients } from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
 import Textfield from "../../components/general/Textfield";
@@ -15,6 +15,8 @@ import Paginator from "../../components/general/Paginator";
 
 export default function AdminUsersList() {
   const [users, setUsers] = useState([]);
+  const [userFilter, setUserFilter] = useState("All");
+
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
     last_page: null,
@@ -26,14 +28,26 @@ export default function AdminUsersList() {
 
   useEffect(() => {
     getData("");
-  }, []);
+  }, [userFilter]);
 
   const getData = async (url) => {
     setUsers([]);
-    const api_request = await GetUser(url);
+    let api_request;
+
+    switch (userFilter) {
+      case "All":
+        api_request = await GetUser(url);
+        break;
+      case "Agent":
+        api_request = await GetAgents();
+        break;
+      case "Client":
+        api_request = await GetClients();
+        break;
+    }
 
     if (!api_request.error) {
-      console.log(api_request.response)
+      console.log(api_request.response);
       setUsers(api_request.response.data.data);
       setPaginationData({
         current_page: api_request.response.data.current_page,
@@ -94,7 +108,15 @@ export default function AdminUsersList() {
 
   return (
     <div className="flex min-h-screen flex-col gap-4 bg-BGSecondary px-4 pt-16 md:px-40 lg:pt-32">
-      <div className="w-full">
+      <div className="flex w-full flex-col justify-end gap-4 lg:flex-row">
+        <div className="lg:full float-right w-full lg:w-1/6 ">
+          <Dropdown
+            values={["All", "Agent", "Client"]} 
+            options={["All", "Agent", "Client"]}
+            value={"All"}
+            onChange={(e) => setUserFilter(e.target.value)}
+          />
+        </div>
         <div className="lg:full float-right w-full lg:w-1/4 ">
           <Textfield
             placeholder="Search"
