@@ -102,7 +102,7 @@ export default function PropertyList({ url }) {
             prev_url={paginationData.prev_page_url}
           />
         </div>
-      )}{" "}
+      )}
     </div>
   );
 }
