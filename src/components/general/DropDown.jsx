@@ -1,6 +1,6 @@
 export default function DropDown({
   placeholder,
-  value,
+  value = "",
   onChange,
   invalidError = "",
   options = [],
@@ -10,7 +10,7 @@ export default function DropDown({
     <div>
       <div className="w-full ">
         <select
-          value=""
+          value={value}
           onChange={onChange}
           className={`
           ${invalidError != "" ? "border-2 border-BtnTertiary-end" : null} 
