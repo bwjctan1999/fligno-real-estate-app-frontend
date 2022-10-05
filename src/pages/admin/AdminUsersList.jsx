@@ -12,6 +12,7 @@ import IconSearch from "../../assets/icons/IconSearch";
 
 import { useEffect, useState } from "react";
 import Paginator from "../../components/general/Paginator";
+import TableSkeleton from "../../components/general/TableSkeleton";
 
 export default function AdminUsersList() {
   const [users, setUsers] = useState([]);
@@ -111,7 +112,7 @@ export default function AdminUsersList() {
       <div className="flex w-full flex-col justify-end gap-4 lg:flex-row">
         <div className="lg:full float-right w-full lg:w-1/6 ">
           <Dropdown
-            values={["All", "Agent", "Client"]} 
+            values={["All", "Agent", "Client"]}
             options={["All", "Agent", "Client"]}
             value={"All"}
             onChange={(e) => setUserFilter(e.target.value)}
@@ -125,20 +126,25 @@ export default function AdminUsersList() {
         </div>
       </div>
 
-      <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
-        <Table>
-          <Thead>
-            <Tr className="border-b-2 border-LineSecondary text-left text-lg">
-              <Th>Name</Th>
-              <Th>Email</Th>
-              <Th>Mobile Number</Th>
-              <Th>Role</Th>
-              <Th className="lg:pl-10">Actions</Th>
-            </Tr>
-          </Thead>
-          <Tbody>{users.map((user, i) => addUser(user))}</Tbody>
-        </Table>
-      </div>
+      {users.length === 0 ? (
+        <TableSkeleton />
+      ) : (
+        <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
+          <Table>
+            <Thead>
+              <Tr className="border-b-2 border-LineSecondary text-left text-lg">
+                <Th>Name</Th>
+                <Th>Email</Th>
+                <Th>Mobile Number</Th>
+                <Th>Role</Th>
+                <Th className="lg:pl-10">Actions</Th>
+              </Tr>
+            </Thead>
+            <Tbody>{users.map((user, i) => addUser(user))}</Tbody>
+          </Table>
+        </div>
+      )}
+
       <Paginator
         changePage={getData}
         current={paginationData.current_page}
