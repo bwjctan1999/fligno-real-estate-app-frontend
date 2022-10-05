@@ -108,8 +108,8 @@ export default function AdminUsersList() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col gap-4 bg-BGSecondary px-4 pt-16 md:px-40 lg:pt-32">
-      <div className="flex w-full flex-col justify-end gap-4 lg:flex-row">
+    <div className="flex min-h-screen flex-col gap-4 bg-BGSecondary px-4 pt-16 lg:px-40 lg:pt-32">
+      <div className="flex w-full flex-col-reverse justify-end gap-4 lg:flex-row">
         <div className="lg:full float-right w-full lg:w-1/6 ">
           <Dropdown
             values={["All", "Agent", "Client"]}
