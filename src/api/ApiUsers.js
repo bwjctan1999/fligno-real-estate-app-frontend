@@ -50,3 +50,18 @@ export async function GetClients() {
 
   return resolved;
 }
+
+export async function DisableUser(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.delete(`${base_url}/delete/${id}`);
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
