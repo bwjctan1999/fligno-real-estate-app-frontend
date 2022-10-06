@@ -1,7 +1,12 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-import { GetUser, GetAgents, GetClients } from "../../api/ApiUsers";
+import {
+  GetUser,
+  GetAgents,
+  GetClients,
+  DisableUser,
+} from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
 import Textfield from "../../components/general/Textfield";
@@ -58,13 +63,22 @@ export default function AdminUsersList() {
         next_page_url: api_request.response.data.next_page_url,
         prev_page_url: api_request.response.data.prev_page_url,
       });
-      console.log(api_request.response.data.data);
     } else {
       console.log(api_request);
     }
   };
 
+  const disableUserHandler = async (id) => {
+    console.log("im in");
+    const api_request = await DisableUser(id);
+
+    !api_request.errpr
+      ? console.log(api_request.response)
+      : console.log(api_request.error);
+  };
+
   const addUser = ({
+    id,
     email,
     first_name,
     last_name,
@@ -72,7 +86,7 @@ export default function AdminUsersList() {
     user_type,
   }) => {
     return (
-      <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
+      <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
         <Td className="p-4">{`${first_name} ${last_name}`}</Td>
         <Td>{email}</Td>
         <Td>{phone_number}</Td>
@@ -99,6 +113,7 @@ export default function AdminUsersList() {
               fontsize="text-base"
               padding="p-1"
               bgcolor="bg-BtnQuanary-end"
+              onClick={() => disableUserHandler(id)}
             />
             <Button text="properties" fontsize="text-base" padding="p-1" />
           </div>
