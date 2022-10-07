@@ -6,6 +6,7 @@ import {
   GetAgents,
   GetClients,
   DisableUser,
+  RestoreUser,
 } from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
@@ -52,6 +53,8 @@ export default function AdminUsersList() {
         break;
     }
 
+    console.log(api_request.response);
+
     if (!api_request.error) {
       console.log(api_request.response);
       setUsers(api_request.response.data.data);
@@ -69,10 +72,17 @@ export default function AdminUsersList() {
   };
 
   const disableUserHandler = async (id) => {
-    console.log("im in");
     const api_request = await DisableUser(id);
 
-    !api_request.errpr
+    !api_request.error
+      ? console.log(api_request.response)
+      : console.log(api_request.error);
+  };
+
+  const restoreUserHandler = async (id) => {
+    const api_request = await RestoreUser(id);
+
+    !api_request.error
       ? console.log(api_request.response)
       : console.log(api_request.error);
   };
@@ -84,6 +94,7 @@ export default function AdminUsersList() {
     last_name,
     phone_number,
     user_type,
+    deleted_at,
   }) => {
     return (
       <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
@@ -109,11 +120,13 @@ export default function AdminUsersList() {
               custom="w-auto h-auto"
             />
             <Button
-              text="enabled"
+              text={deleted_at ? "disabled" : "enabled"}
               fontsize="text-base"
               padding="p-1"
-              bgcolor="bg-BtnQuanary-end"
-              onClick={() => disableUserHandler(id)}
+              bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
+              onClick={() =>
+                deleted_at ? restoreUserHandler(id) : disableUserHandler(id)
+              }
             />
             <Button text="properties" fontsize="text-base" padding="p-1" />
           </div>
