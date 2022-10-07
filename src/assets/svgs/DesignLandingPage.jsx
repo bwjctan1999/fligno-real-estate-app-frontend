@@ -7,7 +7,7 @@ export default function DesignLandingPage() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_232_4326)">
+      <g clipPath="url(#clip0_232_4326)">
         <path
           d="M453.062 17.7046H453.062C427.308 17.7046 406.43 40.8851 406.43 69.4797V105.809H417.598L424.064 92.349L422.447 105.809H494.232L500.11 93.5727L498.641 105.809H506.723V77.2841C506.723 44.3793 482.698 17.7046 453.062 17.7046Z"
           fill="#2F2E41"
@@ -247,8 +247,8 @@ export default function DesignLandingPage() {
           y2="163.09"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_232_4326"
@@ -258,8 +258,8 @@ export default function DesignLandingPage() {
           y2="156.85"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_232_4326"
@@ -269,8 +269,8 @@ export default function DesignLandingPage() {
           y2="265.2"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_232_4326"
@@ -280,8 +280,8 @@ export default function DesignLandingPage() {
           y2="231.394"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_232_4326"
@@ -291,8 +291,8 @@ export default function DesignLandingPage() {
           y2="322.525"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_232_4326"
@@ -302,8 +302,8 @@ export default function DesignLandingPage() {
           y2="322.525"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_232_4326"
@@ -313,8 +313,8 @@ export default function DesignLandingPage() {
           y2="334.925"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_232_4326"
@@ -324,8 +324,8 @@ export default function DesignLandingPage() {
           y2="334.925"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_232_4326"
@@ -335,8 +335,8 @@ export default function DesignLandingPage() {
           y2="338.259"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_232_4326"
@@ -346,8 +346,8 @@ export default function DesignLandingPage() {
           y2="338.259"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#396AFC" />
-          <stop offset="1" stop-color="#2948FF" />
+          <stop stopColor="#396AFC" />
+          <stop offset="1" stopColor="#2948FF" />
         </linearGradient>
         <clipPath id="clip0_232_4326">
           <rect width="572" height="351" fill="white" />
