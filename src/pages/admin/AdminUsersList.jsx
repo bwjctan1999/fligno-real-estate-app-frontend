@@ -13,6 +13,7 @@ import IconSearch from "../../assets/icons/IconSearch";
 import { useEffect, useState } from "react";
 import Paginator from "../../components/general/Paginator";
 import TableSkeleton from "../../components/general/TableSkeleton";
+import EnableDisableButton from "../../components/general/EnableDisableButton";
 
 export default function AdminUsersList() {
   const [users, setUsers] = useState([]);
@@ -47,6 +48,8 @@ export default function AdminUsersList() {
         break;
     }
 
+    console.log(api_request.response);
+
     if (!api_request.error) {
       console.log(api_request.response);
       setUsers(api_request.response.data.data);
@@ -58,21 +61,22 @@ export default function AdminUsersList() {
         next_page_url: api_request.response.data.next_page_url,
         prev_page_url: api_request.response.data.prev_page_url,
       });
-      console.log(api_request.response.data.data);
     } else {
       console.log(api_request);
     }
   };
 
   const addUser = ({
+    id,
     email,
     first_name,
     last_name,
     phone_number,
     user_type,
+    deleted_at,
   }) => {
     return (
-      <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
+      <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
         <Td className="p-4">{`${first_name} ${last_name}`}</Td>
         <Td>{email}</Td>
         <Td>{phone_number}</Td>
@@ -94,11 +98,12 @@ export default function AdminUsersList() {
               bgcolor="bg-BGPrimary"
               custom="w-auto h-auto"
             />
-            <Button
-              text="enabled"
+            <EnableDisableButton
               fontsize="text-base"
               padding="p-1"
-              bgcolor="bg-BtnQuanary-end"
+              bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
+              initialState={deleted_at ? false : true}
+              id={id}
             />
             <Button text="properties" fontsize="text-base" padding="p-1" />
           </div>
@@ -140,7 +145,7 @@ export default function AdminUsersList() {
                 <Th className="lg:pl-10">Actions</Th>
               </Tr>
             </Thead>
-            <Tbody>{users.map((user, i) => addUser(user))}</Tbody>
+            <Tbody>{users.map((user) => addUser(user))}</Tbody>
           </Table>
         </div>
       )}
