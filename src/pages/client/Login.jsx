@@ -67,9 +67,9 @@ export default function Login({ setUser }) {
 
           <div className="flex flex-wrap gap-x-4  gap-y-3">
             <input type="checkbox" />
-            <label class="text-sm "> Remember Me</label>
+            <label className="text-sm "> Remember Me</label>
             <div className="flex flex-row gap-x-12 gap-y-3">
-              <a class="text-sm text-BtnPrimary-start hover:underline ">
+              <a className="text-sm text-BtnPrimary-start hover:underline ">
                 Forgot Password?
               </a>
             </div>
