@@ -20,7 +20,7 @@ export default function Login({ setUser }) {
       });
       localStorage.setItem("user_role", response.data.data.user_role);
       localStorage.setItem("token", response.data.data.Token);
-
+      console.log(response);
       switch (response.data.data.user_role) {
         case 2:
           navigate("/agent");
