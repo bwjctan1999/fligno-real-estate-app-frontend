@@ -1,13 +1,7 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-import {
-  GetUser,
-  GetAgents,
-  GetClients,
-  DisableUser,
-  RestoreUser,
-} from "../../api/ApiUsers";
+import { GetUser, GetAgents, GetClients } from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
 import Textfield from "../../components/general/Textfield";
@@ -19,6 +13,7 @@ import IconSearch from "../../assets/icons/IconSearch";
 import { useEffect, useState } from "react";
 import Paginator from "../../components/general/Paginator";
 import TableSkeleton from "../../components/general/TableSkeleton";
+import EnableDisableButton from "../../components/general/EnableDisableButton";
 
 export default function AdminUsersList() {
   const [users, setUsers] = useState([]);
@@ -71,22 +66,6 @@ export default function AdminUsersList() {
     }
   };
 
-  const disableUserHandler = async (id) => {
-    const api_request = await DisableUser(id);
-
-    !api_request.error
-      ? console.log(api_request.response)
-      : console.log(api_request.error);
-  };
-
-  const restoreUserHandler = async (id) => {
-    const api_request = await RestoreUser(id);
-
-    !api_request.error
-      ? console.log(api_request.response)
-      : console.log(api_request.error);
-  };
-
   const addUser = ({
     id,
     email,
@@ -119,14 +98,12 @@ export default function AdminUsersList() {
               bgcolor="bg-BGPrimary"
               custom="w-auto h-auto"
             />
-            <Button
-              text={deleted_at ? "disabled" : "enabled"}
+            <EnableDisableButton
               fontsize="text-base"
               padding="p-1"
               bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
-              onClick={() =>
-                deleted_at ? restoreUserHandler(id) : disableUserHandler(id)
-              }
+              initialState={deleted_at ? false : true}
+              id={id}
             />
             <Button text="properties" fontsize="text-base" padding="p-1" />
           </div>
@@ -168,7 +145,7 @@ export default function AdminUsersList() {
                 <Th className="lg:pl-10">Actions</Th>
               </Tr>
             </Thead>
-            <Tbody>{users.map((user, i) => addUser(user))}</Tbody>
+            <Tbody>{users.map((user) => addUser(user))}</Tbody>
           </Table>
         </div>
       )}
