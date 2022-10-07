@@ -4,42 +4,37 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Button from "../../components/general/Button";
 import { ethers } from "ethers";
+
 // 0xc2b520448aCAc4fD15ab528E5602746910867D49
 
 export default function PaymentMethod() {
   const location = useLocation();
   const table = {
     Free:0,
-    Starter: 1.70,
-    Premium: 4.20,
+    Starter: 1.70, //1127194.66
+    Premium: 4.20, //2784833.87
   }
   const price = table[location.state]
 
- /*  let accounts = [];
- async function connectWallet(){
-    accounts = await window.ethereum.request({method:"eth_requestAccounts"})
-    .catch((err)=>{
-      console.log(err.code)
-    })
-  } */ // this shit broken
 
   async function sendTransaction(){
-    //connectWallet();
+    if(!window.ethereum)
+      throw new Error("Please Install Metamask");
+    const accounts = await ethereum.request({method:'eth_requestAccounts'});
+    const account = accounts[0];
     let params =  [{
-      /* from:accounts[0], */ // implement get accounts 
-      from:'0xaC6b1FD86DEb0EC4259C8D95D3248E44F9D4c4B6', //placeholder only
+      from:accounts[0], 
       to: '0xc2b520448aCAc4fD15ab528E5602746910867D49',
-      value: Number(1000000000).toString(16), // in GWEI, find a way to accept TETHER
+      value: Number(100000000000000).toString(16), // in GWEI, find a way to accept TETHER
       gasPrice: '0x09184e72a000',
       gas: Number(21000).toString(16),
     }]
- 
     await window.ethereum.request({method: "eth_sendTransaction", params})
     .then((txhash)=>{
       console.log(txhash)
     })
     .catch((err)=>{
-      console.log(err.code)
+     console.log(err +"Payment has been rejected by user")
     })
   }
 
