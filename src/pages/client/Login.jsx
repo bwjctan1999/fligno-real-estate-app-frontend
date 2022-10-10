@@ -84,20 +84,27 @@ export default function Login({ setUser }) {
 
           <div className="mt-7 text-sm">
             {loading ? (
-              <div className="flex justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
+              <div className="flex items-center justify-center gap-1 rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
                 {loaded ? (
-                  <IconSuccessful
-                    width="32"
-                    height="32"
-                    color="text-TextOnDark"
-                  />
+                  <div className="animate-bounce">
+                    <IconSuccessful
+                      width="32"
+                      height="32"
+                      color="text-TextOnDark"
+                    />
+                  </div>
                 ) : (
-                  <DesignSpinner
-                    width="32"
-                    height="32"
-                    bgcolor="text-TextOnDark"
-                    color="fill-BtnPrimary-end"
-                  />
+                  <div className="flex animate-fade-in items-center gap-1">
+                    <DesignSpinner
+                      width="32"
+                      height="32"
+                      bgcolor="text-TextOnDark"
+                      color="fill-BtnPrimary-end"
+                    />
+                    <p className="font-semibold text-TextOnDark">
+                      Logging you in...
+                    </p>
+                  </div>
                 )}
               </div>
             ) : (
