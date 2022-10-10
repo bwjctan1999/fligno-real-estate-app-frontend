@@ -16,7 +16,6 @@ import AboutPage from "../pages/client/AboutPage";
 import EmailVerification from "../pages/client/EmailVerification";
 import VerifyEmail from "../pages/client/VerifyEmail";
 
-
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
 import Clients from "../pages/agent/Clients";
@@ -56,7 +55,7 @@ export default function RouteList() {
         },
         {
           path: "forget-password",
-          element: <ForgetPassPage/>,
+          element: <ForgetPassPage />,
         },
         {
           path: "signup",
@@ -104,12 +103,12 @@ export default function RouteList() {
     //Agent Routes
     {
       path: "/agent",
-      element: <AgentLayout />,
-      // localStorage.getItem("user_role") != 2 ? (
-      //   <Navigate to="/" />
-      // ) : (
-      //   <AgentLayout />
-      // ),
+      element:
+        localStorage.getItem("user_role") != 2 ? (
+          <Navigate to="/" />
+        ) : (
+          <AgentLayout />
+        ),
       children: [
         {
           index: true,
@@ -145,7 +144,7 @@ export default function RouteList() {
         },
         {
           path: "change-subscription",
-          element: <ChangeSubscription />
+          element: <ChangeSubscription />,
         },
       ],
     },
@@ -153,12 +152,12 @@ export default function RouteList() {
     //Admin Routes
     {
       path: "/admin",
-      element: <AdminLayout />,
-      // localStorage.getItem("user_role") != 1 ? (
-      //   <Navigate to="/" />
-      // ) : (
-      //   <AdminLayout />
-      // ),
+      element:
+        localStorage.getItem("user_role") != 1 ? (
+          <Navigate to="/" />
+        ) : (
+          <AdminLayout />
+        ),
       children: [
         {
           index: true,

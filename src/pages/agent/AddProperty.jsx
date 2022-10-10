@@ -11,9 +11,11 @@ import { ValidEmpty } from "../../scripts/Validations";
 import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
 import { PostProperty } from "../../api/ApiProperty";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProperty() {
   const [showPopUp, setShowPopUp] = useState(false);
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     title: "",
     price: "",
@@ -92,18 +94,42 @@ export default function AddProperty() {
     }));
   };
 
+
   const saveFormData = async () => {
     const api_request = await PostProperty(formValues);
     if (!api_request.error) return true;
     return false;
   };
 
+
+
   return (
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
       <PopUpProcessing
         show={showPopUp}
         text="Your Property has been added"
-        okayFunction={() => setShowPopUp(false)}
+        okayFunction={() => {
+          setShowPopUp(false)
+
+         setFormValues({
+          title: "",
+          price: "",
+          type: "",
+          bedroom: "",
+          bathroom: "",
+          description: "",
+          address_1: "",
+          address_2: "",
+          area: "",
+          zip_code: "",
+          city: "",
+          img: "blank",
+          availability: "",
+         })
+
+         navigate("/agent/properties")
+        
+        }}
         actionFunction={saveFormData}
       />
 
@@ -121,6 +147,7 @@ export default function AddProperty() {
                 placeholder="Title"
                 onChange={(e) => setValue(e, "title")}
                 invalidError={validations.title}
+                value = {formValues.title}
               />
             </div>
 
@@ -134,6 +161,7 @@ export default function AddProperty() {
                 type="number"
                 onChange={(e) => setValue(e, "price")}
                 invalidError={validations.price}
+                value = {formValues.price}
               />
             </div>
 
@@ -142,12 +170,13 @@ export default function AddProperty() {
                 Property Type
               </label>
               <DropDown
-                placeholder={""}
+                placeholder="Select"
                 id="type"
                 options={["For Rent", "For Sale"]}
                 values={[1, 2]}
                 onChange={(e) => setValue(e, "type")}
                 invalidError={validations.type}
+                value = {formValues.type}
               />
             </div>
           </div>
@@ -161,6 +190,7 @@ export default function AddProperty() {
               placeholder="Description"
               onChange={(e) => setValue(e, "description")}
               invalidError={validations.description}
+              value = {formValues.description}
             />
           </div>
 
@@ -172,6 +202,7 @@ export default function AddProperty() {
                   placeholder="Address 1"
                   onChange={(e) => setValue(e, "address_1")}
                   invalidError={validations.address_1}
+                  value = {formValues.address_1}
                 />
               </div>
               <div className="w-2/5">
@@ -179,6 +210,7 @@ export default function AddProperty() {
                   placeholder="City"
                   onChange={(e) => setValue(e, "city")}
                   invalidError={validations.city}
+                  value = {formValues.city}
                 />
               </div>
             </div>
@@ -188,6 +220,7 @@ export default function AddProperty() {
                   placeholder="Address 2"
                   onChange={(e) => setValue(e, "address_2")}
                   invalidError={validations.address_2}
+                  value = {formValues.address_2}
                 />
               </div>
               <div className="w-2/5">
@@ -196,6 +229,7 @@ export default function AddProperty() {
                   placeholder="Zip Code"
                   onChange={(e) => setValue(e, "zip_code")}
                   invalidError={validations.zip_code}
+                  value = {formValues.zip_code}
                 />
               </div>
             </div>
@@ -209,11 +243,12 @@ export default function AddProperty() {
               <div className="w-3/12">
                 <DropDown
                   id="type"
-                  placeholder={"Choose..."}
+                  placeholder="Select"
                   options={["Available", "Unavailable"]}
                   values={[1, 2]}
                   onChange={(e) => setValue(e, "availability")}
                   invalidError={validations.type}
+                  value = {formValues.availability}
                 />
               </div>
 
@@ -223,6 +258,7 @@ export default function AddProperty() {
                   placeholder="Area (sqft)"
                   onChange={(e) => setValue(e, "area")}
                   invalidError={validations.area}
+                  value = {formValues.area}
                 />
               </div>
 
@@ -232,6 +268,7 @@ export default function AddProperty() {
                   placeholder="No. Bedroom"
                   onChange={(e) => setValue(e, "bedroom")}
                   invalidError={validations.bedroom}
+                  value = {formValues.bedroom}
                 />
               </div>
 
@@ -241,6 +278,7 @@ export default function AddProperty() {
                   placeholder="No. Bathroom"
                   onChange={(e) => setValue(e, "bathroom")}
                   invalidError={validations.bathroom}
+                  value = {formValues.bathroom}
                 />
               </div>
             </div>

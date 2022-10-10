@@ -1,5 +1,6 @@
 import Button from "../general/Button";
 import AgentPic from "../../assets/imgs/AgentPic.png";
+
 export default function PopUpContactUs({ onClick, showPopUp }) {
   return showPopUp ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
