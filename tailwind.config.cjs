@@ -6,6 +6,15 @@ module.exports = {
       boxShadow: {
         border: "inset 0px 0px 0px 2px",
       },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 100 },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.4s ease-in",
+      },
     },
     colors: {
       transparent: "transparent",
