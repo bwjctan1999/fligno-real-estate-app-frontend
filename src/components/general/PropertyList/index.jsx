@@ -7,7 +7,7 @@ import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
-export default function PropertyList({ url }) {
+export default function PropertyList({ navigate_to }) {
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -67,7 +67,7 @@ export default function PropertyList({ url }) {
         bednum={bedroom}
         bathnum={bathroom}
         price={price}
-        onClick={() => navigate(`/agent/properties/${id}`)}
+        onClick={() => navigate(`${navigate_to}/${id}`)}
         key={id}
         img={img}
       />

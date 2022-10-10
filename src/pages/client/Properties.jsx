@@ -18,7 +18,7 @@ export default function Properties() {
       </div>
       <div className="flex w-full flex-col items-end p-4 py-12 lg:px-32">
         <PropertyFilter />
-        <PropertyList url="http://localhost:8000/api/property" />
+        <PropertyList navigate_to="/properties" />
       </div>
     </div>
   );
