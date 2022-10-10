@@ -1,7 +1,13 @@
-export default function IconSuccessful() {
+export default function IconSuccessful({
+  width = "96",
+  height = "96",
+  color = "text-BtnQuanary-end ",
+}) {
   return (
     <svg
-      className="h-24 w-24 text-BtnQuanary-end "
+      className={color}
+      width={width}
+      height={height}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

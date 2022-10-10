@@ -5,9 +5,11 @@ import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import axios from "axios";
+import IconSuccessful from "../../assets/icons/IconSuccessful";
 
 export default function Login({ setUser }) {
   const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,12 +18,15 @@ export default function Login({ setUser }) {
   const handleLogin = async () => {
     try {
       setLoading(true);
+      setLoaded(false);
       const response = await axios.post("http://localhost:8000/api/login", {
         email: email,
         password: password,
       });
       localStorage.setItem("user_role", response.data.data.user_role);
       localStorage.setItem("token", response.data.data.Token);
+      setLoaded(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
       switch (response.data.data.user_role) {
         case 2:
@@ -80,12 +85,20 @@ export default function Login({ setUser }) {
           <div className="mt-7 text-sm">
             {loading ? (
               <div className="flex justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
-                <DesignSpinner
-                  width="32"
-                  height="32"
-                  bgcolor="text-TextOnDark"
-                  color="fill-BtnPrimary-end"
-                />
+                {loaded ? (
+                  <IconSuccessful
+                    width="32"
+                    height="32"
+                    color="text-TextOnDark"
+                  />
+                ) : (
+                  <DesignSpinner
+                    width="32"
+                    height="32"
+                    bgcolor="text-TextOnDark"
+                    color="fill-BtnPrimary-end"
+                  />
+                )}
               </div>
             ) : (
               <Button text="Log In" onClick={handleLogin} />

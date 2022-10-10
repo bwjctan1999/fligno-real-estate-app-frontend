@@ -1,5 +1,8 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
+import DesignSpinner from "../../assets/svgs/DesignSpinner";
+import IconSuccessful from "../../assets/icons/IconSuccessful";
+
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 
@@ -14,6 +17,8 @@ import axios from "axios";
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formValues, setFormValues] = useState({
@@ -100,6 +105,8 @@ export default function SignUp() {
   };
 
   const saveFormData = async () => {
+    setLoading(true);
+    setLoaded(false);
     try {
       const response = await axios.post(
         "http://localhost:8000/api/register",
@@ -108,6 +115,9 @@ export default function SignUp() {
 
       switch (response.status) {
         case 200:
+          setLoaded(true);
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          setLoading(false);
           navigate("/login");
           break;
       }
@@ -202,7 +212,26 @@ export default function SignUp() {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button onClick={Validation} text="Sign Up" />
+            {loading ? (
+              <div className="flex justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
+                {loaded ? (
+                  <IconSuccessful
+                    width="32"
+                    height="32"
+                    color="text-TextOnDark"
+                  />
+                ) : (
+                  <DesignSpinner
+                    width="32"
+                    height="32"
+                    bgcolor="text-TextOnDark"
+                    color="fill-BtnPrimary-end"
+                  />
+                )}
+              </div>
+            ) : (
+              <Button onClick={Validation} text="Sign Up" />
+            )}
           </div>
         </div>
       </div>
