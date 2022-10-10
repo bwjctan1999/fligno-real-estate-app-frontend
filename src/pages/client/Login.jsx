@@ -3,24 +3,26 @@ import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import axios from "axios";
 
 export default function Login({ setUser }) {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(true);
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
+      setLoading(true);
       const response = await axios.post("http://localhost:8000/api/login", {
         email: email,
         password: password,
       });
       localStorage.setItem("user_role", response.data.data.user_role);
       localStorage.setItem("token", response.data.data.Token);
-      console.log(response);
+      setLoading(false);
       switch (response.data.data.user_role) {
         case 2:
           navigate("/agent");
@@ -65,7 +67,7 @@ export default function Login({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className="flex flex-wrap gap-x-4  gap-y-3">
+          <div className="flex flex-wrap gap-x-4 gap-y-3">
             <input type="checkbox" />
             <label className="text-sm "> Remember Me</label>
             <div className="flex flex-row gap-x-12 gap-y-3">
@@ -76,7 +78,18 @@ export default function Login({ setUser }) {
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" onClick={handleLogin} />
+            {loading ? (
+              <div className="flex justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
+                <DesignSpinner
+                  width="32"
+                  height="32"
+                  bgcolor="text-TextOnDark"
+                  color="fill-BtnPrimary-end"
+                />
+              </div>
+            ) : (
+              <Button text="Log In" onClick={handleLogin} />
+            )}
           </div>
         </div>
       </div>
