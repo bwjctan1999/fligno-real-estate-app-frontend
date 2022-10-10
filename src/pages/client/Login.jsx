@@ -3,8 +3,8 @@ import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
-import { PostLogin } from "../../api/ApiLogin";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
+import axios from "axios";
 
 export default function Login({ setUser }) {
   const [loading, setLoading] = useState(false);
@@ -14,10 +14,28 @@ export default function Login({ setUser }) {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    setLoading(true);
-    const api_request = await PostLogin(email, password);
-    console.log(api_request);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response = await axios.post("http://localhost:8000/api/login", {
+        email: email,
+        password: password,
+      });
+      localStorage.setItem("user_role", response.data.data.user_role);
+      localStorage.setItem("token", response.data.data.Token);
+      setLoading(false);
+      switch (response.data.data.user_role) {
+        case 2:
+          navigate("/agent");
+          break;
+        case 3:
+          navigate("/");
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -61,10 +79,10 @@ export default function Login({ setUser }) {
 
           <div className="mt-7 text-sm">
             {loading ? (
-              <div className="flex justify-center rounded-lg bg-BtnPrimary-end p-2">
+              <div className="flex justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
                 <DesignSpinner
-                  width="30"
-                  height="30"
+                  width="32"
+                  height="32"
                   bgcolor="text-TextOnDark"
                   color="fill-BtnPrimary-end"
                 />
