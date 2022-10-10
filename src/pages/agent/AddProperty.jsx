@@ -11,9 +11,11 @@ import { ValidEmpty } from "../../scripts/Validations";
 import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
 import { PostProperty } from "../../api/ApiProperty";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProperty() {
   const [showPopUp, setShowPopUp] = useState(false);
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     title: "",
     price: "",
@@ -124,6 +126,8 @@ export default function AddProperty() {
           img: "blank",
           availability: "",
          })
+
+         navigate("/agent/properties")
         
         }}
         actionFunction={saveFormData}
