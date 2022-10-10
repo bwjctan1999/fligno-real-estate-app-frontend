@@ -116,7 +116,7 @@ export default function SignUp() {
       switch (response.status) {
         case 200:
           setLoaded(true);
-          await new Promise((resolve) => setTimeout(resolve, 1500));
+          await new Promise((resolve) => setTimeout(resolve, 1000));
           setLoading(false);
           navigate("/login");
           break;
