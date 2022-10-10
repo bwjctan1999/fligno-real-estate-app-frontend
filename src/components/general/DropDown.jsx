@@ -10,8 +10,8 @@ export default function DropDown({
     <div>
       <div className="w-full ">
         <select
-          defaultValue={value}
           onChange={onChange}
+          value ={value}
           className={`
           ${invalidError != "" ? "border-2 border-BtnTertiary-end" : null} 
           bg-white text bg-white w-full rounded-lg p-3 text-base text-TextPrimary shadow-md focus:outline-BtnPrimary-start`}
