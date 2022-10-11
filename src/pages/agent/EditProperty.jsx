@@ -127,7 +127,7 @@ return false    }
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
        <PopUpProcessing
         show={showPopUp}
-        text="Your Property has been added"
+        text="Your Property has been Edited"
         okayFunction={() => {
         setShowPopUp(false)
        
