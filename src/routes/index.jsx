@@ -135,7 +135,7 @@ export default function RouteList() {
           element: <AgentPropertyDetails />,
         },
         {
-          path: "update-account/:propertyid",
+          path: "update-account",
           element: <UpdateAccountInfo />,
         },
         {
