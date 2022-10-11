@@ -10,7 +10,7 @@ export default function ForgetPassPage({}) {
       </div>
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-8 pb-3 text-3xl font-bold text-TextTertiary">
-          Change Password
+          Create New Password
         </h1>
 
         <div className="flex w-auto flex-col gap-y-3 md:w-96 ">
