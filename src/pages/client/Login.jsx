@@ -28,14 +28,16 @@ export default function Login({ setUser }) {
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
+
       switch (response.data.data.user_role) {
+        case 1:
+          navigate("/admin");
+          break;
         case 2:
           navigate("/agent");
           break;
         case 3:
           navigate("/");
-          break;
-        default:
           break;
       }
     } catch (error) {
