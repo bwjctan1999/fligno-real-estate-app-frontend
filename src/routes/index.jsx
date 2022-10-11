@@ -2,6 +2,7 @@ import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
 import ForgetPassPage from "../pages/general/ForgetPassPage";
+import ResetPassEmail from "../pages/general/ResetPassEmail";
 
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
@@ -56,6 +57,10 @@ export default function RouteList() {
         {
           path: "forget-password",
           element: <ForgetPassPage />,
+        },
+        {
+          path: "resetpass-email",
+          element: <ResetPassEmail />,
         },
         {
           path: "signup",
