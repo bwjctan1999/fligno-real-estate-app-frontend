@@ -56,15 +56,15 @@ export default function RouteList() {
           element: <FourZeroFour />,
         },
         {
-          path: "forget-password",
+          path: "reset-password",
           element: <ForgetPassPage />,
         },
         {
-          path: "resetpass-email",
+          path: "check-your-email",
           element: <ResetPassEmail />,
         },
         {
-          path: "reset-password",
+          path: "forgot-password",
           element: <ResetPassword />,
         },
         {
