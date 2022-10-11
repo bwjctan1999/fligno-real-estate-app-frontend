@@ -12,7 +12,10 @@ import IconBed from "../../assets/icons/IconBed";
 import IconBathroom from "../../assets/icons/IconBathroom";
 import IconTag from "../../assets/icons/IconTag";
 
+import PopUpContactUs from "../../components/popups/PopUpContactUs";
+
 export default function PropertyDetails() {
+  const [showPopUp, setShowPopUp] = useState(false);
   const [formValues, setFormValues] = useState({
     id: "",
     user_id: "",
@@ -49,6 +52,9 @@ export default function PropertyDetails() {
 
   return (
     <div className="flex flex-col gap-14 lg:flex-row">
+      <PopUpContactUs 
+      showPopUp={showPopUp}
+      onClick={() => setShowPopUp(false)}/>
       <div className="w-full lg:w-7/12">
         <img
           src={`${formValues.img}`}
@@ -131,7 +137,7 @@ export default function PropertyDetails() {
                 <h1>{`₱${formValues.price}`}</h1>
               </div>
               <div className="flex h-auto w-full md:w-5/12">
-                <Button padding="p-3" text="Contact Agent" />
+                <Button padding="p-3" text="Contact Agent" onClick={() => setShowPopUp(true)}/>
               </div>
             </div>
           </div>
