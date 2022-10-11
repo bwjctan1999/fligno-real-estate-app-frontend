@@ -78,9 +78,12 @@ export default function Login({ setUser }) {
             <input type="checkbox" />
             <label className="text-sm "> Remember Me</label>
             <div className="flex flex-row gap-x-12 gap-y-3">
-              <a className="text-sm text-BtnPrimary-start hover:underline ">
+              <button
+                className="text-sm text-BtnPrimary-start hover:underline"
+                onClick={() => navigate("/reset-password")}
+              >
                 Forgot Password?
-              </a>
+              </button>
             </div>
           </div>
 
