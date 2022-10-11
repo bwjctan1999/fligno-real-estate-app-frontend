@@ -62,8 +62,8 @@ export default function RouteList() {
         {
           path: "resetpass-email",
           element: <ResetPassEmail />,
-        {,
-        }
+        },
+        {
           path: "reset-password",
           element: <ResetPassword />,
         },
