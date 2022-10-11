@@ -80,7 +80,7 @@ export default function Login({ setUser }) {
             <div className="flex flex-row gap-x-12 gap-y-3">
               <button
                 className="text-sm text-BtnPrimary-start hover:underline"
-                onClick={() => navigate("/reset-password")}
+                onClick={() => navigate("/forgot-password")}
               >
                 Forgot Password?
               </button>
