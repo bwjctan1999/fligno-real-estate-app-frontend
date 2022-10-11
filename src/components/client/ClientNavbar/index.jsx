@@ -39,7 +39,6 @@ export default function ClientNavbar({}) {
       <PopUp
         text="Are you sure you want to log out?"
         state={showPopup}
-        setState={setShowPopup}
         cancelFunction={() => setShowPopup(false)}
         okayFunction={() => {
           localStorage.clear();

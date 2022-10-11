@@ -18,6 +18,7 @@ export default function PopUpProcessing({
       const action = async () => {
         setLoading(true);
         const result = await actionFunction();
+
         setSuccess(result);
         setLoading(false);
       };

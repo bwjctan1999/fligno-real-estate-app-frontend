@@ -6,8 +6,7 @@ import IconUser from "../../../assets/icons/IconUser";
 import IconNotification from "../../../assets/icons/IconNotification";
 import { useNavigate } from "react-router-dom";
 
-export default function AgentLogger({ loggedIn, logoutFunction }) {
-  const [showPopup, setShowPopup] = useState(false);
+export default function AgentLogger({ logoutFunction }) {
   const [showDropMenu, setShowDropMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -15,18 +14,6 @@ export default function AgentLogger({ loggedIn, logoutFunction }) {
 
   return (
     <div className="relative lg:w-1/6">
-      <PopUp
-        text="Are you sure you want to log out?"
-        state={showPopup}
-        setState={setShowPopup}
-        cancelFunction={() => setShowPopup(false)}
-        okayFunction={() => {
-          localStorage.clear();
-          navigate("/login");
-          setShowPopup(false);
-        }}
-      />
-
       <div className="flex items-center justify-end gap-2">
         <button
           onClick={() => {
@@ -55,7 +42,7 @@ export default function AgentLogger({ loggedIn, logoutFunction }) {
               <p>Account Info</p>
             </button>
             <button
-              onClick={() => setShowPopup(true)}
+              onClick={logoutFunction}
               className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary"
             >
               <div className="w-fit rounded-full bg-LineSecondary p-2">
