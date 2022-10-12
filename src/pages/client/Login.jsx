@@ -23,20 +23,20 @@ export default function Login({ setUser }) {
         email: email,
         password: password,
       });
-      localStorage.setItem("user_role", response.data.data.user_role);
+      localStorage.setItem("user_role", response.data.data.user_role[0]);
       localStorage.setItem("token", response.data.data.Token);
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
 
-      switch (response.data.data.user_role) {
-        case 1:
+      switch (response.data.data.user_role[0]) {
+        case "admin":
           navigate("/admin");
           break;
-        case 2:
+        case "agent":
           navigate("/agent");
           break;
-        case 3:
+        case "client":
           navigate("/");
           break;
       }

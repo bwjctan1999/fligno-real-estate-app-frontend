@@ -114,7 +114,7 @@ export default function RouteList() {
     {
       path: "/agent",
       element:
-        localStorage.getItem("user_role") != 2 ? (
+        localStorage.getItem("user_role") != "agent" ? (
           <Navigate to="/" />
         ) : (
           <AgentLayout />
@@ -162,12 +162,12 @@ export default function RouteList() {
     //Admin Routes
     {
       path: "/admin",
-      element: <AdminLayout />,
-      // localStorage.getItem("user_role") != 1 ? (
-      //   <Navigate to="/" />
-      // ) : (
-      //   <AdminLayout />
-      // ),
+      element:
+        localStorage.getItem("user_role") != "admin" ? (
+          <Navigate to="/" />
+        ) : (
+          <AdminLayout />
+        ),
       children: [
         {
           index: true,
