@@ -80,13 +80,7 @@ export default function AdminUsersList() {
         <Td className="p-4">{`${first_name} ${last_name}`}</Td>
         <Td>{email}</Td>
         <Td>{phone_number}</Td>
-        <Td>
-          <Dropdown
-            values={[2, 3]}
-            options={["Agent", "Client"]}
-            value={user_type}
-          />
-        </Td>
+        <Td>{user_type === 1 ? "Client" : "Agent"}</Td>
         <Td>
           <div className="flex flex-col gap-1 lg:flex-row lg:pl-10">
             <Button
