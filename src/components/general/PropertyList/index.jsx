@@ -27,16 +27,15 @@ export default function PropertyList({ navigate_to }) {
   const getData = async (url) => {
     setProperties([]);
     const api_request = await GetProperty(url);
-
     if (!api_request.error) {
-      setProperties(api_request.response.data.data.data);
+      setProperties(api_request.response.data.data);
       setPaginationData({
-        current_page: api_request.response.data.data.current_page,
-        last_page: api_request.response.data.data.last_page,
-        first_page_url: api_request.response.data.data.first_page_url,
-        last_page_url: api_request.response.data.data.last_page_url,
-        next_page_url: api_request.response.data.data.next_page_url,
-        prev_page_url: api_request.response.data.data.prev_page_url,
+        current_page: api_request.response.data.current_page,
+        last_page: api_request.response.data.last_page,
+        first_page_url: api_request.response.data.first_page_url,
+        last_page_url: api_request.response.data.last_page_url,
+        next_page_url: api_request.response.data.next_page_url,
+        prev_page_url: api_request.response.data.prev_page_url,
       });
     } else {
       console.log(api_request.error);
