@@ -162,12 +162,12 @@ export default function RouteList() {
     //Admin Routes
     {
       path: "/admin",
-      element:
-        localStorage.getItem("user_role") != 1 ? (
-          <Navigate to="/" />
-        ) : (
-          <AdminLayout />
-        ),
+      element: <AdminLayout />,
+      // localStorage.getItem("user_role") != 1 ? (
+      //   <Navigate to="/" />
+      // ) : (
+      //   <AdminLayout />
+      // ),
       children: [
         {
           index: true,
