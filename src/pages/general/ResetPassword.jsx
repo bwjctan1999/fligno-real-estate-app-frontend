@@ -19,13 +19,13 @@ export default function ResetPassword({}) {
   const sendEmailHandler = async () => {
     setLoading(true);
     setLoaded(false);
+    localStorage.setItem("reset_pass_email", email);
     const api_request = await RequestPasswordChange({ email: email });
     if (!api_request.error) {
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
       navigate("/check-your-email");
-      navi;
     } else {
       console.log(api_request.error);
     }
