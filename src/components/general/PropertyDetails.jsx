@@ -55,6 +55,8 @@ export default function PropertyDetails() {
       <PopUpContactUs 
       showPopUp={showPopUp}
       onClick={() => setShowPopUp(false)}/>
+
+      
       <div className="w-full lg:w-7/12">
         <img
           src={`${formValues.img}`}
