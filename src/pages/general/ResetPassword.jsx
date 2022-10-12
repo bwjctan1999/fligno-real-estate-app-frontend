@@ -10,7 +10,7 @@ export default function ResetPassword({}) {
       </div>
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-3 pb-3 text-3xl font-bold text-TextTertiary">
-          Reset Password
+          Forgot Password
         </h1>
 
         <p className="mb-4 flex gap-x-3 text-sm text-TextTertiary">
