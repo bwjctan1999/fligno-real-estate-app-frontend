@@ -5,9 +5,13 @@ import { GetProperty } from "../../api/ApiProperty";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Button from "../../components/general/Button";
+import DropDown from "../../components/general/DropDown";
+import Textfield from "../../components/general/Textfield";
+import IconSearch from "../../assets/icons/IconSearch";
 
 export default function Clients() {
   const [contacts, setContacts] = useState([]);
+  const [userFilter, setUserFilter] = useState("Contacts");
 
   useEffect(() => {
     getContacts();
@@ -51,9 +55,25 @@ export default function Clients() {
       </Tr>
     );
   };
-
   return (
-    <div className=" bg-BGSecondary p-4 pt-16 lg:px-60 lg:pt-32">
+    <div className=" min-h-screen bg-BGSecondary p-4 pt-16 lg:px-60 lg:pt-32">
+      <div className="flex w-full flex-col-reverse justify-end gap-4 lg:flex-row">
+        <div className="lg:full float-right w-full lg:w-1/5 ">
+          <DropDown
+            values={["Contacts", "Contacts History"]}
+            options={["Contacts", "Contacts History"]}
+            value={userFilter}
+            onChange={(e) => setUserFilter(e.target.value)}
+          />
+        </div>
+        <div className="lg:full float-right w-full lg:w-1/4 ">
+          <Textfield
+            placeholder="Search"
+            icon={<IconSearch fill="fill-TextTertiary" />}
+          />
+        </div>
+      </div>
+
       <div className="mt-4 rounded-lg bg-BGPrimary p-4 shadow-lg">
         <Table>
           <Thead>
