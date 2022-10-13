@@ -3,14 +3,15 @@ import {
   GetContactHistory,
   GetContacts,
   RemoveContact,
-} from "../../api/ApiContactAgent";
+} from "../../../api/ApiContactAgent";
 
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import Button from "../../components/general/Button";
-import DropDown from "../../components/general/DropDown";
-import Textfield from "../../components/general/Textfield";
-import IconSearch from "../../assets/icons/IconSearch";
+
+import DropDown from "../../../components/general/DropDown";
+import Textfield from "../../../components/general/Textfield";
+import IconSearch from "../../../assets/icons/IconSearch";
+import ContactItem from "./ContactItem";
 
 export default function Clients() {
   const [contacts, setContacts] = useState([]);
@@ -22,7 +23,6 @@ export default function Clients() {
         getContacts();
         break;
       case "Contacts History":
-        console.log("asdfasf");
         getHistory();
         break;
     }
@@ -48,50 +48,6 @@ export default function Clients() {
     }
   };
 
-  const removeContact = async (id) => {
-    const api_request = RemoveContact(id);
-
-    if (!api_request.error) {
-      console.log((await api_request).response);
-    } else {
-      console.log((await api_request).error);
-    }
-  };
-
-  const addTableData = ({
-    id,
-    first_name,
-    last_name,
-    property_title,
-    email,
-    phone_number,
-    deleted_at,
-  }) => {
-    return (
-      <Tr
-        key={id}
-        className="bg- border-y-2 border-LinePrimary text-TextTertiary"
-      >
-        <Td className="py-4">{`${first_name} ${last_name}`}</Td>
-        <Td>{property_title}</Td>
-        <Td>{email}</Td>
-        <Td>{phone_number}</Td>
-        <Td>
-          {userFilter === "Contacts" ? (
-            <Button
-              text="Remove"
-              fontsize="text-base"
-              padding="p-1"
-              custom="md:my-3"
-              onClick={() => removeContact(id)}
-            />
-          ) : (
-            deleted_at
-          )}
-        </Td>
-      </Tr>
-    );
-  };
   return (
     <div className=" min-h-screen bg-BGSecondary p-4 pt-16 lg:px-32 lg:pt-32">
       <div className="flex w-full flex-col-reverse justify-end gap-4 lg:flex-row">
@@ -127,7 +83,31 @@ export default function Clients() {
                 <Th>{userFilter === "Contacts" ? "Action" : "Date"}</Th>
               </Tr>
             </Thead>
-            <Tbody>{contacts.map((x) => addTableData(x))}</Tbody>
+            <Tbody>
+              {contacts.map(
+                ({
+                  id,
+                  first_name,
+                  last_name,
+                  property_title,
+                  email,
+                  phone_number,
+                  deleted_at,
+                }) => (
+                  <ContactItem
+                    id={id}
+                    first_name={first_name}
+                    last_name={last_name}
+                    property_title={property_title}
+                    email={email}
+                    phone_number={phone_number}
+                    deleted_at={deleted_at}
+                    userFilter={userFilter}
+                    key={id}
+                  />
+                )
+              )}
+            </Tbody>
           </Table>
         )}
       </div>
