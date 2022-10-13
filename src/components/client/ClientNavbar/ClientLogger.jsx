@@ -32,7 +32,8 @@ export default function ClientLogger({ loggedIn, logoutFunction }) {
                 </div>
                 <p>Switch to Agent</p>
               </button>
-              <button className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary">
+              <button className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary"
+              onClick={() => navigate("/account-info")}>
                 <div className="w-fit rounded-full bg-LineSecondary p-2">
                   <IconInfo width="22" height="22" />
                 </div>

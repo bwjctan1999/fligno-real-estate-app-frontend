@@ -34,7 +34,10 @@ export default function AgentLogger({ logoutFunction }) {
         </button>
 
         {showDropMenu ? (
-          <div className="absolute flex flex-col gap-3 rounded-lg bg-BGPrimary p-4 font-bold drop-shadow-lg lg:top-10">
+          <div className="absolute flex flex-col gap-3 rounded-lg bg-BGPrimary p-4 font-bold drop-shadow-lg lg:top-10"
+          onClick={() => {
+            navigate("/account-info");
+          }}>
             <button className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary">
               <div className="w-fit rounded-full bg-LineSecondary p-2">
                 <IconInfo width="22" height="22" />
