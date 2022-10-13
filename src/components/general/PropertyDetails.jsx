@@ -58,10 +58,10 @@ export default function PropertyDetails() {
 
   return (
     <div className="flex flex-col gap-14 lg:flex-row">
-      <PopUpContactUs
-        showPopUp={showPopUp}
-        onClick={() => setShowPopUp(false)}
-      />
+      <PopUpContactUs 
+      showPopUp={showPopUp}
+      onClick={() => setShowPopUp(false)}/>
+      
       <div className="w-full lg:w-7/12">
         <img
           src={`${formValues.img}`}
