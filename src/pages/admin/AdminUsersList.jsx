@@ -17,7 +17,7 @@ import EnableDisableButton from "../../components/general/EnableDisableButton";
 
 export default function AdminUsersList() {
   const [users, setUsers] = useState([]);
-  const [userFilter, setUserFilter] = useState("All");
+  const [userFilter, setUserFilter] = useState("Agent");
 
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -29,17 +29,14 @@ export default function AdminUsersList() {
   });
 
   useEffect(() => {
-    getData("");
+    getData("", userFilter);
   }, [userFilter]);
 
-  const getData = async (url) => {
+  const getData = async (url, userFilter) => {
     setUsers([]);
     let api_request;
 
     switch (userFilter) {
-      case "All":
-        api_request = await GetUser(url);
-        break;
       case "Agent":
         api_request = await GetAgents();
         break;
@@ -51,7 +48,6 @@ export default function AdminUsersList() {
     console.log(api_request.response);
 
     if (!api_request.error) {
-      console.log(api_request.response);
       setUsers(api_request.response.data.data);
       setPaginationData({
         current_page: api_request.response.data.current_page,
@@ -72,7 +68,6 @@ export default function AdminUsersList() {
     first_name,
     last_name,
     phone_number,
-    user_type,
     deleted_at,
   }) => {
     return (
@@ -80,7 +75,7 @@ export default function AdminUsersList() {
         <Td className="p-4">{`${first_name} ${last_name}`}</Td>
         <Td>{email}</Td>
         <Td>{phone_number}</Td>
-        <Td>{user_type === 1 ? "Client" : "Agent"}</Td>
+        <Td>{userFilter}</Td>
         <Td>
           <div className="flex flex-col gap-1 lg:flex-row lg:pl-10">
             <Button
@@ -111,9 +106,9 @@ export default function AdminUsersList() {
       <div className="flex w-full flex-col-reverse justify-end gap-4 lg:flex-row">
         <div className="lg:full float-right w-full lg:w-1/6 ">
           <Dropdown
-            values={["All", "Agent", "Client"]}
-            options={["All", "Agent", "Client"]}
-            value={"All"}
+            values={["Agent", "Client"]}
+            options={["Agent", "Client"]}
+            value={userFilter}
             onChange={(e) => setUserFilter(e.target.value)}
           />
         </div>

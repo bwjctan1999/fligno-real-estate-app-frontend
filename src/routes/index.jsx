@@ -5,6 +5,7 @@ import ForgetPassPage from "../pages/general/ForgetPassPage";
 import ResetPassEmail from "../pages/general/ResetPassEmail";
 import ResetPassword from "../pages/general/ResetPassword";
 import PasswordChanged from "../pages/general/PasswordChanged";
+import Index from "../pages/general/AccountInfo/Index";
 
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
@@ -51,6 +52,10 @@ export default function RouteList() {
         {
           index: true,
           element: <LandingPage />,
+        },
+        {
+          path: "account-info",
+          element: <Index />,
         },
         {
           path: "*",
