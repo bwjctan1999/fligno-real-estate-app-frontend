@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import DesignForgotPass from "../../assets/svgs/DesignForgotPass";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
 
@@ -7,7 +6,9 @@ import DesignLogin from "../../assets/svgs/DesignLogin";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import IconSuccessful from "../../assets/icons/IconSuccessful";
 
+import { useState, useEffect } from "react";
 import { ChangePassword } from "../../api/ApiPassword";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgetPassPage({}) {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ export default function ForgetPassPage({}) {
 
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const url = window.location.href.split("=");
@@ -27,6 +29,7 @@ export default function ForgetPassPage({}) {
   }, []);
 
   const resetPasswordHandler = async () => {
+    console.log(token)
     setLoading(true);
     const api_request = await ChangePassword({
       email: email,
@@ -39,6 +42,7 @@ export default function ForgetPassPage({}) {
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
+      navigate("/password-changed");
     } else {
       console.log(api_request.error);
     }
@@ -46,8 +50,8 @@ export default function ForgetPassPage({}) {
 
   return (
     <div className="flex h-screen flex-row flex-wrap-reverse justify-center bg-BGSecondary">
-      <div className="ml-20 hidden w-6/12 items-center  justify-center lg:flex">
-        <DesignLogin />
+      <div className="ml-9 mt-20 hidden w-6/12 items-center  justify-center lg:flex">
+        <DesignForgotPass />
       </div>
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-8 pb-3 text-3xl font-bold text-TextTertiary">
@@ -95,7 +99,7 @@ export default function ForgetPassPage({}) {
                       color="fill-BtnPrimary-end"
                     />
                     <p className="font-semibold text-TextOnDark">
-                      Logging you in...
+                      Changing your password...
                     </p>
                   </div>
                 )}
