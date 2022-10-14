@@ -1,4 +1,4 @@
-import { GetProperty } from "../../../api/ApiProperty";
+import { GetProperty, SearchProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,13 +22,18 @@ export default function PropertyList({ navigate_to, search }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData(search);
+    getData("", search);
   }, [search]);
 
-  const getData = async (search) => {
+  const getData = async (url, search) => {
     setProperties([]);
     setLoading(true);
-    const api_request = await GetProperty("", search);
+    let api_request;
+
+    search
+      ? (api_request = await SearchProperty(search))
+      : (api_request = await GetProperty(url));
+
     if (!api_request.error) {
       setProperties(api_request.response.data.data);
       setPaginationData({
