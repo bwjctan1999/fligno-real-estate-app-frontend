@@ -8,6 +8,7 @@ import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
 export default function PropertyList({ navigate_to, search }) {
+  const [loading, setLoading] = useState(true);
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -26,6 +27,7 @@ export default function PropertyList({ navigate_to, search }) {
 
   const getData = async (search) => {
     setProperties([]);
+    setLoading(true);
     const api_request = await GetProperty("", search);
     if (!api_request.error) {
       setProperties(api_request.response.data.data);
@@ -37,6 +39,7 @@ export default function PropertyList({ navigate_to, search }) {
         next_page_url: api_request.response.data.next_page_url,
         prev_page_url: api_request.response.data.prev_page_url,
       });
+      setLoading(false);
     } else {
       console.log(api_request.error);
     }
@@ -73,18 +76,24 @@ export default function PropertyList({ navigate_to, search }) {
     );
   };
 
-  return (
+  return loading ? (
+    <div className="mt-10 grid w-full animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+    </div>
+  ) : (
     <div id="client_properties" className="w-full">
       {properties.length === 0 ? (
-        <div className="mt-10 grid w-full animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
+        <div className="mt-10 w-full rounded-lg bg-BGPrimary p-5 text-center font-medium shadow-lg">
+          {search
+            ? `We cannot find any matches for "${search}"`
+            : "Their are no properties"}
         </div>
       ) : (
         <div className="flex flex-col items-center gap-3">
