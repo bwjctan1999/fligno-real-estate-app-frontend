@@ -46,6 +46,12 @@ export default function Index(  ) {
     setLastName(name);
   }
 
+  const changeEmail = (name) => {
+    setEmail(name);
+  }
+  const changePhoneNumber = (name) => {
+    setPhoneNumber(name);
+  }
 
   return (
     
@@ -63,11 +69,15 @@ export default function Index(  ) {
 
       <EditEmailPop
        showEditEmailPop={showEditEmailPop}
-       onClick={() => setShowEditEmailPop(false)}
+       action={() => setShowEditEmailPop(false)}
+       setUserEmail={changeEmail}
+       useremail={email}
       />
         <EditPhoneNumPop
        showEditPhoneNumPop={showEditPhoneNumPop}
-       onClick={() => setShowEditPhoneNumPop(false)}
+       action={() => setShowEditPhoneNumPop(false)}
+       setPNumber={changePhoneNumber}
+       phonenumber={phone_number}
       />
 
          <ChangePassPop
