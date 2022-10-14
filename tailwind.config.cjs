@@ -19,7 +19,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       BGPrimary: "#FFFFFF",
-      BGSecondary: "#F5F6FC",
+      BGSecondary: "#eef0fa",
       TextPrimary: "#000000",
       TextSecondary: "#6E6E6E",
       TextTertiary: "#373F41",

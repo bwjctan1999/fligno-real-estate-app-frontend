@@ -8,7 +8,7 @@ export default function Properties() {
 
   return (
     <div>
-      <div className="flex w-full flex-col-reverse items-center justify-center gap-20 bg-BGSecondary px-4 pb-28 pt-36 md:px-24 lg:flex-row lg:px-32">
+      <div className="flex w-full flex-col-reverse items-center justify-center gap-20 bg-BGSecondary px-4 pb-28 pt-36 shadow-md md:px-24 lg:flex-row lg:px-32">
         <div className="flex flex-col gap-4 text-center lg:w-1/2 lg:text-left">
           <h1 className=" text-5xl font-bold">Properties</h1>
           <p className="text-xl font-medium">
