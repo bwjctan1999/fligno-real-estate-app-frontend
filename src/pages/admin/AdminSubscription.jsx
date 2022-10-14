@@ -4,8 +4,11 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Button from "../../components/general/Button";
 import IconSearch from "../../assets/icons/IconSearch";
 import Textfield from "../../components/general/Textfield";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminSubscription() {
+  const navigate = useNavigate();
+
   const addTableData = () => (
     <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
       <Td>Premium</Td>
@@ -43,7 +46,12 @@ export default function AdminSubscription() {
           <Textfield placeholder="Search" icon={<IconSearch />} />
         </div>
         <div className="w-1/5">
-          <Button text="Add New" fontsize="text-sm" custom="w-full ml-auto" />
+          <Button
+            text="Add New"
+            fontsize="text-sm"
+            custom="w-full ml-auto"
+            onClick={() => navigate("/admin/add-subscription")}
+          />
         </div>
       </div>
 
