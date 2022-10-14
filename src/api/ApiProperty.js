@@ -28,7 +28,7 @@ export async function PostProperty(data) {
   };
 
   try {
-    resolved.response = await axios.post(`${base_url}`, data);
+    resolved.response = await axios.post(`${base_url}-create`, data);
   } catch (e) {
     resolved.error = e;
   }
