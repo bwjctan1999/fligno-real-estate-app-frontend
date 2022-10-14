@@ -3,9 +3,11 @@ import PropertyFilter from "../../components/general/PropertyList/PropertyFilter
 import Button from "../../components/general/Button";
 import IconAdd from "../../assets/icons/IconAdd";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function AgentProperties() {
   const navigate = useNavigate();
+  const [search, setSearch] = useState();
 
   return (
     <div className="min-h-screen bg-BGSecondary px-4 pt-24 pb-12 lg:px-24">
@@ -21,9 +23,9 @@ export default function AgentProperties() {
           responsive="true"
           padding="p-2"
         />
-        <PropertyFilter />
+        <PropertyFilter search={search} setSearch={setSearch} />
       </div>
-      <PropertyList navigate_to="/agent/properties" />
+      <PropertyList navigate_to="/agent/properties" search={search} />
     </div>
   );
 }
