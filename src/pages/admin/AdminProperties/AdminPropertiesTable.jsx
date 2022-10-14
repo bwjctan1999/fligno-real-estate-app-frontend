@@ -7,17 +7,17 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TableSkeleton from "../../../components/general/TableSkeleton";
 
-export default function AdminPropertiesTable() {
+export default function AdminPropertiesTable({ search }) {
   const [properties, setProperties] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData();
-  }, []);
+    getData(search);
+  }, [search]);
 
-  const getData = async () => {
+  const getData = async (search) => {
     setProperties([]);
-    const property = await GetProperty("");
+    const property = await GetProperty("", search);
 
     if (!property.error) {
       setProperties(property.response.data.data);
@@ -25,6 +25,8 @@ export default function AdminPropertiesTable() {
       console.log(property.error);
     }
   };
+
+  const searchProperty = async () => {};
 
   const addProperty = ({
     id,
@@ -43,7 +45,7 @@ export default function AdminPropertiesTable() {
     img,
   }) => {
     return (
-      <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
+      <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
         <Td className="py-4 pr-4">{title + " Longer Longer Longer Longer"}</Td>
         <Td className="pr-4">{address_1}</Td>
         <Td className="pr-4">₱ {price}</Td>

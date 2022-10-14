@@ -7,7 +7,7 @@ import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
-export default function PropertyList({ navigate_to }) {
+export default function PropertyList({ navigate_to, search }) {
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -21,12 +21,12 @@ export default function PropertyList({ navigate_to }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData("");
-  }, []);
+    getData(search);
+  }, [search]);
 
-  const getData = async (url) => {
+  const getData = async (search) => {
     setProperties([]);
-    const api_request = await GetProperty(url);
+    const api_request = await GetProperty("", search);
     if (!api_request.error) {
       setProperties(api_request.response.data.data);
       setPaginationData({
