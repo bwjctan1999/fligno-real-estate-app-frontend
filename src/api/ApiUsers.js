@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = "http://127.0.0.1:8000/api/users";
+const base_url = "http://127.0.0.1:8000/api/admin/users-list/";
 
 export async function GetUser(id) {
   const resolved = {
@@ -58,7 +58,9 @@ export async function RestoreUser(id) {
   };
 
   try {
-    resolved.response = await axios.get(`${base_url}/restore/${id}`);
+    resolved.response = await axios.get(
+      `http://127.0.0.1:8000/api/users/restore/${id}`
+    );
   } catch (e) {
     resolved.error = e;
   }
@@ -73,7 +75,9 @@ export async function DisableUser(id) {
   };
 
   try {
-    resolved.response = await axios.delete(`${base_url}/delete/${id}`);
+    resolved.response = await axios.delete(
+      `http://127.0.0.1:8000/api/users/delete/${id}`
+    );
   } catch (e) {
     resolved.error = e;
   }

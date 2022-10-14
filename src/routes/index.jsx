@@ -4,6 +4,7 @@ import FourZeroFour from "../pages/general/FourZeroFour";
 import ForgetPassPage from "../pages/general/ForgetPassPage";
 import ResetPassEmail from "../pages/general/ResetPassEmail";
 import ResetPassword from "../pages/general/ResetPassword";
+import PasswordChanged from "../pages/general/PasswordChanged";
 import Index from "../pages/general/AccountInfo/Index";
 
 import LandingPage from "../pages/client/LandingPage";
@@ -71,6 +72,10 @@ export default function RouteList() {
         {
           path: "forgot-password",
           element: <ResetPassword />,
+        },
+        {
+          path: "password-changed",
+          element: <PasswordChanged />,
         },
         {
           path: "signup",

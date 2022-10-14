@@ -23,6 +23,7 @@ export default function Login({ setUser }) {
         email: email,
         password: password,
       });
+      localStorage.setItem("user_id", response.data.data.user_id);
       localStorage.setItem("user_role", response.data.data.user_role[0]);
       localStorage.setItem("token", response.data.data.Token);
       localStorage.setItem("user_id", response.data.data.user_id);
