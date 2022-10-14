@@ -9,6 +9,8 @@ import AdminPropertiesTable from "./AdminPropertiesTable";
 export default function AdminProperties() {
   const [tableMode, setTableMode] = useState(true);
 
+  const [search, setSearch] = useState("");
+
   return (
     <div className="min-h-screen bg-BGSecondary px-4 py-24 lg:px-24">
       <div className="mb-5 text-4xl font-bold text-TextTertiary">
@@ -18,9 +20,13 @@ export default function AdminProperties() {
         <button onClick={() => setTableMode(!tableMode)}>
           {tableMode ? <IconLayoutList /> : <IconGrid />}
         </button>
-        <PropertyFilter />
+        <PropertyFilter search={search} setSearch={setSearch} />
       </div>
-      {tableMode ? <AdminPropertiesTable /> : <PropertyList />}
+      {tableMode ? (
+        <AdminPropertiesTable search={search} />
+      ) : (
+        <PropertyList search={search} />
+      )}
     </div>
   );
 }

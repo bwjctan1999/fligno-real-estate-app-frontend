@@ -2,14 +2,18 @@ import axios from "axios";
 
 const base_url = "http://127.0.0.1:8000/api/property";
 
-export async function GetProperty(id) {
+export async function GetProperty(id, search) {
   const resolved = {
     response: null,
     error: null,
   };
 
   try {
-    resolved.response = await axios.get(`${base_url}/${id}`);
+    resolved.response = await axios.get(`${base_url}/${id}`, {
+      params: {
+        search: search,
+      },
+    });
   } catch (e) {
     resolved.error = e;
   }

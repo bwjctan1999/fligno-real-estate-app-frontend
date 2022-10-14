@@ -1,8 +1,11 @@
+import { useState } from "react";
 import DesignProperties from "../../assets/svgs/DesignProperties";
 import PropertyList from "../../components/general/PropertyList";
 import PropertyFilter from "../../components/general/PropertyList/PropertyFilter";
 
 export default function Properties() {
+  const [search, setSearch] = useState("");
+
   return (
     <div>
       <div className="flex w-full flex-col-reverse items-center justify-center gap-20 bg-BGSecondary px-4 pb-28 pt-36 md:px-24 lg:flex-row lg:px-32">
@@ -17,8 +20,8 @@ export default function Properties() {
         </div>
       </div>
       <div className="flex w-full flex-col items-end p-4 py-12 lg:px-32">
-        <PropertyFilter />
-        <PropertyList navigate_to="/properties" />
+        <PropertyFilter search={search} setSearch={setSearch} />
+        <PropertyList navigate_to="/properties" search={search} />
       </div>
     </div>
   );

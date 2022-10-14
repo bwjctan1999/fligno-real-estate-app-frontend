@@ -9,12 +9,19 @@ export default function Textfield({
   onChange,
   invalidError = "",
   value,
+  onKeyDown,
 }) {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onKeyDown();
+    }
+  };
+
   return (
     <div>
       <div
         className={`
-          ${bgcolor} 
+          ${bgcolor} onKeyDown
           ${textcolor} 
           ${icon ? "pl-3" : null} 
           ${invalidError === "" ? null : "border-2 border-BtnTertiary-end"} 
@@ -28,6 +35,7 @@ export default function Textfield({
           onClick={onClick}
           onChange={onChange}
           value={value}
+          onKeyDown={handleKeyDown}
         />
       </div>
       {invalidError === "" ? null : (
