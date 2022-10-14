@@ -14,7 +14,7 @@ export default function PropertyCard({
 }) {
   return (
     <div
-      className=" rounded-lg shadow-lg hover:cursor-pointer"
+      className=" rounded-md shadow-lg hover:cursor-pointer"
       onClick={onClick}
     >
       <img className="aspect-video rounded-t-lg" src={img} />
