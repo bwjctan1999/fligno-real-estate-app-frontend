@@ -1,6 +1,11 @@
 import { useRoutes, Navigate } from "react-router-dom";
 
 import FourZeroFour from "../pages/general/FourZeroFour";
+import ForgetPassPage from "../pages/general/ForgetPassPage";
+import ResetPassEmail from "../pages/general/ResetPassEmail";
+import ResetPassword from "../pages/general/ResetPassword";
+import PasswordChanged from "../pages/general/PasswordChanged";
+import Index from "../pages/general/AccountInfo/Index";
 
 import LandingPage from "../pages/client/LandingPage";
 import Login from "../pages/client/Login";
@@ -14,7 +19,6 @@ import Agents from "../pages/client/Agents";
 import AboutPage from "../pages/client/AboutPage";
 import EmailVerification from "../pages/client/EmailVerification";
 import VerifyEmail from "../pages/client/VerifyEmail";
-
 
 import AgentLayout from "../pages/agent/AgentLayout";
 import AgentDashboard from "../pages/agent/AgentDashboard";
@@ -50,8 +54,28 @@ export default function RouteList() {
           element: <LandingPage />,
         },
         {
+          path: "account-info",
+          element: <Index />,
+        },
+        {
           path: "*",
           element: <FourZeroFour />,
+        },
+        {
+          path: "reset-password",
+          element: <ForgetPassPage />,
+        },
+        {
+          path: "check-your-email",
+          element: <ResetPassEmail />,
+        },
+        {
+          path: "forgot-password",
+          element: <ResetPassword />,
+        },
+        {
+          path: "password-changed",
+          element: <PasswordChanged />,
         },
         {
           path: "signup",
@@ -99,12 +123,12 @@ export default function RouteList() {
     //Agent Routes
     {
       path: "/agent",
-      element: <AgentLayout />,
-      // localStorage.getItem("user_role") != 2 ? (
-      //   <Navigate to="/" />
-      // ) : (
-      //   <AgentLayout />
-      // ),
+      element:
+        localStorage.getItem("user_role") != "agent" ? (
+          <Navigate to="/" />
+        ) : (
+          <AgentLayout />
+        ),
       children: [
         {
           index: true,
@@ -131,7 +155,7 @@ export default function RouteList() {
           element: <AgentPropertyDetails />,
         },
         {
-          path: "update-account/:propertyid",
+          path: "update-account",
           element: <UpdateAccountInfo />,
         },
         {
@@ -140,7 +164,7 @@ export default function RouteList() {
         },
         {
           path: "change-subscription",
-          element: <ChangeSubscription />
+          element: <ChangeSubscription />,
         },
       ],
     },
@@ -148,12 +172,12 @@ export default function RouteList() {
     //Admin Routes
     {
       path: "/admin",
-      element: <AdminLayout />,
-      // localStorage.getItem("user_role") != 1 ? (
-      //   <Navigate to="/" />
-      // ) : (
-      //   <AdminLayout />
-      // ),
+      element:
+        localStorage.getItem("user_role") != "admin" ? (
+          <Navigate to="/" />
+        ) : (
+          <AdminLayout />
+        ),
       children: [
         {
           index: true,

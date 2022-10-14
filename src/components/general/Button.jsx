@@ -12,7 +12,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} ${custom} flex w-full items-center justify-center gap-2 rounded-lg bg-BGPrimary font-bold`}
+      className={`${padding} ${bgcolor} ${textcolor} ${fontsize} ${custom} flex w-full items-center justify-center gap-2 rounded-lg bg-BGPrimary font-bold hover:scale-x-105`}
       onClick={onClick}
     >
       {icon}

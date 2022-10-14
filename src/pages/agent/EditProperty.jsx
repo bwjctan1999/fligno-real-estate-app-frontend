@@ -6,10 +6,15 @@ import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
 
+import PopUpProcessing from "../../components/popups/PopUpProcessing";
 import { ValidEmpty } from "../../scripts/Validations";
 import { GetProperty, UpdateProperty } from "../../api/ApiProperty";
+import { useNavigate } from "react-router-dom";
+
 
 export default function EditProperty() {
+  const [showPopUp, setShowPopUp] = useState(false);
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     title: "",
     price: "",
@@ -73,7 +78,9 @@ export default function EditProperty() {
     setValidations(tempValidations);
 
     const pass = Object.values(tempValidations).every((value) => value === "");
-    if (pass) updateData();
+    if (pass) {  
+      setShowPopUp(true);
+    }
   };
 
   const setValue = (e, name) => {
@@ -108,14 +115,27 @@ export default function EditProperty() {
 
     if (!api_request.error) {
       //DO SOMETHING
-      console.log(api_request.response);
+      return true;
     } else {
-      console.log(property.error);
-    }
+return false    }
   };
+
+
+
 
   return (
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
+       <PopUpProcessing
+        show={showPopUp}
+        text="Your Property has been Edited"
+        okayFunction={() => {
+        setShowPopUp(false)
+       
+         navigate("/agent/properties")
+        
+        }}
+        actionFunction={updateData}
+      />
       <h1 className="mb-10 text-4xl font-bold text-TextTertiary">
         Edit Property
       </h1>

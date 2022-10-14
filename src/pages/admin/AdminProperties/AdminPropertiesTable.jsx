@@ -5,6 +5,7 @@ import Button from "../../../components/general/Button";
 import { GetProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import TableSkeleton from "../../../components/general/TableSkeleton";
 
 export default function AdminPropertiesTable() {
   const [properties, setProperties] = useState([]);
@@ -15,10 +16,11 @@ export default function AdminPropertiesTable() {
   }, []);
 
   const getData = async () => {
+    setProperties([]);
     const property = await GetProperty("");
 
     if (!property.error) {
-      setProperties(property.response.data.data.data);
+      setProperties(property.response.data.data);
     } else {
       console.log(property.error);
     }
@@ -59,7 +61,11 @@ export default function AdminPropertiesTable() {
     );
   };
 
-  return (
+  return properties.length === 0 ? (
+    <div className="mt-10">
+      <TableSkeleton />
+    </div>
+  ) : (
     <div className="mt-10 w-full rounded-lg bg-BGPrimary p-4 shadow-lg">
       <Table>
         <Thead>

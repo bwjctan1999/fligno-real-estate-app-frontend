@@ -10,6 +10,7 @@ import IconMenu from "../../assets/icons/IconMenu";
 import IconKey from "../../assets/icons/IconKey";
 
 import Button from "../general/Button";
+import IconSubscription from "../../assets/icons/IconSubscription";
 
 export default function AdminNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -104,6 +105,18 @@ export default function AdminNavbar({}) {
               <IconKey />
               Roles
             </Link>
+
+            <Link
+              to="/admin/subscription"
+              onClick={() => {
+                setActive("/admin/subscription");
+              }}
+              className={changeSelectedText(active, "/admin/subscription")}
+            >
+              <IconSubscription />
+              Subscription
+            </Link>
+
           </nav>
           <div className="flex items-center gap-4 ">
             <IconNotification />

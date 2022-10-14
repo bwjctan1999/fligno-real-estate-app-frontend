@@ -23,7 +23,7 @@ export default function AgentProperties() {
         />
         <PropertyFilter />
       </div>
-      <PropertyList url="http://localhost:8000/api/property" />
+      <PropertyList navigate_to="/agent/properties" />
     </div>
   );
 }

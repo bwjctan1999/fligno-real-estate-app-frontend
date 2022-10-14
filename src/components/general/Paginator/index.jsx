@@ -57,7 +57,7 @@ export default function Paginator({
   };
 
   return (
-    <div className="mt-6 flex w-auto items-center justify-center rounded-full bg-BGSecondary p-2 px-6 text-TextSecondary shadow-md">
+    <div className="mx-auto mt-6 flex w-fit items-center justify-center rounded-full bg-BGSecondary p-2 px-6 text-TextSecondary shadow-md">
       <a href={current === 1 ? null : "#client_properties"}>
         <button
           className={`flex items-center ${

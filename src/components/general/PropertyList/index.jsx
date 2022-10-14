@@ -7,7 +7,7 @@ import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
-export default function PropertyList({ url }) {
+export default function PropertyList({ navigate_to }) {
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -27,16 +27,15 @@ export default function PropertyList({ url }) {
   const getData = async (url) => {
     setProperties([]);
     const api_request = await GetProperty(url);
-
     if (!api_request.error) {
-      setProperties(api_request.response.data.data.data);
+      setProperties(api_request.response.data.data);
       setPaginationData({
-        current_page: api_request.response.data.data.current_page,
-        last_page: api_request.response.data.data.last_page,
-        first_page_url: api_request.response.data.data.first_page_url,
-        last_page_url: api_request.response.data.data.last_page_url,
-        next_page_url: api_request.response.data.data.next_page_url,
-        prev_page_url: api_request.response.data.data.prev_page_url,
+        current_page: api_request.response.data.current_page,
+        last_page: api_request.response.data.last_page,
+        first_page_url: api_request.response.data.first_page_url,
+        last_page_url: api_request.response.data.last_page_url,
+        next_page_url: api_request.response.data.next_page_url,
+        prev_page_url: api_request.response.data.prev_page_url,
       });
     } else {
       console.log(api_request.error);
@@ -67,7 +66,7 @@ export default function PropertyList({ url }) {
         bednum={bedroom}
         bathnum={bathroom}
         price={price}
-        onClick={() => navigate(`/agent/properties/${id}`)}
+        onClick={() => navigate(`${navigate_to}/${id}`)}
         key={id}
         img={img}
       />
@@ -75,9 +74,9 @@ export default function PropertyList({ url }) {
   };
 
   return (
-    <div id="client_properties">
+    <div id="client_properties" className="w-full">
       {properties.length === 0 ? (
-        <div className="mt-10 grid animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-10 grid w-full animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
           <PropertyCardSkeleton />
           <PropertyCardSkeleton />
           <PropertyCardSkeleton />
@@ -102,7 +101,7 @@ export default function PropertyList({ url }) {
             prev_url={paginationData.prev_page_url}
           />
         </div>
-      )}{" "}
+      )}
     </div>
   );
 }

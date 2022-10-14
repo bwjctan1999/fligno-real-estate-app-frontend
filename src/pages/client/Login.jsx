@@ -3,32 +3,44 @@ import { useState } from "react";
 import DesignLogin from "../../assets/svgs/DesignLogin";
 import Button from "../../components/general/Button";
 import TextField from "../../components/general/Textfield";
+import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import axios from "axios";
+import IconSuccessful from "../../assets/icons/IconSuccessful";
 
 export default function Login({ setUser }) {
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(true);
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
+      setLoading(true);
+      setLoaded(false);
       const response = await axios.post("http://localhost:8000/api/login", {
         email: email,
         password: password,
       });
-      localStorage.setItem("user_role", response.data.data.user_role);
+      localStorage.setItem("user_id", response.data.data.user_id);
+      localStorage.setItem("user_role", response.data.data.user_role[0]);
       localStorage.setItem("token", response.data.data.Token);
+      localStorage.setItem("user_id", response.data.data.user_id);
+      console.log(response.data.data);
+      setLoaded(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setLoading(false);
 
-      switch (response.data.data.user_role) {
-        case 2:
+      switch (response.data.data.user_role[0]) {
+        case "admin":
+          navigate("/admin");
+          break;
+        case "agent":
           navigate("/agent");
           break;
-        case 3:
+        case "client":
           navigate("/");
-          break;
-        default:
           break;
       }
     } catch (error) {
@@ -65,18 +77,47 @@ export default function Login({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className="flex flex-wrap gap-x-4  gap-y-3">
+          <div className="flex flex-wrap gap-x-4 gap-y-3">
             <input type="checkbox" />
-            <label class="text-sm "> Remember Me</label>
+            <label className="text-sm "> Remember Me</label>
             <div className="flex flex-row gap-x-12 gap-y-3">
-              <a class="text-sm text-BtnPrimary-start hover:underline ">
+              <button
+                className="text-sm text-BtnPrimary-start hover:underline"
+                onClick={() => navigate("/forgot-password")}
+              >
                 Forgot Password?
-              </a>
+              </button>
             </div>
           </div>
 
           <div className="mt-7 text-sm">
-            <Button text="Log In" onClick={handleLogin} />
+            {loading ? (
+              <div className="flex items-center justify-center gap-1 rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2">
+                {loaded ? (
+                  <div className="animate-bounce">
+                    <IconSuccessful
+                      width="32"
+                      height="32"
+                      color="text-TextOnDark"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex animate-fade-in items-center gap-1">
+                    <DesignSpinner
+                      width="32"
+                      height="32"
+                      bgcolor="text-TextOnDark"
+                      color="fill-BtnPrimary-end"
+                    />
+                    <p className="font-semibold text-TextOnDark">
+                      Logging you in...
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Button text="Log In" onClick={handleLogin} />
+            )}
           </div>
         </div>
       </div>

@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import IconLogo from "../../assets/icons/IconLogo";
-import IconDashboard from "../../assets/icons/IconDashboard";
-import IconUsersList from "../../assets/icons/IconUsersList";
-import IconProperties from "../../assets/icons/IconProperties";
-import IconAdd from "../../assets/icons/IconAdd";
-import IconNotification from "../../assets/icons/IconNotification";
-import DesignProfile from "../../assets/svgs/DesignProfile.svg";
-import IconMenu from "../../assets/icons/IconMenu";
+import IconLogo from "../../../assets/icons/IconLogo";
+import IconDashboard from "../../../assets/icons/IconDashboard";
+import IconUsersList from "../../../assets/icons/IconUsersList";
+import IconProperties from "../../../assets/icons/IconProperties";
+import IconMenu from "../../../assets/icons/IconMenu";
+import AgentLogger from "./AgentLogger";
+import PopUp from "../../popups/PopUp";
 
 export default function AgentNavbar({}) {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [active, setActive] = useState(window.location.pathname);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleResize() {
@@ -41,6 +43,17 @@ export default function AgentNavbar({}) {
 
   return (
     <div>
+      <PopUp
+        text="Are you sure you want to log out?"
+        state={showPopup}
+        cancelFunction={() => setShowPopup(false)}
+        okayFunction={() => {
+          localStorage.clear();
+          navigate("/login");
+          setShowPopup(false);
+        }}
+      />
+
       <button
         onClick={() => setOpenNavbar(true)}
         className="fixed left-4 top-4 rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2 text-BGPrimary lg:hidden"
@@ -98,10 +111,7 @@ export default function AgentNavbar({}) {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-4">
-            <IconNotification />
-            <img src={DesignProfile} className="h-8 w-8" />
-          </div>
+          <AgentLogger logoutFunction={() => setShowPopup(true)} />
         </div>
       </nav>
     </div>
