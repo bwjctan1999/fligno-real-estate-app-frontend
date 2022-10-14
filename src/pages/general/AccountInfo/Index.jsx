@@ -1,18 +1,42 @@
 import DummyPic from "../../../assets/imgs/DummyPic.jpg";
 import Button from "../../../components/general/Button";
+import { GetUser } from "../../../api/ApiUsers";
 
 import React, {useState} from "react";
 import EditNamePop from "./EditNamePop";
 import EditEmailPop from "./EditEmailPop";
 import EditPhoneNumPop from "./EditPhoneNumPop";
 import ChangePassPop from "./ChangePassPop";
+import { useEffect } from "react";
 
-export default function Index() {
+export default function Index(  ) {
   const [showEditNamePop, setShowEditNamePop] = useState(false);
   const [showEditEmailPop, setShowEditEmailPop] = useState(false);
   const [showEditPhoneNumPop, setShowEditPhoneNumPop] = useState(false);
 
   const [showChangePassPop, setShowChangePassPop] = useState(false);
+  const [formValues, setFormValues] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+  });
+
+  useEffect (() => {
+    getUser()
+  },[]) 
+
+  const getUser = async () => {
+    const api_request = await GetUser (localStorage.getItem("user_id"));
+    if (!api_request.error) {
+      setFormValues(api_request.response.data);
+    }
+    else {
+      console.log(api_request.error);
+    }
+  }
+
+
   return (
     
     <div className="mt-28 flex h-auto flex-col items-center justify-center">
@@ -51,16 +75,18 @@ export default function Index() {
             />
           </div>
           <div className="flex  items-center ">
-            <Button  padding="py-2 px-5" text="Edit Profile" />
+            <Button  padding="py-2 px-5" text="Edit Profile"/>
           </div>
         </div>
-        <hr class=" h-px border-0 bg-BtnSecondary opacity-10 " />
+        <hr className=" h-px border-0 bg-BtnSecondary opacity-10 " />
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap justify-between gap-3">
             <div className="w-1/2">
               <h1 className="font-semibold">Name</h1>
-              <span className=" text-TextSecondary">Reyu Mari</span>
+              <span className=" text-TextSecondary" > 
+              {formValues.first_name} {formValues.last_name}
+              </span>
             </div>
             <div className="flex  items-center ">
               <Button  padding="py-2  px-8" text="Edit" onClick={() => setShowEditNamePop(true)}/>
@@ -69,7 +95,7 @@ export default function Index() {
           <div className="flex flex-wrap justify-between gap-3">
             <div className="w-1/2">
               <h1 className="font-semibold">Email</h1>
-              <span className=" text-TextSecondary">Reyu@gmail.com</span>
+              <span className=" text-TextSecondary">{formValues.email}</span>
             </div>
             <div className="flex  items-center ">
               <Button  padding="py-2 px-8" text="Edit" onClick={() => setShowEditEmailPop(true)}/>
@@ -78,7 +104,7 @@ export default function Index() {
           <div className="flex  flex-wrap justify-between gap-3">
             <div className="w-1/2">
               <h1 className="font-semibold">Phone Number</h1>
-              <span className=" text-TextSecondary">094917481</span>
+              <span className=" text-TextSecondary">{formValues.phone_number}</span>
             </div>
             <div className="flex items-center ">
               <Button  padding="py-2  px-8" text="Edit" onClick={() => setShowEditPhoneNumPop(true)} />
@@ -110,7 +136,7 @@ export default function Index() {
       </div>
 
       <div className="mb-28 flex w-10/12 flex-col gap-8 p-10">
-        <hr class=" h-px border-0 bg-BtnSecondary opacity-20 " />
+        <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
         <div className="flex  flex-col gap-4">
           <div>
             <h1 className="text-lg font-semibold">
@@ -124,7 +150,7 @@ export default function Index() {
             </div>
           </div>
         </div>
-        <hr class=" h-px border-0 bg-BtnSecondary opacity-20 " />
+        <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
 
         <div className="flex  flex-col gap-4">
           <div>
@@ -154,7 +180,7 @@ export default function Index() {
             </div>
           </div>
         </div>
-        <hr class=" h-px border-0 bg-BtnSecondary opacity-20 " />
+        <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
       </div>
     </div>
   );

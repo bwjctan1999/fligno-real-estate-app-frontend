@@ -25,6 +25,8 @@ export default function Login({ setUser }) {
       });
       localStorage.setItem("user_role", response.data.data.user_role[0]);
       localStorage.setItem("token", response.data.data.Token);
+      localStorage.setItem("user_id", response.data.data.user_id);
+      console.log(response.data.data);
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
