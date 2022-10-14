@@ -49,6 +49,7 @@ export default function RouteList() {
       path: "/",
       element: <ClientLayout />,
       children: [
+        
         {
           index: true,
           element: <LandingPage />,
@@ -133,6 +134,10 @@ export default function RouteList() {
         {
           index: true,
           element: <AgentDashboard />,
+        },
+        {
+          path: "account-info",
+          element: <Index />,
         },
         {
           path: "clients",
