@@ -15,13 +15,12 @@ export default function Index(  ) {
   const [showEditPhoneNumPop, setShowEditPhoneNumPop] = useState(false);
 
   const [showChangePassPop, setShowChangePassPop] = useState(false);
-  const [formValues, setFormValues] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone_number: "",
-  });
-
+  const [first_name, setFirstName] = useState(false);
+  const [last_name, setLastName] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [phone_number, setPhoneNumber] = useState(false);
+  
+  
   useEffect (() => {
     getUser()
   },[]) 
@@ -29,11 +28,22 @@ export default function Index(  ) {
   const getUser = async () => {
     const api_request = await GetUser (localStorage.getItem("user_id"));
     if (!api_request.error) {
-      setFormValues(api_request.response.data);
+      setFirstName(api_request.response.data.first_name);
+      setLastName(api_request.response.data.last_name);
+      setEmail(api_request.response.data.email);
+      setPhoneNumber(api_request.response.data.phone_number);
     }
     else {
       console.log(api_request.error);
     }
+  }
+
+  const changeFirstName = (name) => {
+    setFirstName(name);
+  }
+
+  const changeLastName = (name) => {
+    setLastName(name);
   }
 
 
@@ -44,7 +54,11 @@ export default function Index(  ) {
 
       <EditNamePop
        showEditNamePop={showEditNamePop}
-       onClick={() => setShowEditNamePop(false)}
+       action={() => setShowEditNamePop(false)}
+       setFirst={changeFirstName}
+       setLast ={changeLastName}
+       firstname={first_name}
+       lastname={last_name}
       />
 
       <EditEmailPop
@@ -85,7 +99,7 @@ export default function Index(  ) {
             <div className="w-1/2">
               <h1 className="font-semibold">Name</h1>
               <span className=" text-TextSecondary" > 
-              {formValues.first_name} {formValues.last_name}
+              {first_name} {last_name}
               </span>
             </div>
             <div className="flex  items-center ">
@@ -95,7 +109,7 @@ export default function Index(  ) {
           <div className="flex flex-wrap justify-between gap-3">
             <div className="w-1/2">
               <h1 className="font-semibold">Email</h1>
-              <span className=" text-TextSecondary">{formValues.email}</span>
+              <span className=" text-TextSecondary">{email}</span>
             </div>
             <div className="flex  items-center ">
               <Button  padding="py-2 px-8" text="Edit" onClick={() => setShowEditEmailPop(true)}/>
@@ -104,7 +118,7 @@ export default function Index(  ) {
           <div className="flex  flex-wrap justify-between gap-3">
             <div className="w-1/2">
               <h1 className="font-semibold">Phone Number</h1>
-              <span className=" text-TextSecondary">{formValues.phone_number}</span>
+              <span className=" text-TextSecondary">{phone_number}</span>
             </div>
             <div className="flex items-center ">
               <Button  padding="py-2  px-8" text="Edit" onClick={() => setShowEditPhoneNumPop(true)} />
