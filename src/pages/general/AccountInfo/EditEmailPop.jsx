@@ -6,7 +6,9 @@ export default function EditEmailPop({
   action,
   showEditEmailPop,
   setUserEmail,
-  useremail
+  useremail,
+  setShowSuccessAlert,
+  setShowErrorAlert
 }) {
 
   const [email, setEmail] = useState("");
@@ -18,9 +20,11 @@ export default function EditEmailPop({
 
     if (!api_request.error) {
       setUserEmail(email);
-      console.log(api_request.response);
+      setShowSuccessAlert(true);
+      setShowErrorAlert(false);
     } else {
-      console.log(api_request.error);
+      setShowErrorAlert(true);
+      setShowSuccessAlert(false);
     }
   };
 

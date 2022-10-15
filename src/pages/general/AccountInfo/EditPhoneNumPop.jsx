@@ -6,7 +6,9 @@ export default function EditPhoneNumPop({
 showEditPhoneNumPop,
 action,
 setPNumber,
-phonenumber
+phonenumber,
+setShowSuccessAlert,
+setShowErrorAlert
 }) {
 
   const [phone_number, setPhoneNumber] = useState("");
@@ -18,9 +20,11 @@ phonenumber
 
     if (!api_request.error) {
       setPNumber(phone_number);
-      console.log(api_request.response);
+      setShowSuccessAlert(true);
+      setShowErrorAlert(false);
     } else {
-      console.log(api_request.error);
+      setShowErrorAlert(true);
+      setShowSuccessAlert(false);
     }
   };
 

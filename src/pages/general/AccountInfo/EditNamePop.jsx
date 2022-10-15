@@ -10,7 +10,9 @@ export default function EditNamePop({
   setFirst,
   setLast,
   firstname,
-  lastname
+  lastname,
+  setShowSuccessAlert,
+  setShowErrorAlert
 }) {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -24,11 +26,15 @@ export default function EditNamePop({
     if (!api_request.error) {
       setFirst(first_name);
       setLast(last_name);
-      console.log(api_request.response);
+      setShowSuccessAlert(true);
+      setShowErrorAlert(false);
     } else {
-      console.log(api_request.error);
+      setShowErrorAlert(true);
+      setShowSuccessAlert(false);
     }
   };
+
+
 
   return showEditNamePop ? (
     <div className="fixed inset-0 z-20 overflow-y-auto">
