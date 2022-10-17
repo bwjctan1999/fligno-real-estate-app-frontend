@@ -2,27 +2,49 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Button from "../../../components/general/Button";
 
-import { GetProperty } from "../../../api/ApiProperty";
+import { GetProperty, SearchProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TableSkeleton from "../../../components/general/TableSkeleton";
+import Paginator from "../../../components/general/Paginator";
 
 export default function AdminPropertiesTable({ search }) {
   const [properties, setProperties] = useState([]);
+  const [paginationData, setPaginationData] = useState({
+    current_page: 1,
+    last_page: null,
+    first_page_url: null,
+    last_page_url: null,
+    next_page_url: null,
+    prev_page_url: null,
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData(search);
+    getData("", search);
   }, [search]);
 
-  const getData = async (search) => {
+  const getData = async (id, search) => {
     setProperties([]);
-    const property = await GetProperty("", search);
+    let api_request;
 
-    if (!property.error) {
-      setProperties(property.response.data.data);
+    search
+      ? (api_request = await SearchProperty(search, "admin/property-list"))
+      : (api_request = await GetProperty(id, "admin/property-list"));
+
+    console.log(api_request.response);
+    if (!api_request.error) {
+      setProperties(api_request.response.data.data);
+      setPaginationData({
+        current_page: api_request.response.data.current_page,
+        last_page: api_request.response.data.last_page,
+        first_page_url: api_request.response.data.first_page_url,
+        last_page_url: api_request.response.data.last_page_url,
+        next_page_url: api_request.response.data.next_page_url,
+        prev_page_url: api_request.response.data.prev_page_url,
+      });
     } else {
-      console.log(property.error);
+      console.log(api_request.error);
     }
   };
 
@@ -46,7 +68,7 @@ export default function AdminPropertiesTable({ search }) {
   }) => {
     return (
       <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
-        <Td className="py-4 pr-4">{title + " Longer Longer Longer Longer"}</Td>
+        <Td className="py-4 pr-4">{title}</Td>
         <Td className="pr-4">{address_1}</Td>
         <Td className="pr-4">₱ {price}</Td>
         <Td className="pr-4">{area} sq.m.</Td>
@@ -83,6 +105,15 @@ export default function AdminPropertiesTable({ search }) {
         </Thead>
         <Tbody>{properties.map((property, i) => addProperty(property))}</Tbody>
       </Table>
+      <Paginator
+        changePage={getData}
+        current={paginationData.current_page}
+        last={paginationData.last_page}
+        start_url={paginationData.first_page_url}
+        last_url={paginationData.last_page_url}
+        next_url={paginationData.next_page_url}
+        prev_url={paginationData.prev_page_url}
+      />
     </div>
   );
 }

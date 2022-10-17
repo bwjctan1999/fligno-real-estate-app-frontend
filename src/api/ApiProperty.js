@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const base_url = "http://127.0.0.1:8000/api/property";
+const base_url = "http://127.0.0.1:8000/api";
 
-export async function GetProperty(id) {
+export async function GetProperty(id, url) {
   const resolved = {
     response: null,
     error: null,
   };
 
   try {
-    resolved.response = await axios.get(`${base_url}/${id}`);
+    resolved.response = await axios.get(`${base_url}/${url}/${id}`);
   } catch (e) {
     resolved.error = e;
   }
@@ -17,14 +17,14 @@ export async function GetProperty(id) {
   return resolved;
 }
 
-export async function SearchProperty(search) {
+export async function SearchProperty(search, url) {
   const resolved = {
     response: null,
     error: null,
   };
 
   try {
-    resolved.response = await axios.get(`${base_url}`, {
+    resolved.response = await axios.get(`${base_url}/${url}`, {
       params: {
         search: search,
       },

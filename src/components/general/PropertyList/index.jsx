@@ -7,7 +7,7 @@ import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
-export default function PropertyList({ navigate_to, search }) {
+export default function PropertyList({ navigate_to, search, url }) {
   const [loading, setLoading] = useState(true);
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
@@ -25,14 +25,14 @@ export default function PropertyList({ navigate_to, search }) {
     getData("", search);
   }, [search]);
 
-  const getData = async (url, search) => {
+  const getData = async (id, search) => {
     setProperties([]);
     setLoading(true);
     let api_request;
 
     search
-      ? (api_request = await SearchProperty(search))
-      : (api_request = await GetProperty(url));
+      ? (api_request = await SearchProperty(search, url))
+      : (api_request = await GetProperty(id, url));
 
     if (!api_request.error) {
       setProperties(api_request.response.data.data);

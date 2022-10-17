@@ -25,7 +25,7 @@ export default function AdminProperties() {
       {tableMode ? (
         <AdminPropertiesTable search={search} />
       ) : (
-        <PropertyList search={search} />
+        <PropertyList search={search} url="admin/property-list" />
       )}
     </div>
   );
