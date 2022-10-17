@@ -25,7 +25,11 @@ export default function AgentProperties() {
         />
         <PropertyFilter search={search} setSearch={setSearch} />
       </div>
-      <PropertyList navigate_to="/agent/properties" search={search} />
+      <PropertyList
+        navigate_to="/agent/properties"
+        search={search}
+        url="property-list"
+      />
     </div>
   );
 }

@@ -21,7 +21,11 @@ export default function Properties() {
       </div>
       <div className="flex w-full flex-col items-end p-4 py-12 lg:px-32">
         <PropertyFilter search={search} setSearch={setSearch} />
-        <PropertyList navigate_to="/properties" search={search} />
+        <PropertyList
+          navigate_to="/properties"
+          search={search}
+          url="property"
+        />
       </div>
     </div>
   );
