@@ -18,14 +18,14 @@ export default function SubscriptionCard({
 
   return (
     <div
-      className={`${changeCardColor()} flex flex-col gap-14 rounded-lg  px-10 pt-5 pb-14`}
+      className={`${changeCardColor()} flex flex-col gap-14 rounded-lg px-14 pt-5 pb-14`}
       onClick={onClick}
     >
       <h2 className={`${changeTitleColor()} text text-2xl font-bold`}>
         {title}
       </h2>
       <p className={`${changeTitleColor()} text-4xl font-semibold`}>
-      ₮ {price}/<span className="text-2xl">month</span>
+        ₮ {price}/<span className="text-2xl">month</span>
       </p>
       <p className={`${changeDescColor()} font-medium`}>{desc}</p>
     </div>
