@@ -8,12 +8,7 @@ import { ethers } from "ethers";
 
 export default function PaymentMethod() {
   const location = useLocation();
-  const table = {
-    Free: 0,
-    Starter: 1.7,
-    Premium: 4.2,
-  };
-  const price = table[location.state];
+  const price = location.state;
 
   /*  let accounts = [];
  async function connectWallet(){
