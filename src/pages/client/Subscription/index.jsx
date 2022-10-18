@@ -25,7 +25,7 @@ export default function Subscription() {
     }
   };
 
-  const renderCard = ({ title, description, price }) => {
+  const renderCard = ({ id, title, description, price }) => {
     return (
       <SubscriptionCard
         selected={selected}
@@ -37,8 +37,16 @@ export default function Subscription() {
     );
   };
 
+  const getSelectedPrice = () => {
+    const selectedPlan = plans.filter((x) => {
+      if (x.title === selected) return x.price;
+    });
+
+    return selectedPlan[0].price;
+  };
+
   return (
-    <div className="flex w-screen flex-col items-center justify-center gap-12 p-4 pt-24 text-center md:min-h-screen">
+    <div className="flex min-h-screen flex-col items-center gap-12 p-4 pt-24 text-center">
       <h1 className="text-5xl font-bold text-TextPrimary">Subscription</h1>
       <p className="text-base text-TextTertiary">
         Take a desired plan based on the number of properties you would want to
@@ -50,7 +58,9 @@ export default function Subscription() {
       <Button
         text="Next"
         custom="lg:w-80"
-        onClick={() => navigate("/awaiting-payment", { state: selected })}
+        onClick={() =>
+          navigate("/awaiting-payment", { state: getSelectedPrice() })
+        }
       />
     </div>
   );
