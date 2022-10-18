@@ -11,7 +11,6 @@ import { ValidEmpty } from "../../scripts/Validations";
 import { GetProperty, UpdateProperty } from "../../api/ApiProperty";
 import { useNavigate } from "react-router-dom";
 
-
 export default function EditProperty() {
   const [showPopUp, setShowPopUp] = useState(false);
   const navigate = useNavigate();
@@ -78,7 +77,7 @@ export default function EditProperty() {
     setValidations(tempValidations);
 
     const pass = Object.values(tempValidations).every((value) => value === "");
-    if (pass) {  
+    if (pass) {
       setShowPopUp(true);
     }
   };
@@ -98,7 +97,7 @@ export default function EditProperty() {
     const url = window.location.href.split("/");
     const id = url[url.length - 1];
 
-    const api_request = await GetProperty(`${id}`);
+    const api_request = await GetProperty(`${id}`, "property");
 
     if (!api_request.error) {
       setFormValues(api_request.response.data.data);
@@ -117,22 +116,19 @@ export default function EditProperty() {
       //DO SOMETHING
       return true;
     } else {
-return false    }
+      return false;
+    }
   };
-
-
-
 
   return (
     <div className="min-h-screen bg-BGSecondary p-4 pt-16 lg:p-20">
-       <PopUpProcessing
+      <PopUpProcessing
         show={showPopUp}
         text="Your Property has been Edited"
         okayFunction={() => {
-        setShowPopUp(false)
-       
-         navigate("/agent/properties")
-        
+          setShowPopUp(false);
+
+          navigate("/agent/properties");
         }}
         actionFunction={updateData}
       />
