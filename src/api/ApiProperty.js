@@ -43,7 +43,7 @@ export async function PostProperty(data) {
   };
 
   try {
-    resolved.response = await axios.post(`${base_url}-create`, data);
+    resolved.response = await axios.post(`${base_url}/property-create`, data);
   } catch (e) {
     resolved.error = e;
   }
@@ -71,7 +71,7 @@ export async function UpdateProperty(id, data) {
   };
 
   try {
-    resolved.response = await axios.put(`${base_url}/${id}`, data);
+    resolved.response = await axios.put(`${base_url}/property-edit/${id}`, data);
   } catch (e) {
     resolved.error = e;
   }
