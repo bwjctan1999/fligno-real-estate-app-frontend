@@ -98,7 +98,7 @@ export default function EditProperty() {
     const url = window.location.href.split("/");
     const id = url[url.length - 1];
 
-    const api_request = await GetProperty(`${id}`);
+    const api_request = await GetProperty(`${id}`, "property");
 
     if (!api_request.error) {
       setFormValues(api_request.response.data.data);

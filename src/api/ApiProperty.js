@@ -71,7 +71,7 @@ export async function UpdateProperty(id, data) {
   };
 
   try {
-    resolved.response = await axios.put(`${base_url}/${id}`, data);
+    resolved.response = await axios.put(`${base_url}/properties/${id}`, data);
   } catch (e) {
     resolved.error = e;
   }
