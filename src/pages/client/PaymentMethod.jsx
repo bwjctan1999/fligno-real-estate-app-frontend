@@ -9,34 +9,33 @@ import { ethers } from "ethers";
 
 export default function PaymentMethod() {
   const location = useLocation();
-  const table = {
-    Free:0,
-    Starter: 0.001, 
-    Premium: 0.003, 
-  }
-  const price = table[location.state]
+  const price = location.state;
 
-  async function sendTransaction(){
-    if(!window.ethereum)
-      throw new Error("Please Install Metamask");
-    const accounts = await ethereum.request({method:'eth_requestAccounts'});
+  async function sendTransaction() {
+    if (!window.ethereum) throw new Error("Please Install Metamask");
+    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
     const account = accounts[0];
-    let params =  [{
-      from:accounts[0], 
-      to: '0xc2b520448aCAc4fD15ab528E5602746910867D49', // admin account
-      value: Number(0.001 * 1e18).toString(16) // {price} Error when converting to Hex
-      /* gasPrice: '0x09184e72a000', // For use in private blockchains only (Ex: Ganache)
+    let params = [
+      {
+        from: accounts[0],
+        to: "0xc2b520448aCAc4fD15ab528E5602746910867D49", // admin account
+        value: Number(0.001 * 1e18).toString(16), // {price} Error when converting to Hex
+        /* gasPrice: '0x09184e72a000', // For use in private blockchains only (Ex: Ganache)
       gas: Number(21000).toString(16), */
-    }]
-    await window.ethereum.request({method: "eth_sendTransaction", params})
-    .then((txhash)=>{
-      console.log(txhash)
-      alert("Payment Complete with transaction hash:" + txhash) // Remove if success and redirect is done
-    })
-    .catch((err)=>{
-     console.log(err +"Payment has been rejected by user. Refresh the page")
-     alert("Payment has been rejected by user") // Remove if naa nay error page or redirect
-    })
+      },
+    ];
+    await window.ethereum
+      .request({ method: "eth_sendTransaction", params })
+      .then((txhash) => {
+        console.log(txhash);
+        alert("Payment Complete with transaction hash:" + txhash); // Remove if success and redirect is done
+      })
+      .catch((err) => {
+        console.log(
+          err + "Payment has been rejected by user. Refresh the page"
+        );
+        alert("Payment has been rejected by user"); // Remove if naa nay error page or redirect
+      });
   }
 
   return (
@@ -57,11 +56,11 @@ export default function PaymentMethod() {
           Payment for Ξ {price}
         </h1>
         <Button
-        class="sendEthButton btn"
-        text="Pay Now"
-        custom="lg:w-80" 
-        onClick={sendTransaction}> 
-        </Button>
+          class="sendEthButton btn"
+          text="Pay Now"
+          custom="lg:w-80"
+          onClick={sendTransaction}
+        ></Button>
         <div>
           <DesignSpinner />
           <span class="sr-only">Loading...</span>
