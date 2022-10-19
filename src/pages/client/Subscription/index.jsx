@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { GetSubscriptionForClient } from "../../../api/ApiSubscription";
 
 export default function Subscription() {
+  // const userSignupData = JSON.parse(localStorage.getItem("signupData"));
   const [plans, setPlans] = useState([]);
   const navigate = useNavigate();
   const [selected, setSelected] = useState("starter");
@@ -15,13 +16,11 @@ export default function Subscription() {
 
   const getData = async () => {
     const api_request = await GetSubscriptionForClient();
-    console.log(api_request);
 
     if (!api_request.error) {
-      console.log(api_request.response);
       setPlans(api_request.response.data.data);
     } else {
-      console.log(api_request.error);
+      alert(api_request.error);
     }
   };
 
