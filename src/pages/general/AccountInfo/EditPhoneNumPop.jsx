@@ -1,10 +1,34 @@
 import Button from "../../../components/general/Button";
 import Textfield from "../../../components/general/Textfield";
+import { UpdateUser } from "../../../api/ApiUsers";
+import { useState } from "react";
 export default function EditPhoneNumPop({
-  text = "Edit Phone Number",
 showEditPhoneNumPop,
-onClick
+action,
+setPNumber,
+phonenumber,
+setShowSuccessAlert,
+setShowErrorAlert
 }) {
+
+  const [phone_number, setPhoneNumber] = useState("");
+
+  const UpdatePhoneNumber = async () => {
+    const api_request = await UpdateUser({
+      phone_number: phone_number,
+    });
+
+    if (!api_request.error) {
+      setPNumber(phone_number);
+      setShowSuccessAlert(true);
+      setShowErrorAlert(false);
+    } else {
+      setShowErrorAlert(true);
+      setShowSuccessAlert(false);
+    }
+  };
+
+
   return showEditPhoneNumPop ? (
     <div className="fixed inset-0 z-20 overflow-y-auto">
       <div className="flex min-h-screen items-center bg-TextSecondary bg-opacity-30 px-4 py-8">
@@ -12,7 +36,7 @@ onClick
           <div className=" sm:flex">
             <div className="w-full text-TextPrimary">
                 <div className="text-lg text-center mb-4 font-bold">
-                {text}
+                Edit Phone Number
                 </div>
               
 
@@ -21,6 +45,9 @@ onClick
             <label className="font-semibold">Phone Number</label>
               <Textfield
                 type="number"
+                placeholder={phonenumber}
+                value={phone_number}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
               </div>
            
@@ -33,9 +60,12 @@ onClick
                   bgcolor="bg-BGPrimary"
                   textcolor="text-TextSecondary"
                   custom=" shadow-border shadow-TextSecondary opacity-60"  
-                  onClick={onClick}/>
-                <Button text="Save"
-                onClick={onClick}
+                  onClick={action}/>
+                <Button  text="Save"
+                  onClick={() => {
+                    UpdatePhoneNumber();
+                    action();
+                  }}
                  />
               </div>
             </div>

@@ -1,19 +1,41 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import { GetSubscription } from "../../api/ApiSubscription";
 
 import Button from "../../components/general/Button";
 import IconSearch from "../../assets/icons/IconSearch";
 import Textfield from "../../components/general/Textfield";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function AdminSubscription() {
-  const addTableData = () => (
-    <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
-      <Td>Premium</Td>
+  const [subscriptions, setSubscriptions] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getSubscription();
+  }, []);
+
+  const getSubscription = async () => {
+    const api_request = await GetSubscription();
+
+    if (!api_request.error) {
+      console.log(api_request.response);
+      setSubscriptions(api_request.response.data.data);
+    } else {
+      console.log(api_request.error);
+    }
+  };
+
+  const addTableData = ({ id, title, description, price }) => (
+    <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
+      <Td>{title}</Td>
       <Td>
-        <div>50 maximun postings</div>
+        <div>{description}</div>
       </Td>
       <Td>
-        <div className="flex">P150.00</div>
+        <div className="flex">₱{price}</div>
       </Td>
       <Td>
         <div className="flex w-full justify-end">
@@ -43,7 +65,12 @@ export default function AdminSubscription() {
           <Textfield placeholder="Search" icon={<IconSearch />} />
         </div>
         <div className="w-1/5">
-          <Button text="Add New" fontsize="text-sm" custom="w-full ml-auto" />
+          <Button
+            text="Add New"
+            fontsize="text-sm"
+            custom="w-full ml-auto"
+            onClick={() => navigate("/admin/add-subscription")}
+          />
         </div>
       </div>
 
@@ -58,7 +85,7 @@ export default function AdminSubscription() {
                 <Th className="float-right">Actions</Th>
               </Tr>
             </Thead>
-            <Tbody>{[...Array(5)].map((x, i) => addTableData())}</Tbody>
+            <Tbody>{subscriptions.map((x) => addTableData(x))}</Tbody>
           </Table>
         </div>
       </div>

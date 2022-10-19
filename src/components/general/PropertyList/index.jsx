@@ -1,4 +1,4 @@
-import { GetProperty } from "../../../api/ApiProperty";
+import { GetProperty, SearchProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,8 @@ import PropertyCard from "./PropertyCard";
 import Paginator from "../Paginator";
 import PropertyCardSkeleton from "./PropertyCardSkeleton";
 
-export default function PropertyList({ navigate_to }) {
+export default function PropertyList({ navigate_to, search, url }) {
+  const [loading, setLoading] = useState(true);
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -21,12 +22,18 @@ export default function PropertyList({ navigate_to }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData("");
-  }, []);
+    getData("", search);
+  }, [search]);
 
-  const getData = async (url) => {
+  const getData = async (id, search) => {
     setProperties([]);
-    const api_request = await GetProperty(url);
+    setLoading(true);
+    let api_request;
+
+    search
+      ? (api_request = await SearchProperty(search, url))
+      : (api_request = await GetProperty(id, url));
+
     if (!api_request.error) {
       setProperties(api_request.response.data.data);
       setPaginationData({
@@ -37,6 +44,7 @@ export default function PropertyList({ navigate_to }) {
         next_page_url: api_request.response.data.next_page_url,
         prev_page_url: api_request.response.data.prev_page_url,
       });
+      setLoading(false);
     } else {
       console.log(api_request.error);
     }
@@ -73,18 +81,24 @@ export default function PropertyList({ navigate_to }) {
     );
   };
 
-  return (
+  return loading ? (
+    <div className="mt-10 grid w-full animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+      <PropertyCardSkeleton />
+    </div>
+  ) : (
     <div id="client_properties" className="w-full">
       {properties.length === 0 ? (
-        <div className="mt-10 grid w-full animate-pulse grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
-          <PropertyCardSkeleton />
+        <div className="mt-10 w-full rounded-lg bg-BGPrimary p-5 text-center font-medium shadow-lg">
+          {search
+            ? `We cannot find any matches for "${search}"`
+            : "Their are no properties"}
         </div>
       ) : (
         <div className="flex flex-col items-center gap-3">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import IconLogo from "../../assets/icons/IconLogo";
 import IconDashboard from "../../assets/icons/IconDashboard";
@@ -13,6 +13,7 @@ import Button from "../general/Button";
 import IconSubscription from "../../assets/icons/IconSubscription";
 
 export default function AdminNavbar({}) {
+  const navigate = useNavigate();
   const [openNavbar, setOpenNavbar] = useState(false);
   const [active, setActive] = useState(false);
 
@@ -116,12 +117,19 @@ export default function AdminNavbar({}) {
               <IconSubscription />
               Subscription
             </Link>
-
           </nav>
           <div className="flex items-center gap-4 ">
             <IconNotification />
             <div className="w-24">
-              <Button text="Logout" fontsize="text-basic" padding="p-2" />
+              <Button
+                text="Logout"
+                fontsize="text-basic"
+                padding="p-2"
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/login");
+                }}
+              />
             </div>
           </div>
         </div>
