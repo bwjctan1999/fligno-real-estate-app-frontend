@@ -1,5 +1,6 @@
 import DummyPic from "../../../assets/imgs/DummyPic.jpg";
 import Button from "../../../components/general/Button";
+import { GetSubscriptionDetails } from "../../../api/ApiSubscription";
 import { GetUser } from "../../../api/ApiUsers";
 
 import React, { useState } from "react";
@@ -15,6 +16,8 @@ export default function Index() {
   const [showEditNamePop, setShowEditNamePop] = useState(false);
   const [showEditEmailPop, setShowEditEmailPop] = useState(false);
   const [showEditPhoneNumPop, setShowEditPhoneNumPop] = useState(false);
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const [showChangePassPop, setShowChangePassPop] = useState(false);
   const [first_name, setFirstName] = useState(false);
@@ -22,11 +25,11 @@ export default function Index() {
   const [email, setEmail] = useState(false);
   const [phone_number, setPhoneNumber] = useState(false);
 
-  const [showErrorAlert, setShowErrorAlert] = useState(false);
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [subscriptionInfo, setSubscriptionInfo] = useState([]);
 
   useEffect(() => {
     getUser();
+    getSubscriptionInfo();
   }, []);
 
   const getUser = async () => {
@@ -37,6 +40,17 @@ export default function Index() {
       setEmail(api_request.response.data.email);
       setPhoneNumber(api_request.response.data.phone_number);
     } else {
+      alert(api_request.error);
+    }
+  };
+
+  const getSubscriptionInfo = async () => {
+    const api_request = await GetSubscriptionDetails();
+
+    if (!api_request.error) {
+      setSubscriptionInfo(api_request.response.data);
+    } else {
+      alert(api_request.error);
       console.log(api_request.error);
     }
   };
@@ -60,15 +74,15 @@ export default function Index() {
     <div className="mt-20">
       <div className="mx-3 mb-14 flex flex-col gap-2">
         <ErrorAlert
-        text="Failed to save profile changes."
-        showErrorAlert = {showErrorAlert}
-        setShowErrorAlert = {setShowErrorAlert}
+          text="Failed to save profile changes."
+          showErrorAlert={showErrorAlert}
+          setShowErrorAlert={setShowErrorAlert}
         />
-        <SuccessAlert 
-        text="Successfully saved profile changes."
-         showSuccessAlert = {showSuccessAlert}
-         setShowSuccessAlert = {setShowSuccessAlert}
-         />
+        <SuccessAlert
+          text="Successfully saved profile changes."
+          showSuccessAlert={showSuccessAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
+        />
       </div>
 
       <div className=" flex h-auto flex-col items-center justify-center pt-4">
@@ -81,8 +95,8 @@ export default function Index() {
           setLast={changeLastName}
           firstname={first_name}
           lastname={last_name}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
 
         <EditEmailPop
@@ -90,16 +104,16 @@ export default function Index() {
           action={() => setShowEditEmailPop(false)}
           setUserEmail={changeEmail}
           useremail={email}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
         <EditPhoneNumPop
           showEditPhoneNumPop={showEditPhoneNumPop}
           action={() => setShowEditPhoneNumPop(false)}
           setPNumber={changePhoneNumber}
           phonenumber={phone_number}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
 
         <ChangePassPop
@@ -168,6 +182,15 @@ export default function Index() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mb-28 flex w-10/12 flex-col gap-8 p-10">
+          <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
+          <div className="flex  flex-col gap-4">
+            <div>
+              <h1 className="text-lg font-semibold">Subscription Details</h1>
+            </div>
 
             <div className="flex  flex-wrap justify-between gap-3 ">
               <div>
@@ -190,10 +213,16 @@ export default function Index() {
                 </div>
               </div>
             </div>
+            <div>
+              <h1 className="font-semibold">Start Date</h1>
+              <span className=" text-TextSecondary">00/00/00</span>
+            </div>
+            <div>
+              <h1 className="font-semibold">Expiry Date</h1>
+              <span className=" text-TextSecondary">00/00/00</span>
+            </div>
           </div>
-        </div>
 
-        <div className="mb-28 flex w-10/12 flex-col gap-8 p-10">
           <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
           <div className="flex  flex-col gap-4">
             <div>
@@ -201,7 +230,6 @@ export default function Index() {
                 Password and Authentication
               </h1>
             </div>
-
             <div className="flex  flex-wrap gap-3">
               <div>
                 <Button
@@ -212,6 +240,7 @@ export default function Index() {
               </div>
             </div>
           </div>
+
           <hr className=" h-px border-0 bg-BtnSecondary opacity-20 " />
 
           <div className="flex  flex-col gap-4">
