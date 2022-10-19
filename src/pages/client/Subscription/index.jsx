@@ -27,20 +27,22 @@ export default function Subscription() {
   const renderCard = ({ id, title, description, price }) => {
     return (
       <SubscriptionCard
+        key={id}
         selected={selected}
         title={title}
         price={price}
         desc={description}
-        onClick={() => setSelected(title)}
+        onClick={() => {
+          setSelected(title);
+        }}
       />
     );
   };
 
   const getSelectedPrice = () => {
     const selectedPlan = plans.filter((x) => {
-      if (x.title === selected) return x.price;
+      if (selected === x.title) return x;
     });
-
     return selectedPlan[0].price;
   };
 
