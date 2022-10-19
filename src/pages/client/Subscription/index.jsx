@@ -9,15 +9,15 @@ export default function Subscription() {
 
   const table = {
     Free: 0,
-    Starter: 1.70,
-    Premium: 4.20,
+    Starter: 0.001,
+    Premium: 0.003,
   };
 
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-12  p-4 text-center md:h-screen">
       <h1 className="text-5xl font-bold text-TextPrimary">Subscription</h1>
       <p className="text-base text-TextTertiary">
-        Take a desired plan based on the number of properties you would want to
+        Take a desired plan based on the number of properties you would want to 
         sell or rent out
       </p>
       <div className="grid grid-cols-1 justify-center gap-5 lg:grid-cols-3">
@@ -31,14 +31,14 @@ export default function Subscription() {
         <SubscriptionCard
           selected={selected}
           title="Starter"
-          price="1.70"
+          price="0.001"
           desc="50 maximum postings"
           onClick={() => setSelected("Starter")}
         />
         <SubscriptionCard
           selected={selected}
           title="Premium"
-          price="4.20"
+          price="0.003"
           desc="Unlimited postings"
           onClick={() => setSelected("Premium")}
         />

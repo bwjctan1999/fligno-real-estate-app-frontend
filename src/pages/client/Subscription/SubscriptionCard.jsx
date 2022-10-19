@@ -25,7 +25,7 @@ export default function SubscriptionCard({
         {title}
       </h2>
       <p className={`${changeTitleColor()} text-4xl font-semibold`}>
-      ₮ {price}/<span className="text-2xl">month</span>
+      Ξ {price}/<span className="text-2xl">month</span>
       </p>
       <p className={`${changeDescColor()} font-medium`}>{desc}</p>
     </div>

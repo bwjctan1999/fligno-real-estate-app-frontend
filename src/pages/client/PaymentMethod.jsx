@@ -11,11 +11,10 @@ export default function PaymentMethod() {
   const location = useLocation();
   const table = {
     Free:0,
-    Starter: 1.70, //1127194.66
-    Premium: 4.20, //2784833.87
+    Starter: 0.001, 
+    Premium: 0.003, 
   }
   const price = table[location.state]
-
 
   async function sendTransaction(){
     if(!window.ethereum)
@@ -24,17 +23,19 @@ export default function PaymentMethod() {
     const account = accounts[0];
     let params =  [{
       from:accounts[0], 
-      to: '0xc2b520448aCAc4fD15ab528E5602746910867D49',
-      value: Number(100000000000000).toString(16), // in GWEI, find a way to accept TETHER
-      gasPrice: '0x09184e72a000',
-      gas: Number(21000).toString(16),
+      to: '0xc2b520448aCAc4fD15ab528E5602746910867D49', // admin account
+      value: Number(0.001 * 1e18).toString(16) // {price} Error when converting to Hex
+      /* gasPrice: '0x09184e72a000', // For use in private blockchains only (Ex: Ganache)
+      gas: Number(21000).toString(16), */
     }]
     await window.ethereum.request({method: "eth_sendTransaction", params})
     .then((txhash)=>{
       console.log(txhash)
+      alert("Payment Complete with transaction hash:" + txhash) // Remove if success and redirect is done
     })
     .catch((err)=>{
-     console.log(err +"Payment has been rejected by user")
+     console.log(err +"Payment has been rejected by user. Refresh the page")
+     alert("Payment has been rejected by user") // Remove if naa nay error page or redirect
     })
   }
 
@@ -53,7 +54,7 @@ export default function PaymentMethod() {
       </div>
       <div className="text flex h-screen flex-col items-center justify-center gap-10 p-4 text-center lg:p-20">
         <h1 className=" text-5xl font-bold text-TextTertiary">
-          Payment for ₮ {price}
+          Payment for Ξ {price}
         </h1>
         <Button
         class="sendEthButton btn"
