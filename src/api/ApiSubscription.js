@@ -51,3 +51,21 @@ export async function GetSubscriptionForClient() {
 
   return resolved;
 }
+
+export async function PostSubscription(id, data) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.post(
+      `http://127.0.0.1:8000/api/subscription/${id}`,
+      data
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
