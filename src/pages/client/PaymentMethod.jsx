@@ -6,9 +6,10 @@ import Button from "../../components/general/Button";
 import { PostSubscription } from "../../api/ApiSubscription";
 import { ethers } from "ethers";
 
-// 0xc2b520448aCAc4fD15ab528E5602746910867D49
+// 0xc2b520448aCAc4fD15ab528E5602746910867D49s
 
 export default function PaymentMethod() {
+  const userSignupData = JSON.parse(localStorage.getItem("signupData"));
   const location = useLocation();
   const price = Number(location.state);
 
@@ -53,7 +54,7 @@ export default function PaymentMethod() {
           height="660px"
           width="482px"
           title="Onramper widget"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; camera; gyroscope; payment"
         ></iframe>
       </div>
@@ -62,14 +63,14 @@ export default function PaymentMethod() {
           Payment for Ξ {price}
         </h1>
         <Button
-          class="sendEthButton btn"
+          className="sendEthButton btn"
           text="Pay Now"
           custom="lg:w-80"
           onClick={sendTransaction}
         ></Button>
         <div>
           <DesignSpinner />
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
         <div className="flex flex-col items-center lg:hidden">
           <p>scroll down</p>
