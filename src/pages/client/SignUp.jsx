@@ -13,7 +13,7 @@ import {
   ValidName,
   ValidMobileNumber,
 } from "../../scripts/Validations";
-import axios from "axios";
+import { SignUpAccount } from "../../api/ApiSignup";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -107,24 +107,48 @@ export default function SignUp() {
   const saveFormData = async () => {
     setLoading(true);
     setLoaded(false);
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/register",
-        formValues
-      );
+    console.log(formValues.user_type);
+    switch (formValues.user_type) {
+      case "2":
+        setLoaded(true);
+        localStorage.setItem("signupData", JSON.stringify(formValues));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setLoading(false);
+        navigate("/subscription");
+        break;
+      default:
+        const api_request = await SignUpAccount(formValues);
 
-      switch (response.status) {
-        case 200:
+        if (!api_request.error) {
           setLoaded(true);
           await new Promise((resolve) => setTimeout(resolve, 1000));
           setLoading(false);
           navigate("/login");
-          break;
-      }
-    } catch (error) {
-      console.log(error);
-      alert(`Sign Up Failed! ${error.message}`);
+        } else {
+          alert(api_request.error);
+        }
     }
+
+    // setLoading(true);
+    // setLoaded(false);
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:8000/api/register",
+    //     formValues
+    //   );
+    //   switch (response.status) {
+    //     case 200:
+    //       setLoaded(true);
+    //       await new Promise((resolve) => setTimeout(resolve, 1000));
+    //       setLoading(false);
+    //       navigate("/subscription");
+    //       //navigate("/login");
+    //       break;
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   alert(`Sign Up Failed! ${error.message}`);
+    // }
   };
 
   return (
