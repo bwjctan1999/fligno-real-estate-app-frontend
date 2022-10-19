@@ -1,8 +1,9 @@
 import IconArrowDown from "../../assets/icons/IconArrowDown";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 import Button from "../../components/general/Button";
+
+import { PostSubscription } from "../../api/ApiSubscription";
 import { ethers } from "ethers";
 
 // 0xc2b520448aCAc4fD15ab528E5602746910867D49
@@ -15,6 +16,7 @@ export default function PaymentMethod() {
     if (!window.ethereum) throw new Error("Please Install Metamask");
     const accounts = await ethereum.request({ method: "eth_requestAccounts" });
     const account = accounts[0];
+
     let params = [
       {
         from: accounts[0],
@@ -37,6 +39,10 @@ export default function PaymentMethod() {
         alert("Payment has been rejected by user"); // Remove if naa nay error page or redirect
       });
   }
+
+  const subscribeUser = () => {};
+
+  const signUpUser = () => {};
 
   return (
     <div className="min-h-scree flex flex-col-reverse justify-center bg-BGPrimary lg:flex-row">
