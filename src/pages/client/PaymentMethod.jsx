@@ -9,7 +9,7 @@ import { ethers } from "ethers";
 
 export default function PaymentMethod() {
   const location = useLocation();
-  const price = location.state;
+  const price = Number(location.state);
 
   async function sendTransaction() {
     if (!window.ethereum) throw new Error("Please Install Metamask");
@@ -19,7 +19,7 @@ export default function PaymentMethod() {
       {
         from: accounts[0],
         to: "0xc2b520448aCAc4fD15ab528E5602746910867D49", // admin account
-        value: Number(0.001 * 1e18).toString(16), // {price} Error when converting to Hex
+        value: Number(price * 1e18).toString(16), // {price} Error when converting to Hex
         /* gasPrice: '0x09184e72a000', // For use in private blockchains only (Ex: Ganache)
       gas: Number(21000).toString(16), */
       },
