@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Button from "../../components/general/Button";
 
-import { RegisterAccount } from "../../api/ApiSignup";
 import { PostSubscription } from "../../api/ApiSubscription";
 import { ethers } from "ethers";
 
@@ -15,7 +14,6 @@ export default function PaymentMethod() {
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const userSignupData = JSON.parse(localStorage.getItem("signupData"));
   const location = useLocation();
   const price = Number(location.state);
 
@@ -36,7 +34,7 @@ export default function PaymentMethod() {
     await window.ethereum
       .request({ method: "eth_sendTransaction", params })
       .then((txhash) => {
-        signUpUser(txhash);
+        subscribeUser(txhash);
       })
       .catch((err) => {
         console.log(
@@ -46,29 +44,8 @@ export default function PaymentMethod() {
       });
   }
 
-  const signUpUser = async (hash) => {
-    setLoading(true);
-    const api_request = await RegisterAccount(userSignupData);
-
-    if (!api_request.error) {
-      const user_id = api_request.response.data.user_id;
-
-      subscribeUser(user_id, hash);
-    } else {
-      alert(api_request.error);
-      console.log(api_request.error);
-    }
-  };
-
-  const subscribeUser = async (user_id, hash) => {
-    console.log(user_id);
-    console.log(localStorage.getItem("selectedSubscription"));
-
-    const api_request = await PostSubscription(
-      user_id,
-      localStorage.getItem("selectedSubscription"),
-      hash
-    );
+  const subscribeUser = async (hash) => {;
+    const api_request = await PostSubscription(hash);
 
     setLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -77,6 +54,7 @@ export default function PaymentMethod() {
 
     if (!api_request.error) {
       alert(api_request.response);
+      console.log(response);
     } else {
       alert(api_request.error);
       console.log(api_request.error);
