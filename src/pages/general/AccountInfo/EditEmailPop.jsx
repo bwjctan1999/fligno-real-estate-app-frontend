@@ -13,7 +13,6 @@ export default function EditEmailPop({
   const [email, setEmail] = useState("");
 
   const UpdateEmail = async () => {
-    console.log("IN")
     const api_request = await UpdateUser({
       email: email,
     });
@@ -23,6 +22,7 @@ export default function EditEmailPop({
       setShowSuccessAlert(true);
       setShowErrorAlert(false);
     } else {
+      alert(api_request.error);
       console.log(api_request.error);
       setShowErrorAlert(true);
       setShowSuccessAlert(false);
