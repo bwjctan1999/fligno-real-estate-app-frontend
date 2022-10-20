@@ -111,11 +111,11 @@ export default function RouteList() {
           element: <ClientPropertyDetails />,
         },
         {
-          path: "verify",
+          path: "verification",
           element: <VerifyEmail />,
         },
         {
-          path: "verification",
+          path: "verify",
           element: <EmailVerification />,
         },
       ],
