@@ -5,7 +5,7 @@ import VerificationSuccess from "./VerificationSuccess";
 import VerificationFailed from "./VerificationFailed";
 
 export default function EmailVerification() {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
 
   const verifyAccount = async () => {
     const url = window.location.href;
@@ -16,6 +16,7 @@ export default function EmailVerification() {
       setSuccess(true);
     } else {
       setSuccess(false);
+      console.log(api_request.error);
     }
   };
 
