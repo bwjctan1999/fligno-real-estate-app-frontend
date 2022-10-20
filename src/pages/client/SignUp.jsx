@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { RegisterAccount } from "../../api/ApiSignup";
 import DesignSignUp from "../../assets/svgs/DesignSignUp";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import IconSuccessful from "../../assets/icons/IconSuccessful";
@@ -117,7 +118,7 @@ export default function SignUp() {
         navigate("/subscription");
         break;
       default:
-        const api_request = await SignUpAccount(formValues);
+        const api_request = await RegisterAccount(formValues);
 
         if (!api_request.error) {
           setLoaded(true);
