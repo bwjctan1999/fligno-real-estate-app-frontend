@@ -12,7 +12,7 @@ export default function EditNamePop({
   firstname,
   lastname,
   setShowSuccessAlert,
-  setShowErrorAlert
+  setShowErrorAlert,
 }) {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -29,12 +29,11 @@ export default function EditNamePop({
       setShowSuccessAlert(true);
       setShowErrorAlert(false);
     } else {
+      console.log(api_request.error);
       setShowErrorAlert(true);
       setShowSuccessAlert(false);
     }
   };
-
-
 
   return showEditNamePop ? (
     <div className="fixed inset-0 z-20 overflow-y-auto">
@@ -50,7 +49,7 @@ export default function EditNamePop({
                 <div>
                   <label className="font-semibold">First Name</label>
                   <Textfield
-                  placeholder={firstname}
+                    placeholder={firstname}
                     value={first_name}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
