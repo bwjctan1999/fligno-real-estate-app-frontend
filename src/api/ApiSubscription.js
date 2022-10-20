@@ -52,7 +52,7 @@ export async function GetSubscriptionForClient() {
   return resolved;
 }
 
-export async function PostSubscription(id, data) {
+export async function PostSubscription(user_id, id, data) {
   const resolved = {
     response: null,
     error: null,
@@ -60,8 +60,7 @@ export async function PostSubscription(id, data) {
 
   try {
     resolved.response = await axios.post(
-      `http://127.0.0.1:8000/api/subscription/${id}`,
-      data
+      `http://127.0.0.1:8000/api/agent/subscription/${user_id}/${id}`
     );
   } catch (e) {
     resolved.error = e;
