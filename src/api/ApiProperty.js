@@ -43,7 +43,7 @@ export async function PostProperty(data) {
   };
 
   try {
-    resolved.response = await axios.post(`${base_url}-create`, data);
+    resolved.response = await axios.post(`${base_url}/property-create`, data);
   } catch (e) {
     resolved.error = e;
   }
