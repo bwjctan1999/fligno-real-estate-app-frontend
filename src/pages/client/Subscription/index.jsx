@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { GetSubscriptionForClient } from "../../../api/ApiSubscription";
 
 export default function Subscription() {
-  // const userSignupData = JSON.parse(localStorage.getItem("signupData"));
   const [plans, setPlans] = useState([]);
   const navigate = useNavigate();
   const [selected, setSelected] = useState("starter");
@@ -46,6 +45,14 @@ export default function Subscription() {
     return selectedPlan[0].price;
   };
 
+  const getSelectedId = () => {
+    const selectedPlan = plans.filter((x) => {
+      if (selected === x.title) return x;
+    });
+
+    return selectedPlan[0].id;
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center gap-12 p-4 pt-24 text-center">
       <h1 className="text-5xl font-bold text-TextPrimary">Subscription</h1>
@@ -59,9 +66,10 @@ export default function Subscription() {
       <Button
         text="Next"
         custom="lg:w-80"
-        onClick={() =>
-          navigate("/awaiting-payment", { state: getSelectedPrice() })
-        }
+        onClick={() => {
+          localStorage.setItem("selectedSubscription", getSelectedId());
+          navigate("/awaiting-payment", { state: getSelectedPrice() });
+        }}
       />
     </div>
   );
