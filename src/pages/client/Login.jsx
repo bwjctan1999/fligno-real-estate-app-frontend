@@ -6,10 +6,8 @@ import TextField from "../../components/general/Textfield";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import axios from "axios";
 import IconSuccessful from "../../assets/icons/IconSuccessful";
-import FailedResult from "../../components/popups/PopUpProcessing/FailedResult";
-import PopUp from "../../components/popups/PopUp";
 
-export default function Login({ setUser }) {
+export default function Login() {
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [email, setEmail] = useState("");
