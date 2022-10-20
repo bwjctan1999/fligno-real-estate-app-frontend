@@ -41,6 +41,8 @@ import AdminPropertyDetails from "../pages/admin/AdminPropertyDetails";
 import AdminSubscription from "../pages/admin/AdminSubscription";
 import AdminAddSubscription from "../pages/admin/AdminAddSubscription";
 import AdminEditSubscription from "../pages/admin/AdminEditSubscription";
+import "../api/auth";
+import VerifyNeeded from "../pages/general/VerifyNeeded";
 
 export default function RouteList() {
   let routes = useRoutes([
@@ -49,7 +51,6 @@ export default function RouteList() {
       path: "/",
       element: <ClientLayout />,
       children: [
-        
         {
           index: true,
           element: <LandingPage />,
@@ -117,6 +118,10 @@ export default function RouteList() {
         {
           path: "verify",
           element: <EmailVerification />,
+        },
+        {
+          path: "verification-needed",
+          element: <VerifyNeeded />,
         },
       ],
     },

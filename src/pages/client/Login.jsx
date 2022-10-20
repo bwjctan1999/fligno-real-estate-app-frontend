@@ -6,12 +6,17 @@ import TextField from "../../components/general/Textfield";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import axios from "axios";
 import IconSuccessful from "../../assets/icons/IconSuccessful";
+import FailedResult from "../../components/popups/PopUpProcessing/FailedResult";
+import PopUp from "../../components/popups/PopUp";
 
 export default function Login({ setUser }) {
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [emailValidator, setEmailValidator] = useState("");
+  const [passwordValidator, setPasswordValidator] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,14 +28,17 @@ export default function Login({ setUser }) {
         email: email,
         password: password,
       });
+
       localStorage.setItem("user_id", response.data.data.user_id);
       localStorage.setItem("user_role", response.data.data.user_role[0]);
       localStorage.setItem("token", response.data.data.Token);
       localStorage.setItem("user_id", response.data.data.user_id);
-      console.log(response.data.data);
+
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
+
+      console.log(response);
 
       switch (response.data.data.user_role[0]) {
         case "admin":
@@ -43,7 +51,11 @@ export default function Login({ setUser }) {
           navigate("/");
           break;
       }
+      window.location.reload();
     } catch (error) {
+      setEmailValidator("Wrong Email or Password");
+      setPasswordValidator(" ");
+      setLoading(false);
       console.log(error);
     }
   };
@@ -68,13 +80,23 @@ export default function Login({ setUser }) {
           <TextField
             type="text"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailValidator("");
+              setPasswordValidator("");
+            }}
+            invalidError={emailValidator}
           />
 
           <TextField
             type="Password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setEmailValidator("");
+              setPasswordValidator("");
+            }}
+            invalidError={passwordValidator}
           />
 
           <div className="flex flex-wrap gap-x-4 gap-y-3">
