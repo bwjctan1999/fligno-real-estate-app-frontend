@@ -1,5 +1,5 @@
 import Button from "../general/Button";
-import AgentPic from "../../assets/imgs/AgentPic.png";
+import AgentPic from "../../assets/imgs/AgentPic.webp";
 
 export default function PopUpContactUs({
   onClick,

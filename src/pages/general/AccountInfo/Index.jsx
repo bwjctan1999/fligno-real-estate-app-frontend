@@ -1,4 +1,4 @@
-import DummyPic from "../../../assets/imgs/DummyPic.jpg";
+import DummyPic from "../../../assets/imgs/AgentPic.webp";
 import Button from "../../../components/general/Button";
 import { GetUser } from "../../../api/ApiUsers";
 
