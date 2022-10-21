@@ -17,7 +17,7 @@ export default function PropertyCard({
       className=" rounded-md shadow-lg hover:cursor-pointer"
       onClick={onClick}
     >
-      <img className="aspect-video rounded-t-lg" src={img} />
+      <img className="aspect-video rounded-t-lg object-cover" src={img} />
       <div className="flex flex-col gap-3 p-4">
         <h1 className="text-xl font-bold">{title}</h1>
         <h2 className="text-sm font-light underline">{location}</h2>
