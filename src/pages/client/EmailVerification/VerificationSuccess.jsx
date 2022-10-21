@@ -1,6 +1,6 @@
 export default function VerificationSuccess() {
   return (
-    <div className="text-center items-center flex min-h-screen flex-col justify-center gap-5 p-4">
+    <div className="flex flex-col justify-center items-center">
       <h3 className="text-5xl font-medium">
         Thank you for signing up at Turnkey!
       </h3>
