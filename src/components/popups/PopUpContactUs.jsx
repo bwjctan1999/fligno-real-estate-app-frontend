@@ -1,7 +1,13 @@
 import Button from "../general/Button";
 import AgentPic from "../../assets/imgs/AgentPic.png";
 
-export default function PopUpContactUs({ onClick, showPopUp }) {
+export default function PopUpContactUs({
+  onClick,
+  showPopUp,
+  name,
+  email,
+  number,
+}) {
   return showPopUp ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div className="flex min-h-screen items-center bg-TextSecondary bg-opacity-30 px-4 py-8">
@@ -19,20 +25,21 @@ export default function PopUpContactUs({ onClick, showPopUp }) {
                 <div className="m-6 flex flex-col gap-2 text-left text-sm">
                   <div>
                     <h1 className="font-bold">Agent Name</h1>
-                    <span>Forda Boss</span>
+                    <span>{name}</span>
                   </div>
                   <div>
                     <h1 className="font-bold">Email</h1>
-                    <span>example@email.com</span>
+                    <span>{email}</span>
                   </div>
                   <div>
                     <h1 className="font-bold">Contact Number</h1>
-                    <span>+73323424513</span>
+                    <span>{number}</span>
                   </div>
                 </div>
               </div>
               <h1 className="text-sm font-bold text-TextTertiary">
-                Please wait for the agent to reach out
+                You may contact the agent or wait for him/her to contact you
+                instead
               </h1>
 
               <div className="mt-4 flex items-center gap-5 ">

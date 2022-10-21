@@ -16,6 +16,9 @@ import IconTag from "../../assets/icons/IconTag";
 import PopUpContactUs from "../../components/popups/PopUpContactUs";
 
 export default function PropertyDetails() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const [formValues, setFormValues] = useState({
     id: "",
@@ -41,7 +44,13 @@ export default function PropertyDetails() {
   const contactAgentHandler = async () => {
     const api_request = await ContactAgent(formValues.id);
 
-    console.log(api_request);
+    if (!api_request.error) {
+      setName(api_request.response.data.agent_name);
+      setEmail(api_request.response.data.agent_email);
+      setNumber(api_request.response.data.agent_phone_number);
+    } else {
+      console.log(api_request);
+    }
   };
 
   const fillProperty = async () => {
@@ -53,6 +62,7 @@ export default function PropertyDetails() {
       setFormValues(property.response.data.data);
     } else {
       console.log(property.error);
+      alert(property.error);
     }
   };
 
@@ -61,6 +71,9 @@ export default function PropertyDetails() {
       <PopUpContactUs
         showPopUp={showPopUp}
         onClick={() => setShowPopUp(false)}
+        name={name}
+        email={email}
+        number={number}
       />
 
       <div className="w-full lg:w-7/12">
