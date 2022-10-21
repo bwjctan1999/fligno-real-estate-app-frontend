@@ -114,7 +114,7 @@ export default function SignUp() {
       setLoaded(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
-      navigate("/login");
+      navigate("/verification");
     } else {
       alert(api_request.error);
       console.log(error);
