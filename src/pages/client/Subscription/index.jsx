@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SubscriptionCard from "./SubscriptionCard";
 import { useNavigate } from "react-router-dom";
 import { GetSubscriptionForClient } from "../../../api/ApiSubscription";
+import SkeletonSubscriptionCard from "./SkeletonSubscriptionCard";
 
 export default function Subscription() {
   const [plans, setPlans] = useState([]);
@@ -56,13 +57,16 @@ export default function Subscription() {
   return (
     <div className="flex min-h-screen flex-col items-center gap-12 p-4 pt-24 text-center">
       <h1 className="text-5xl font-bold text-TextPrimary">Subscription</h1>
-      <p className="text-base text-TextTertiary">
-        Take a desired plan based on the number of properties you would want to
-        sell or rent out
+      <p className="text-lg font-medium text-TextTertiary">
+        It seems you are not subscribed yet, Please selected a desired plan
+        based on the number of properties you would want to sell or rent out
       </p>
       <div className="grid grid-cols-1 justify-center gap-5 lg:grid-cols-3">
-        {plans.map((x) => renderCard(x))}
+        {plans.length === 0
+          ? [...Array(3)].map((e, i) => <SkeletonSubscriptionCard />)
+          : plans.map((x) => renderCard(x))}
       </div>
+
       <Button
         text="Next"
         custom="lg:w-80"

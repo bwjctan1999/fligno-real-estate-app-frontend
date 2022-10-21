@@ -36,14 +36,17 @@ export default function Login() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setLoading(false);
 
-      console.log(response);
-
       switch (response.data.data.user_role[0]) {
         case "admin":
           navigate("/admin");
           break;
         case "agent":
-          navigate("/agent");
+          if (response.data.data.subscribe) {
+            navigate("/agent");
+          } else {
+            navigate("/agent/subscription");
+          }
+
           break;
         case "client":
           navigate("/");

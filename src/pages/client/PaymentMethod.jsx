@@ -2,7 +2,7 @@ import IconArrowDown from "../../assets/icons/IconArrowDown";
 import DesignSpinner from "../../assets/svgs/DesignSpinner";
 import IconSuccessful from "../../assets/icons/IconSuccessful";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/general/Button";
 
 import { PostSubscription } from "../../api/ApiSubscription";
@@ -13,6 +13,7 @@ import { ethers } from "ethers";
 export default function PaymentMethod() {
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const location = useLocation();
   const price = Number(location.state);
@@ -34,7 +35,11 @@ export default function PaymentMethod() {
     await window.ethereum
       .request({ method: "eth_sendTransaction", params })
       .then((txhash) => {
-        subscribeUser(txhash);
+        const selectedSubscription = localStorage.getItem(
+          "selectedSubscription"
+        );
+
+        subscribeUser(selectedSubscription, txhash);
       })
       .catch((err) => {
         console.log(
@@ -44,17 +49,18 @@ export default function PaymentMethod() {
       });
   }
 
-  const subscribeUser = async (hash) => {;
-    const api_request = await PostSubscription(hash);
+  const subscribeUser = async (id, hash) => {
+    setLoading(true);
+    setLoaded(false);
+    const api_request = await PostSubscription(id, hash);
 
     setLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setLoaded(false);
     setLoading(false);
 
     if (!api_request.error) {
-      alert(api_request.response);
-      console.log(response);
+      navigate("/agent");
+      console.log(api_request.response);
     } else {
       alert(api_request.error);
       console.log(api_request.error);
@@ -76,7 +82,7 @@ export default function PaymentMethod() {
       </div>
       <div className="text flex h-screen flex-col items-center justify-center gap-10 p-4 text-center lg:p-20">
         <h1 className=" text-5xl font-bold text-TextTertiary">
-          Your Balance: Ξ {price}
+          To Pay: Ξ {price}
         </h1>
         {loading ? (
           <div className="flex items-center justify-center rounded-lg bg-gradient-to-r from-BtnPrimary-start to-BtnPrimary-end p-2 lg:w-80">
@@ -97,7 +103,7 @@ export default function PaymentMethod() {
                   color="fill-BtnPrimary-end"
                 />
                 <p className="font-semibold text-TextOnDark">
-                  Creating your account...
+                  Subscribing your Account...
                 </p>
               </div>
             )}
@@ -107,9 +113,18 @@ export default function PaymentMethod() {
             className="sendEthButton btn"
             text="Pay Now"
             custom="lg:w-80"
-            onClick={() =>
-              signUpUser("alskjdfhaslkdfh193y31hkansdfkahsdfkshaldfhalsflsh")
-            } //sendTransaction
+            onClick={() => {
+              console.log(price);
+              if (price === 0 || price === 0.0) {
+                const selectedSubscription = localStorage.getItem(
+                  "selectedSubscription"
+                );
+
+                subscribeUser(selectedSubscription);
+              } else {
+                sendTransaction();
+              }
+            }}
           />
         )}
         <div className="felx-col flex items-center lg:hidden">

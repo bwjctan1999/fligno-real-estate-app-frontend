@@ -88,10 +88,6 @@ export default function RouteList() {
           element: <Login />,
         },
         {
-          path: "subscription",
-          element: <Subscription />,
-        },
-        {
           path: "awaiting-payment",
           element: <PaymentMethod />,
         },
@@ -136,6 +132,10 @@ export default function RouteList() {
           <AgentLayout />
         ),
       children: [
+        {
+          path: "subscription",
+          element: <Subscription />,
+        },
         {
           index: true,
           element: <AgentDashboard />,

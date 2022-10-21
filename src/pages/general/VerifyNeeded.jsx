@@ -6,7 +6,7 @@ export default function VerifyNeeded() {
       <p className="text-xl">
         We noticed that your email address has not been Verified. Due to this,
         you are unable to access some features of Turnkey. Please Verify your
-        Email first to access the Turnkey
+        Email first to access the full of Turnkey.
       </p>
     </div>
   );
