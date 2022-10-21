@@ -49,7 +49,8 @@ export default function PropertyDetails() {
       setEmail(api_request.response.data.agent_email);
       setNumber(api_request.response.data.agent_phone_number);
     } else {
-      console.log(api_request);
+      console.log(api_request.error);
+      alert(api_request.error);
     }
   };
 
