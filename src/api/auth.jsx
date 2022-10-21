@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 let token = localStorage.getItem("token");
 
@@ -18,10 +19,15 @@ if (token) {
       return response;
     },
     function (error) {
-      if (401 === error.response.status) {
-        // logout();
-      } else {
-        return Promise.reject(error);
+      switch (error.response.status) {
+        case 401:
+          //logout()
+          break;
+        case 403:
+          window.location.href = `http://127.0.0.1:5173/verification-needed`;
+          break;
+        default:
+          Promise.reject(error);
       }
     }
   );
