@@ -78,3 +78,18 @@ export async function UpdateProperty(id, data) {
 
   return resolved;
 }
+
+export async function RemoveProperty(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.delete(`${base_url}/properties/${id}`);
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
