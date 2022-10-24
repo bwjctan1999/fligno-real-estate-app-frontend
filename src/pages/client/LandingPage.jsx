@@ -7,7 +7,7 @@ export default function LandingPage() {
       <div className=" flex h-3/5 items-start lg:h-auto lg:items-center selection:lg:w-1/2">
         <div className="flex flex-col gap-3 lg:gap-10">
           <p className="text-xl font-bold text-TextPrimary lg:text-2xl">
-            A new way to find propertiess
+            A new way to find properties
           </p>
           <h1 className="text-3xl font-extrabold text-TextPrimary lg:text-5xl">
             Find your Most <br></br> Suitable Property

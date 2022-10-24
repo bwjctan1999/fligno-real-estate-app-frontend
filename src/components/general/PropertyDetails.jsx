@@ -15,7 +15,7 @@ import IconTag from "../../assets/icons/IconTag";
 
 import PopUpContactUs from "../../components/popups/PopUpContactUs";
 
-export default function PropertyDetails() {
+export default function PropertyDetails({ setSelectedId }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -61,6 +61,9 @@ export default function PropertyDetails() {
     const property = await GetProperty(`${id}`, "property");
     if (!property.error) {
       setFormValues(property.response.data.data);
+      if (setSelectedId) {
+        setSelectedId(property.response.data.data.id);
+      }
     } else {
       console.log(property.error);
       alert(property.error);

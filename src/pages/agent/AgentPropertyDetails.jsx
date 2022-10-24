@@ -4,8 +4,13 @@ import IconRemove from "../../assets/icons/IconRemove";
 import { useNavigate } from "react-router-dom";
 
 import PropertyDetails from "../../components/general/PropertyDetails";
+import { RemoveProperty } from "../../api/ApiProperty";
+import PopUp from "../../components/popups/PopUp";
+import { useState } from "react";
 
 export default function AgentPropertyDetails() {
+  const [selectedPropertyId, setSelectedPropertyId] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
   const navigate = useNavigate();
 
   const editHandler = () => {
@@ -14,8 +19,24 @@ export default function AgentPropertyDetails() {
     navigate(`/agent/edit-property/${id}`);
   };
 
+  const removeHandler = async () => {
+    const api_request = await RemoveProperty(selectedPropertyId);
+    if (!api_request.error) {
+      navigate("/agent/properties");
+    } else {
+      alert(api_request.error);
+      console.log(api_request.error);
+    }
+  };
+
   return (
     <div className="item-center flex h-auto flex-wrap gap-y-10 bg-BGSecondary py-20 px-4 lg:px-20">
+      <PopUp
+        text="Are you sure you would want to delete this property?"
+        state={showPopUp}
+        cancelFunction={() => setShowPopUp(false)}
+        okayFunction={removeHandler}
+      />
       <div className=" grid w-full grid-cols-3 gap-2 lg:w-2/5">
         <Button
           icon={
@@ -37,6 +58,7 @@ export default function AgentPropertyDetails() {
           icon={<IconRemove />}
           fontsize="text-sm"
           padding="p-2"
+          onClick={() => setShowPopUp(true)}
         />
         <Button
           text="Publish"
@@ -45,7 +67,7 @@ export default function AgentPropertyDetails() {
           padding="p-2"
         />
       </div>
-      <PropertyDetails />
+      <PropertyDetails setSelectedId={setSelectedPropertyId} />
     </div>
   );
 }
