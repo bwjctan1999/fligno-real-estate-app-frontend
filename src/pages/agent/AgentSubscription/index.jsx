@@ -1,52 +1,78 @@
 import Button from "../../../components/general/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SubscriptionCard from "./SubscriptionCard";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { GetSubscriptionForClient } from "../../../api/ApiSubscription";
 
-export default function ChangeSubscription() {
+export default function Subscription() {
+  const location = useLocation();
+  const [plans, setPlans] = useState([]);
   const navigate = useNavigate();
-  const [selected, setSelected] = useState("starter");
+  const [selected, setSelected] = useState(location.state);
 
-  const table = {
-    Free: 0,
-    Starter: 100,
-    Premium: 250,
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const api_request = await GetSubscriptionForClient();
+
+    if (!api_request.error) {
+      setPlans(api_request.response.data.data);
+    } else {
+      alert(api_request.error);
+    }
+  };
+
+  const renderCard = ({ id, title, description, price }) => {
+    return (
+      <SubscriptionCard
+        key={id}
+        selected={selected}
+        title={title}
+        price={price}
+        desc={description}
+        onClick={() => {
+          setSelected(title);
+        }}
+      />
+    );
+  };
+
+  const getSelectedPrice = () => {
+    const selectedPlan = plans.filter((x) => {
+      if (selected === x.title) return x;
+    });
+    return selectedPlan[0].price;
+  };
+
+  const getSelectedId = () => {
+    const selectedPlan = plans.filter((x) => {
+      if (selected === x.title) return x;
+    });
+
+    return selectedPlan[0].id;
   };
 
   return (
-    <div className="flex w-screen flex-col items-center justify-center gap-12  p-4 text-center md:h-screen">
-      <h1 className="text-5xl font-bold text-TextPrimary mt-10">Change your subscription</h1>
-      <p className="text-base text-TextTertiary">
-        Change your desired plan based on the number of properties you would want to
-        sell or rent out
+    <div className="flex min-h-screen flex-col items-center justify-center gap-12 p-4 text-center">
+      <h1 className="text-5xl font-bold text-TextPrimary">
+        Change Your Subscription
+      </h1>
+      <p className="text-lg font-medium text-TextTertiary">
+        Please selected a plan that you would want to change to.
       </p>
       <div className="grid grid-cols-1 justify-center gap-5 lg:grid-cols-3">
-        <SubscriptionCard
-          selected={selected}
-          title="Free"
-          price="0.00"
-          desc="5 maximum postings"
-          onClick={() => setSelected("Free")}
-        />
-        <SubscriptionCard
-          selected={selected}
-          title="Starter"
-          price="100.00"
-          desc="50 maximum postings"
-          onClick={() => setSelected("Starter")}
-        />
-        <SubscriptionCard
-          selected={selected}
-          title="Premium"
-          price="250.00"
-          desc="Unlimited postings"
-          onClick={() => setSelected("Premium")}
-        />
+        {plans.map((x) => renderCard(x))}
       </div>
+
       <Button
-        text="Save"
+        text="Next"
         custom="lg:w-80"
-        onClick={() => navigate("/awaiting-payment", { state: selected })}
+        onClick={() => {
+          localStorage.setItem("selectedSubscription", getSelectedId());
+          navigate("/awaiting-payment", { state: getSelectedPrice() });
+        }}
       />
     </div>
   );
