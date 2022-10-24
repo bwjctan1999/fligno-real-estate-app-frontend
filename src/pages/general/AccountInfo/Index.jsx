@@ -16,8 +16,11 @@ import EditEmailPop from "./EditEmailPop";
 import EditPhoneNumPop from "./EditPhoneNumPop";
 import ChangePassPop from "./ChangePassPop";
 import Button from "../../../components/general/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Index() {
+  const navigate = useNavigate();
+
   const [showEditNamePop, setShowEditNamePop] = useState(false);
   const [showEditEmailPop, setShowEditEmailPop] = useState(false);
   const [showEditPhoneNumPop, setShowEditPhoneNumPop] = useState(false);
@@ -242,7 +245,15 @@ export default function Index() {
                   />
                 </div>
                 <div className="flex items-center ">
-                  <Button padding="py-2 px-5" text="Change" />
+                  <Button
+                    padding="py-2 px-5"
+                    text="Change"
+                    onClick={() =>
+                      navigate("/agent/change-subscription", {
+                        state: subscription,
+                      })
+                    }
+                  />
                 </div>
               </div>
             </div>
