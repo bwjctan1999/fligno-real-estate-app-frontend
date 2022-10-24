@@ -75,7 +75,8 @@ export default function Index() {
       );
 
       if (!api_request_change.error) {
-        console.log(api_request_change.response);
+        setSubscription("Free");
+        setShowSuccessAlert(true);
       } else {
         console.log(api_request_change.error);
       }
@@ -237,14 +238,11 @@ export default function Index() {
                     textcolor="text-TextSecondary"
                     custom=" shadow-border shadow-TextSecondary"
                     padding="py-2 px-5"
+                    onClick={() => setShowWarning(true)}
                   />
                 </div>
                 <div className="flex items-center ">
-                  <Button
-                    padding="py-2 px-5"
-                    text="Change"
-                    onClick={() => setShowWarning(true)}
-                  />
+                  <Button padding="py-2 px-5" text="Change" />
                 </div>
               </div>
             </div>
