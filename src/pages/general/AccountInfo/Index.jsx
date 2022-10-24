@@ -1,32 +1,42 @@
-import DummyPic from "../../../assets/imgs/AgentPic.webp";
-import Button from "../../../components/general/Button";
+import React, { useState, useEffect } from "react";
 import { GetUser } from "../../../api/ApiUsers";
+import {
+  GetUserSubscriptionInfo,
+  ChangeUserSubscription,
+  GetSubscriptionForClient,
+} from "../../../api/ApiSubscription";
 
-import React, { useState } from "react";
+import DummyPic from "../../../assets/imgs/AgentPic.webp";
+
+import PopUp from "../../../components/popups/PopUp";
+import ErrorAlert from "../../../components/general/ErrorAlert";
+import SuccessAlert from "../../../components/general/SuccessAlert";
 import EditNamePop from "./EditNamePop";
 import EditEmailPop from "./EditEmailPop";
 import EditPhoneNumPop from "./EditPhoneNumPop";
 import ChangePassPop from "./ChangePassPop";
-import { useEffect } from "react";
-import ErrorAlert from "../../../components/general/ErrorAlert";
-import SuccessAlert from "../../../components/general/SuccessAlert";
+import Button from "../../../components/general/Button";
 
 export default function Index() {
   const [showEditNamePop, setShowEditNamePop] = useState(false);
   const [showEditEmailPop, setShowEditEmailPop] = useState(false);
   const [showEditPhoneNumPop, setShowEditPhoneNumPop] = useState(false);
-
   const [showChangePassPop, setShowChangePassPop] = useState(false);
+
+  const [showWarning, setShowWarning] = useState(false);
+
   const [first_name, setFirstName] = useState(false);
   const [last_name, setLastName] = useState(false);
   const [email, setEmail] = useState(false);
   const [phone_number, setPhoneNumber] = useState(false);
+  const [subscription, setSubscription] = useState(null);
 
   const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   useEffect(() => {
     getUser();
+    getSubscription();
   }, []);
 
   const getUser = async () => {
@@ -38,6 +48,40 @@ export default function Index() {
       setPhoneNumber(api_request.response.data.phone_number);
     } else {
       console.log(api_request.error);
+    }
+  };
+
+  const getSubscription = async () => {
+    const api_request = await GetUserSubscriptionInfo();
+
+    if (!api_request.error) {
+      setSubscription(api_request.response.data[0].subscription_type);
+    } else {
+      console.log(api_request.error);
+      alert(api_request.error);
+    }
+  };
+
+  const changeSubcription = async () => {
+    const api_request = await GetSubscriptionForClient();
+
+    if (!api_request.error) {
+      const free_subscription = api_request.response.data.data.filter(
+        (x) => x.price === 0
+      );
+
+      const api_request_change = await ChangeUserSubscription(
+        free_subscription[0].id
+      );
+
+      if (!api_request_change.error) {
+        console.log(api_request_change.response);
+      } else {
+        console.log(api_request_change.error);
+      }
+    } else {
+      console.log(api_request.error);
+      alert(api_request.error);
     }
   };
 
@@ -58,17 +102,27 @@ export default function Index() {
 
   return (
     <div className="mt-20">
+      <PopUp
+        text="Are you sure you would want to Cancel your Subscription? This cannot be reversed."
+        cancelFunction={() => setShowWarning(false)}
+        okayFunction={() => {
+          setShowWarning(false);
+          changeSubcription();
+        }}
+        state={showWarning}
+      />
+
       <div className="mx-3 mb-14 flex flex-col gap-2">
         <ErrorAlert
-        text="Failed to save profile changes."
-        showErrorAlert = {showErrorAlert}
-        setShowErrorAlert = {setShowErrorAlert}
+          text="Failed to save profile changes."
+          showErrorAlert={showErrorAlert}
+          setShowErrorAlert={setShowErrorAlert}
         />
-        <SuccessAlert 
-        text="Successfully saved profile changes."
-         showSuccessAlert = {showSuccessAlert}
-         setShowSuccessAlert = {setShowSuccessAlert}
-         />
+        <SuccessAlert
+          text="Successfully saved profile changes."
+          showSuccessAlert={showSuccessAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
+        />
       </div>
 
       <div className=" flex h-auto flex-col items-center justify-center pt-4">
@@ -81,8 +135,8 @@ export default function Index() {
           setLast={changeLastName}
           firstname={first_name}
           lastname={last_name}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
 
         <EditEmailPop
@@ -90,16 +144,16 @@ export default function Index() {
           action={() => setShowEditEmailPop(false)}
           setUserEmail={changeEmail}
           useremail={email}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
         <EditPhoneNumPop
           showEditPhoneNumPop={showEditPhoneNumPop}
           action={() => setShowEditPhoneNumPop(false)}
           setPNumber={changePhoneNumber}
           phonenumber={phone_number}
-          setShowErrorAlert = {setShowErrorAlert}
-          setShowSuccessAlert = {setShowSuccessAlert}
+          setShowErrorAlert={setShowErrorAlert}
+          setShowSuccessAlert={setShowSuccessAlert}
         />
 
         <ChangePassPop
@@ -172,7 +226,7 @@ export default function Index() {
             <div className="flex  flex-wrap justify-between gap-3 ">
               <div>
                 <h1 className="font-semibold">Subscription</h1>
-                <span className=" text-TextSecondary">Starter</span>
+                <span className=" text-TextSecondary">{subscription}</span>
               </div>
 
               <div className="wrap flex flex-col-reverse gap-2 md:flex-row lg:flex-row ">
@@ -186,7 +240,11 @@ export default function Index() {
                   />
                 </div>
                 <div className="flex items-center ">
-                  <Button padding="py-2 px-5" text="Change" />
+                  <Button
+                    padding="py-2 px-5"
+                    text="Change"
+                    onClick={() => setShowWarning(true)}
+                  />
                 </div>
               </div>
             </div>
