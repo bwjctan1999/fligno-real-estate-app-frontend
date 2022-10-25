@@ -69,6 +69,23 @@ export async function PostSubscription(id, hash) {
   return resolved;
 }
 
+export async function DeleteSubscription() {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.get(
+      `http://127.0.0.1:8000/api/agent/subscription-info`
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
+
 export async function GetUserSubscriptionInfo() {
   const resolved = {
     response: null,
