@@ -1,16 +1,15 @@
 import Textfield from "../../components/general/Textfield";
 import TextArea from "../../components/general/TextArea";
 import Button from "../../components/general/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function AdminEditSubscription() {
-  const [title, setTitle] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [price, setPrice] = useState(null);
+  const location = useLocation();
 
-  useEffect(() => {}, []);
-
-  const getSubscriptionData = () => {};
+  const [title, setTitle] = useState(location.state.title);
+  const [description, setDescription] = useState(location.state.description);
+  const [price, setPrice] = useState(location.state.price);
 
   const editSubscription = () => {};
 
