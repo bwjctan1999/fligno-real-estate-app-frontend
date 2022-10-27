@@ -1,7 +1,12 @@
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-import { GetUser, GetAgents, GetClients } from "../../api/ApiUsers";
+import {
+  SearchAgent,
+  SearchClient,
+  GetAgents,
+  GetClients,
+} from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
 import Textfield from "../../components/general/Textfield";
@@ -16,6 +21,7 @@ import TableSkeleton from "../../components/general/TableSkeleton";
 import EnableDisableButton from "../../components/general/EnableDisableButton";
 
 export default function AdminUsersList() {
+  const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [userFilter, setUserFilter] = useState("Agent");
 
@@ -46,6 +52,34 @@ export default function AdminUsersList() {
     }
 
     console.log(api_request.response);
+
+    if (!api_request.error) {
+      setUsers(api_request.response.data.data);
+      setPaginationData({
+        current_page: api_request.response.data.current_page,
+        last_page: api_request.response.data.last_page,
+        first_page_url: api_request.response.data.first_page_url,
+        last_page_url: api_request.response.data.last_page_url,
+        next_page_url: api_request.response.data.next_page_url,
+        prev_page_url: api_request.response.data.prev_page_url,
+      });
+    } else {
+      console.log(api_request);
+    }
+  };
+
+  const searchUser = async () => {
+    setUsers([]);
+    let api_request;
+
+    switch (userFilter) {
+      case "Agent":
+        api_request = await SearchAgent(search);
+        break;
+      case "Client":
+        api_request = await SearchClient(search);
+        break;
+    }
 
     if (!api_request.error) {
       setUsers(api_request.response.data.data);
@@ -114,8 +148,11 @@ export default function AdminUsersList() {
         </div>
         <div className="lg:full float-right w-full lg:w-1/4 ">
           <Textfield
+            value={search}
             placeholder="Search"
             icon={<IconSearch fill="fill-TextTertiary" />}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={() => searchUser()}
           />
         </div>
       </div>
