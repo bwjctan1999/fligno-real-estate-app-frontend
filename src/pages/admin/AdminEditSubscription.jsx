@@ -3,18 +3,43 @@ import TextArea from "../../components/general/TextArea";
 import Button from "../../components/general/Button";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { UpdateSubscription } from "../../api/ApiSubscription";
+import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
 export default function AdminEditSubscription() {
   const location = useLocation();
 
+  const id = location.state.id;
   const [title, setTitle] = useState(location.state.title);
   const [description, setDescription] = useState(location.state.description);
   const [price, setPrice] = useState(location.state.price);
 
-  const editSubscription = () => {};
+  const [showPopup, setShowPopup] = useState(false);
+
+  const editSubscription = async () => {
+    const api_request = await UpdateSubscription(id, {
+      title: title,
+      description: description,
+      price: price,
+    });
+
+    console.log(api_request.response);
+    if (!api_request.error) {
+      return true;
+    } else {
+      console.log(api_request.error);
+      return false;
+    }
+  };
 
   return (
     <div className="bg-BGSecondary">
+      <PopUpProcessing
+        show={showPopup}
+        text="Subscription Successfully updated."
+        okayFunction={() => setShowPopup(false)}
+        actionFunction={editSubscription}
+      />
       <div className="flex flex-col gap-4  px-4 pt-16 md:px-20 lg:px-60 lg:pt-28">
         <div className="flex h-screen  flex-col gap-4">
           <h1 className="mb-6 w-full text-4xl font-bold text-TextTertiary">
@@ -57,7 +82,7 @@ export default function AdminEditSubscription() {
             />
           </div>
           <div className="mt-8  w-full lg:w-1/4">
-            <Button text="Save" />
+            <Button text="Save" onClick={() => setShowPopup(true)} />
           </div>
         </div>
       </div>

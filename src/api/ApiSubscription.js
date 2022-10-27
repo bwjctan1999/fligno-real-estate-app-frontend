@@ -35,6 +35,37 @@ export async function CreateSubscription(data) {
   return resolved;
 }
 
+export async function UpdateSubscription(id, data) {
+  const resolved = { response: null, error: null };
+
+  try {
+    resolved.response = await axios.put(
+      `http://127.0.0.1:8000/api/subscriptions/${id}`,
+      data
+    );
+  } catch (error) {
+    resolved.error = error;
+  }
+
+  return resolved;
+}
+
+export async function DeleteSubscription(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+  try {
+    resolved.response = await axios.delete(
+      `http://127.0.0.1:8000/api/admin/subscription/delete/${id}`
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
+
 export async function GetSubscriptionForClient() {
   const resolved = {
     response: null,
@@ -61,23 +92,6 @@ export async function PostSubscription(id, hash) {
   try {
     resolved.response = await axios.post(
       `http://127.0.0.1:8000/api/agent/subscription/${id}`
-    );
-  } catch (e) {
-    resolved.error = e;
-  }
-
-  return resolved;
-}
-
-export async function DeleteSubscription() {
-  const resolved = {
-    response: null,
-    error: null,
-  };
-
-  try {
-    resolved.response = await axios.get(
-      `http://127.0.0.1:8000/api/agent/subscription-info`
     );
   } catch (e) {
     resolved.error = e;

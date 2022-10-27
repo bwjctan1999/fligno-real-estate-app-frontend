@@ -2,13 +2,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tr, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import { DeleteSubscription } from "../../../api/ApiSubscription";
 import Button from "../../../components/general/Button";
 
 export default function SubscriptionItem({ id, title, description, price }) {
   const navigate = useNavigate();
   const [deleted, setDeleted] = useState(false);
 
-  const deleteHandler = () => {};
+  const deleteHandler = async (id) => {
+    const api_request = await DeleteSubscription(id);
+
+    if (!api_request.error) {
+      setDeleted(true);
+    } else {
+      console.log(api_request.error);
+      alert(api_request.error);
+    }
+  };
 
   return deleted ? null : (
     <Tr className="border-y-2 border-LinePrimary text-TextTertiary">
@@ -44,9 +54,7 @@ export default function SubscriptionItem({ id, title, description, price }) {
               padding="p-1"
               custom="md:my-3"
               bgcolor="bg-gradient-to-r from-BtnTertiary-start to-BtnTertiary-end"
-              onClick={() => {
-                setDeleted(true);
-              }}
+              onClick={() => deleteHandler(id)}
             />
           </div>
         </div>
