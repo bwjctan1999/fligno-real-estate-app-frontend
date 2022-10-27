@@ -4,7 +4,7 @@ import { useState } from "react";
 import IconProperties from "../../assets/icons/IconProperties";
 import IconUsersList from "../../assets/icons/IconUsersList";
 import DashboardCard from "../../components/general/DashboardCard";
-import { GetDashboardInfo } from "../../api/ApiAgentDashboard";
+import { GetDashboardInfo } from "../../api/ApiDashboard";
 
 export default function AgentDashboard() {
   const [loading, setLoading] = useState(true);

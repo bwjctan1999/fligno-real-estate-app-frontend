@@ -16,3 +16,20 @@ export async function GetDashboardInfo() {
 
   return resolved;
 }
+
+export async function GetAdminDashboardInfo() {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.get(
+      `http://127.0.0.1:8000/api/admin/dashboard`
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
