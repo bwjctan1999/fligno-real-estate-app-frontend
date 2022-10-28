@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TableSkeleton from "../../../components/general/TableSkeleton";
 import Paginator from "../../../components/general/Paginator";
+import EnableDisableButton from "../../../components/general/EnableDisableButton";
 
 export default function AdminPropertiesTable({ search }) {
   const [properties, setProperties] = useState([]);
@@ -65,6 +66,7 @@ export default function AdminPropertiesTable({ search }) {
     description,
     zip_code,
     img,
+    deleted_at,
   }) => {
     return (
       <Tr key={id} className="border-y-2 border-LinePrimary text-TextTertiary">
@@ -79,6 +81,15 @@ export default function AdminPropertiesTable({ search }) {
             text="Open"
             padding="p-2"
             onClick={() => navigate(`/agent/properties/${id}`)}
+          />
+          <EnableDisableButton
+            fontsize="text-base"
+            padding="p-1"
+            bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
+            initialState={deleted_at ? false : true}
+            id={id}
+            // enableRequest={RestoreUser}
+            // disableRequest={DisableUser}
           />
         </Td>
       </Tr>

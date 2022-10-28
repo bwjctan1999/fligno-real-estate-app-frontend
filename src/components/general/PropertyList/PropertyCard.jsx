@@ -11,12 +11,26 @@ export default function PropertyCard({
   price = 0,
   img,
   onClick,
+  type,
 }) {
   return (
     <div
-      className=" rounded-md shadow-lg hover:cursor-pointer"
+      className=" relative rounded-md shadow-lg hover:cursor-pointer"
       onClick={onClick}
     >
+      <div
+        className={`${
+          type === 1 ? "bg-BGSecondary" : "bg-BtnPrimary-start"
+        } absolute mt-2 ml-2 rounded-full p-1 px-4 shadow`}
+      >
+        <p
+          className={`${
+            type === 1 ? "text-TextPrimary" : "text-TextOnDark"
+          } text-sm font-medium`}
+        >
+          {type === 1 ? "For Rent" : "For Sale"}
+        </p>
+      </div>
       <img className="aspect-video rounded-t-lg object-cover" src={img} />
       <div className="flex flex-col gap-3 p-4">
         <h1 className="text-xl font-bold">{title}</h1>

@@ -77,6 +77,7 @@ export default function PropertyList({ navigate_to, search, url }) {
         onClick={() => navigate(`${navigate_to}/${id}`)}
         key={id}
         img={img}
+        type={type}
       />
     );
   };
