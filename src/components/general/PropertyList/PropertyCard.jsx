@@ -1,6 +1,8 @@
 import IconArea from "../../../assets/icons/IconArea";
 import IconBed from "../../../assets/icons/IconBed";
 import IconBathroom from "../../../assets/icons/IconBathroom";
+import ImageNotFound from "../../../assets/imgs/ImageNotFound.png";
+import { useState } from "react";
 
 export default function PropertyCard({
   title = "No Title",
@@ -13,6 +15,8 @@ export default function PropertyCard({
   onClick,
   type,
 }) {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div
       className=" relative rounded-md shadow-lg hover:cursor-pointer"
@@ -31,7 +35,16 @@ export default function PropertyCard({
           {type === 1 ? "For Rent" : "For Sale"}
         </p>
       </div>
-      <img className="aspect-video rounded-t-lg object-cover" src={img} />
+      <img
+        className="aspect-video rounded-t-lg object-cover"
+        src={img}
+        onError={(e) => {
+          if (!imageError) {
+            setImageError(true);
+            e.target.src = ImageNotFound;
+          }
+        }}
+      />
       <div className="flex flex-col gap-3 p-4">
         <h1 className="text-xl font-bold">{title}</h1>
         <h2 className="text-sm font-light underline">{location}</h2>
