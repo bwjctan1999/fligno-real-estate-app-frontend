@@ -39,6 +39,7 @@ export default function Login() {
       switch (response.data.data.user_role[0]) {
         case "admin":
           navigate("/admin");
+          window.location.reload();
           break;
         case "agent":
           if (response.data.data.subscribe) {
@@ -46,13 +47,13 @@ export default function Login() {
           } else {
             navigate("/agent/subscription");
           }
-
+          window.location.reload();
           break;
         case "client":
           navigate("/");
+          window.location.reload();
           break;
       }
-      window.location.reload();
     } catch (error) {
       setEmailValidator("Wrong Email or Password");
       setPasswordValidator(" ");

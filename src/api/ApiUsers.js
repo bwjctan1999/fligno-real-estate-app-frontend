@@ -10,7 +10,7 @@ export async function GetUser(id) {
 
   try {
     resolved.response = await axios.get(
-      `http://127.0.0.1:8000/api/admin/users-list/${id}`
+      `http://127.0.0.1:8000/api/users/${id}`
     );
   } catch (e) {
     resolved.error = e;
@@ -141,6 +141,23 @@ export async function UpdateUser(data) {
     resolved.response = await axios.put(
       `http://127.0.0.1:8000/api/profile/edit`,
       data
+    );
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
+
+export async function DeleteUserPermanently() {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.delete(
+      `http://127.0.0.1:8000/api/delete-account`
     );
   } catch (e) {
     resolved.error = e;

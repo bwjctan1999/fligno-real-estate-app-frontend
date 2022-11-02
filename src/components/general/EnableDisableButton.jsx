@@ -7,24 +7,24 @@ export default function EnableDisableButton({
   textcolor = "text-TextOnDark",
   icon,
   custom,
-  enableFunction,
-  disableFunction,
   responsive,
   initialState,
   id,
+  enableRequest,
+  disableRequest,
 }) {
   const [enabled, setEnabled] = useState(initialState);
 
-  const disableUserHandler = async (id) => {
-    const api_request = await DisableUser(id);
+  const disableHandler = async (id) => {
+    const api_request = await disableRequest(id);
 
     !api_request.error
       ? console.log(api_request.response)
       : console.log(api_request.error);
   };
 
-  const restoreUserHandler = async (id) => {
-    const api_request = await RestoreUser(id);
+  const restoreHandler = async (id) => {
+    const api_request = await enableRequest(id);
 
     !api_request.error
       ? console.log(api_request.response)
@@ -32,7 +32,7 @@ export default function EnableDisableButton({
   };
 
   const clickHandler = async () => {
-    enabled ? await disableUserHandler(id) : await restoreUserHandler(id);
+    enabled ? await disableHandler(id) : await restoreHandler(id);
     setEnabled(!enabled);
   };
 

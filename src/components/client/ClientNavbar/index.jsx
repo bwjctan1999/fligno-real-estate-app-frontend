@@ -74,7 +74,10 @@ export default function ClientNavbar({}) {
           <nav className="flex flex-col gap-10 text-xl font-black lg:flex-row lg:items-center">
             <Link
               to="/"
-              onClick={() => setActive("/")}
+              onClick={() => {
+                setActive("/");
+                setOpenNavbar(false);
+              }}
               className={changeSelectedText(active, "/")}
             >
               Home
@@ -82,7 +85,10 @@ export default function ClientNavbar({}) {
 
             <Link
               to="about"
-              onClick={() => setActive("/about")}
+              onClick={() => {
+                setActive("/about");
+                setOpenNavbar(false);
+              }}
               className={changeSelectedText(active, "/about")}
             >
               About
@@ -90,7 +96,10 @@ export default function ClientNavbar({}) {
 
             <Link
               to="properties"
-              onClick={() => setActive("/properties")}
+              onClick={() => {
+                setActive("/properties");
+                setOpenNavbar(false);
+              }}
               className={changeSelectedText(active, "/properties")}
             >
               Properties
@@ -98,7 +107,10 @@ export default function ClientNavbar({}) {
 
             <Link
               to="agents"
-              onClick={() => setActive("/agents")}
+              onClick={() => {
+                setActive("/agents");
+                setOpenNavbar(false);
+              }}
               className={changeSelectedText(active, "/agents")}
             >
               Agents

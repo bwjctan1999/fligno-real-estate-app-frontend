@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IconInfo from "../../../assets/icons/IconInfo";
@@ -7,11 +8,18 @@ import IconUser from "../../../assets/icons/IconUser";
 import Button from "../../general/Button";
 
 export default function ClientLogger({ loggedIn, logoutFunction }) {
+  const [isAgent, setIsAgent] = useState(false);
   const [showDropMenu, setShowDropMenu] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem("user_role") === "agent") {
+      setIsAgent(true);
+    }
+  }, []);
+
   return (
-    <div className="lg:w-1/6">
+    <div className="relative lg:w-1/6">
       {loggedIn ? (
         <div className="flex items-center justify-end gap-2">
           <button
@@ -22,16 +30,18 @@ export default function ClientLogger({ loggedIn, logoutFunction }) {
           </button>
 
           {showDropMenu ? (
-            <div className="offset absolute bottom-14 flex flex-col gap-3 rounded-lg bg-BGPrimary p-4 font-bold drop-shadow-lg lg:-bottom-40">
-              <button
-                onClick={() => navigate("/agent")}
-                className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary"
-              >
-                <div className="w-fit rounded-full bg-LineSecondary p-2">
-                  <IconBriefcase />
-                </div>
-                <p>Switch to Agent</p>
-              </button>
+            <div className="absolute flex flex-col gap-3 rounded-lg bg-BGPrimary p-4 font-bold drop-shadow-lg lg:top-10">
+              {isAgent ? (
+                <button
+                  onClick={() => navigate("/agent")}
+                  className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary"
+                >
+                  <div className="w-fit rounded-full bg-LineSecondary p-2">
+                    <IconBriefcase />
+                  </div>
+                  <p>Switch to Agent</p>
+                </button>
+              ) : null}
               <button
                 className="flex items-center gap-3 rounded-full pr-3 hover:bg-LineSecondary"
                 onClick={() => navigate("/account-info")}

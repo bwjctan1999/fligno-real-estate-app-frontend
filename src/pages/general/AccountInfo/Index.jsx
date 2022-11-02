@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GetUser } from "../../../api/ApiUsers";
+import { GetUser, DeleteUserPermanently } from "../../../api/ApiUsers";
 import {
   GetUserSubscriptionInfo,
   ChangeUserSubscription,
@@ -27,6 +27,7 @@ export default function Index() {
   const [showChangePassPop, setShowChangePassPop] = useState(false);
 
   const [showWarning, setShowWarning] = useState(false);
+  const [showWarning2, setShowWarning2] = useState(false);
 
   const [first_name, setFirstName] = useState(false);
   const [last_name, setLastName] = useState(false);
@@ -89,6 +90,18 @@ export default function Index() {
     }
   };
 
+  const deleteAccount = async () => {
+    const api_request = await DeleteUserPermanently();
+
+    if (!api_request.error) {
+      navigate("/");
+      localStorage.clear;
+    } else {
+      console.log(api_request.error);
+      alert(api_request.error);
+    }
+  };
+
   const changeFirstName = (name) => {
     setFirstName(name);
   };
@@ -114,6 +127,15 @@ export default function Index() {
           changeSubcription();
         }}
         state={showWarning}
+      />
+      <PopUp
+        text="Are you sure you would want to permanently delete your account? This cannot be reversed."
+        cancelFunction={() => setShowWarning2(false)}
+        okayFunction={() => {
+          setShowWarning2(false);
+          deleteAccount();
+        }}
+        state={showWarning2}
       />
 
       <div className="mx-3 mb-14 flex flex-col gap-2">
@@ -285,8 +307,9 @@ export default function Index() {
             <div>
               <h1 className="font-semibold">Account Removal</h1>
               <p className="text-base text-BtnSecondary">
-                Disabling your account means you can recover it at any time
-                after taking this action
+                Deleting your account is permanent, any saved data such as your
+                properties, clients, payments are removed permanently and cannot
+                be restored
               </p>
             </div>
 
@@ -295,16 +318,8 @@ export default function Index() {
                 <Button
                   padding="py-2 px-5"
                   bgcolor="bg-BtnTertiary-end"
-                  text="Disable Account"
-                />
-              </div>
-              <div>
-                <Button
                   text="Delete Account"
-                  bgcolor="bg-BGPrimary"
-                  textcolor="text-BtnTertiary-end"
-                  custom=" shadow-border shadow-BtnTertiary-end"
-                  padding="py-2 px-5"
+                  onClick={() => setShowWarning2(true)}
                 />
               </div>
             </div>

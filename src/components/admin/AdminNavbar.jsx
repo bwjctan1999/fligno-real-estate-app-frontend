@@ -96,7 +96,7 @@ export default function AdminNavbar({}) {
               Users
             </Link>
 
-            <Link
+            {/* <Link
               to="/admin/roles"
               onClick={() => {
                 setActive("/admin/roles");
@@ -105,7 +105,7 @@ export default function AdminNavbar({}) {
             >
               <IconKey />
               Roles
-            </Link>
+            </Link> */}
 
             <Link
               to="/admin/subscription"

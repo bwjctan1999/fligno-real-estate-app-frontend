@@ -6,6 +6,8 @@ import {
   SearchClient,
   GetAgents,
   GetClients,
+  DisableUser,
+  RestoreUser,
 } from "../../api/ApiUsers";
 
 import Button from "../../components/general/Button";
@@ -127,6 +129,8 @@ export default function AdminUsersList() {
               bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
               initialState={deleted_at ? false : true}
               id={id}
+              enableRequest={RestoreUser}
+              disableRequest={DisableUser}
             />
             <Button text="properties" fontsize="text-base" padding="p-1" />
           </div>

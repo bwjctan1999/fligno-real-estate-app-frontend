@@ -77,11 +77,11 @@ export default function AdminPropertiesTable({ search }) {
         <Td className="pr-4">{bedroom} </Td>
         <Td className="pr-4">{bathroom}</Td>
         <Td className="pr-4">
-          <Button
+          {/* <Button
             text="Open"
             padding="p-2"
             onClick={() => navigate(`/agent/properties/${id}`)}
-          />
+          /> */}
           <EnableDisableButton
             fontsize="text-base"
             padding="p-1"
