@@ -1,6 +1,13 @@
 import Textfield from "../../components/general/Textfield";
 import TextArea from "../../components/general/TextArea";
 import Button from "../../components/general/Button";
+
+import {
+  ValidEmpty,
+  ValidNoEmojis,
+  ValidNumbersOnly,
+} from "../../scripts/validations";
+
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { UpdateSubscription } from "../../api/ApiSubscription";
@@ -13,8 +20,32 @@ export default function AdminEditSubscription() {
   const [title, setTitle] = useState(location.state.title);
   const [description, setDescription] = useState(location.state.description);
   const [price, setPrice] = useState(location.state.price);
-
   const [showPopup, setShowPopup] = useState(false);
+
+  const [validator, setValidator] = useState({
+    title: "",
+    description: "",
+    price: "",
+  });
+
+  const Validation = () => {
+    const tempValidator = {
+      title: "",
+      description: "",
+      price: "",
+    };
+
+    if (!ValidNoEmojis(title)) tempValidator.title = "Emojis are not allowed";
+    if (!ValidNumbersOnly(price)) tempValidator.price = "Invalid Number";
+    if (!ValidEmpty(title)) tempValidator.title = "Required";
+    if (!ValidEmpty(description)) tempValidator.description = "Required";
+    if (!ValidEmpty(price)) tempValidator.price = "Required";
+
+    setValidator(tempValidator);
+
+    const pass = Object.values(tempValidator).every((value) => value === "");
+    if (pass) setShowPopup(true);
+  };
 
   const editSubscription = async () => {
     const api_request = await UpdateSubscription(id, {
@@ -54,6 +85,7 @@ export default function AdminEditSubscription() {
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              invalidError={validator.title}
             />
           </div>
 
@@ -66,6 +98,7 @@ export default function AdminEditSubscription() {
               placeholder="Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              invalidError={validator.description}
             />
           </div>
 
@@ -79,10 +112,11 @@ export default function AdminEditSubscription() {
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              invalidError={validator.price}
             />
           </div>
           <div className="mt-8  w-full lg:w-1/4">
-            <Button text="Save" onClick={() => setShowPopup(true)} />
+            <Button text="Save" onClick={() => Validation()} />
           </div>
         </div>
       </div>
