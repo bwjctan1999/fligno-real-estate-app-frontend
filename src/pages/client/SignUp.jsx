@@ -13,7 +13,8 @@ import {
   ValidEmpty,
   ValidName,
   ValidMobileNumber,
-} from "../../scripts/Validations";
+  ValidNoEmojis,
+} from "../../scripts/validations";
 import axios from "axios";
 
 export default function SignUp() {
@@ -52,44 +53,44 @@ export default function SignUp() {
       user_type: "",
     };
 
-    if (!ValidEmail(formValues.email)) {
-      tempValidations.email = "Invalid Email";
-    }
-    if (!ValidName(formValues.first_name)) {
+    if (!ValidEmail(formValues.email)) tempValidations.email = "Invalid Email";
+
+    if (!ValidName(formValues.first_name))
       tempValidations.first_name = "Letters only";
-    }
-    if (!ValidName(formValues.last_name)) {
+
+    if (!ValidName(formValues.last_name))
       tempValidations.last_name = "Letters only";
-    }
-    if (!ValidMobileNumber(formValues.phone_number)) {
+
+    if (!ValidMobileNumber(formValues.phone_number))
       tempValidations.phone_number = "Invalid Number";
-    }
 
-    if (confirmPassword !== formValues.password) {
+    if (confirmPassword !== formValues.password)
       tempValidations.confirm_password = "Confirm password does not match";
-    }
 
-    if (!ValidEmpty(formValues.email)) {
-      tempValidations.email = "Required";
-    }
-    if (!ValidEmpty(formValues.password)) {
-      tempValidations.password = "Required";
-    }
-    if (!ValidEmpty(confirmPassword)) {
+    if (!ValidEmpty(formValues.email)) tempValidations.email = "Required";
+
+    if (!ValidEmpty(formValues.password)) tempValidations.password = "Required";
+
+    if (!ValidEmpty(confirmPassword))
       tempValidations.confirm_password = "Required";
-    }
-    if (!ValidEmpty(formValues.first_name)) {
+
+    if (!ValidEmpty(formValues.first_name))
       tempValidations.first_name = "Required";
-    }
-    if (!ValidEmpty(formValues.last_name)) {
+
+    if (!ValidEmpty(formValues.last_name))
       tempValidations.last_name = "Required";
-    }
-    if (!ValidEmpty(formValues.phone_number)) {
+
+    if (!ValidEmpty(formValues.phone_number))
       tempValidations.phone_number = "Required";
-    }
-    if (formValues.user_type === "") {
+
+    if (!ValidEmpty(formValues.user_type))
       tempValidations.user_type = "Required";
-    }
+
+    if (!ValidNoEmojis(formValues.first_name))
+      tempValidations.first_name = "Required";
+
+    if (!ValidNoEmojis(formValues.last_name))
+      tempValidations.last_name = "Required";
 
     setValidations(tempValidations);
 
