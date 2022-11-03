@@ -7,7 +7,7 @@ import TextArea from "../../components/general/TextArea";
 import ImageUploader from "../../components/general/ImageUploader";
 import Button from "../../components/general/Button";
 
-import { ValidEmpty } from "../../scripts/Validations";
+import { ValidEmpty, ValidNoEmojis } from "../../scripts/validations";
 import PopUpProcessing from "../../components/popups/PopUpProcessing";
 
 import { PostProperty } from "../../api/ApiProperty";
@@ -80,6 +80,14 @@ export default function AddProperty() {
     if (!ValidEmpty(formValues.zip_code)) tempValidations.zip_code = "Required";
     if (!ValidEmpty(formValues.availability))
       tempValidations.availability = "Required";
+    if (!ValidNoEmojis(formValues.address_1))
+      tempValidations.address_1 = "Emojis are not allowed";
+    if (!ValidNoEmojis(formValues.address_2))
+      tempValidations.address_2 = "Emojis are not allowed";
+    if (!ValidNoEmojis(formValues.city))
+      tempValidations.city = "Emojis are not allowed";
+    if (!ValidNoEmojis(formValues.title))
+      tempValidations.title = "Emojis are not allowed";
 
     setValidations(tempValidations);
 
@@ -197,7 +205,7 @@ export default function AddProperty() {
             <div className="flex gap-x-2">
               <div className="w-3/5">
                 <Textfield
-                  placeholder="Address 1"
+                  placeholder="Address 1: Street Address"
                   onChange={(e) => setValue(e, "address_1")}
                   invalidError={validations.address_1}
                   value={formValues.address_1}
@@ -215,7 +223,7 @@ export default function AddProperty() {
             <div className="flex gap-x-2">
               <div className="w-3/5">
                 <Textfield
-                  placeholder="Address 2"
+                  placeholder="Address 2: Apartment, suite or unit number"
                   onChange={(e) => setValue(e, "address_2")}
                   invalidError={validations.address_2}
                   value={formValues.address_2}

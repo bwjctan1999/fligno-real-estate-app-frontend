@@ -24,3 +24,15 @@ export function ValidNumbersOnly(num) {
 export function ValidName(str) {
   return /^[A-Za-z\s]*$/.test(str);
 }
+
+export function ValidNoEmojis(str) {
+  let pass = true;
+  const regexExp = /\P{Extended_Pictographic}/u;
+
+  [...str].forEach((c) => {
+    if (!regexExp.test(c)) pass = false;
+    return;
+  });
+
+  return pass;
+}
