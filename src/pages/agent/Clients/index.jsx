@@ -8,12 +8,14 @@ import {
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
+import TableSkeleton from "../../../components/general/TableSkeleton";
 import DropDown from "../../../components/general/DropDown";
 import Textfield from "../../../components/general/Textfield";
 import IconSearch from "../../../assets/icons/IconSearch";
 import ContactItem from "./ContactItem";
 
 export default function Clients() {
+  const [loading, setLoading] = useState(true);
   const [contacts, setContacts] = useState([]);
   const [userFilter, setUserFilter] = useState("Contacts");
 
@@ -29,6 +31,7 @@ export default function Clients() {
   }, [userFilter]);
 
   const getContacts = async () => {
+    setLoading(true);
     const api_request = await GetContacts();
 
     if (!api_request.error) {
@@ -36,9 +39,12 @@ export default function Clients() {
     } else {
       console.log(api_request.error);
     }
+
+    setLoading(false);
   };
 
   const getHistory = async () => {
+    setLoading(true);
     const api_request = await GetContactHistory();
 
     if (!api_request.error) {
@@ -46,6 +52,8 @@ export default function Clients() {
     } else {
       console.log(api_request.error);
     }
+
+    setLoading(false);
   };
 
   return (
@@ -59,16 +67,18 @@ export default function Clients() {
             onChange={(e) => setUserFilter(e.target.value)}
           />
         </div>
-        <div className="lg:full float-right w-full lg:w-1/4 ">
+        {/* <div className="lg:full float-right w-full lg:w-1/4 ">
           <Textfield
             placeholder="Search"
             icon={<IconSearch fill="fill-TextTertiary" />}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-4 rounded-lg bg-BGPrimary p-4 shadow-lg">
-        {contacts.length === 0 ? (
+        {loading ? (
+          <TableSkeleton />
+        ) : contacts.length === 0 ? (
           <p className="text-center font-medium">
             You do not have any Contacts
           </p>
