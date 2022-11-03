@@ -1,6 +1,13 @@
 import Textfield from "../../components/general/Textfield";
 import TextArea from "../../components/general/TextArea";
 import Button from "../../components/general/Button";
+
+import {
+  ValidNoEmojis,
+  ValidNumbersOnly,
+  ValidEmpty,
+} from "../../scripts/validations";
+
 import { CreateSubscription } from "../../api/ApiSubscription";
 import { useState } from "react";
 import PopUpProcessing from "../../components/popups/PopUpProcessing";
@@ -14,6 +21,34 @@ export default function AdminAddSubscription() {
     description: "",
     price: "",
   });
+
+  const [validator, setValidator] = useState({
+    title: "",
+    description: "",
+    price: "",
+  });
+
+  const Validation = () => {
+    const tempValidator = {
+      title: "",
+      description: "",
+      price: "",
+    };
+
+    if (!ValidNoEmojis(formValues.title))
+      tempValidator.title = "Emojis are not allowed";
+    if (!ValidNumbersOnly(formValues.price))
+      tempValidator.price = "Invalid Number";
+    if (!ValidEmpty(formValues.title)) tempValidator.title = "Required";
+    if (!ValidEmpty(formValues.description))
+      tempValidator.description = "Required";
+    if (!ValidEmpty(formValues.price)) tempValidator.price = "Required";
+
+    setValidator(tempValidator);
+
+    const pass = Object.values(tempValidator).every((value) => value === "");
+    if (pass) setShowPopUp(true);
+  };
 
   const addSubscriptionHandler = async () => {
     const api_request = await CreateSubscription(formValues);
@@ -55,6 +90,7 @@ export default function AdminAddSubscription() {
                   title: e.target.value,
                 }))
               }
+              invalidError={validator.title}
             />
           </div>
 
@@ -71,6 +107,7 @@ export default function AdminAddSubscription() {
                   description: e.target.value,
                 }))
               }
+              invalidError={validator.description}
             />
           </div>
 
@@ -89,10 +126,11 @@ export default function AdminAddSubscription() {
                   price: e.target.value,
                 }))
               }
+              invalidError={validator.price}
             />
           </div>
           <div className="mt-8  w-full lg:w-1/4">
-            <Button text="Add" onClick={() => setShowPopUp(true)} />
+            <Button text="Add" onClick={() => Validation()} />
           </div>
         </div>
       </div>
