@@ -1,7 +1,10 @@
 import Button from "../../../components/general/Button";
+import { ValidEmail } from "../../../scripts/validations";
+
 import Textfield from "../../../components/general/Textfield";
 import { UpdateUser } from "../../../api/ApiUsers";
 import { useState } from "react";
+import { useEffect } from "react";
 export default function EditEmailPop({
   action,
   showEditEmailPop,
@@ -10,12 +13,24 @@ export default function EditEmailPop({
   setShowSuccessAlert,
   setShowErrorAlert,
 }) {
+  useEffect(() => setEmail(useremail), [useremail]);
+
   const [email, setEmail] = useState("");
+  const [emailValidator, setEmailValidator] = useState("");
+
+  const Validation = () => {
+    if (!ValidEmail(email)) {
+      setEmailValidator("Invalid Email");
+    } else {
+      UpdateEmail();
+    }
+  };
 
   const UpdateEmail = async () => {
     const api_request = await UpdateUser({
       email: email,
     });
+    action();
 
     if (!api_request.error) {
       setUserEmail(email);
@@ -47,13 +62,17 @@ export default function EditEmailPop({
                     placeholder={useremail}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    invalidError={emailValidator}
                   />
                 </div>
               </div>
 
               <div className="mt-8 flex items-center gap-5 ">
                 <Button
-                  onClick={action}
+                  onClick={() => {
+                    action();
+                    setEmailValidator("");
+                  }}
                   text="Cancel"
                   bgcolor="bg-BGPrimary"
                   textcolor="text-TextSecondary"
@@ -62,8 +81,7 @@ export default function EditEmailPop({
                 <Button
                   text="Save"
                   onClick={() => {
-                    UpdateEmail();
-                    action();
+                    Validation();
                   }}
                 />
               </div>
