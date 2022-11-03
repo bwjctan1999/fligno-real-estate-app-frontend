@@ -2,6 +2,7 @@ import { Table, Thead, Tbody, Tr, Th } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { GetSubscription } from "../../../api/ApiSubscription";
 
+import TableSkeleton from "../../../components/general/TableSkeleton";
 import Button from "../../../components/general/Button";
 import IconSearch from "../../../assets/icons/IconSearch";
 import Textfield from "../../../components/general/Textfield";
@@ -11,6 +12,7 @@ import { useState } from "react";
 import SubscriptionItem from "./SubscriptionItem";
 
 export default function AdminSubscription() {
+  const [loading, setLoading] = useState(true);
   const [subscriptions, setSubscriptions] = useState([]);
   const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ export default function AdminSubscription() {
   }, []);
 
   const getSubscription = async () => {
+    setLoading(true);
     const api_request = await GetSubscription();
 
     if (!api_request.error) {
@@ -27,6 +30,7 @@ export default function AdminSubscription() {
       alert(api_request.error);
       console.log(api_request.error);
     }
+    setLoading(false);
   };
 
   return (
@@ -46,23 +50,31 @@ export default function AdminSubscription() {
       </div>
 
       <div>
-        <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
-          <Table>
-            <Thead>
-              <Tr className="border-b-2 border-LineSecondary text-left text-lg">
-                <Th>Title</Th>
-                <Th>Description</Th>
-                <Th>Price</Th>
-                <Th className="float-right">Actions</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {subscriptions.map((x) => (
-                <SubscriptionItem key={x.id} {...x} />
-              ))}
-            </Tbody>
-          </Table>
-        </div>
+        {loading ? (
+          <TableSkeleton />
+        ) : subscriptions.length === 0 ? (
+          <div className="mt-10 rounded-lg bg-BGPrimary p-5 text-center text-lg font-medium">
+            <p>No Subscriptions Created</p>
+          </div>
+        ) : (
+          <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
+            <Table>
+              <Thead>
+                <Tr className="border-b-2 border-LineSecondary text-left text-lg">
+                  <Th>Title</Th>
+                  <Th>Description</Th>
+                  <Th>Price</Th>
+                  <Th className="float-right">Actions</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {subscriptions.map((x) => (
+                  <SubscriptionItem key={x.id} {...x} />
+                ))}
+              </Tbody>
+            </Table>
+          </div>
+        )}
       </div>
     </div>
   );

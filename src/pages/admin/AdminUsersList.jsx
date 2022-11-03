@@ -23,6 +23,7 @@ import TableSkeleton from "../../components/general/TableSkeleton";
 import EnableDisableButton from "../../components/general/EnableDisableButton";
 
 export default function AdminUsersList() {
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [userFilter, setUserFilter] = useState("Agent");
@@ -41,6 +42,7 @@ export default function AdminUsersList() {
   }, [userFilter]);
 
   const getData = async (url, userFilter) => {
+    setLoading(true);
     setUsers([]);
     let api_request;
 
@@ -68,9 +70,11 @@ export default function AdminUsersList() {
     } else {
       console.log(api_request);
     }
+    setLoading(false);
   };
 
   const searchUser = async () => {
+    setLoading(true);
     setUsers([]);
     let api_request;
 
@@ -96,6 +100,8 @@ export default function AdminUsersList() {
     } else {
       console.log(api_request);
     }
+
+    setLoading(false);
   };
 
   const addUser = ({
@@ -160,9 +166,13 @@ export default function AdminUsersList() {
           />
         </div>
       </div>
-
-      {users.length === 0 ? (
+     
+      {loading ? (
         <TableSkeleton />
+      ) : users.length === 0 ? (
+        <div className="mt-10 rounded-lg bg-BGPrimary p-5 text-center text-lg font-medium">
+          <p>No Clients Found</p>
+        </div>
       ) : (
         <div className="rounded-lg bg-BGPrimary p-4 shadow-lg">
           <Table>
@@ -179,7 +189,6 @@ export default function AdminUsersList() {
           </Table>
         </div>
       )}
-
       <Paginator
         changePage={getData}
         current={paginationData.current_page}

@@ -106,7 +106,7 @@ export default function AdminPropertiesTable({ search }) {
     </div>
   ) : properties.length === 0 ? (
     <div className="bg-BGPrimary p-5 rounded-lg mt-10 font-medium text-center text-lg">
-      <p>No Properties Are Found</p>
+      <p>No Properties Found</p>
     </div>
   ) : (
     <div className="mt-10 w-full rounded-lg bg-BGPrimary p-4 shadow-lg">

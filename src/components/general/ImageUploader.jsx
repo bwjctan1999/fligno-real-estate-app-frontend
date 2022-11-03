@@ -24,10 +24,7 @@ export default function ImageUploader({ imageStorage }) {
       binaryReader.onerror = () => console.log("file reading has failed");
       binaryReader.onload = () => {
         const file = reader.result;
-        imageStorage((oldValues) => ({
-          ...oldValues,
-          p_img: file,
-        }));
+        imageStorage((imgs) => [...imgs, file]);
       };
 
       binaryReader.readAsArrayBuffer(file);

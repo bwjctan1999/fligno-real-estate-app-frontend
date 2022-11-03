@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Textfield from "../../components/general/Textfield";
 import DropDown from "../../components/general/DropDown";
@@ -14,6 +14,10 @@ import { PostProperty } from "../../api/ApiProperty";
 import { useNavigate } from "react-router-dom";
 
 export default function AddProperty() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => console.log(images), [images]);
+
   const [showPopUp, setShowPopUp] = useState(false);
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
@@ -290,7 +294,7 @@ export default function AddProperty() {
             </div>
           </div>
 
-          <ImageUploader imageStorage={setFormValues} />
+          <ImageUploader imageStorage={setImages} />
         </div>
       </div>
       <div className=" ml-auto flex w-full justify-end pt-5 lg:w-1/2 lg:pl-10">
