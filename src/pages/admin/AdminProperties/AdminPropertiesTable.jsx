@@ -2,6 +2,8 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Button from "../../../components/general/Button";
 
+import { DisableProperty, RestoreProperty } from "../../../api/ApiProperty";
+
 import { GetProperty, SearchProperty } from "../../../api/ApiProperty";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +35,6 @@ export default function AdminPropertiesTable({ search }) {
       ? (api_request = await SearchProperty(search, "admin/property-list"))
       : (api_request = await GetProperty(id, "admin/property-list"));
 
-    console.log(api_request.response);
     if (!api_request.error) {
       setProperties(api_request.response.data.data);
       setPaginationData({
@@ -46,10 +47,9 @@ export default function AdminPropertiesTable({ search }) {
       });
     } else {
       console.log(api_request.error);
+      alert(api_request.error);
     }
   };
-
-  const searchProperty = async () => {};
 
   const addProperty = ({
     id,
@@ -88,8 +88,8 @@ export default function AdminPropertiesTable({ search }) {
             bgcolor={deleted_at ? "bg-BtnSecondary" : "bg-BtnQuanary-end"}
             initialState={deleted_at ? false : true}
             id={id}
-            // enableRequest={RestoreUser}
-            // disableRequest={DisableUser}
+            enableRequest={RestoreProperty}
+            disableRequest={DisableProperty}
           />
         </Td>
       </Tr>

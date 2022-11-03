@@ -18,17 +18,13 @@ export default function EnableDisableButton({
   const disableHandler = async (id) => {
     const api_request = await disableRequest(id);
 
-    !api_request.error
-      ? console.log(api_request.response)
-      : console.log(api_request.error);
+    !api_request.error ? null : console.log(api_request.error);
   };
 
   const restoreHandler = async (id) => {
     const api_request = await enableRequest(id);
 
-    !api_request.error
-      ? console.log(api_request.response)
-      : console.log(api_request.error);
+    !api_request.error ? null : console.log(api_request.error);
   };
 
   const clickHandler = async () => {

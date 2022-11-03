@@ -51,17 +51,34 @@ export async function PostProperty(data) {
   return resolved;
 }
 
-export async function DeleteProperty(id) {
+export async function RestoreProperty(id) {
   const resolved = {
     response: null,
     error: null,
   };
 
   try {
-    resolved.response = await axios.delete(`${id}`);
+    resolved.response = await axios.get(`${base_url}/property/restore/${id}`);
   } catch (e) {
     resolved.error = e;
   }
+
+  return resolved;
+}
+
+export async function DisableProperty(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.delete(`${base_url}/properties/${id}`);
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
 }
 
 export async function UpdateProperty(id, data) {
