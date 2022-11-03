@@ -12,6 +12,7 @@ import Paginator from "../../../components/general/Paginator";
 import EnableDisableButton from "../../../components/general/EnableDisableButton";
 
 export default function AdminPropertiesTable({ search }) {
+  const [loading, setLoading] = useState(true);
   const [properties, setProperties] = useState([]);
   const [paginationData, setPaginationData] = useState({
     current_page: 1,
@@ -28,6 +29,7 @@ export default function AdminPropertiesTable({ search }) {
   }, [search]);
 
   const getData = async (id, search) => {
+    setLoading(true);
     setProperties([]);
     let api_request;
 
@@ -49,6 +51,8 @@ export default function AdminPropertiesTable({ search }) {
       console.log(api_request.error);
       alert(api_request.error);
     }
+
+    setLoading(false);
   };
 
   const addProperty = ({
@@ -96,9 +100,13 @@ export default function AdminPropertiesTable({ search }) {
     );
   };
 
-  return properties.length === 0 ? (
+  return loading ? (
     <div className="mt-10">
       <TableSkeleton />
+    </div>
+  ) : properties.length === 0 ? (
+    <div className="bg-BGPrimary p-5 rounded-lg mt-10 font-medium text-center text-lg">
+      <p>No Properties Are Found</p>
     </div>
   ) : (
     <div className="mt-10 w-full rounded-lg bg-BGPrimary p-4 shadow-lg">
