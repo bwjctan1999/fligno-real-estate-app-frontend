@@ -1,8 +1,10 @@
 import Button from "../../../components/general/Button";
 import Textfield from "../../../components/general/Textfield";
 
+import { ValidEmpty, ValidName } from "../../../scripts/validations";
 import { UpdateUser } from "../../../api/ApiUsers";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function EditNamePop({
   action,
@@ -14,8 +16,43 @@ export default function EditNamePop({
   setShowSuccessAlert,
   setShowErrorAlert,
 }) {
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
+  const [first_name, setFirstName] = useState(" ");
+  const [last_name, setLastName] = useState(" ");
+
+  const [first_name_validator, setFirstNameValidator] = useState("");
+  const [last_name_validator, setLastNameValidator] = useState("");
+
+  useEffect(() => {
+    setFirstName(firstname);
+    setLastName(lastname);
+  }, [firstname, lastname]);
+
+  const Validation = async () => {
+    let pass = true;
+
+    if (!ValidEmpty(first_name)) {
+      setFirstNameValidator("Required");
+      pass = false;
+    }
+    if (!ValidEmpty(last_name)) {
+      setLastNameValidator("Required");
+      pass = false;
+    }
+    if (!ValidName(first_name)) {
+      setFirstNameValidator("Invalid Name");
+      pass = false;
+    }
+    if (!ValidName(last_name)) {
+      setLastNameValidator("Invalid Name");
+      pass = false;
+    }
+
+    if (pass) {
+      UpdateName();
+      setFirstNameValidator("");
+      setLastNameValidator("");
+    }
+  };
 
   const UpdateName = async () => {
     const api_request = await UpdateUser({
@@ -23,6 +60,7 @@ export default function EditNamePop({
       last_name: last_name,
     });
 
+    action();
     if (!api_request.error) {
       setFirst(first_name);
       setLast(last_name);
@@ -52,6 +90,7 @@ export default function EditNamePop({
                     placeholder={firstname}
                     value={first_name}
                     onChange={(e) => setFirstName(e.target.value)}
+                    invalidError={first_name_validator}
                   />
                 </div>
                 <div>
@@ -60,6 +99,7 @@ export default function EditNamePop({
                     placeholder={lastname}
                     value={last_name}
                     onChange={(e) => setLastName(e.target.value)}
+                    invalidError={last_name_validator}
                   />
                 </div>
               </div>
@@ -75,8 +115,7 @@ export default function EditNamePop({
                 <Button
                   text="Save"
                   onClick={() => {
-                    UpdateName();
-                    action();
+                    Validation();
                   }}
                 />
               </div>
