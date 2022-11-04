@@ -16,7 +16,14 @@ import { useNavigate } from "react-router-dom";
 export default function AddProperty() {
   const [images, setImages] = useState([]);
 
-  useEffect(() => console.log(images), [images]);
+  useEffect(
+    () =>
+      setFormValues({
+        ...formValues,
+        images: JSON.stringify(images),
+      }),
+    [images]
+  );
 
   const [showPopUp, setShowPopUp] = useState(false);
   const navigate = useNavigate();
@@ -32,7 +39,7 @@ export default function AddProperty() {
     area: "",
     zip_code: "",
     city: "",
-    img: "blank",
+    image: null,
     availability: "",
   });
 
@@ -48,6 +55,7 @@ export default function AddProperty() {
     area: "",
     zip_code: "",
     city: "",
+    image: "",
     availability: "",
   });
 
@@ -64,7 +72,7 @@ export default function AddProperty() {
       area: "",
       zip_code: "",
       city: "",
-      img: "",
+      image: "",
       availability: "",
     };
 
