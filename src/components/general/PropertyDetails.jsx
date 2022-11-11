@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetProperty } from "../../api/ApiProperty";
+import { GetProperty, GetPropertyImage } from "../../api/ApiProperty";
 import { ContactAgent } from "../../api/ApiContactAgent";
 import Button from "./Button";
 
@@ -14,6 +14,7 @@ import IconBathroom from "../../assets/icons/IconBathroom";
 import IconTag from "../../assets/icons/IconTag";
 
 import PopUpContactUs from "../../components/popups/PopUpContactUs";
+import ImageViewer from "./ImageViewer";
 
 export default function PropertyDetails({ setSelectedId }) {
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ export default function PropertyDetails({ setSelectedId }) {
     city: "",
     description: "",
     zip_code: "",
-    img: "",
+    images: "",
   });
 
   useEffect(() => {
@@ -59,8 +60,12 @@ export default function PropertyDetails({ setSelectedId }) {
     const id = url[url.length - 1];
 
     const property = await GetProperty(`${id}`, "property");
+
     if (!property.error) {
-      setFormValues(property.response.data.data);
+      setFormValues({
+        ...property.response.data.data,
+        images: property.response.data.url,
+      });
       if (setSelectedId) {
         setSelectedId(property.response.data.data.id);
       }
@@ -70,8 +75,13 @@ export default function PropertyDetails({ setSelectedId }) {
     }
   };
 
+  // const getPropertyImage = async () => {
+  //   const images = await GetPropertyImage();
+  //   console.log(images);
+  // };
+
   return (
-    <div className="flex flex-col gap-14 lg:flex-row">
+    <div className="flex min-h-screen flex-col gap-14 lg:flex-row">
       <PopUpContactUs
         showPopUp={showPopUp}
         onClick={() => setShowPopUp(false)}
@@ -80,35 +90,7 @@ export default function PropertyDetails({ setSelectedId }) {
         number={number}
       />
 
-      <div className="w-full lg:w-7/12">
-        <img
-          src={`${formValues.img}`}
-          alt="image"
-          className="aspect-video w-full rounded-lg object-cover"
-        />
-        <div className="mt-3 grid grid-cols-4 gap-3">
-          <img
-            src={PDimg2}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-          <img
-            src={PDimg3}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-          <img
-            src={PDimg4}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-          <img
-            src={PDimg5}
-            alt="image"
-            className="aspect-video w-full rounded-lg object-cover"
-          />
-        </div>
-      </div>
+      <ImageViewer images={formValues.images} />
 
       <div className="w-full lg:w-5/12">
         <div className="mb-4 w-full">

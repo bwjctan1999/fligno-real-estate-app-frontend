@@ -37,8 +37,6 @@ export default function AdminAddSubscription() {
 
     if (!ValidNoEmojis(formValues.title))
       tempValidator.title = "Emojis are not allowed";
-    if (!ValidNumbersOnly(formValues.price))
-      tempValidator.price = "Invalid Number";
     if (!ValidEmpty(formValues.title)) tempValidator.title = "Required";
     if (!ValidEmpty(formValues.description))
       tempValidator.description = "Required";

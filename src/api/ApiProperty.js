@@ -17,6 +17,21 @@ export async function GetProperty(id, url) {
   return resolved;
 }
 
+export async function GetPropertyImage(id) {
+  const resolved = {
+    response: null,
+    error: null,
+  };
+
+  try {
+    resolved.response = await axios.get(`${base_url}/property/${id}`);
+  } catch (e) {
+    resolved.error = e;
+  }
+
+  return resolved;
+}
+
 export async function SearchProperty(search, url) {
   const resolved = {
     response: null,

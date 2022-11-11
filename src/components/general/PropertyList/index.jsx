@@ -34,15 +34,16 @@ export default function PropertyList({ navigate_to, search, url }) {
       ? (api_request = await SearchProperty(search, url))
       : (api_request = await GetProperty(id, url));
 
+    console.log(api_request.response.data.property.data);
     if (!api_request.error) {
-      setProperties(api_request.response.data.data);
+      setProperties(api_request.response.data.property.data);
       setPaginationData({
-        current_page: api_request.response.data.current_page,
-        last_page: api_request.response.data.last_page,
-        first_page_url: api_request.response.data.first_page_url,
-        last_page_url: api_request.response.data.last_page_url,
-        next_page_url: api_request.response.data.next_page_url,
-        prev_page_url: api_request.response.data.prev_page_url,
+        current_page: api_request.response.data.property.current_page,
+        last_page: api_request.response.data.property.last_page,
+        first_page_url: api_request.response.data.property.first_page_url,
+        last_page_url: api_request.response.data.property.last_page_url,
+        next_page_url: api_request.response.data.property.next_page_url,
+        prev_page_url: api_request.response.data.property.prev_page_url,
       });
       setLoading(false);
     } else {
@@ -64,7 +65,7 @@ export default function PropertyList({ navigate_to, search, url }) {
     city,
     description,
     zip_code,
-    img,
+    image_property,
   }) => {
     return (
       <PropertyCard
@@ -76,7 +77,7 @@ export default function PropertyList({ navigate_to, search, url }) {
         price={price}
         onClick={() => navigate(`${navigate_to}/${id}`)}
         key={id}
-        img={img}
+        img={image_property.length > 1 ? image_property[0].name : null}
         type={type}
       />
     );

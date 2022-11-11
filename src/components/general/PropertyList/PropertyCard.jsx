@@ -37,7 +37,7 @@ export default function PropertyCard({
       </div>
       <img
         className="aspect-video rounded-t-lg object-cover"
-        src={img}
+        src={img ? img : ImageNotFound}
         onError={(e) => {
           if (!imageError) {
             setImageError(true);
